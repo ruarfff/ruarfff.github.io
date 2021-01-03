@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruarfff Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 03 Jan 2021 21:01:27 GMT</lastBuildDate><item><title><![CDATA[Tech stuff found in the second half of 2020]]></title><description><![CDATA[2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online…]]></description><link>https://ruarfff.com/tech-stuff-found-2nd-half-2020/</link><guid isPermaLink="false">https://ruarfff.com/tech-stuff-found-2nd-half-2020/</guid><pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online. The following is a list of the best resources I have found while trying to become a better developer in the second half of 2020.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruarfff Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 03 Jan 2021 21:51:31 GMT</lastBuildDate><item><title><![CDATA[Tech stuff found in the second half of 2020]]></title><description><![CDATA[2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online…]]></description><link>https://ruarfff.com/tech-stuff-found-2nd-half-2020/</link><guid isPermaLink="false">https://ruarfff.com/tech-stuff-found-2nd-half-2020/</guid><pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online. The following is a list of the best resources I have found while trying to become a better developer in the second half of 2020.&lt;/p&gt;
 &lt;h2&gt;Contents&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#community&quot;&gt;Community&lt;/a&gt;&lt;/li&gt;
@@ -21,12 +21,12 @@
 &lt;p&gt;A brief list of the best tools I discovered and used recently.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://backstage.io/&quot;&gt;Backstage&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;When I worked at Spotify I was blown away by the internal tooling and how quickly I could get set up and deploying code. I got to use an early version of the developer portal there which has since been opensourced. We are using this at my company now and it’s really worth a look if you want a nice way to do internal tooling.&lt;/p&gt;
-&lt;p&gt;{% github backstage/backstage %}&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/backstage/backstage&quot;&gt;Backtsage GitHub repo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.hashicorp.com/blog/hashicorp-boundary&quot;&gt;Hashicorp Boundary&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Most access tools I’ve had to use kind of suck if your job is actually making stuff (looking at you Cyberark). &lt;a href=&quot;https://www.boundaryproject.io/&quot;&gt;Hashicorp Boundary&lt;/a&gt; looks like a really promising alternative so far.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.blog/2020-09-17-github-cli-1-0-is-now-available/&quot;&gt;GitHub CLI&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;GitHub CLI is a great tool and a lot of fun to use.&lt;/p&gt;
-&lt;p&gt;{% github cli/cli %}&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/cli/cli&quot;&gt;GitHub CLI repo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://sizzy.co/&quot;&gt;Sizzy&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;A browser for devs that is very cool.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/kubectl&quot;&gt;ZSH Kubectl plugin&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -44,7 +44,7 @@ Will try again in January.&lt;/p&gt;
 &lt;p&gt;I love to code games but I haven’t done much of that since college. I get to dabble a little in it using &lt;a href=&quot;https://screeps.com/&quot;&gt;Screeps&lt;/a&gt;. An RTS game where you code the AI for your units. It’s a lot of fun and good coding practice.&lt;/p&gt;
 &lt;p&gt;This is my admittedly poor attempt so far: &lt;a href=&quot;https://github.com/ruarfff/screeps-scripts&quot;&gt;https://github.com/ruarfff/screeps-scripts&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This massive list of resources to learn and practice with:&lt;/p&gt;
-&lt;p&gt;{% github charlax/professional-programming %}&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/charlax/professional-programming&quot;&gt;https://github.com/charlax/professional-programming&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Good News &lt;a name=&quot;good-news&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Just some good tech news I came across recently.&lt;/p&gt;
 &lt;p&gt;I did not realise that cookie banners were only required if you use cookies not needed for a site to function i.e. evil tracking cookies and the like. This is good news from GitHub:
@@ -88,7 +88,7 @@ Will try again in January.&lt;/p&gt;
 &lt;a href=&quot;https://mtlynch.io/why-i-quit-google/&quot;&gt;https://mtlynch.io/why-i-quit-google/&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Some tips on working on a side project while not immediately having to quit the day job: &lt;a href=&quot;https://www.indiehackers.com/article/f7697df2d7&quot;&gt;https://www.indiehackers.com/article/f7697df2d7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;If you ever worked at a “big corp”, you have probably encountered pain with certs on the network. This series helped me understand this stuff better and I learned a bit of rust too:&lt;/p&gt;
-&lt;p&gt;{% link &lt;a href=&quot;https://dev.to/wayofthepie/a-rust-cli-for-decoding-certs-280i&quot;&gt;https://dev.to/wayofthepie/a-rust-cli-for-decoding-certs-280i&lt;/a&gt; %}&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://dev.to/wayofthepie/a-rust-cli-for-decoding-certs-280i&quot;&gt;https://dev.to/wayofthepie/a-rust-cli-for-decoding-certs-280i&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Bit of a cheat here since this site isn’t really on tech but it isn’t 100% not tech either and I love it a lot: &lt;a href=&quot;https://www.brainpickings.org/&quot;&gt;https://www.brainpickings.org/&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Podcasts &lt;a name=&quot;podcasts&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I listen to a great many tech podcasts. One I discovered late in 2020 is the Idealcast and I highly recommend it for its positivity and thought-provoking content:&lt;/p&gt;
@@ -126,25 +126,34 @@ Will try again in January.&lt;/p&gt;
 &lt;p&gt;This just looks so cool and I want one: &lt;a href=&quot;https://www.clockworkpi.com/devterm&quot;&gt;https://www.clockworkpi.com/devterm&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Twitter &lt;a name=&quot;twitter&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;On needing a good strategy and vision from your leadership (a thread):&lt;/p&gt;
-&lt;p&gt;{% twitter 1338224893645651968 %}&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;a big learning the last year is the degree to which your most passionate team members will *expect* leaders/managers to coherently frame strategy&lt;br&gt;&lt;br&gt;this is where &amp;quot;autonomy&amp;quot; often hits a snag. Leaders assume it means &amp;quot;bottom up&amp;quot; planning. But that isn&amp;#39;t it ... (1/n)&lt;/p&gt;&amp;mdash; John Cutler (@johncutlefish) &lt;a href=&quot;https://twitter.com/johncutlefish/status/1338224893645651968?ref_src=twsrc%5Etfw&quot;&gt;December 13, 2020&lt;/a&gt;&lt;/blockquote&gt;
+
 &lt;p&gt;On things going bad in a rewrite and sunk cost fallacy (a thread):&lt;/p&gt;
-&lt;p&gt;{% twitter 1336893874904567808 %}&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;So a team was formed to build a new mobile architecture for this new app. The driving charter for the team was to build an architecture that would “sustain mobile development at Uber for the next 5 years”. We did both platforms at once. Product and Design also started over.&lt;/p&gt;&amp;mdash; McLaren Stanley (@StanTwinB) &lt;a href=&quot;https://twitter.com/StanTwinB/status/1336893874904567808?ref_src=twsrc%5Etfw&quot;&gt;December 10, 2020&lt;/a&gt;&lt;/blockquote&gt;
+
 &lt;p&gt;A profound thought on hackathons:&lt;/p&gt;
-&lt;p&gt;{% twitter 1320165499863396352 %}&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Companies think, “oh, we should have hackathons!” and miss that _actually_ they should have an organization where hackathons are worth having.&lt;/p&gt;&amp;mdash; Beth (@bethcodes) &lt;a href=&quot;https://twitter.com/bethcodes/status/1320165499863396352?ref_src=twsrc%5Etfw&quot;&gt;October 25, 2020&lt;/a&gt;&lt;/blockquote&gt;
+
 &lt;p&gt;It’s always DNS:&lt;/p&gt;
-&lt;p&gt;{% twitter 1313858239298260993 %}&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;I don&amp;#39;t know why people despise DNS so much. It&amp;#39;s one of the simplest Internet services out there. &lt;br&gt;&lt;br&gt;Everything it does comes down to two things: naming things and cache invalidation.&lt;/p&gt;&amp;mdash; Leszek Jakubowski (@Makdaam) &lt;a href=&quot;https://twitter.com/Makdaam/status/1313858239298260993?ref_src=twsrc%5Etfw&quot;&gt;October 7, 2020&lt;/a&gt;&lt;/blockquote&gt;
+
 &lt;p&gt;Interesting war story (a thread):&lt;/p&gt;
-&lt;p&gt;{% twitter 1312536583401160704 %}&lt;/p&gt;
-&lt;p&gt;On being an opensource dev (need to click into it to see images properly):&lt;/p&gt;
-&lt;p&gt;{% twitter 1310776927599423489 %}&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Back story.&lt;br&gt;&lt;br&gt;Way back I worked in a PPT factory at an investment bank. Our job was to assemble “decks” for investment bankers. The operation ran 24hrs a day with dozens of “operators”.&lt;br&gt;&lt;br&gt;Young bankers would work CRAZY hours.&lt;br&gt;&lt;br&gt;Reflecting (1/n)&lt;/p&gt;&amp;mdash; John Cutler (@johncutlefish) &lt;a href=&quot;https://twitter.com/johncutlefish/status/1312536583401160704?ref_src=twsrc%5Etfw&quot;&gt;October 3, 2020&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;On being an opensource dev:&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Them: I contribute to open source.&lt;br&gt;Me: &lt;a href=&quot;https://t.co/kwvSh71s04&quot;&gt;pic.twitter.com/kwvSh71s04&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jay Phelps (@_jayphelps) &lt;a href=&quot;https://twitter.com/_jayphelps/status/1310776927599423489?ref_src=twsrc%5Etfw&quot;&gt;September 29, 2020&lt;/a&gt;&lt;/blockquote&gt;
+
 &lt;p&gt;Same:&lt;/p&gt;
-&lt;p&gt;{% twitter 1306613673952149504 %}&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;My productivity algorithm is something like:&lt;br&gt;&lt;br&gt;* Start to do something&lt;br&gt;&lt;br&gt;* Remember higher-priority thing, switch to doing that&lt;br&gt;&lt;br&gt;* Remember that high-priority thing is hard&lt;br&gt;&lt;br&gt;* Do nothing&lt;/p&gt;&amp;mdash; Sean Carroll (@seanmcarroll) &lt;a href=&quot;https://twitter.com/seanmcarroll/status/1306613673952149504?ref_src=twsrc%5Etfw&quot;&gt;September 17, 2020&lt;/a&gt;&lt;/blockquote&gt;
+
 &lt;p&gt;GraphQL VS Rest:&lt;/p&gt;
-&lt;p&gt;{% twitter 1303673198500814848 %}&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Someone shouted “GraphQL is a better REST” and then this happened &lt;a href=&quot;https://t.co/eHO36cUAit&quot;&gt;pic.twitter.com/eHO36cUAit&lt;/a&gt;&lt;/p&gt;&amp;mdash; Marc-André Giroux (@__xuorig__) &lt;a href=&quot;https://twitter.com/__xuorig__/status/1303673198500814848?ref_src=twsrc%5Etfw&quot;&gt;September 9, 2020&lt;/a&gt;&lt;/blockquote&gt;
+
 &lt;p&gt;How I felt when I saw JSS:&lt;/p&gt;
-&lt;p&gt;{% twitter 1303268890638778368 %}&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;js devs applying js solutions to css problems &lt;a href=&quot;https://t.co/umxJJgt3Yf&quot;&gt;pic.twitter.com/umxJJgt3Yf&lt;/a&gt;&lt;/p&gt;&amp;mdash; I Am Devloper (@iamdevloper) &lt;a href=&quot;https://twitter.com/iamdevloper/status/1303268890638778368?ref_src=twsrc%5Etfw&quot;&gt;September 8, 2020&lt;/a&gt;&lt;/blockquote&gt;
+
 &lt;h2&gt;Coding Music &lt;a name=&quot;coding-music&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;{% spotify spotify:playlist:5e1dfPbE4qElO9wCQ2AOCm %}&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Does Test Driven Development Work?]]></title><description><![CDATA[Introduction Bertrand Russell was concerned about the issue of having to accept certain axioms to be able to proceed with an education in…]]></description><link>https://ruarfff.com/does-tdd-work/</link><guid isPermaLink="false">https://ruarfff.com/does-tdd-work/</guid><pubDate>Mon, 24 Sep 2018 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://open.spotify.com/playlist/5e1dfPbE4qElO9wCQ2AOCm?si=cD2-ZYDnSsu8aENDufNP5A&quot;&gt;&lt;iframe src=&quot;https://open.spotify.com/embed/playlist/5e1dfPbE4qElO9wCQ2AOCm&quot; width=&quot;100%&quot; height=&quot;400&quot; frameborder=&quot;0&quot; allowtransparency=&quot;true&quot; allow=&quot;encrypted-media&quot;&gt;&lt;/iframe&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Does Test Driven Development Work?]]></title><description><![CDATA[Introduction Bertrand Russell was concerned about the issue of having to accept certain axioms to be able to proceed with an education in…]]></description><link>https://ruarfff.com/does-tdd-work/</link><guid isPermaLink="false">https://ruarfff.com/does-tdd-work/</guid><pubDate>Mon, 24 Sep 2018 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Bertrand_Russell&quot;&gt;Bertrand Russell&lt;/a&gt; was concerned about the issue of having to accept certain axioms to be able to proceed with an education in mathematics even though those axioms had not necessarily been rigorously proven. He treats aspects of this in his book &lt;a href=&quot;https://people.umass.edu/klement/imp/imp-ebk.pdf&quot;&gt;An Introduction to Mathematical Philosophy&lt;/a&gt;. An example that is given in the &lt;a href=&quot;http://www.bbc.co.uk/programmes/b01p8fsr&quot;&gt;In Our Time Episode&lt;/a&gt; about Bertrand Russell is, for any two points in space there exists a line between those two points. This is intuitive but no proof existed of the truth of it. One major problem with a lack of proof is that, even if something might be intuitive, it is possible to argue that thing is not intuitive to you, or some other answer is more intuitive and there is no proof to appeal to that says an argument is right or wrong.&lt;/p&gt;
 &lt;p&gt;A question that will be explored in this post is, do we have any proof that Test Driven Development (TDD) works?&lt;/p&gt;
 &lt;p&gt;What does ‘Work’ mean in this context? Two measurements often used are:&lt;/p&gt;
