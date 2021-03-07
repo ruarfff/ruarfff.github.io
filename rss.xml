@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 07 Mar 2021 23:13:16 GMT</lastBuildDate><item><title><![CDATA[Tech stuff found in the second half of 2020]]></title><description><![CDATA[2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online…]]></description><link>https://ruarfff.com/tech-stuff-found-2nd-half-2020/</link><guid isPermaLink="false">https://ruarfff.com/tech-stuff-found-2nd-half-2020/</guid><pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online. The following is a list of the best resources I have found while trying to become a better developer in the second half of 2020.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 07 Mar 2021 23:33:13 GMT</lastBuildDate><item><title><![CDATA[Tech stuff found in the second half of 2020]]></title><description><![CDATA[2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online…]]></description><link>https://ruarfff.com/tech-stuff-found-2nd-half-2020/</link><guid isPermaLink="false">https://ruarfff.com/tech-stuff-found-2nd-half-2020/</guid><pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online. The following is a list of the best resources I have found while trying to become a better developer in the second half of 2020.&lt;/p&gt;
 &lt;h2&gt;Contents&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#community&quot;&gt;Community&lt;/a&gt;&lt;/li&gt;
@@ -1112,4 +1112,658 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;If I hit issues deploying my app, I usually add a bunch of logging for things like the database connection or any other environment specific stuff and can check what is being picked up in those logs. Haven’t come up with a better way than that yet.&lt;/p&gt;
-&lt;p&gt;That’s it. I hope it all worked out for you and you were able to get a deployment pipeline going. Please feel free to give any feedback or ask any questions in the comments section below.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;That’s it. I hope it all worked out for you and you were able to get a deployment pipeline going. Please feel free to give any feedback or ask any questions in the comments section below.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Where to put Angular with Redux]]></title><description><![CDATA[I am reasonably new to Angular 2+ and have already made a bunch of bad decisions when using it with Redux. This is probably old news to most…]]></description><link>https://ruarfff.com/angular-and-redux/</link><guid isPermaLink="false">https://ruarfff.com/angular-and-redux/</guid><pubDate>Mon, 05 Mar 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I am reasonably new to Angular 2+ and have already made a bunch of bad decisions when using it with Redux. This is probably old news to most people but one thing I struggled with was how to work with Redux selectors and where to put them in components.&lt;/p&gt;
+&lt;p&gt;I have dabbled with React and Redux and one thing I liked a lot was the concept of &lt;a href=&quot;https://reactjs.org/docs/components-and-props.html&quot;&gt;functional components&lt;/a&gt;. That’s where all the component state gets passed in as parameters and no internal modification of state is done. Therefore you can test any variation of the components behavior by modifying the inputs.&lt;/p&gt;
+&lt;p&gt;If state needs to be changed, the component emits events that produce actions that alter the application state. Any interaction with external things like the Redux store would happen in container components where you bind the inputs and outputs for any child components.&lt;/p&gt;
+&lt;p&gt;Good terms for these concepts that I came across in &lt;a href=&quot;https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0&quot;&gt;a post by Dan Abramov&lt;/a&gt; are Presentation and Container components. Presentation components being the simple components that take state as inputs and present it. Container components being the components that manage interaction with the likes of Redux and provide inputs to presentational components.&lt;/p&gt;
+&lt;p&gt;I recently started working on a reasonably large angular project. I struggled with finding good examples and developing a good idea of where things should go to keep the code base clean.&lt;/p&gt;
+&lt;p&gt;One thing that caught me out a lot was how coupled the component code was to Redux, or at least &lt;a href=&quot;https://github.com/angular-redux/store&quot;&gt;ng2-redux&lt;/a&gt;. This code base is making heavy use of the &lt;a href=&quot;https://github.com/angular-redux/store/blob/master/articles/select-pattern.md&quot;&gt;select pattern&lt;/a&gt; A typical component in the code base might look something like this, taking a really simple and made-up user list as an example.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;@&lt;span class=&quot;token function&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  selector&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;app-users&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  templateUrl&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./users.component.html&apos;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;UsersComponent&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;OnInit&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+  @&lt;span class=&quot;token function&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;userManagement&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;users&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; users$&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Observable&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;User&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token function&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; userManagementActions&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; UserManagementActions&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  @&lt;span class=&quot;token function&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;ngOnInit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;userManagementActions&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;fetchUsers&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And a simple template for that.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;ul&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;li&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;*ngFor&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;let user of (users$ | async)&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;{{ user.name }}&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;li&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;ul&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There’s nothing particularly wrong with this. It will work fine.&lt;/p&gt;
+&lt;p&gt;From a design and clean code perspective, issues can start to crop up when this component is used in other components and if this component is going to get used in more that one place.&lt;/p&gt;
+&lt;p&gt;Let’s look at how we might test this component.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token function&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;UsersComponent&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; component&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; UsersComponent
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; fixture&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; ComponentFixture&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;UsersComponent&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; userManagementActions&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; UserManagementActions
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; element&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; HTMLElement
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; ngRedux
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; usersSelector
+
+  &lt;span class=&quot;token function&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    TestBed&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;configureTestingModule&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      imports&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;NgReduxTestingModule&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      declarations&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;UsersComponent&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      providers&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;UserManagementActions&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;compileComponents&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token function&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    MockNgRedux&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;reset&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    usersSelector &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; MockNgRedux&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getSelectorStub&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;userManagement&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;users&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    ngRedux &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; TestBed&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;NgRedux&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;spyOn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ngRedux&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;dispatch&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    fixture &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; TestBed&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createComponent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;UsersComponent&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    userManagementActions &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; TestBed&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;UserManagementActions&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    component &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fixture&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;componentInstance
+    element &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fixture&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;debugElement&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;nativeElement
+
+    fixture&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;detectChanges&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token function&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;should dispatch fetchUsers action&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ngRedux&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dispatch&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toHaveBeenCalledWith&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+      userManagementActions&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;fetchUsers&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token function&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;should render users&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    usersSelector&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; id&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;one&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;First&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; id&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;two&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Second&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    fixture&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;detectChanges&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; userElements &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; element&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;li&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;userElements&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;textContent&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toContain&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;First&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;userElements&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;textContent&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toContain&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Second&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It’s a really simple component but there is still a fairly large amount of boilerplate test setup code there. Also, we have really embedded Redux in to that component. The test needs to do a lot of mocking. We need to mock Redux, verify we dispatch an action on initialization, mock what comes from the store and test that we render that correctly.&lt;/p&gt;
+&lt;p&gt;What if we need an almost identical component but want to dispatch a slightly different action on initialization?&lt;/p&gt;
+&lt;p&gt;Doing all this setup for every component test gets to be a bit of a drag.&lt;/p&gt;
+&lt;p&gt;There’s just a bunch of issues with doing components this way I think but it still seems to be a common pattern.&lt;/p&gt;
+&lt;p&gt;The solution to avoid these issues may be really obvious to most but I had to struggle a bit before arriving at it.&lt;/p&gt;
+&lt;h2&gt;Presentation Components&lt;/h2&gt;
+&lt;p&gt;We don’t have the functional syntax for components that React has in Angular but we have something similar.&lt;/p&gt;
+&lt;p&gt;Angular components have the &lt;a href=&quot;https://angular.io/api/core/Input&quot;&gt;@Input()&lt;/a&gt; and &lt;a href=&quot;https://angular.io/api/core/Output&quot;&gt;@Output()&lt;/a&gt; property decorators. These allow us to take all the required state as inputs and emit any internal events as outputs. If we emit an event to update the Redux store for example, the inputs can be changed in the container and the components can be re-rendered. This way the component only needs to know how to present the input state and what to emit on an interaction.&lt;/p&gt;
+&lt;p&gt;We could instead write the component like this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;@&lt;span class=&quot;token function&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  selector&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;app-users&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  templateUrl&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./users.component.html&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  changeDetection&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; ChangeDetectionStrategy&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;OnPush&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;UsersComponent&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  @&lt;span class=&quot;token function&quot;&gt;Input&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  users&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; User&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The template would be updated to look like this (just removing the async pipe).&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;ul&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;li&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;*ngFor&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;let user of users&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;{{ user.name }}&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;li&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;ul&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The tests get a bit easier for that component then. Just set the value of the input add test the rendering.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token function&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;UsersComponent&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; component&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; UsersComponent
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; fixture&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; ComponentFixture&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;UsersComponent&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; element&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; HTMLElement
+
+  &lt;span class=&quot;token function&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    TestBed&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;configureTestingModule&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      declarations&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;UsersComponent&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;compileComponents&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token function&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    fixture &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; TestBed&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createComponent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;UsersComponent&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    component &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fixture&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;componentInstance
+    element &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; fixture&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;debugElement&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;nativeElement
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token function&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;should render users&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    component&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;users &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; id&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;one&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;First&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; id&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;two&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Second&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+    fixture&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;detectChanges&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; userElements &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; element&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;li&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;userElements&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;textContent&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toContain&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;First&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;userElements&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;textContent&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toContain&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Second&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There’s a lot less boilerplate and I think the tests are a lot cleaner since we are not mocking or stubbing internal state.&lt;/p&gt;
+&lt;p&gt;Because we have kept the component so simple and with less dependencies it is easier to test and also much more reusable than if we used those Redux selectors directly.&lt;/p&gt;
+&lt;h4&gt;changeDetection: ChangeDetectionStrategy.OnPush&lt;/h4&gt;
+&lt;p&gt;You may have noticed we set the &lt;a href=&quot;https://angular.io/api/core/ChangeDetectionStrategy&quot;&gt;changeDetection&lt;/a&gt; property for the component. This is something we should try to use when writing our components this way. When we set this we are saying we will not change the inputs internally. This allows a little optimization because Angular won’t check the internal state to see if it needs to update the rendering. Therefore if you change the state internally, the updates will not get picked up for rendering. The change detection strategy checks the reference of the input and if that has not changed, it does nothing. This makes it work well with Redux since we will always bring back a new reference from the store if there was a change.&lt;/p&gt;
+&lt;h2&gt;Container Components&lt;/h2&gt;
+&lt;p&gt;We can’t avoid having dependencies between Redux and our components completely but we can keep it in container components.&lt;/p&gt;
+&lt;p&gt;Say you have a component representing a page that contains a list of users and maybe something else. That could be the Container component since it probably won’t have any complicated things to do itself. For example:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;some-other-thing&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;some-other-thing&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;app-users&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;[users]&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;users$ | async&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;app-users&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;@&lt;span class=&quot;token function&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  selector&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;app-user-management&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  templateUrl&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./user-management.component.html&apos;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;UserManagementComponent&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;OnInit&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+  @&lt;span class=&quot;token function&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;userManagement&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;users&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; users$&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Observable&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;User&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token function&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; userManagementActions&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; UserManagementActions&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  @&lt;span class=&quot;token function&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;ngOnInit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;userManagementActions&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;fetchUsers&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now we only need to test the Redux related things there (with all the mocking and boilerplate setup code), keeping the child components simple.&lt;/p&gt;
+&lt;p&gt;In React the tendency is to have one container component for each presenter with the container having no makeup of its own. This is another potential pattern to try out here.&lt;/p&gt;
+&lt;h2&gt;Interactions&lt;/h2&gt;
+&lt;p&gt;What if you need a component to dispatch and action to the store?&lt;/p&gt;
+&lt;p&gt;So lets say the user list has a delete button and on clicking it, you want to fire off an action to delete that user.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;@&lt;span class=&quot;token function&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;deleteUser&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;user&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; User&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;userManagementActions&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;deleteUser&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;user&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You could add that to the UsersComponent but then you’re back to adding all that Redux test stuff. Instead it might be good to emit that event using an Output.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;@&lt;span class=&quot;token function&quot;&gt;Output&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+onDeleteUser&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; EventEmitter&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;User&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;EventEmitter&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;User&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;deleteUser&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;user&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; User&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;onDeleteUser&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;emit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;user&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now we can dispatch the action in the container by listening for that event.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;some-other-thing&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;some-other-thing&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;app-users&lt;/span&gt;
+    &lt;span class=&quot;token attr-name&quot;&gt;[users]&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;users$ | async&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;token attr-name&quot;&gt;(onDeleteUser)&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;deleteUser($event)&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;app-users&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I am definitely finding Angular code easier to understand and test using this technique. It’s still not great but it’s a bit more manageable. Angular and Redux are both fine tools but, like any code bases, the code base using them can start to get pretty messy unless some decent patterns are used. The Container &amp;#x26; Presenter pattern is a good one for this scenario I believe.&lt;/p&gt;
+&lt;p&gt;Some runnable example code for the above is here: &lt;a href=&quot;https://github.com/ruarfff/angular-demo-code/tree/master/src/app/user-management&quot;&gt;https://github.com/ruarfff/angular-demo-code/tree/master/src/app/user-management&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Introduction to Kubernetes]]></title><description><![CDATA[This post is a relatively short introduction to Kubernetes looking at some of the basic features. We will look at using kubernetes in two…]]></description><link>https://ruarfff.com/kube-intro/</link><guid isPermaLink="false">https://ruarfff.com/kube-intro/</guid><pubDate>Tue, 27 Jun 2017 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;This post is a relatively short introduction to &lt;a href=&quot;https://kubernetes.io/&quot;&gt;Kubernetes&lt;/a&gt; looking at some of the basic features.&lt;/p&gt;
+&lt;p&gt;We will look at using kubernetes in two ways. With the Google Cloud Platform (GCP) with &lt;a href=&quot;https://cloud.google.com/kubernetes-engine/&quot;&gt;GKE&lt;/a&gt; and with minikube.&lt;/p&gt;
+&lt;p&gt;You can use one or the other or both, or indeed some other cloud provider but GCP and minikube are what we will use here. I recommend playing around with both GCP and minikube since it won’t cost you anything. For GCP you need a Google account but you will also need a way to setup billing which pretty much means you will need a credit card. You won’t have to spend money but you will need to have billing enabled in the GCP account.&lt;/p&gt;
+&lt;h3&gt;Install the GCP SDK&lt;/h3&gt;
+&lt;p&gt;Instructions here are good and cover all platforms: &lt;a href=&quot;https://cloud.google.com/sdk/&quot;&gt;https://cloud.google.com/sdk/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can also just use the cloud console in the GCP UI but I will use &lt;code class=&quot;language-text&quot;&gt;gcloud&lt;/code&gt; in the examples here.&lt;/p&gt;
+&lt;h3&gt;Install kubectl&lt;/h3&gt;
+&lt;p&gt;Assumes you have followed the instructions above and installed &lt;code class=&quot;language-text&quot;&gt;gcloud&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt; gcloud components &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; kubectl&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Google Cloud Platform&lt;/h3&gt;
+&lt;p&gt;You can just skip forward and setup minikube if you prefer but I recommend using this to have something a little more ‘real’.&lt;/p&gt;
+&lt;p&gt;First you need a google account. Not much point me explaining how to do that I guess.&lt;/p&gt;
+&lt;p&gt;Then you will need to setup a GCP dashboard for yourself (if you haven’t one already). Just open this link &lt;a href=&quot;https://console.cloud.google.com/start&quot;&gt;https://console.cloud.google.com/start&lt;/a&gt; and follow the instructions.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8105e4bab9a47f7ce2204908eb6d5caf/de9fe/dashboard.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABB0lEQVQoz52Qy0rDQBiF87iiiBsrQnFRX0GIqyJV0AcQVxaq7UoRte0rBJpIJ8pMM5lLmuNcHI0YFzrwcQ7/HA7/TNTpZ9g/SdEx7A0y7PYX2DlOsB0n2DhKsBkvsBWn6A5SHJxm6J3n6F385NDQPSOILu8oru4ZbmcMwweCmynFaLZyDJ8Yrh894znDZG5ztJWxYfRMERVcghUSWFs4AKNQ/yaSUsIihEEqlEbbkEqbnP71PvBZ2EQp5Qje6nJJwHkJe+q6dgTfzH4rVC3lIfj2SkApdV4I8fEqr1rrr8KwTRs+5L9iMs3xQhh4sTIz7UqUmVv9Y6HXLBfgpd1YoKoqVxK0mX0HSiNYQAlmCAsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;alt text&quot;
+        title=&quot;Dashboard&quot;
+        src=&quot;/static/8105e4bab9a47f7ce2204908eb6d5caf/f058b/dashboard.png&quot;
+        srcset=&quot;/static/8105e4bab9a47f7ce2204908eb6d5caf/c26ae/dashboard.png 158w,
+/static/8105e4bab9a47f7ce2204908eb6d5caf/6bdcf/dashboard.png 315w,
+/static/8105e4bab9a47f7ce2204908eb6d5caf/f058b/dashboard.png 630w,
+/static/8105e4bab9a47f7ce2204908eb6d5caf/40601/dashboard.png 945w,
+/static/8105e4bab9a47f7ce2204908eb6d5caf/78612/dashboard.png 1260w,
+/static/8105e4bab9a47f7ce2204908eb6d5caf/de9fe/dashboard.png 2146w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;When on that page click the ‘Create’ button to create a project.&lt;/p&gt;
+&lt;p&gt;When selecting a name for your project try to use something globally unique to you. For example, for me I append my username.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6fad110f2cf65eaa5f0b0087ba7d6293/f4281/new-project-name.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.92405063291139%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABl0lEQVQ4y6WSsW7TUBSG/UrQEYkFUShiBAZUVAYGBhY6VUiIAgugQgfEAH0MmHgEJCQQAgWaOE2da8fpjRP7xthJbH+c2AWkKgkFjvTpv74+v/Xfc22dvac5tdHl/H3NygPNsjyfuas5t6m5+LBX6uk7B5y43eXk+myW1n3p1Vx+EmBd3Trg0qMuN55rbr3sce2pz9q2z6ro9e1qfeVxh5VNjwtzcVl75nHzRQdLeT3cjsZxp/ToRwnhcCyMGBhBNIrHDL8vJopHpcdq2g3sRp2m8O1rjWwy5n/KOrpRFAVZlpPnOdkxKXuzCstx2ti2jWoroshUTYcv81+G4jfFbIpDrN2mz/uPu3z4VOdzrUWt3qbR8gnjgmECRgjjXOaTyTwFcwTZ64tOsqI6chr3GWhFx3NpK4/9fYe9vRZKuYIqNQgCdD8lHUkKZiedpis/+PZdwM5rl5YbEZsBxhhGaUqSJKRTZD2Ri5rICH6a5lV55FdvumzsKL40Q3zPIQzNH03zmHnLxzEtSmpVjfyVaeF/+C8pFtUPM4LGeJhnLGYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;alt text&quot;
+        title=&quot;New Project&quot;
+        src=&quot;/static/6fad110f2cf65eaa5f0b0087ba7d6293/f058b/new-project-name.png&quot;
+        srcset=&quot;/static/6fad110f2cf65eaa5f0b0087ba7d6293/c26ae/new-project-name.png 158w,
+/static/6fad110f2cf65eaa5f0b0087ba7d6293/6bdcf/new-project-name.png 315w,
+/static/6fad110f2cf65eaa5f0b0087ba7d6293/f058b/new-project-name.png 630w,
+/static/6fad110f2cf65eaa5f0b0087ba7d6293/40601/new-project-name.png 945w,
+/static/6fad110f2cf65eaa5f0b0087ba7d6293/f4281/new-project-name.png 1016w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Notice it says ‘Your project ID will be {the ID}’ and in my case the ID matches the name I specified.&lt;/p&gt;
+&lt;p&gt;Beware if you use a name that has already been used somewhere else in the world, like in this example:
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/11922aac4d591b1290d23a345fb4b9b2/f79fa/new-project-random-id.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 61.39240506329114%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABpElEQVQoz5WRy27TQBSG54W47NiwYwFigUC8AhtAKlGhCCSQChIgxLqVEC0LhHgYxLJRDU3ckMaxx4mdixPbY3v8MW4aKUAC7ZE+/XM5c+afOeLShs+V5z0uP/G5+brPrTd9rr+cce1Fn9tvA268Cri62edCTXJuTXL+wUznzOcXax5i7b3k6acB6zsBzz6HbH4Z8GjX5/FHycMdycauNHPJ+gfJvW2Pu1urub/tItAZrtNmEEh6sosvXao1KA36zAiV5Vjff+A4XWzbptG0UaoqaLZNzXIBfQpEWWr+jNKc1lqfifJERZ5l7NUtDho2zeZPoklMlpcGvYJyJUVRIhKlsRod9vYPsQ7a1C2bVluSmlcnCuKKFKZpeYJmkmiiuPiNam00LYzDvCAMfKTrmH90Oeq4tI+cY+0YnK6H6/XMnkcQDpFBSmUiL2auKl1EpJnm237A17pPOIyYTCLG4xFRNGY8mmkcT0mThEwpUlUcN2hViG6Qceddi9qWg3UY0rIbpmDE/6Jq3DJEYXrtDxS9oTKW9T+TF5nn/eVw2c3LxqeNX8zAei1zTzwLAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;alt text&quot;
+        title=&quot;New Project Random ID&quot;
+        src=&quot;/static/11922aac4d591b1290d23a345fb4b9b2/f058b/new-project-random-id.png&quot;
+        srcset=&quot;/static/11922aac4d591b1290d23a345fb4b9b2/c26ae/new-project-random-id.png 158w,
+/static/11922aac4d591b1290d23a345fb4b9b2/6bdcf/new-project-random-id.png 315w,
+/static/11922aac4d591b1290d23a345fb4b9b2/f058b/new-project-random-id.png 630w,
+/static/11922aac4d591b1290d23a345fb4b9b2/f79fa/new-project-random-id.png 940w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You will get a random ID, which is a pain because whenever you need to use the ID you have to go digging for it (for some reason I keep forgetting where to find it) but the name is always visible in the UI and easier to remember.&lt;/p&gt;
+&lt;p&gt;Next you will want to go the the API manager dashboard.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f1515d7512fb90ec00256043f0c29da4/0b569/api-manager-menu.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 51.26582278481012%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABm0lEQVQoz1VSi27UMBDM//8AAgFCgNo/gFIhDv6kd71H3t7YSRznccOOW59gpZXX49nZsZPsyy+LrzuH+z8OrN99N/jww+DttxrvH1rc/TaagvvXZH23U2wnyhN8fBR8+tnhzaPB54cTstHP6PsR27oC1w394DGHSWsPQDEsmgHYFFtHxUPE122AW1v0S4su1JAgsN4hK6sGx1MOIw6tWLTGoCgrEB9UfLuqXJgVF4h0mLS+EpsX5EUZudb1OmCDcyqY5znqusYy06lD0zQoyzKm916br1jVfVqXZbnVPLedvfGsVcFpmsBkkGytjZOGYcCmU2cdRJyRBBnsEZHIG8cxcqPDBDAIsqbjvu//c/ZvpkG8Dd0lXhSkAF0lIgk84Mom4iGE6IQ4XbGHZ8Qoyn16guiwNW1soiD31tnbVdftRZBC6a0YrI1+wKqqYg+57MlY+NEjBUWTo/S2DAqloS+AvqOfML4+WfpY2dPhCcfzCefLGSddD8dn7A/7mJfigrqpY0on8SasjRj9rUrsnw+xNy9y5GWBoq7wF40k+5SwvlE+AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;alt text&quot;
+        title=&quot;API manager menu&quot;
+        src=&quot;/static/f1515d7512fb90ec00256043f0c29da4/f058b/api-manager-menu.png&quot;
+        srcset=&quot;/static/f1515d7512fb90ec00256043f0c29da4/c26ae/api-manager-menu.png 158w,
+/static/f1515d7512fb90ec00256043f0c29da4/6bdcf/api-manager-menu.png 315w,
+/static/f1515d7512fb90ec00256043f0c29da4/f058b/api-manager-menu.png 630w,
+/static/f1515d7512fb90ec00256043f0c29da4/40601/api-manager-menu.png 945w,
+/static/f1515d7512fb90ec00256043f0c29da4/78612/api-manager-menu.png 1260w,
+/static/f1515d7512fb90ec00256043f0c29da4/0b569/api-manager-menu.png 2878w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Click ‘Enable API’ near the top of the page.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3413de31980269322eda1e2d2188c3cc/60708/enable-api.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 51.26582278481012%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABX0lEQVQoz51SXUvDMBTt//8xDhw4fRFEmKBT8WEobHPK2rV063eTNEnbY25cZlF80AuHm/txbs5t451OdxhPY0xuU1zclxhdxziflTiZ1hjdVLh8qgdgA9SYzGqc3dWGV2P8KHD1EMGLdhXCuERacDSNBCtiQDMAHf5jXpqVSNISjEtwoZDlBcqKQSqFtustpNTQbYfO3EG+qoUBQ5rm1nPeGL6AEA08bYjKQlrPGDPET3V931vPOalvbOxyFBdFgbZtj73E86SUcKCBVHAxkYjgchQTXB+Z1tooE8c+Tx0UuoHuNkcYnof2W+7HwOG6dCZI1RklrVUzBCmjOqkmbwe6Ndwq+/0eWZZbwtfA1tQ01PF7K1vngpuf1FoxSZJY732XnaUZojD683Mp8tysZZ7Ncr0CYfG6xPptjcVqgfnL3OSWCMLAwg/9A4IDfARRgM3Wx3rzDn8bGM4zVob/AQcFAyqi7+x0AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;alt text&quot;
+        title=&quot;Enable API&quot;
+        src=&quot;/static/3413de31980269322eda1e2d2188c3cc/f058b/enable-api.png&quot;
+        srcset=&quot;/static/3413de31980269322eda1e2d2188c3cc/c26ae/enable-api.png 158w,
+/static/3413de31980269322eda1e2d2188c3cc/6bdcf/enable-api.png 315w,
+/static/3413de31980269322eda1e2d2188c3cc/f058b/enable-api.png 630w,
+/static/3413de31980269322eda1e2d2188c3cc/40601/enable-api.png 945w,
+/static/3413de31980269322eda1e2d2188c3cc/78612/enable-api.png 1260w,
+/static/3413de31980269322eda1e2d2188c3cc/60708/enable-api.png 2872w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Select ‘Compute Engine API’ (click the link under Popular APIs or search for it in the unlikely event it’s not visible).
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c3227d60b192cceb626ea7b6188cbaae/0940f/select-compute-engine.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 67.72151898734178%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB0klEQVQ4y52T6W7bMBCE9f4v1V8FAgRoUbRJHKeJ4kOSJeugLt7UdMlIcQInddEFBgQI8eNoZxklSYKmqZHnOcrjEWVZYhxHSCnBOYdUElVV40j7Wms452Ct/VRRmmVgjOFIsCxNsdvtAsgf9lBjTLgsjmMY2vM1TdOnijQ5EIKj7zpIWidn6aAioIJSIgCXsm4KDv+mKCsaFGWL522GLK/RDgrdrLaX0MYiLTWeUommtzjV9KGiq5XA9VriaqVxu9X4GfNZAj8eR3SjAesU8oqHC4RU4ILca0uXuTNFVdOTQ4Z4kyI9lOhH9apukHTQoW4lsoKhqAakOUNyaMAGg447utC+U6Soh1IKSnaA4CP1TIfm+9X30Sc39AysLkN4lyryaQZR8/2qlJrlU1YhpDgdsN7TJBQZhccovJEM9JSqO0s9OgFetECXsQEc7h7uEH/5isOhwvdfz7hZ73FzvweX5hz46vCN3gKtN9F9g3m8xv444XajsC0Meg4YewIt4AvAlx5Oc3/yRuN+K7DaCDzs6AW1pxldoJcdEhD+Y+pX0Rj8TiTWBNvmCgnNZ954t/ZfHc7AuTzQu3tKVYBI5TAK/7an/wFO4em1o/1wXJZf/gOa2D8GHfzOswAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;alt text&quot;
+        title=&quot;Select compute engine&quot;
+        src=&quot;/static/c3227d60b192cceb626ea7b6188cbaae/f058b/select-compute-engine.png&quot;
+        srcset=&quot;/static/c3227d60b192cceb626ea7b6188cbaae/c26ae/select-compute-engine.png 158w,
+/static/c3227d60b192cceb626ea7b6188cbaae/6bdcf/select-compute-engine.png 315w,
+/static/c3227d60b192cceb626ea7b6188cbaae/f058b/select-compute-engine.png 630w,
+/static/c3227d60b192cceb626ea7b6188cbaae/40601/select-compute-engine.png 945w,
+/static/c3227d60b192cceb626ea7b6188cbaae/0940f/select-compute-engine.png 1154w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then click the blue Enable button near the top.
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1da901411d5f3a0db988d1494ba7ce93/8fc63/enable-compute-engine.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.34177215189873%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABYElEQVQoz22RXWsUMRSG5/9f+g/0QmmR+lG9WalalNUKFb0QXLXu0na7dD6bzXcm2cfMjAWFBp6ckJz35D1J8ehNxf7bioP3HQdzyd5xx8PXFfdnJQ9e1Tz7qHiS9w9PJC8+/c/TDzn/nRx1j3Pe3lxRXNdbrq5v6IQhxp7oJcEKiAZ2lmmkzO4O0j9nUyzqTjEgdUAZT1231E2L0gbnA9Z5vPdjNMbhUz/Kp4l8lhcpEUPC+kQRvMM5Sx8CIbNeX7FcLjk/v0BKhcmFdUYpRUiBZiGQC8nSC+6tvuCiZ7bp+SXTeEER/hYaXAxRa43OYqVtdjS5G3EuNxXZXmjspaMNmsPVN4Q3zBs4U9MzFLeC26JlWbK+XNO2bXYoEWKbEXQ3IudETr9+5uj4iG2W75cdepeYvXzO77Ofdzu0ZmpxcGrMFAeU0oQ+sdlsWOUn0TFxUpXY/JHfFz+ommYs+Ae/zhDaSJ/gWwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;alt text&quot;
+        title=&quot;Enable compute engine&quot;
+        src=&quot;/static/1da901411d5f3a0db988d1494ba7ce93/f058b/enable-compute-engine.png&quot;
+        srcset=&quot;/static/1da901411d5f3a0db988d1494ba7ce93/c26ae/enable-compute-engine.png 158w,
+/static/1da901411d5f3a0db988d1494ba7ce93/6bdcf/enable-compute-engine.png 315w,
+/static/1da901411d5f3a0db988d1494ba7ce93/f058b/enable-compute-engine.png 630w,
+/static/1da901411d5f3a0db988d1494ba7ce93/40601/enable-compute-engine.png 945w,
+/static/1da901411d5f3a0db988d1494ba7ce93/78612/enable-compute-engine.png 1260w,
+/static/1da901411d5f3a0db988d1494ba7ce93/8fc63/enable-compute-engine.png 2756w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;At this point you will likely be asked to setup billing (unless you have already setup billing with GCP before).
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/09b9c707bd14e49e9a5156f0237aabe6/c6162/enable-billing.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42.405063291139236%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABg0lEQVQoz21RS0oDQRScg3kBbyAudeXCoGgMiMEZh5nu+fdnfohgsvECcasuvEIIWScBXSXZRjRldyfBD2ko6vGoru5Xz3JJBtuN0HYo2jbFlU3g+gmCWMILMpCQgcYCNPoLssb/viUFA2cZpOCoyhx1VaBao67KrajKAqXSakiZI89XrGElSYooipAkCRjjiOPY1JrDMEQQhGsOjC5NU3AhUBWlQcZ/zJiqLX1RiwkhRtzv9zEYDDAcDjEejzGZTAxrjEYjvL2/47HXw02k7qjpavXbVOSIlFlZFLC0med5cF3X/Go2m2E6nWI+n2OxWGDbeX16xl67iR37FIKlOKESu5cCXI8spTQZCDVGXddYLpdbTT5V++NrVT+/vCD0fYQqApFL8LxAwFZZWjofPa6vBJRSdDoddLtdw5v69u4e990HtW2Ok4s27tTDzZhhnwQo6wqtVgsHhwcrQ53b70Vo880DG/Z9qvLN4NjXaDSOITmHnTAcEQ+5ytBxHJydN43hN4dCyQFlx34rAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;alt text&quot;
+        title=&quot;Enable billing&quot;
+        src=&quot;/static/09b9c707bd14e49e9a5156f0237aabe6/f058b/enable-billing.png&quot;
+        srcset=&quot;/static/09b9c707bd14e49e9a5156f0237aabe6/c26ae/enable-billing.png 158w,
+/static/09b9c707bd14e49e9a5156f0237aabe6/6bdcf/enable-billing.png 315w,
+/static/09b9c707bd14e49e9a5156f0237aabe6/f058b/enable-billing.png 630w,
+/static/09b9c707bd14e49e9a5156f0237aabe6/40601/enable-billing.png 945w,
+/static/09b9c707bd14e49e9a5156f0237aabe6/78612/enable-billing.png 1260w,
+/static/09b9c707bd14e49e9a5156f0237aabe6/c6162/enable-billing.png 2166w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You will be offered a free trial but you still have to enter a credit card to get it. You don’t really need the free trial for what we will be doing either but no harm setting it up.&lt;/p&gt;
+&lt;h4&gt;Create a cluster in GCP&lt;/h4&gt;
+&lt;p&gt;If you haven’t authorized gcloud already, do so now like so:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud auth login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That should open a browser window where you can login to your google account.&lt;/p&gt;
+&lt;p&gt;Now configure the project you created (PROJECT_ID should be replaced with the ID of your project):&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; project PROJECT_ID&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Configure your desired zone like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; compute/zone europe-west1-d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can list the available zones with this command:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud compute zones list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Verify the configuration like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud config list core/project
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;core&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+project &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; kubernetes-practice-ruairi
+
+Your active configuration is: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;default&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now create a cluster.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud container clusters create my-cool-cluster&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;(probably pick a better cluster name)&lt;/p&gt;
+&lt;p&gt;Verify it’s there.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud container clusters list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see something like this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;NAME             ZONE           MASTER_VERSION  MASTER_IP       MACHINE_TYPE   NODE_VERSION  NUM_NODES  STATUS
+my-cool-cluster  europe-west1-d &lt;span class=&quot;token number&quot;&gt;1.6&lt;/span&gt;.4           &lt;span class=&quot;token number&quot;&gt;130.211&lt;/span&gt;.181.72  n1-standard-1  &lt;span class=&quot;token number&quot;&gt;1.6&lt;/span&gt;.4         &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;          RUNNING&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;minikube&lt;/h3&gt;
+&lt;p&gt;Minikube basically lets you run kubernetes locally. Follow the instructions here to get it setup:
+&lt;a href=&quot;https://github.com/kubernetes/minikube&quot;&gt;https://github.com/kubernetes/minikube&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;With minkube creating a clust is a little easier:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;minikube start&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You also have the added advantage of not needing to setup a GCP account and all that but it’s only useful for developing stuff locally of course.&lt;/p&gt;
+&lt;p&gt;To make sure kubectl is pointing at minikube try this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl cluster-info
+Kubernetes master is running at https://192.168.99.100:8443
+KubeDNS is running at https://192.168.99.100:8443/api/v1/proxy/namespaces/kube-system/services/kube-dns
+kubernetes-dashboard is running at https://192.168.99.100:8443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Switching contexts in kubectl&lt;/h3&gt;
+&lt;p&gt;If you end up using both GCP and mimikube, it’s useful to easily switch contexts in kubectl&lt;/p&gt;
+&lt;p&gt;These commands help:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl config get-contexts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl config use-context &lt;span class=&quot;token variable&quot;&gt;${context_name}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can also set the context in each call:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;some options here&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; --context&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;minikube&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Deploy something&lt;/h3&gt;
+&lt;p&gt;For this we can create a simple hello world application and put it in a container. Here’s one I made earlier: &lt;a href=&quot;https://hub.docker.com/r/ruairitobrien/hello-kubernetes-world/&quot;&gt;https://hub.docker.com/r/ruairitobrien/hello-kubernetes-world/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Note, these instructions should work the same whether you are using GCP or minikube.&lt;/p&gt;
+&lt;p&gt;Code for that app is here but nothing interesting there really &lt;a href=&quot;https://github.com/ruarfff/hello-kubernetes-world&quot;&gt;https://github.com/ruarfff/hello-kubernetes-world&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl run hello-kubernetes --image ruairitobrien/hello-kubernetes-world:latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should usually specify a version number so you have a history of deployed versions that you can switch to if needed but ‘:latest’ will do for this tutorial.&lt;/p&gt;
+&lt;p&gt;You should see&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;deployment &lt;span class=&quot;token string&quot;&gt;&quot;hello-kubernetes&quot;&lt;/span&gt; created&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Verify it worked&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl get deployments
+NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;            &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;           1m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can also check the pod that was created:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl get pods
+NAME                                READY     STATUS    RESTARTS   AGE
+hello-kubernetes-3390701390-jds31   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          1m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pods are an important part of kubernetes but rather than me going on about them it’s best to read up here: &lt;a href=&quot;https://kubernetes.io/docs/concepts/workloads/pods/pod/&quot;&gt;https://kubernetes.io/docs/concepts/workloads/pods/pod/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It’s also useful to check out the describe functions. Most things have them.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl describe deployment &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;deploymentName&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Example&lt;/span&gt;
+kubectl describe deployment hello-kubernetes
+
+kubectl describe pods &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;podName&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Example&lt;/span&gt;
+kubectl describe pods hello-kubernetes-3390701390-jds31&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;You have a deployment&lt;/h3&gt;
+&lt;p&gt;Now that you have a deployment, what are you going to do with it?&lt;/p&gt;
+&lt;p&gt;I am just going to show a few simple things here to give you an idea of what’s available. Most of this and much more can be found &lt;a href=&quot;in%20these%20docs&quot;&gt;https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You will probably want to look at logs a bit. You can look at the logs for a pod with this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl logs &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;podName&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Example&lt;/span&gt;
+kubectl logs hello-kubernetes-3390701390-jds31&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will give you the logs for this instance of that pod. You can go more in detail, for example in the case where you have a pod with multiple containers. More on that &lt;a href=&quot;https://kubernetes.io/docs/user-guide/kubectl/v1.6/#logs&quot;&gt;in the kubernetes docs&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now let the world see your amazing app!&lt;/p&gt;
+&lt;p&gt;First, run get services.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get services
+NAME         CLUSTER-IP    EXTERNAL-IP   PORT&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;S&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;   AGE
+kubernetes   &lt;span class=&quot;token number&quot;&gt;10.55&lt;/span&gt;.240.1   &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;none&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;443&lt;/span&gt;/TCP   1h&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can see there is no external IP and no mention of the pod we created.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl expose deployment hello-kubernetes --type LoadBalancer --port &lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt; --target-port&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here we are using the load balancer option.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;LoadBalancer - Creates an external load balancer in the current cloud (if supported) and assigns a fixed, external IP to the Service. Superset of NodePort.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There are other types you can use.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Type for this service: ClusterIP, NodePort, or LoadBalancer. Default is ‘ClusterIP’.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We’re using LoadBalancer because it’s a nice option for us to play around with autoscaling soon.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--port&lt;/code&gt; is the port we are exposing our service on.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--target-port&lt;/code&gt; is the port our application in the Docker image happens to be exposed on.&lt;/p&gt;
+&lt;p&gt;Wait a minute or so for things to work out and then run this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl describe svc hello-kubernetes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see something like this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Name:			hello-kubernetes
+Namespace:		default
+Labels:			&lt;span class=&quot;token assign-left variable&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;hello-kubernetes
+Annotations:		&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;none&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+Selector:		&lt;span class=&quot;token assign-left variable&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;hello-kubernetes
+Type:			LoadBalancer
+IP:			&lt;span class=&quot;token number&quot;&gt;10.55&lt;/span&gt;.243.178
+LoadBalancer Ingress:	&lt;span class=&quot;token number&quot;&gt;104.154&lt;/span&gt;.182.255
+Port:			&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;unset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;	&lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;/TCP
+NodePort:		&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;unset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;	&lt;span class=&quot;token number&quot;&gt;31390&lt;/span&gt;/TCP
+Endpoints:		&lt;span class=&quot;token number&quot;&gt;10.52&lt;/span&gt;.0.5:8000
+Session Affinity:	None&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The ‘Endpoints’ value is the internal ip and port of your application running in the cluster.&lt;/p&gt;
+&lt;p&gt;This value: LoadBalancer Ingress: 104.154.182.255 is what we can use to talk to our application externally. Stick the ip address that you see there in your browser and you should see ‘hello kubernetes world’ or whatever you have your application sending back if you wrote your own there.&lt;/p&gt;
+&lt;h3&gt;Autoscaling&lt;/h3&gt;
+&lt;p&gt;This for me was the first really cool thing I came across when playing around with kubernetes. Now our application is deployed, we can attach an autoscaler to it. Here is a command we can use to do that.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl autoscale deployment hello-kubernetes --cpu-percent&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; --min&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; --max&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now we have attached an autoscaler.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--cpu-percent&lt;/code&gt; will try to average the utilization across all the pods to the percent we set i.e. will scale up until it hits the max amount of pods if cpu utilization goes above 10% on average across all existing pods. We set 1% for demonstration purposes so we have a chance of forcing the cluster to scale up when hitting it from our machine.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--min&lt;/code&gt; is the minimum amount of pods we want in the cluster.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--max&lt;/code&gt; is the maximum amount of pods we will allow the autoscaler to provision for us.&lt;/p&gt;
+&lt;p&gt;The autoscaler will scale up when cpu is above 10% on average. It will also scale down to the minimum when cpu utilisation is below average.&lt;/p&gt;
+&lt;p&gt;Try running this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl describe svc hello-kubernetes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see something like this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Name:			hello-kubernetes
+Namespace:		default
+Labels:			&lt;span class=&quot;token assign-left variable&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;hello-kubernetes
+Annotations:		&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;none&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+Selector:		&lt;span class=&quot;token assign-left variable&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;hello-kubernetes
+Type:			LoadBalancer
+IP:			&lt;span class=&quot;token number&quot;&gt;10.55&lt;/span&gt;.245.180
+LoadBalancer Ingress:	&lt;span class=&quot;token number&quot;&gt;104.198&lt;/span&gt;.145.117
+Port:			&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;unset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;	&lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;/TCP
+NodePort:		&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;unset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;	&lt;span class=&quot;token number&quot;&gt;32063&lt;/span&gt;/TCP
+Endpoints:		&lt;span class=&quot;token number&quot;&gt;10.52&lt;/span&gt;.0.5:8000,10.52.2.6:8000,10.52.2.7:8000,10.52.2.8:8000
+Session Affinity:	None&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Notice we now have 4 endpoints. You could see this with &lt;code class=&quot;language-text&quot;&gt;kubectl get pods&lt;/code&gt; too. The autoscaler has already scaled up to meet the minimum requirements we set.&lt;/p&gt;
+&lt;p&gt;To see the state of the autoscaler run this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get hpa&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see something like this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;NAME               REFERENCE                     TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+hello-kubernetes   Deployment/hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;% / &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;%   &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;          1m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And just to confirm the number of pods is 4.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get pods
+NAME                                READY     STATUS    RESTARTS   AGE
+hello-kubernetes-3390701390-jds31   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          3m
+hello-kubernetes-3390701390-q1v74   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          3m
+hello-kubernetes-3390701390-txg9z   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          3m
+hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          47m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now the fun part. Let’s see autoscaling in action!&lt;/p&gt;
+&lt;p&gt;You probably have a better way of doing this (please comment with a suggestion) but what I did here was just run this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -XGET &lt;span class=&quot;token variable&quot;&gt;${IP}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# So for my cluster in the above examples that was&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -XGET &lt;span class=&quot;token number&quot;&gt;104.198&lt;/span&gt;.145.117 &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Or something a little safer perhaps.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token for-or-select variable&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -XGET &lt;span class=&quot;token variable&quot;&gt;${IP}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you go down the safe route with a limited loop, the timing where you check the following things is important.&lt;/p&gt;
+&lt;p&gt;After a while you should start to see autoscaling kicking in:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get hpa
+NAME               REFERENCE                     TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+hello-kubernetes   Deployment/hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;% / &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;%   &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;          4m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can see the ‘TARGETS’ ratio (that’s the CPU utilisation) is grown above that which we specified. In my example it’s 3% but the autoscaler wants it to be below 1% on average so it should start scaling up to bring that back in balance.&lt;/p&gt;
+&lt;p&gt;Check the new pods getting created.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get pods
+NAME                                READY     STATUS    RESTARTS   AGE
+hello-kubernetes-3390701390-1ght4   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          39s
+hello-kubernetes-3390701390-2gp0c   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          39s
+hello-kubernetes-3390701390-ddgv0   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          39s
+hello-kubernetes-3390701390-jds31   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          4m
+hello-kubernetes-3390701390-q1v74   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          4m
+hello-kubernetes-3390701390-t6s63   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          39s
+hello-kubernetes-3390701390-txg9z   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          4m
+hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          48m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Don’t forget to while loop! Unless you used the for loop of course.&lt;/p&gt;
+&lt;p&gt;After a minute or 2 check again.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get hpa
+NAME               REFERENCE                     TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+hello-kubernetes   Deployment/hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;% / &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;%   &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;          8m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;See the pods are terminating.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get pods
+NAME                                READY     STATUS        RESTARTS   AGE
+hello-kubernetes-3390701390-1ght4   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Terminating   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          5m
+hello-kubernetes-3390701390-2gp0c   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Terminating   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          5m
+hello-kubernetes-3390701390-ddgv0   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Terminating   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          5m
+hello-kubernetes-3390701390-jds31   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running       &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          9m
+hello-kubernetes-3390701390-q1v74   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running       &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          9m
+hello-kubernetes-3390701390-t6s63   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Terminating   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          5m
+hello-kubernetes-3390701390-txg9z   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running       &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          9m
+hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running       &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          53m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;They may already be gone depending how long you waited to check.&lt;/p&gt;
+&lt;p&gt;Maybe I am too easily impressed but I just think that is cool! Anyway, that was a brief run through of some of the basic Kubernetes features and barely scratches the surface of what is there.&lt;/p&gt;</content:encoded></item></channel></rss>
