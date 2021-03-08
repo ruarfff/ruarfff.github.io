@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Mar 2021 10:26:59 GMT</lastBuildDate><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Mar 2021 10:56:18 GMT</lastBuildDate><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -412,8 +412,8 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Alt Text&quot;
-        title=&quot;Alt Text&quot;
+        alt=&quot;Repo UI&quot;
+        title=&quot;Repo UI&quot;
         src=&quot;/static/718e66bd43001df484b552c78311c4d6/f058b/1-gh-repo-ui.png&quot;
         srcset=&quot;/static/718e66bd43001df484b552c78311c4d6/c26ae/1-gh-repo-ui.png 158w,
 /static/718e66bd43001df484b552c78311c4d6/6bdcf/1-gh-repo-ui.png 315w,
@@ -443,8 +443,8 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Alt Text&quot;
-        title=&quot;Alt Text&quot;
+        alt=&quot;Codespaces Button&quot;
+        title=&quot;Codespaces Button&quot;
         src=&quot;/static/40acc1a59f43d511ac7e7410b65c46ba/2d920/2-gh-codespaces-button.png&quot;
         srcset=&quot;/static/40acc1a59f43d511ac7e7410b65c46ba/c26ae/2-gh-codespaces-button.png 158w,
 /static/40acc1a59f43d511ac7e7410b65c46ba/6bdcf/2-gh-codespaces-button.png 315w,
@@ -473,8 +473,8 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Alt Text&quot;
-        title=&quot;Alt Text&quot;
+        alt=&quot;Codespaces UI&quot;
+        title=&quot;Codespaces UI&quot;
         src=&quot;/static/96015875c211f3478324f1338065bb72/f058b/3-gh-codespaces-ui.png&quot;
         srcset=&quot;/static/96015875c211f3478324f1338065bb72/c26ae/3-gh-codespaces-ui.png 158w,
 /static/96015875c211f3478324f1338065bb72/6bdcf/3-gh-codespaces-ui.png 315w,
@@ -535,8 +535,8 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Alt Text&quot;
-        title=&quot;Alt Text&quot;
+        alt=&quot;Codespaces build output&quot;
+        title=&quot;Codespaces build output&quot;
         src=&quot;/static/d2bb9f16abeb32e3fade1668e7129b87/f058b/4-gh-output.png&quot;
         srcset=&quot;/static/d2bb9f16abeb32e3fade1668e7129b87/c26ae/4-gh-output.png 158w,
 /static/d2bb9f16abeb32e3fade1668e7129b87/6bdcf/4-gh-output.png 315w,
@@ -552,7 +552,445 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
 &lt;p&gt;This is a very basic example but there’s a lot more you can do.&lt;/p&gt;
 &lt;h2&gt;More Customisation&lt;/h2&gt;
 &lt;p&gt;You will almost certainly want to look at &lt;a href=&quot;https://docs.github.com/en/github/developing-online-with-codespaces/personalizing-codespaces-for-your-account&quot;&gt;setting up GitHub dotfiles&lt;/a&gt; to customise the shell in Codespaces.&lt;/p&gt;
-&lt;p&gt;Checkout the many examples in the &lt;a href=&quot;https://github.com/microsoft/vscode-dev-containers/tree/master/containers&quot;&gt;vscode-dev-containers repo&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Tech stuff found in the second half of 2020]]></title><description><![CDATA[2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online…]]></description><link>https://ruarfff.com/tech-stuff-found-2nd-half-2020/</link><guid isPermaLink="false">https://ruarfff.com/tech-stuff-found-2nd-half-2020/</guid><pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online. The following is a list of the best resources I have found while trying to become a better developer in the second half of 2020.&lt;/p&gt;
+&lt;p&gt;Checkout the many examples in the &lt;a href=&quot;https://github.com/microsoft/vscode-dev-containers/tree/master/containers&quot;&gt;vscode-dev-containers repo&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Managing local app secrets and sharing secrets with your team]]></title><description><![CDATA[In this article I will be discussing a tool called pass. This article assumes you use a Unix style shell for development, so working on Mac…]]></description><link>https://ruarfff.com/team-secrets/</link><guid isPermaLink="false">https://ruarfff.com/team-secrets/</guid><pubDate>Mon, 11 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In this article I will be discussing a tool called &lt;a href=&quot;https://www.passwordstore.org/&quot;&gt;pass&lt;/a&gt;. This article assumes you use a Unix style shell for development, so working on Mac, Linux, WSL or similar.&lt;/p&gt;
+&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;#command-summary&quot;&gt;Command Summary&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#why-pass&quot;&gt;Why Pass?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#secrets-while-developing&quot;&gt;Secrets While Developing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#a-sample-app&quot;&gt;A Sample App&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#using-pass-to-help-with-local-development&quot;&gt;Using Pass to Help With Local Development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#backing-up-secrets&quot;&gt;Backing Up Secrets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#adding-a-team-member&quot;&gt;Adding a Team Member&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#removing-a-team-member&quot;&gt;Removing a Team Member&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#command-summary&quot;&gt;Command Summary&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Why Pass? &lt;a name=&quot;why-pass&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Why use &lt;a href=&quot;https://www.passwordstore.org/&quot;&gt;pass&lt;/a&gt; and not some other tool like &lt;a href=&quot;https://1password.com&quot;&gt;1password&lt;/a&gt;, &lt;a href=&quot;https://www.dashlane.com&quot;&gt;Dashlane&lt;/a&gt; and others which maybe have more features and better platform support?&lt;/p&gt;
+&lt;p&gt;Pass is free, open source and works on most systems that developers use. The ability to use it in your terminal and make it part of the workflow makes it a great tool for developers. If your company does pay for one of the other tools though, they might be a better choice for you. If not, &lt;code class=&quot;language-text&quot;&gt;pass&lt;/code&gt; is a great option.&lt;/p&gt;
+&lt;h2&gt;Secrets While Developing &lt;a name=&quot;secrets-while-developing&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you are building some software that talks to other software, there’s a good chance you are reading secrets in your code. If you are calling services with something like &lt;a href=&quot;https://curl.se&quot;&gt;curl&lt;/a&gt; you likely input commands similar to &lt;code class=&quot;language-text&quot;&gt;curl -H &amp;quot;Authorization: token my-super-secret-token&amp;quot; https://some-auth-needing-service.com&lt;/code&gt; into your terminal.&lt;/p&gt;
+&lt;p&gt;If you work in a team and you have some development credentials your team uses, you have probably encountered issues with sharing and keeping track of those secrets.&lt;/p&gt;
+&lt;p&gt;In this post we will look at &lt;a href=&quot;https://www.passwordstore.org/&quot;&gt;pass&lt;/a&gt; as an option to help with this. We will look at a potential local workflow that uses &lt;code class=&quot;language-text&quot;&gt;pass&lt;/code&gt; so you don’t ever need to store secrets in plaintext locally. Then we will look at how to share these secrets with your team in a way that’s reasonable enough to maintain.&lt;/p&gt;
+&lt;p&gt;The next section will show a sample app to test out the methods we will use but feel free to skip that section if you don’t need to use a sample app.&lt;/p&gt;
+&lt;h2&gt;A Sample App &lt;a name=&quot;a-sample-app&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We will use an app based on backstage.&lt;/p&gt;
+&lt;p&gt;{% github backstage/backstage no-readme %}&lt;/p&gt;
+&lt;p&gt;This is a useful example as we can configure it to use GitHub auth to allow users to login and interact with GitHub. The actual sample app for this is here:&lt;/p&gt;
+&lt;p&gt;{% github ruarfff/backstage-example no-readme %}&lt;/p&gt;
+&lt;p&gt;By default this example app is expecting 3 environment variables to exist.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;GITHUB_TOKEN&lt;/code&gt;
+&lt;code class=&quot;language-text&quot;&gt;AUTH_GITHUB_CLIENT_ID&lt;/code&gt;
+&lt;code class=&quot;language-text&quot;&gt;AUTH_GITHUB_CLIENT_SECRET&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;They are referenced in the application configuration here:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ruarfff/backstage-example/blob/2ebd761ce316384f15165b506ce50ed67afa0515/app-config.yaml#L27&quot;&gt;GITHUB_TOKEN&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ruarfff/backstage-example/blob/2ebd761ce316384f15165b506ce50ed67afa0515/app-config.yaml#L53-L56&quot;&gt;AUTH_GITHUB&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you were deploying this to production you might use some kind of &lt;a href=&quot;https://www.vaultproject.io&quot;&gt;vault&lt;/a&gt;, &lt;a href=&quot;https://kubernetes.io/docs/concepts/configuration/secret/&quot;&gt;kube secrets&lt;/a&gt; or something of that nature to load these into the environment. We won’t look at that here. Instead we will look at what you would do it you needed to get this running locally and wanted to use a development GitHub setup for it. Similar methods would apply to a broad range of problems like this.&lt;/p&gt;
+&lt;p&gt;If you try to run the application you’ll get an error (a lot of unimportant output left out in the following example):&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git clone git@github.com:ruarfff/backstage-example.git
+cd backstage-example
+yarn
+yarn dev
+
+[1] Backend failed to start up, Error: Failed to initialize github auth provider, Missing required config value at &amp;#39;auth.providers.github.development.clientId&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To create secrets and follow along you will need a GitHub account. Go here &lt;a href=&quot;https://github.com/settings/applications/new&quot;&gt;https://github.com/settings/applications/new&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Fill it in like this:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/fd26d4830691372a7809bd4fdacc93db/9c177/1-gh-auth.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.35443037974683%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAABVklEQVQoz42STW6DMBCFcwHAYI9tjDEG82MMIcmiUrtrpd6lUhe9/7ITp6s2aSI9Izzyx3vjYUcKjuJlXVZWlDVKKhNfjFQNZeXlwFXtcGU5WDfN66lpx24M47xNYZvXo18OQpkMz1FxE04Jq23vw8ENAaBMCE2yAotJRtMcsrvOsrKD39t+7oagdFvEtFhH/cP/wOiMaVvngSuQGnUr6lXnZgqHblwq4y4YuqXR9r5zZTrrfNNO2DZ+CEWhJDk84EyYcZvfPw/rU9NvuCOsIUyTAh6KzdWo21XbBVQPpRPai6onBXsI1sbhbbs4ZJw2CM2lzlm8s/wOzHA8fjki75fTeWbYvwttv0DZpAhTWTB5HUYxUam6lZWR2nBlcOxMOaZGwPzKylj5y+8I5WnC5Pscvt7C56v7eKGjY3KIDQOJ/8lFN50JF5mUmTw/c4oVyKn4pb/wN+lSTOcNSqoAAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Register OAuth App&quot;
+        title=&quot;Register OAuth App&quot;
+        src=&quot;/static/fd26d4830691372a7809bd4fdacc93db/f058b/1-gh-auth.png&quot;
+        srcset=&quot;/static/fd26d4830691372a7809bd4fdacc93db/c26ae/1-gh-auth.png 158w,
+/static/fd26d4830691372a7809bd4fdacc93db/6bdcf/1-gh-auth.png 315w,
+/static/fd26d4830691372a7809bd4fdacc93db/f058b/1-gh-auth.png 630w,
+/static/fd26d4830691372a7809bd4fdacc93db/9c177/1-gh-auth.png 880w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The local UI for the app is:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;http://localhost:3000&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The backend runs locally on port 7000 and the callback URL for it is:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;http://localhost:7000/api/auth/github/handler/frame&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;On the next page generate a new client secret. Make note of the client id and the secret.&lt;/p&gt;
+&lt;p&gt;You’ll need a token for creating repositories. Go here &lt;a href=&quot;https://github.com/settings/tokens/new&quot;&gt;https://github.com/settings/tokens/new&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Creating a token that can work with repositories should be enough to test things out:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4ecc0a19a9e0cb1e145754cd1bc5526a/9c177/2-token.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60.75949367088608%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABaUlEQVQoz31S2U7DMBDsDzSHj/i+Nk4ctwVKJV74/w9j3SKggCqNVz52dsZr74gITCUbwMWFctWPrBu+MZBppOJf4NGOcBFSZlztO4JbAUqEcouQt0nafU+vhWg30n7kX2hkqVypL9bPbDKoPC91rU+5HBeM9RzzycHmoLpUbSzGg3EJk6UOjTwJY33zrFyik57Ls42bh4ONldtNOERtsIWriAkowCZNmGpkNPDjhiKtr1AuNh6pSB0xA7UNzPVEdQP5bRsHcm4NwAjLYS5PykSpozSR60hkohKYhJGbgfBr/id2PxdYxcMJb8GFwVbhxISsXJZ2psKPTD8io/MA23Y8u5DRmHEQYcUSzdfI72XuyZiB7+FjPj5fXGxk7GqAFYEd6h+Tb5jXw1JOQjmsZfxsQ0YXQvv+z4f5TcatlDfIVWqPS2mCtlGZoCz2L+DzPCIjDqfz5e0dxdGnT0vKtf22uVVs+vfmPwBy0EUpVyHNuwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Create Token&quot;
+        title=&quot;Create Token&quot;
+        src=&quot;/static/4ecc0a19a9e0cb1e145754cd1bc5526a/f058b/2-token.png&quot;
+        srcset=&quot;/static/4ecc0a19a9e0cb1e145754cd1bc5526a/c26ae/2-token.png 158w,
+/static/4ecc0a19a9e0cb1e145754cd1bc5526a/6bdcf/2-token.png 315w,
+/static/4ecc0a19a9e0cb1e145754cd1bc5526a/f058b/2-token.png 630w,
+/static/4ecc0a19a9e0cb1e145754cd1bc5526a/9c177/2-token.png 880w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Take note of the token.&lt;/p&gt;
+&lt;p&gt;How did you take note of those secrets? Are they secret? Are they safe? Hopefully you have a good way of storing secrets already. If you aren’t using &lt;code class=&quot;language-text&quot;&gt;pass&lt;/code&gt;, the next section will take a look at that and maybe you’ll also consider it a useful tool for this kind of thing.&lt;/p&gt;
+&lt;h2&gt;Using Pass to Help With Local Development &lt;a name=&quot;using-pass-to-help-with-local-development&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Install pass. I am on mac so did:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;brew install pass&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For Debian it’s:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;sudo apt-get install pass&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;See the &lt;a href=&quot;https://www.passwordstore.org/&quot;&gt;pass site&lt;/a&gt; for instructions about installing on other platforms.&lt;/p&gt;
+&lt;p&gt;Now we will set up a &lt;a href=&quot;https://gnupg.org&quot;&gt;gpg&lt;/a&gt; key. This is what we will use for encryption in pass. I found &lt;a href=&quot;https://sanctum.geek.nz/arabesque/gnu-linux-crypto-gnupg-keys/&quot;&gt;this article&lt;/a&gt; good for learning more about gpg.&lt;/p&gt;
+&lt;p&gt;Now pick a good passphrase. From now on I will refer to that as &lt;code class=&quot;language-text&quot;&gt;$PASSPHRASE&lt;/code&gt;. You will be asked to enter it while creating your key.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --gen-key&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Check the key:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --list-keys&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see something like:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;/you/.gnupg/pubring.kbx
+----------------------------------------------------
+pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
+      AB3A5ED268BD87CD06F8F30B6881F49AF5BB8EAD
+uid           [ultimate] you &amp;lt;you@email.com&amp;gt;
+sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now copy the ID for that key. In the example above the ID is &lt;code class=&quot;language-text&quot;&gt;AB3A5ED268BD87CD06F8F30B6881F49AF5BB8EAD&lt;/code&gt;. From now on we will refer to that as &lt;code class=&quot;language-text&quot;&gt;$GPG_KEY&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now we will setup pass. Note, by default pass uses &lt;code class=&quot;language-text&quot;&gt;~/.password-store&lt;/code&gt;. If you want to keep your personal password store and your team one separate, you can configure separate directories.&lt;/p&gt;
+&lt;p&gt;The directory pass uses can be configured like so:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export PASSWORD_STORE_DIR=~/.work-password-store&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Example of an alias to use:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;alias workpass=&amp;#39;PASSWORD_STORE_DIR=~/.work-password-store pass&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you decide to use an alias, replace &lt;code class=&quot;language-text&quot;&gt;pass&lt;/code&gt; with &lt;code class=&quot;language-text&quot;&gt;workpass&lt;/code&gt; (or whatever alias you setup) in all the following examples.&lt;/p&gt;
+&lt;p&gt;Initialise pass:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass init $GPG_KEY&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Earlier, if you followed along, you created a GitHub token. Save the token with pass like so:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass insert GitHub/backstage-example-token
+Enter password for GitHub/backstage-example-token:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can get the token back again:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass GitHub/backstage-example-token&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You will be prompted for a password the first time when reading a value from pass and again after the login times out.&lt;/p&gt;
+&lt;p&gt;Use the token, extracting from pass, like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;curl -H &amp;quot;Authorization: token $(pass GitHub/backstage-example-token)&amp;quot; -H &amp;quot;Accept: application/vnd.github.v3+json&amp;quot; https://api.github.com/user/repos&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;One advantage of this approach is you do not have to store the token in plaintext at any point or have it visible on your screen as you use the terminal. If you type &lt;code class=&quot;language-text&quot;&gt;history&lt;/code&gt; you won’t see any record of the password.&lt;/p&gt;
+&lt;p&gt;In our example application we need 2 more secrets.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass insert GitHub/backstage-example-client-id&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass insert GitHub/backstage-example-client-secret&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There’s a lot of ways you could use these secrets now to run our sample app. I propose this one. Add a file somewhere on your machine or even in the repo with this content:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export GITHUB_TOKEN=&amp;quot;$(pass GitHub/backstage-example-token)&amp;quot;
+export AUTH_GITHUB_CLIENT_ID=&amp;quot;$(pass GitHub/backstage-example-client-id)&amp;quot;
+export AUTH_GITHUB_CLIENT_SECRET=&amp;quot;$(pass GitHub/backstage-example-client-secret)&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In the following example I assume you created a file in the project directory with that content. Now run:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;source secrets &amp;amp;&amp;amp; yarn dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;All going well, you should have a login page:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c6d4c29fc7e34e45de742393b8185db9/9c177/3-oauth-app.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 41.77215189873418%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkUlEQVQY09WLzQ6CMBCE+9ae9AEUhRiNJ7xhigi1RF4M2l1M+uO2xotBPTv5sjubnWEbUaayymS1bS+7W5M0fFHkxOx4WNanfXfN2jqV57UoE8HJPP1K8HmRM29twAScMcE7T9wRnSMXRds6T6d9EV9Maf3GoBVNjTjQBOhh7BVMxJRi+FljBKImA9/KP/Wn5QfVl7vYUvRilgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Backstage login&quot;
+        title=&quot;Backstage login&quot;
+        src=&quot;/static/c6d4c29fc7e34e45de742393b8185db9/f058b/3-oauth-app.png&quot;
+        srcset=&quot;/static/c6d4c29fc7e34e45de742393b8185db9/c26ae/3-oauth-app.png 158w,
+/static/c6d4c29fc7e34e45de742393b8185db9/6bdcf/3-oauth-app.png 315w,
+/static/c6d4c29fc7e34e45de742393b8185db9/f058b/3-oauth-app.png 630w,
+/static/c6d4c29fc7e34e45de742393b8185db9/9c177/3-oauth-app.png 880w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 463px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f042d6a34f000567bab37cdde46d8454/71ce0/4-popup.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 174.0506329113924%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAjCAIAAAAblL1PAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEf0lEQVRIx5VVW28bRRT2j+CdFySQqPJQEnJr2pRKVQlFLQgJ8YCAIgoFIRClEjwVERSiAgWlDVUdI5w4ikMSciFRKKUXNepDEsdOnEsTJ41vu469F19317uzM7vLWS9x7MQW4ujzeG7fzPnOzJm1vf3Vl8Ourovub9qHnDfHf7dPjXaPDnX2/XJ10PVdf29nr1npcDquDvbbp8bsk6OO6QnnrUnX7WnH1Ljtwhef37/x/ZX+Doe7b/i3ocHBQeevvV1d1+w37d3dP3ddu27v6YGyp8cBQ+6BAZfLNTDgBnP2uWxPtjafOH7y7JnX2tpOnzrV1tLS+nx9Y0Njc0NDU21dQ31DM9SbW441NR2BSmPjkWcP1dTW1R9+ru5wXb2tb2oim0xFKSpm2g5Nm39Q0jTNskyS56FOUXTBYtYoNKEMhsI2nuMNw9B13SgxqxmlYnMer1HFNE2zcRxn1fQSgx5BEMf+mL57f2Z2fgGahJDyCbqqYhvPV9gZDGO89mjDs7AYjlBVJhAbw7IVx6xOrVL/HpmizIVhEjheCkxMKbACTCLlQ9ZOJjmZTJqSNE2SFUlGFkQZ6QZh0/nNSJZoWEGqmN8dykML/0u2AlZKFiRF18noPbrm9btPv3rnvXZvVlSAYvHLyEwiUUqGGTAY58WWczPvdqx82x+qfXPGMRYEZTlJOUBmmHKyggkORDLPvPL3TyPUvRXh6PmHl2+s/DcZBgCm24b2Uaf/iRf+rHnjwVNn7qwFc6A8J8rWhApkUVZkhAGKShiOi8aY6wOrl36YvfVgNZGIA1MlOsKwB0Kows4olclxyTTLp5bX1peWV4PBrWAwMO+Zn3k4G6FiCZaPxZmsICGVlJOJJikoSu8EtrbXA1tb2yGoL/iWPd4l39KKb2n50cYm1D3exWQ6q2LNuoJlmotuQ5lXVFhibsEHvlg9UJa7XUaGY1SL9wQAfAtWnIrYDVgJWczL6ayQyYlQgjCrAlEACJK8d/kORhuuK4jxLvqX/KsLi/7A4+CifxViNufxzc57w1E6j7AA21Y+50LAqqUQ5ALkiQVQoaADZFjRTKICVExUjE3Aj2CTbkCEATpSD5DBbdAG4d0ORUIRCjRbGZKXlURSWg/ntmPCZjS3EcnRrAihKiNDlgIhGIo8DoLAnWKE8jLKCArNSHE+v8ObZTIrq2oVty0jukbMV8T8Qf7vqjGhqBU0E1lRDbh2FgoCNQzP3F7TAla1/WSwAEe9PHHxxbFPXhr/tK2Ad/76+tzt9rOTl6ATmqcnPmsd+aDbNwIe6IXnaY+8zkZOjHx4dOh86/D7xwoAMuDk6MfQCc3jIxfq3G/96HHvJ8MNQ0gFJzWka8goQFdkLMsYQ49q9ZgqMNLgIPcfFciGJYxCWIqPbwF7is04aEQrvp67R2XSIF9C4QjHwfeJDoVDcSZJsygclxMpFONQlFGyIi5OLkkMc1e4fSSdyUiSJAhCJpsRpXxOwumcKkjwBuGMAG8wsXwsI+vVvwzVDHazRaPRVCrF/E9jWRY+cv8AGbpIiO0MnOsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GitHub OAuth popup&quot;
+        title=&quot;GitHub OAuth popup&quot;
+        src=&quot;/static/f042d6a34f000567bab37cdde46d8454/71ce0/4-popup.png&quot;
+        srcset=&quot;/static/f042d6a34f000567bab37cdde46d8454/c26ae/4-popup.png 158w,
+/static/f042d6a34f000567bab37cdde46d8454/6bdcf/4-popup.png 315w,
+/static/f042d6a34f000567bab37cdde46d8454/71ce0/4-popup.png 463w&quot;
+        sizes=&quot;(max-width: 463px) 100vw, 463px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/610014fe98cfc13c1df896c5ef877703/c946b/5-backstage.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.69620253164557%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAACW0lEQVQoz02Q2U8TURTG51nUNx8awZcWok2JSyoYVGSr0CJKiG0TaYxijBSjAaaltbTDIgVDYtE/xvhijApqQaQsTVtJYLrTVugMNjD7XM+AJJ788uW7Z+75Tu5gFTptlaHB/PqlLeDvDvjvTo/aZvzm6TGzYibbx18YRhxdr4i20aFzTx+U95grHlnLeyyn7neWWY2Y6mzlmca6O4Hx7jeTlpmJzmkCgtqnho1+jyUwAXqDGDRNeup9A6cfW4/daz9u6zhpu13WfeuErQNTqVTapuumKa9pzN064jSOuWFVw3B/sw9v8g62+PBm3+BV1zM93luD22udfTUO+2X8Sb3nedcUgWm1WoIgEEL5/JYgcALP8tw+QjKoKHKyLHLcvsAxYCSRF3gGIekAGcAuXbxAECM5Gi2Et8KbVCxOR0jqV2I3sklFSToWB1OMkMX15J/1VCmW2IVPik+C7mK1+vNOl6f/7VpT/1zr0OJNx3ybc8GABw2OYAs+36KY+WZ8oa73g/7hu2v2j40DwVr71yt9ClhVpcbpHArFcu+/RD79IIOrGeD7aubbSlph+UBXMrM/E58XybmlBHRml/6BqdVql8tVyGfDq6GtTFISWJFnQJEsHj4MSQL8AYQEhEQkC0jiFT0A0+l0Xq83m82GQsuJRJIk4xsbm7lcvkhR6XQmmUwxLAsZkiwrSbIs/QdWXV0NwzRNR6OxVCpdKpUoiioWYZYqFArQFwTYqRTLsqIooqOSJAnTaDRutxu6sBwGOI5jGAYifm9vUzQNl/ij2tnZ2dvbg6zDI1z7C/u1ywFjUK9QAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Logged in&quot;
+        title=&quot;Logged in&quot;
+        src=&quot;/static/610014fe98cfc13c1df896c5ef877703/f058b/5-backstage.png&quot;
+        srcset=&quot;/static/610014fe98cfc13c1df896c5ef877703/c26ae/5-backstage.png 158w,
+/static/610014fe98cfc13c1df896c5ef877703/6bdcf/5-backstage.png 315w,
+/static/610014fe98cfc13c1df896c5ef877703/f058b/5-backstage.png 630w,
+/static/610014fe98cfc13c1df896c5ef877703/c946b/5-backstage.png 805w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Backing Up Secrets &lt;a name=&quot;backing-up-secrets&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I did make a comment earlier that you shouldn’t store secrets in a git repo (even a private one) but it can be OK to store encrypted secrets in one. As long as you don’t store the key along with it of course. Pass does store structural data like the name of the secret so be aware of that when using with git. &lt;strong&gt;The secrets are encrypted but the names are not&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;For this next step you should have a remote git repository you feel comfortable using to backup encrypted secrets.&lt;/p&gt;
+&lt;p&gt;Type:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass git init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add an origin as in this example:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass git remote add origin git@github.com:you/your-pass.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To sync all those secrets we created already do:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass git push -u --all&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For subsequent updates do:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass git push&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should now see the encrypted secrets up in the repo.&lt;/p&gt;
+&lt;p&gt;Here’s an example in a temporary GitHub repo I created for this:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/427917a686929fa726c2b8f86949f3ba/9c177/6-repo.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 36.708860759493675%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA40lEQVQY02WQa26EMAyEuUB3gSROHMd5QKGLWvX+x+uEtvzYlT4cJ9ZoPAzOi3GMSiEZy+QjrhTUUvSc+zurCwn9ONMTw2Q8jtmy6EKcZ19YKpS30d4nd/Gq7GJ8mFkv6+OztA+pR3s/UllDzMCfYBF4PPEnHidniEkyNvScfleFf4ili1mR6NUW+uG6SF7q+ijLjgrl293cJou0nGqQErUhF2uLWvECg3/nnjlAsx3f6/4FtO42qCGJec1tT3XTuqFBRZ/KxqlhOlw7IBgcfI9aZsf4hcCSwNz5k6CdszcuYvoD7zknukrE52MAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Secrets backed up&quot;
+        title=&quot;Secrets backed up&quot;
+        src=&quot;/static/427917a686929fa726c2b8f86949f3ba/f058b/6-repo.png&quot;
+        srcset=&quot;/static/427917a686929fa726c2b8f86949f3ba/c26ae/6-repo.png 158w,
+/static/427917a686929fa726c2b8f86949f3ba/6bdcf/6-repo.png 315w,
+/static/427917a686929fa726c2b8f86949f3ba/f058b/6-repo.png 630w,
+/static/427917a686929fa726c2b8f86949f3ba/9c177/6-repo.png 880w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Adding a Team Member &lt;a name=&quot;adding-a-team-member&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;For now let’s assume you want to share that secret store we just created with another team member. We will go through each step required to allow that. It’s a bit tedious but only needs to be done once per team member. We will look at adding members as readonly and as read/write.&lt;/p&gt;
+&lt;h3&gt;Readonly&lt;/h3&gt;
+&lt;p&gt;For a new team member to get setup they must:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Setup a gpg key&lt;/li&gt;
+&lt;li&gt;Export and send the public key to you&lt;/li&gt;
+&lt;li&gt;Install pass&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then you must:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Trust their key&lt;/li&gt;
+&lt;li&gt;Re-encrypt the store with the new key&lt;/li&gt;
+&lt;li&gt;Push the updated store to the git repo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then they must:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clone the pass store (or pull down the updates if they cloned already)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Tutorial of those steps&lt;/h3&gt;
+&lt;p&gt;Assuming our new team member has already generated a key, they will run:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --list-keys&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;/your-colleague/.gnupg/pubring.kbx
+----------------------------------------------------
+pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
+      C351DB397FDFFD4499AB760435C0B93754D6ACD0
+uid           [ultimate] your-colleague &amp;lt;your-colleague@email.com&amp;gt;
+sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;They must copy the ID for the key to export it as in this example:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --export --armor C351DB397FDFFD4499AB760435C0B93754D6ACD0 &amp;gt; pass-publickey.asc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now they must send the key file to you. It is reasonably safe to send a public key over email or chat but if you have a secure way to share the key, even better.&lt;/p&gt;
+&lt;p&gt;Next they can clone the store. This example clones to the default password store directory:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git clone git@github.com:you/your-pass.git ~/.password-store&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If the team member already uses pass or wants to keep the team and personal stores separate, they can use the method we looked at before:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git clone git@github.com:you/your-pass.git ~/.work-password-store
+
+alias workpass=&amp;#39;PASSWORD_STORE_DIR=~/.work-password-store pass&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;At this point they will be able to list the secrets but not read them:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass
+Password Store
+├── GitHub
+│   ├── backstage-example-client-id
+│   ├── backstage-example-client-secret
+│   └── backstage-example-token&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The next step is done on your machine.&lt;/p&gt;
+&lt;p&gt;Assume your team members sent you their public key in a file called &lt;code class=&quot;language-text&quot;&gt;pass-publickey.asc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --import pass-publickey.asc
+
+gpg --list-keys&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see an output with something similar to this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;/you/.gnupg/pubring.kbx
+----------------------------------------------------
+pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
+      AB3A5ED268BD87CD06F8F30B6881F49AF5BB8EAD
+uid           [ultimate] you &amp;lt;you@email.com&amp;gt;
+sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]
+
+pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
+      C351DB397FDFFD4499AB760435C0B93754D6ACD0
+uid           [unknown] your-colleague &amp;lt;your-colleague@email.com&amp;gt;
+sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You have added the key for ‘your-colleague’. We now need to trust the key. Notice that your key has &lt;code class=&quot;language-text&quot;&gt;[ultimate]&lt;/code&gt; but the new one has &lt;code class=&quot;language-text&quot;&gt;[unknown]&lt;/code&gt;. Also note the ID for the new key. That’s &lt;code class=&quot;language-text&quot;&gt;C351DB397FDFFD4499AB760435C0B93754D6ACD0&lt;/code&gt; in the example above. From now on we will refer to that key as &lt;code class=&quot;language-text&quot;&gt;$GPG_ID&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export GPG_ID=&amp;#39;C351DB397FDFFD4499AB760435C0B93754D6ACD0&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Edit the key. This will activate and interactive session with gpg.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --edit-key $GPG_ID&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Type the trust command:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg&amp;gt; trust&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pub  rsa3072/35C0B93754D6ACD0
+     created: 2020-11-02  expires: 2022-11-02  usage: SC
+     trust: unknown      validity: unknown
+sub  rsa3072/84E6664F5F6A5734
+     created: 2020-12-16  expires: 2022-12-16  usage: E
+[unknown] (1). your-colleague &amp;lt;your-colleague@email.com&amp;gt;
+
+Please decide how far you trust this user to correctly verify other users&amp;#39; keys
+(by looking at passports, checking fingerprints from different sources, etc.)
+
+  1 = I don&amp;#39;t know or won&amp;#39;t say
+  2 = I do NOT trust
+  3 = I trust marginally
+  4 = I trust fully
+  5 = I trust ultimately
+  m = back to the main menu
+
+Your decision? 5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Say yes until it is accepted and then exit gpg.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Do you really &lt;strong&gt;need&lt;/strong&gt; &lt;code class=&quot;language-text&quot;&gt;ultimate&lt;/code&gt;? You do not necessarily need it but it will get very annoying if you use a lower level of trust so I would say just go with ultimate.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Now you need to update the password store with the new key as in this example:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass init `cat $PASSWORD_STORE_DIR/.gpg-id` $GPG_ID&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That command is short hand for listing every public key ID in the init command. We store the ID for each public key, representing each team member, in the &lt;code class=&quot;language-text&quot;&gt;.gpg-id&lt;/code&gt; file in the repo. This command will add the new public key ID to the &lt;code class=&quot;language-text&quot;&gt;.gpg-id&lt;/code&gt; file and re-encrypt the store. This will allow your team member to decrypt the store with their key but they will not be able to encrypt.&lt;/p&gt;
+&lt;p&gt;Run &lt;code class=&quot;language-text&quot;&gt;pass git push&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Your team member can now run &lt;code class=&quot;language-text&quot;&gt;pass git pull&lt;/code&gt; or just do a &lt;code class=&quot;language-text&quot;&gt;git pull&lt;/code&gt; in the password store directory.&lt;/p&gt;
+&lt;p&gt;Now your team member can run:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass GitHub/backstage-example-token&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;They should see the decrypted secret.&lt;/p&gt;
+&lt;h3&gt;Read/Write&lt;/h3&gt;
+&lt;p&gt;To allow your team member to encrypt the store they must have trusted all the public keys in the &lt;code class=&quot;language-text&quot;&gt;.gpg-id&lt;/code&gt; file. Their own public key must also have been trusted on the machine that encrypted the store last. We essentially need to setup a circle of trust with gpg keys.&lt;/p&gt;
+&lt;p&gt;I think it’s reasonable to actually commit all public gpg keys to the pass store repository to make it easy for a new team member to go through and trust each one. It’s possible to script this although I don’t have a good script handy since gpg edit is interactive and I haven’t used this in a team big enough where it was too annoying to trust each key one by one.&lt;/p&gt;
+&lt;p&gt;So to get write access, you follow the same steps that we did for &lt;a href=&quot;#readonly&quot;&gt;Readonly&lt;/a&gt; but with an additional step to trust all existing public keys on the machine that wants write permissions.&lt;/p&gt;
+&lt;p&gt;All those steps are true for every new member we add. Everyone must have all the public keys and have trusted them.&lt;/p&gt;
+&lt;h2&gt;Removing a Team Member &lt;a name=&quot;removing-a-team-member&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you ever need to remove a team member, remove their public key from the &lt;code class=&quot;language-text&quot;&gt;.gpg-id&lt;/code&gt; file and re-encrypt the store.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass init `cat $PASSWORD_STORE_DIR/.gpg-id`&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Conclusion &lt;a name=&quot;conclusion&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;From this point on the secret store will work as a git repository and all the considerations will apply there around keeping in sync and handling conflicts. You may want to protect the main branch and use pull requests for modifying secrets for example.&lt;/p&gt;
+&lt;p&gt;Of course consider some good practices here. I would not use this to store highly sensitive data or production credentials. There’s always a risk someone can get hold of this but that is always the case. At least keeping the data encrypted at rest gives you the best chance of avoiding accidental leaks during a normal development workflow.&lt;/p&gt;
+&lt;p&gt;This is one method I have seen evolve over years of dealing with secrets in teams. I hope this description helps. If you have more interesting ways of doing this I would love to hear about them! Also if you see something I got wrong here, I’d really appreciate if you let me know.&lt;/p&gt;
+&lt;h2&gt;Command Summary &lt;a name=&quot;command-summary&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;Setting up a new pass store&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --gen-key&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Check the key:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --list-keys&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You need to copy the key ID. This gets just the key IDs:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --list-keys --with-colons | grep fpr | cut -d: -f10&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Setup pass:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export GPG_KEY=&amp;#39;you-key-id&amp;#39;
+pass init $GPG_KEY
+pass insert some-secret
+pass git init
+pass git push -u --all&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Getting read access to an existing store&lt;/h3&gt;
+&lt;p&gt;Generate a gpg key as above.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --export --armor $GPG_KEY &amp;gt; pass-publickey.asc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Send &lt;code class=&quot;language-text&quot;&gt;pass-publickey.asc&lt;/code&gt; to someone who can decrypt the store.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;On their machine:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --import pass-publickey.asc
+gpg --edit-key $GPG_ID
+
+gpg&amp;gt; trust&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Trust the key ultimately.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass init `cat $PASSWORD_STORE_DIR/.gpg-id` $GPG_ID
+pass git push&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Back on your machine:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Either:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git clone git@github.com:you/your-pass.git ~/.password-store&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;or if you already setup the repo:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass git pull&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Getting write access to an existing store&lt;/h3&gt;
+&lt;p&gt;Same as read access but you also need to trust each public key in &lt;code class=&quot;language-text&quot;&gt;.gpg-id&lt;/code&gt;. Either each team member send you their exported key or you have them stored in one place. Maybe in the pass store repo itself?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For each gpg key:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --import ${the-key-file}
+gpg --edit-key $GPG_ID
+
+gpg&amp;gt; trust&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Tech stuff found in the second half of 2020]]></title><description><![CDATA[2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online…]]></description><link>https://ruarfff.com/tech-stuff-found-2nd-half-2020/</link><guid isPermaLink="false">https://ruarfff.com/tech-stuff-found-2nd-half-2020/</guid><pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online. The following is a list of the best resources I have found while trying to become a better developer in the second half of 2020.&lt;/p&gt;
 &lt;h2&gt;Contents&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#community&quot;&gt;Community&lt;/a&gt;&lt;/li&gt;
