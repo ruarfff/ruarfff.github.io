@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Mar 2021 10:15:37 GMT</lastBuildDate><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Mar 2021 10:26:59 GMT</lastBuildDate><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -390,7 +390,169 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
 &lt;p&gt;&lt;a href=&quot;https://www.manning.com/liveproject/training-and-deploying-an-ml-model-as-a-microservice&quot;&gt;Training and Deploying an ML Model as a Microservice&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.datacamp.com/community/tutorials/text-analytics-beginners-nltk&quot;&gt;Text Analytics for Beginners using NLTK&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://realpython.com/python-nltk-sentiment-analysis/&quot;&gt;Sentiment Analysis: First Steps With Python’s NLTK Library&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://medium.com/dev-genius/training-an-ml-model-for-sentiment-analysis-in-python-63b6b8c68792&quot;&gt;Training an ML Model for Sentiment Analysis in Python&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Tech stuff found in the second half of 2020]]></title><description><![CDATA[2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online…]]></description><link>https://ruarfff.com/tech-stuff-found-2nd-half-2020/</link><guid isPermaLink="false">https://ruarfff.com/tech-stuff-found-2nd-half-2020/</guid><pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online. The following is a list of the best resources I have found while trying to become a better developer in the second half of 2020.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/dev-genius/training-an-ml-model-for-sentiment-analysis-in-python-63b6b8c68792&quot;&gt;Training an ML Model for Sentiment Analysis in Python&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Using Devcontainer With GitHub Codespaces]]></title><description><![CDATA[A while back I started using Devcontainer in VsCode. I really liked the editor integration and if you’re in a team, being able to share the…]]></description><link>https://ruarfff.com/github-codespaces/</link><guid isPermaLink="false">https://ruarfff.com/github-codespaces/</guid><pubDate>Sat, 16 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;A while back I started using &lt;a href=&quot;https://code.visualstudio.com/docs/remote/devcontainerjson-reference&quot;&gt;Devcontainer&lt;/a&gt; in &lt;a href=&quot;https://code.visualstudio.com&quot;&gt;VsCode&lt;/a&gt;. I really liked the editor integration and if you’re in a team, being able to share the development environment like this is great. We have been able to do this for a while now with &lt;a href=&quot;https://www.docker.com/&quot;&gt;docker&lt;/a&gt; or even &lt;a href=&quot;https://www.vagrantup.com&quot;&gt;vagrant&lt;/a&gt; but getting a nice editor abstraction makes it easier to adopt.&lt;/p&gt;
+&lt;p&gt;I recently got access to &lt;a href=&quot;https://github.com/features/codespaces&quot;&gt;Codespaces&lt;/a&gt; and discovered it also supports this setup.&lt;/p&gt;
+&lt;p&gt;I am using it for &lt;a href=&quot;https://github.com/ruarfff/leetcode-jan-2021&quot;&gt;this python repo&lt;/a&gt;. There is also &lt;a href=&quot;https://github.com/microsoft/vscode-remote-try-python&quot;&gt;a more detail official example&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you don’t have access to Codespaces you can &lt;a href=&quot;https://github.com/features/codespaces/signup&quot;&gt;request early access&lt;/a&gt; - note that link may not age well.&lt;/p&gt;
+&lt;p&gt;If you have access, you should see an option in the GitHub UI:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/718e66bd43001df484b552c78311c4d6/9c177/1-gh-repo-ui.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 41.77215189873418%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABKklEQVQY012RWW6EMAxAOUA1IZuzJxCGBCaz//SnUu9/q5rSVppKFopiP/vFdDEVGyuEokKROlChmDQCLJeGCb0ffr+OUHmgkvSSvImeyA6wiEPPJGWA1doNYAIHK7XnYCjXVGi87xmA9tolYxMMUX3MrITuwIAwhLdAPo3Fx8m4hNN25ifF1bxca3vkucVlzZ8PvUzdX3qvGKelnm4+Hrm06GlD1lsjJ5Uv621pj+G4Dnkd06p1eoF7rlBbKIcu37YGTKQC5bdF5HKu7V5P95hryBVTrzADF3PKBbtgIB/HWdmIvRAeS5tx+OUZx2p8xqW8whTQczyuPVMYuC0XJxQmdIOX8/N8f6/tOdXLMDdl0//JUjn8K/v7EUbz/YwiAvz2Cq4Jtt7u1RfV7C9h29KlDQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Alt Text&quot;
+        title=&quot;Alt Text&quot;
+        src=&quot;/static/718e66bd43001df484b552c78311c4d6/f058b/1-gh-repo-ui.png&quot;
+        srcset=&quot;/static/718e66bd43001df484b552c78311c4d6/c26ae/1-gh-repo-ui.png 158w,
+/static/718e66bd43001df484b552c78311c4d6/6bdcf/1-gh-repo-ui.png 315w,
+/static/718e66bd43001df484b552c78311c4d6/f058b/1-gh-repo-ui.png 630w,
+/static/718e66bd43001df484b552c78311c4d6/9c177/1-gh-repo-ui.png 880w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If you have not setup this repo before, you will be asked to create a new Codespace. After that, you will have a link to the space like this:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 536px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/40acc1a59f43d511ac7e7410b65c46ba/2d920/2-gh-codespaces-button.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 67.08860759493672%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0klEQVQoz42S227TQBCGfVdE7fhsr49rrx0fsePYiROSJm1QKCDgEbjhutxwj3h1/mRLWiSQkD6tZmf3n5ndGWGimLJqKpoFYEiyLk40UdZgA1FS4VFw56UuXanilaK8MBTVEifqtaQKXPaIajp+nJWzop67AXNDVs8Wad5YlJIvLXvYFN/25GunEDsvWhw9iVXdxmq7tGyGZr4Koixkebfc5NXcSRLvYVn8OLY/3zvfR8UhIZ3GaSlA8xvCsrod1kneOgHzowy4QeLRFIF8kroWc20GAzl8msZJKVxeq+h2lFZ1N6bFzKNTLr5A04oTJoWsWa4fU5YLhh1wdMvDa7vFth93/WrXjVvY8/GmH29gBHEesgLRATIRjzpeBLHP0Qyn7de3x4/bu3e7Nx8Obz9tbu/B4f7z6/1xWO2LZoAyyRuIoXT86FnZmo3YlBWnOun0/GHFBZa9ghL5AcqGEu14/mZCk7JsFqh53B6WmzskOStL+LmMB5L/2mfix+gtfiuIM4A/h4cDG34AA5nKupsN66dWneZJ1jBe19Ijp1Gb6BwMomoQzXTkc5kBTdK8+nPC/gFuo6owztAe2wmxdWkVZv1/ifn8aQbh62lrBhqJfgFe2luvQJ7h3AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Alt Text&quot;
+        title=&quot;Alt Text&quot;
+        src=&quot;/static/40acc1a59f43d511ac7e7410b65c46ba/2d920/2-gh-codespaces-button.png&quot;
+        srcset=&quot;/static/40acc1a59f43d511ac7e7410b65c46ba/c26ae/2-gh-codespaces-button.png 158w,
+/static/40acc1a59f43d511ac7e7410b65c46ba/6bdcf/2-gh-codespaces-button.png 315w,
+/static/40acc1a59f43d511ac7e7410b65c46ba/2d920/2-gh-codespaces-button.png 536w&quot;
+        sizes=&quot;(max-width: 536px) 100vw, 536px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then you basically have VSCode in the browser:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/96015875c211f3478324f1338065bb72/9c177/3-gh-codespaces-ui.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.202531645569614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABDklEQVQoz42R2W7DIBBF/R/xFrYZg4EYYlrbsRNZVTepD/3/n+m0afrSJZXOA2h07nBFZn3wXRDQOOf6FH3oTOuZamqu/oAJlKAzpf20nOLNDOis7yVaoTSXmsnmCgIzDmY4zN1+VMaAjTWDilE2bsV1SG7TePBxANStDdpG3e6Y0v+SBZhpOfbDshWNUEZiK+DdrDn8yFmrzzItSbcJjQ9pikQ/uK43PlIKjb9XpWUElaWgjEmdhglMNy7rev+UxgXbHQVT8/KD6kL5RS0LBblUmUL6rFRxPK4Pzy+vp7tHF+mqior/Ssk3CDlARi/UNuS13E9znGbwHTe2lFiQz1UuIRfweb5QMLlpGhq9AS7PVHoBo2YGAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Alt Text&quot;
+        title=&quot;Alt Text&quot;
+        src=&quot;/static/96015875c211f3478324f1338065bb72/f058b/3-gh-codespaces-ui.png&quot;
+        srcset=&quot;/static/96015875c211f3478324f1338065bb72/c26ae/3-gh-codespaces-ui.png 158w,
+/static/96015875c211f3478324f1338065bb72/6bdcf/3-gh-codespaces-ui.png 315w,
+/static/96015875c211f3478324f1338065bb72/f058b/3-gh-codespaces-ui.png 630w,
+/static/96015875c211f3478324f1338065bb72/9c177/3-gh-codespaces-ui.png 880w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You don’t need any extra setup for this to work. You will get a handy development environment that persists so you can open it up on any machine with a browser without needing to install any extra development tools. You can work on one machine and move to another no problem.&lt;/p&gt;
+&lt;p&gt;What if you want to customise the setup? That’s where devcontainer comes in. For my example repo, I wanted to use python 3.8 and I wanted pipenv to be installed. This is how I set that up.&lt;/p&gt;
+&lt;h2&gt;Docker Setup&lt;/h2&gt;
+&lt;p&gt;You can define the environment you want to use for development with a dockerfile. My docker file it really basic but you can do whatever you need here:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;docker&quot;&gt;&lt;pre class=&quot;language-docker&quot;&gt;&lt;code class=&quot;language-docker&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; python&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;3.8
+
+&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt;  pip install pipenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I put this at the root of the project in a file called &lt;code class=&quot;language-text&quot;&gt;Dockerfile&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For Codespaces to use this you need one more step.&lt;/p&gt;
+&lt;p&gt;Create a file: &lt;code class=&quot;language-text&quot;&gt;.devcontainer/devcontainer.json&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Docker Setup&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Sets the run context to one level up instead of the .devcontainer folder so we can keep Dockerfile at the root.&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;context&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;..&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Set *default* container specific settings.json values on container create.&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;settings&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;terminal.integrated.shell.linux&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token null keyword&quot;&gt;null&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token property&quot;&gt;&quot;extensions&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token property&quot;&gt;&quot;postCreateCommand&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;pipenv sync --dev&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;token property&quot;&gt;&quot;runArgs&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;--network&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;host&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I like having the Dockerfile at the root of my project so I configured it that way but it’s also quite common to put the Dockerfile in the &lt;code class=&quot;language-text&quot;&gt;.devcontainers&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;quot;terminal.integrated.shell.linux&amp;quot;: null&lt;/code&gt; just says we don’t want to use my local VSCode shell settings since your own VSCode settings get imported if you are using settings sync. You can configure this to be more specific based on what’s in your Dockerfile.&lt;/p&gt;
+&lt;p&gt;I want to use &lt;a href=&quot;https://pypi.org/project/pipenv/&quot;&gt;pipenv&lt;/a&gt; so having this run post creation &lt;code class=&quot;language-text&quot;&gt;&amp;quot;postCreateCommand&amp;quot;: &amp;quot;pipenv sync --dev&amp;quot;&lt;/code&gt; saves one extra step.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;quot;runArgs&amp;quot;: [ &amp;quot;--network&amp;quot;, &amp;quot;host&amp;quot;]&lt;/code&gt; because I don’t want to bother messing with ports.&lt;/p&gt;
+&lt;p&gt;With all that setup, once you create a new Codespace, you should see it getting created like this:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d2bb9f16abeb32e3fade1668e7129b87/9c177/4-gh-output.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 47.46835443037975%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABCUlEQVQoz5VRXW+CMBTt4xzbQEoLbSmUAYJBItGN4BzGxb3s//+hHUSNS7bEJSc39+vce3pLWBBGSe5x5bh8Sv1/gTBfBSqGZ0/ZBRj0G055lwlYbCUeyDIG35fRYEUEB0mPS8g5WnkKfUW5BI0ycf/grF46EkbpfLFaNK9FtdQm0ybXcYYpAgiNUGawoQEZHOwcdU0sp3vridTPs7JOZ1VkcihBxxXkj5APGcYVXorNbbclcVqs2+1y3SXZnAcahbPmQTa6z/4ofiiN5G7Tk6yoNv2hbloZJo82vT7bX8B1J5b9vvsgeVnvP7/KqqHHG94C1wvuLHu3PxBfaNwJSm7/Z5CfHC9Ji28G3DQPXIV3FQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Alt Text&quot;
+        title=&quot;Alt Text&quot;
+        src=&quot;/static/d2bb9f16abeb32e3fade1668e7129b87/f058b/4-gh-output.png&quot;
+        srcset=&quot;/static/d2bb9f16abeb32e3fade1668e7129b87/c26ae/4-gh-output.png 158w,
+/static/d2bb9f16abeb32e3fade1668e7129b87/6bdcf/4-gh-output.png 315w,
+/static/d2bb9f16abeb32e3fade1668e7129b87/f058b/4-gh-output.png 630w,
+/static/d2bb9f16abeb32e3fade1668e7129b87/9c177/4-gh-output.png 880w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Now you have an environment setup the way you want.&lt;/p&gt;
+&lt;p&gt;This is a very basic example but there’s a lot more you can do.&lt;/p&gt;
+&lt;h2&gt;More Customisation&lt;/h2&gt;
+&lt;p&gt;You will almost certainly want to look at &lt;a href=&quot;https://docs.github.com/en/github/developing-online-with-codespaces/personalizing-codespaces-for-your-account&quot;&gt;setting up GitHub dotfiles&lt;/a&gt; to customise the shell in Codespaces.&lt;/p&gt;
+&lt;p&gt;Checkout the many examples in the &lt;a href=&quot;https://github.com/microsoft/vscode-dev-containers/tree/master/containers&quot;&gt;vscode-dev-containers repo&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Tech stuff found in the second half of 2020]]></title><description><![CDATA[2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online…]]></description><link>https://ruarfff.com/tech-stuff-found-2nd-half-2020/</link><guid isPermaLink="false">https://ruarfff.com/tech-stuff-found-2nd-half-2020/</guid><pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online. The following is a list of the best resources I have found while trying to become a better developer in the second half of 2020.&lt;/p&gt;
 &lt;h2&gt;Contents&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#community&quot;&gt;Community&lt;/a&gt;&lt;/li&gt;
