@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Mar 2021 10:56:18 GMT</lastBuildDate><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Mar 2021 10:57:34 GMT</lastBuildDate><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -170,8 +170,8 @@ plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span cl
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Alt Text&quot;
-        title=&quot;Alt Text&quot;
+        alt=&quot;Sentiment pie chart showing neg and pos&quot;
+        title=&quot;Sentiment pie chart showing neg and pos&quot;
         src=&quot;/static/4607b4e1790fd5a65197a704f1b44c75/24c7e/sent-example-pie.png&quot;
         srcset=&quot;/static/4607b4e1790fd5a65197a704f1b44c75/c26ae/sent-example-pie.png 158w,
 /static/4607b4e1790fd5a65197a704f1b44c75/6bdcf/sent-example-pie.png 315w,
@@ -208,8 +208,8 @@ plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span cl
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Alt Text&quot;
-        title=&quot;Alt Text&quot;
+        alt=&quot;Word plot&quot;
+        title=&quot;Word plot&quot;
         src=&quot;/static/ba090e062de841af01e288c0375f4f48/3c5de/sent-word-plot.png&quot;
         srcset=&quot;/static/ba090e062de841af01e288c0375f4f48/c26ae/sent-word-plot.png 158w,
 /static/ba090e062de841af01e288c0375f4f48/6bdcf/sent-word-plot.png 315w,
@@ -275,8 +275,8 @@ plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span cl
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Alt Text&quot;
-        title=&quot;Alt Text&quot;
+        alt=&quot;Updated work plot&quot;
+        title=&quot;Updated work plot&quot;
         src=&quot;/static/c3a150f1b0ffd0bc1eaac152367cd581/d587d/sent-word-plot-2.png&quot;
         srcset=&quot;/static/c3a150f1b0ffd0bc1eaac152367cd581/c26ae/sent-word-plot-2.png 158w,
 /static/c3a150f1b0ffd0bc1eaac152367cd581/6bdcf/sent-word-plot-2.png 315w,
