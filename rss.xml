@@ -1,4 +1,129 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 27 Jul 2021 19:58:41 GMT</lastBuildDate><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 27 Jul 2021 21:52:01 GMT</lastBuildDate><item><title><![CDATA[How to only run a job on a pull request in CircleCI]]></title><description><![CDATA[I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last…]]></description><link>https://ruarfff.com/circleci-pr-only/</link><guid isPermaLink="false">https://ruarfff.com/circleci-pr-only/</guid><pubDate>Tue, 27 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last place we used GitHub actions and this was super easy.
+Now I am using &lt;a href=&quot;https://circleci.com/&quot;&gt;CircleCI&lt;/a&gt; and this wasn’t so easy.&lt;/p&gt;
+&lt;p&gt;In this post we will look at how to only run a job on a pull request in CircleCI. There is one major caveat. We also need a way to trigger the job on a pull request. We will look at how to do this with CircleCI webhooks.&lt;/p&gt;
+&lt;h2&gt;Conditionally run a job&lt;/h2&gt;
+&lt;p&gt;There are a few options you can use to only run a job on a pull request in CircleCI. There is the option to
+&lt;a href=&quot;https://discuss.circleci.com/t/only-build-pull-requests-not-every-branch/200&quot;&gt;only ever build on a pull request&lt;/a&gt; but this is all or nothing
+i.e. you can never run a build on a branch without opening a pull request.&lt;/p&gt;
+&lt;p&gt;Another option is, within a job, you can inspect the &lt;a href=&quot;https://circleci.com/docs/2.0/env-vars/&quot;&gt;environment variables&lt;/a&gt; to see if there is a pull request number like so:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt; &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;${CIRCLE_PULL_REQUEST&lt;span class=&quot;token operator&quot;&gt;##&lt;/span&gt;*&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;}&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Is a pull request&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is OK but it would be nice to conditionally run a whole job instead. It is not possible to read environment variables when the pipeline is loaded. It is only possible when a job is run.
+To work around this we can use the &lt;a href=&quot;https://circleci.com/developer/orbs/orb/circleci/continuation&quot;&gt;circleci/continuation&lt;/a&gt; orb.
+If you are trying this out, make sure to update your project settings in &lt;strong&gt;Advanced Settings -&gt; Enable dynamic config using setup workflows&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;CircleCI expects all your configuration in one file called &lt;code class=&quot;language-text&quot;&gt;.circleci/config.yml&lt;/code&gt;. The continuation orb takes over as the entry point giving you access to the environment variables and then runs the pipeline using whatever configuration you tell it to.
+It’s a little bit weird but it works.&lt;/p&gt;
+&lt;p&gt;This is an example of using the continuation orb to conditionally run a job only on a pull request.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.circleci/config.yml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2.1&lt;/span&gt;
+&lt;span class=&quot;token key atrule&quot;&gt;orbs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;continuation&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; circleci/continuation@0.2.0
+&lt;span class=&quot;token key atrule&quot;&gt;workflows&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;continuation/continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;configuration_path&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;.circleci/main.yml&quot;&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; /home/circleci/params.json
+          &lt;span class=&quot;token key atrule&quot;&gt;pre-steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;
+                  if [ -z &quot;${CIRCLE_PULL_REQUEST##*/}&quot; ]
+                  then
+                    IS_PR=false
+                  else
+                    IS_PR=true
+                  fi
+                  echo &apos;{ &quot;is_pr&quot;: &apos;$IS_PR&apos; }&apos; &gt;&gt; /home/circleci/params.json&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Note, we mentioning PR here but you could do more or less anything to configure your pipeline there. &lt;code class=&quot;language-text&quot;&gt;/home/circleci/params.json&lt;/code&gt; is written to and specified as with &lt;code class=&quot;language-text&quot;&gt;parameters: /home/circleci/params.json&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.circleci/main.yml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2.1&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;is_pr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; boolean
+    &lt;span class=&quot;token key atrule&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;false&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;do_something&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;docker&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; cimg/base&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2021.04&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; something
+            &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; echo &apos;You get the picture&apos;
+
+&lt;span class=&quot;token key atrule&quot;&gt;workflows&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+
+   &lt;span class=&quot;token key atrule&quot;&gt;whence-pr&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &amp;lt;&amp;lt; pipeline.parameters.is_pr &lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;do_something&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; something&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We called the file &lt;code class=&quot;language-text&quot;&gt;main.yml&lt;/code&gt; here but it could be any file. You just need to specify it in the parameter called &lt;code class=&quot;language-text&quot;&gt;configuration_path&lt;/code&gt;. &lt;a href=&quot;https://circleci.com/blog/building-cicd-pipelines-using-dynamic-config/&quot;&gt;This post&lt;/a&gt; also shows another way to generate the configuration on the fly.&lt;/p&gt;
+&lt;p&gt;Now we have passed the &lt;code class=&quot;language-text&quot;&gt;is_pr&lt;/code&gt; parameter to the pipeline. We can conditionally run things using &lt;code class=&quot;language-text&quot;&gt;when: &amp;lt;&amp;lt; pipeline.parameters.is_pr &gt;&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;There is one major issue with this approach. Our build may have run before a PR (pull request) was ever opened. Opening a PR will not trigger a build in CircleCI.&lt;/p&gt;
+&lt;h2&gt;Triggering CircleCI pipeline when a pull request is opened&lt;/h2&gt;
+&lt;p&gt;First thing you must do is grab a &lt;a href=&quot;https://circleci.com/docs/2.0/managing-api-tokens/&quot;&gt;CircleCi API token&lt;/a&gt;. A &lt;a href=&quot;https://app.circleci.com/settings/user/tokens&quot;&gt;personal API token&lt;/a&gt; will do for this example.&lt;/p&gt;
+&lt;p&gt;You can trigger a pipeline run like so:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token assign-left variable&quot;&gt;SCM&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;github
+&lt;span class=&quot;token assign-left variable&quot;&gt;ORG&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;your-org-here
+&lt;span class=&quot;token assign-left variable&quot;&gt;PROJECT&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;your-project-here
+&lt;span class=&quot;token assign-left variable&quot;&gt;CIRCLE_BRANCH&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;a-derived-branch
+
+&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -X POST &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    -H &lt;span class=&quot;token string&quot;&gt;&quot;Circle-Token: &lt;span class=&quot;token variable&quot;&gt;${CIRCLE_TOKEN}&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    -H &lt;span class=&quot;token string&quot;&gt;&apos;Content-Type: application/json&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    -H &lt;span class=&quot;token string&quot;&gt;&apos;Accept: application/json&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    -d &lt;span class=&quot;token string&quot;&gt;&quot;{&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;branch&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;:&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;${CIRCLE_BRANCH}&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;}&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    https://circleci.com/api/v2/project/&lt;span class=&quot;token variable&quot;&gt;${SCM}&lt;/span&gt;/&lt;span class=&quot;token variable&quot;&gt;${ORG}&lt;/span&gt;/&lt;span class=&quot;token variable&quot;&gt;${PROJECT}&lt;/span&gt;/pipeline&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Hopefully it’s clear what values you need to change there. How you will run this bit depends on what tools you have available to you. I was using GitHub and even though we use CircleCI, there are enough free &lt;a href=&quot;https://github.com/features/actions&quot;&gt;GitHub Action&lt;/a&gt; minutes for me to setup an action like this:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.github/workflows/pr.yml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Trigger Build on PR
+
+&lt;span class=&quot;token key atrule&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;pull_request&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;opened&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; reopened&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;trigger-build&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest
+
+    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Trigger CircleCI
+        &lt;span class=&quot;token key atrule&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;CIRCLE_BRANCH&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; github.head_ref &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;CIRCLE_TOKEN&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; secrets.CIRCLE_TOKEN &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;ORG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; your&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;org&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;here
+          &lt;span class=&quot;token key atrule&quot;&gt;PROJECT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; your&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;project&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;here
+        &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;
+          curl -X POST \
+          -H &quot;Circle-Token: ${CIRCLE_TOKEN}&quot; \
+          -H &apos;Content-Type: application/json&apos; \
+          -H &apos;Accept: application/json&apos; \
+          -d &quot;{\&quot;branch\&quot;:\&quot;${CIRCLE_BRANCH}\&quot;}&quot; \
+          https://circleci.com/api/v2/project/github/${ORG}/${PROJECT}/pipeline&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This feels like an incredible hack but it works.&lt;/p&gt;
+&lt;h2&gt;A side note on doing something when a PR is merged&lt;/h2&gt;
+&lt;p&gt;This has nothing to do with CircleCI but if you happen to have access to GitHub actions this might be useful.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.github/workflows/pr-closed.yml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;yaml&quot;&gt;&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; On PR Closed
+
+&lt;span class=&quot;token key atrule&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;pull_request&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;closed&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token key atrule&quot;&gt;on-pr-closed&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token key atrule&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;latest
+    &lt;span class=&quot;token key atrule&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Print PR number
+        &lt;span class=&quot;token key atrule&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;PR_NUMBER&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; github.event.number &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;token key atrule&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;
+          echo &quot;${PR_NUMBER}&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something&lt;/p&gt;
 &lt;/blockquote&gt;
