@@ -107,7 +107,7 @@ cursor <span class="token operator">=</span> <span class="token boolean">None</s
 
 main_sentences<span class="token punctuation">,</span> main_words <span class="token operator">=</span> get_test_data<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
 <p><strong>Line by line</strong></p>
-<p><code class="language-text">all_text = [message[&#39;text&#39;] for message in conversation_hissory if &#39;text&#39; in message]</code></p>
+<p><code class="language-text">all_text = [message['text'] for message in conversation_hissory if 'text' in message]</code></p>
 <p>The response from the Slack API stores the text from the slack conversation in a field called text. We don’t want any of the other information like the user who posted it or the time it was posted. That line iterates over each response and extracts the text to a new list.</p>
 <p><code class="language-text">tokenized_text = [sent_tokenize(text) for text in all_text]</code></p>
 <p>Iterate over all the text and use NLTK’s sentence tokeniser to split the text up into sentences.</p>

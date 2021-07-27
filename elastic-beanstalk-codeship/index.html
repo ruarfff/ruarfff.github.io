@@ -384,55 +384,55 @@ RDS_DB_NAME</code></pre></div>
     </span></p>
 <p>Insert the following JSON, replacing my region and account ID with yours.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
+    "Version": "2012-10-17",
+    "Statement": [
         {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: [
-                &quot;autoscaling:ResumeProcesses&quot;,
-                &quot;elasticloadbalancing:RegisterTargets&quot;,
-                &quot;autoscaling:SuspendProcesses&quot;,
-                &quot;elasticloadbalancing:DeregisterTargets&quot;,
-                &quot;elasticbeanstalk:CreateApplicationVersion&quot;,
-                &quot;elasticbeanstalk:DeleteApplicationVersion&quot;,
-                &quot;ec2:DescribeImages&quot;,
-                &quot;elasticbeanstalk:DescribeEnvironments&quot;,
-                &quot;autoscaling:DescribeScalingActivities&quot;,
-                &quot;autoscaling:DescribeAutoScalingGroups&quot;,
-                &quot;elasticloadbalancing:DescribeTargetHealth&quot;,
-                &quot;elasticbeanstalk:UpdateEnvironment&quot;,
-                &quot;elasticloadbalancing:DescribeInstanceHealth&quot;,
-                &quot;ec2:DescribeKeyPairs&quot;,
-                &quot;elasticloadbalancing:DeregisterInstancesFromLoadBalancer&quot;,
-                &quot;elasticloadbalancing:RegisterInstancesWithLoadBalancer&quot;
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:ResumeProcesses",
+                "elasticloadbalancing:RegisterTargets",
+                "autoscaling:SuspendProcesses",
+                "elasticloadbalancing:DeregisterTargets",
+                "elasticbeanstalk:CreateApplicationVersion",
+                "elasticbeanstalk:DeleteApplicationVersion",
+                "ec2:DescribeImages",
+                "elasticbeanstalk:DescribeEnvironments",
+                "autoscaling:DescribeScalingActivities",
+                "autoscaling:DescribeAutoScalingGroups",
+                "elasticloadbalancing:DescribeTargetHealth",
+                "elasticbeanstalk:UpdateEnvironment",
+                "elasticloadbalancing:DescribeInstanceHealth",
+                "ec2:DescribeKeyPairs",
+                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                "elasticloadbalancing:RegisterInstancesWithLoadBalancer"
             ],
-            &quot;Resource&quot;: &quot;*&quot;
+            "Resource": "*"
         },
         {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: [
-                &quot;sns:ListSubscriptionsByTopic&quot;,
-                &quot;sns:GetTopicAttributes&quot;,
-                &quot;sns:CreateTopic&quot;,
-                &quot;cloudformation:DescribeStackResources&quot;,
-                &quot;s3:CreateBucket&quot;,
-                &quot;s3:ListBucket&quot;,
-                &quot;cloudformation:DescribeStackResource&quot;,
-                &quot;s3:GetBucketPolicy&quot;,
-                &quot;s3:PutObject&quot;,
-                &quot;s3:GetObjectAcl&quot;,
-                &quot;s3:GetObject&quot;,
-                &quot;cloudformation:GetTemplate&quot;,
-                &quot;cloudformation:UpdateStack&quot;,
-                &quot;sns:Subscribe&quot;,
-                &quot;s3:DeleteObject&quot;,
-                &quot;s3:PutObjectAcl&quot;
+            "Effect": "Allow",
+            "Action": [
+                "sns:ListSubscriptionsByTopic",
+                "sns:GetTopicAttributes",
+                "sns:CreateTopic",
+                "cloudformation:DescribeStackResources",
+                "s3:CreateBucket",
+                "s3:ListBucket",
+                "cloudformation:DescribeStackResource",
+                "s3:GetBucketPolicy",
+                "s3:PutObject",
+                "s3:GetObjectAcl",
+                "s3:GetObject",
+                "cloudformation:GetTemplate",
+                "cloudformation:UpdateStack",
+                "sns:Subscribe",
+                "s3:DeleteObject",
+                "s3:PutObjectAcl"
             ],
-            &quot;Resource&quot;: [
-                &quot;arn:aws:sns:eu-west-1:123456789123:*&quot;,
-                &quot;arn:aws:s3:::elasticbeanstalk-eu-west-1-123456789123&quot;,
-                &quot;arn:aws:s3:::elasticbeanstalk-eu-west-1-123456789123/*&quot;,
-                &quot;arn:aws:cloudformation:eu-west-1:123456789123:*&quot;
+            "Resource": [
+                "arn:aws:sns:eu-west-1:123456789123:*",
+                "arn:aws:s3:::elasticbeanstalk-eu-west-1-123456789123",
+                "arn:aws:s3:::elasticbeanstalk-eu-west-1-123456789123/*",
+                "arn:aws:cloudformation:eu-west-1:123456789123:*"
             ]
         }
     ]

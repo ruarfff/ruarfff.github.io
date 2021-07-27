@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Mar 2021 11:06:22 GMT</lastBuildDate><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 27 Jul 2021 19:56:17 GMT</lastBuildDate><item><title><![CDATA[Check the Mood of a Slack Channel using Machine Learning]]></title><description><![CDATA[Sentiment a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something Sentiment analysis, in the…]]></description><link>https://ruarfff.com/slack-sentiment/</link><guid isPermaLink="false">https://ruarfff.com/slack-sentiment/</guid><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://dictionary.cambridge.org/dictionary/english/sentiment&quot;&gt;Sentiment&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;a thought, opinion, or idea based on a feeling about a situation, or a way of thinking about something&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -102,7 +102,7 @@ cursor &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span clas
 
 main_sentences&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; main_words &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; get_test_data&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Line by line&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;all_text = [message[&amp;#39;text&amp;#39;] for message in conversation_hissory if &amp;#39;text&amp;#39; in message]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;all_text = [message[&apos;text&apos;] for message in conversation_hissory if &apos;text&apos; in message]&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The response from the Slack API stores the text from the slack conversation in a field called text. We don’t want any of the other information like the user who posted it or the time it was posted. That line iterates over each response and extracts the text to a new list.&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;tokenized_text = [sent_tokenize(text) for text in all_text]&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Iterate over all the text and use NLTK’s sentence tokeniser to split the text up into sentences.&lt;/p&gt;
@@ -490,9 +490,9 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
 &lt;p&gt;What if you want to customise the setup? That’s where devcontainer comes in. For my example repo, I wanted to use python 3.8 and I wanted pipenv to be installed. This is how I set that up.&lt;/p&gt;
 &lt;h2&gt;Docker Setup&lt;/h2&gt;
 &lt;p&gt;You can define the environment you want to use for development with a dockerfile. My docker file it really basic but you can do whatever you need here:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;docker&quot;&gt;&lt;pre class=&quot;language-docker&quot;&gt;&lt;code class=&quot;language-docker&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; python&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;3.8
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;docker&quot;&gt;&lt;pre class=&quot;language-docker&quot;&gt;&lt;code class=&quot;language-docker&quot;&gt;&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; python:3.8&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt;  pip install pipenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt;  pip install pipenv&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;I put this at the root of the project in a file called &lt;code class=&quot;language-text&quot;&gt;Dockerfile&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;For Codespaces to use this you need one more step.&lt;/p&gt;
 &lt;p&gt;Create a file: &lt;code class=&quot;language-text&quot;&gt;.devcontainer/devcontainer.json&lt;/code&gt;&lt;/p&gt;
@@ -514,9 +514,9 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
   &lt;span class=&quot;token property&quot;&gt;&quot;runArgs&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;--network&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;host&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;I like having the Dockerfile at the root of my project so I configured it that way but it’s also quite common to put the Dockerfile in the &lt;code class=&quot;language-text&quot;&gt;.devcontainers&lt;/code&gt; directory.&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;quot;terminal.integrated.shell.linux&amp;quot;: null&lt;/code&gt; just says we don’t want to use my local VSCode shell settings since your own VSCode settings get imported if you are using settings sync. You can configure this to be more specific based on what’s in your Dockerfile.&lt;/p&gt;
-&lt;p&gt;I want to use &lt;a href=&quot;https://pypi.org/project/pipenv/&quot;&gt;pipenv&lt;/a&gt; so having this run post creation &lt;code class=&quot;language-text&quot;&gt;&amp;quot;postCreateCommand&amp;quot;: &amp;quot;pipenv sync --dev&amp;quot;&lt;/code&gt; saves one extra step.&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;quot;runArgs&amp;quot;: [ &amp;quot;--network&amp;quot;, &amp;quot;host&amp;quot;]&lt;/code&gt; because I don’t want to bother messing with ports.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;&quot;terminal.integrated.shell.linux&quot;: null&lt;/code&gt; just says we don’t want to use my local VSCode shell settings since your own VSCode settings get imported if you are using settings sync. You can configure this to be more specific based on what’s in your Dockerfile.&lt;/p&gt;
+&lt;p&gt;I want to use &lt;a href=&quot;https://pypi.org/project/pipenv/&quot;&gt;pipenv&lt;/a&gt; so having this run post creation &lt;code class=&quot;language-text&quot;&gt;&quot;postCreateCommand&quot;: &quot;pipenv sync --dev&quot;&lt;/code&gt; saves one extra step.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;&quot;runArgs&quot;: [ &quot;--network&quot;, &quot;host&quot;]&lt;/code&gt; because I don’t want to bother messing with ports.&lt;/p&gt;
 &lt;p&gt;With all that setup, once you create a new Codespace, you should see it getting created like this:&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -571,7 +571,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
 &lt;p&gt;Why use &lt;a href=&quot;https://www.passwordstore.org/&quot;&gt;pass&lt;/a&gt; and not some other tool like &lt;a href=&quot;https://1password.com&quot;&gt;1password&lt;/a&gt;, &lt;a href=&quot;https://www.dashlane.com&quot;&gt;Dashlane&lt;/a&gt; and others which maybe have more features and better platform support?&lt;/p&gt;
 &lt;p&gt;Pass is free, open source and works on most systems that developers use. The ability to use it in your terminal and make it part of the workflow makes it a great tool for developers. If your company does pay for one of the other tools though, they might be a better choice for you. If not, &lt;code class=&quot;language-text&quot;&gt;pass&lt;/code&gt; is a great option.&lt;/p&gt;
 &lt;h2&gt;Secrets While Developing &lt;a name=&quot;secrets-while-developing&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;If you are building some software that talks to other software, there’s a good chance you are reading secrets in your code. If you are calling services with something like &lt;a href=&quot;https://curl.se&quot;&gt;curl&lt;/a&gt; you likely input commands similar to &lt;code class=&quot;language-text&quot;&gt;curl -H &amp;quot;Authorization: token my-super-secret-token&amp;quot; https://some-auth-needing-service.com&lt;/code&gt; into your terminal.&lt;/p&gt;
+&lt;p&gt;If you are building some software that talks to other software, there’s a good chance you are reading secrets in your code. If you are calling services with something like &lt;a href=&quot;https://curl.se&quot;&gt;curl&lt;/a&gt; you likely input commands similar to &lt;code class=&quot;language-text&quot;&gt;curl -H &quot;Authorization: token my-super-secret-token&quot; https://some-auth-needing-service.com&lt;/code&gt; into your terminal.&lt;/p&gt;
 &lt;p&gt;If you work in a team and you have some development credentials your team uses, you have probably encountered issues with sharing and keeping track of those secrets.&lt;/p&gt;
 &lt;p&gt;In this post we will look at &lt;a href=&quot;https://www.passwordstore.org/&quot;&gt;pass&lt;/a&gt; as an option to help with this. We will look at a potential local workflow that uses &lt;code class=&quot;language-text&quot;&gt;pass&lt;/code&gt; so you don’t ever need to store secrets in plaintext locally. Then we will look at how to share these secrets with your team in a way that’s reasonable enough to maintain.&lt;/p&gt;
 &lt;p&gt;The next section will show a sample app to test out the methods we will use but feel free to skip that section if you don’t need to use a sample app.&lt;/p&gt;
@@ -594,7 +594,7 @@ cd backstage-example
 yarn
 yarn dev
 
-[1] Backend failed to start up, Error: Failed to initialize github auth provider, Missing required config value at &amp;#39;auth.providers.github.development.clientId&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+[1] Backend failed to start up, Error: Failed to initialize github auth provider, Missing required config value at &apos;auth.providers.github.development.clientId&apos;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To create secrets and follow along you will need a GitHub account. Go here &lt;a href=&quot;https://github.com/settings/applications/new&quot;&gt;https://github.com/settings/applications/new&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Fill it in like this:&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -682,14 +682,14 @@ yarn dev
 ----------------------------------------------------
 pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
       AB3A5ED268BD87CD06F8F30B6881F49AF5BB8EAD
-uid           [ultimate] you &amp;lt;you@email.com&amp;gt;
+uid           [ultimate] you &amp;lt;you@email.com&gt;
 sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now copy the ID for that key. In the example above the ID is &lt;code class=&quot;language-text&quot;&gt;AB3A5ED268BD87CD06F8F30B6881F49AF5BB8EAD&lt;/code&gt;. From now on we will refer to that as &lt;code class=&quot;language-text&quot;&gt;$GPG_KEY&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Now we will setup pass. Note, by default pass uses &lt;code class=&quot;language-text&quot;&gt;~/.password-store&lt;/code&gt;. If you want to keep your personal password store and your team one separate, you can configure separate directories.&lt;/p&gt;
 &lt;p&gt;The directory pass uses can be configured like so:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export PASSWORD_STORE_DIR=~/.work-password-store&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Example of an alias to use:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;alias workpass=&amp;#39;PASSWORD_STORE_DIR=~/.work-password-store pass&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;alias workpass=&apos;PASSWORD_STORE_DIR=~/.work-password-store pass&apos;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If you decide to use an alias, replace &lt;code class=&quot;language-text&quot;&gt;pass&lt;/code&gt; with &lt;code class=&quot;language-text&quot;&gt;workpass&lt;/code&gt; (or whatever alias you setup) in all the following examples.&lt;/p&gt;
 &lt;p&gt;Initialise pass:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass init $GPG_KEY&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -700,15 +700,15 @@ Enter password for GitHub/backstage-example-token:&lt;/code&gt;&lt;/pre&gt;&lt;/
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass GitHub/backstage-example-token&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You will be prompted for a password the first time when reading a value from pass and again after the login times out.&lt;/p&gt;
 &lt;p&gt;Use the token, extracting from pass, like this:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;curl -H &amp;quot;Authorization: token $(pass GitHub/backstage-example-token)&amp;quot; -H &amp;quot;Accept: application/vnd.github.v3+json&amp;quot; https://api.github.com/user/repos&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;curl -H &quot;Authorization: token $(pass GitHub/backstage-example-token)&quot; -H &quot;Accept: application/vnd.github.v3+json&quot; https://api.github.com/user/repos&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;One advantage of this approach is you do not have to store the token in plaintext at any point or have it visible on your screen as you use the terminal. If you type &lt;code class=&quot;language-text&quot;&gt;history&lt;/code&gt; you won’t see any record of the password.&lt;/p&gt;
 &lt;p&gt;In our example application we need 2 more secrets.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass insert GitHub/backstage-example-client-id&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass insert GitHub/backstage-example-client-secret&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;There’s a lot of ways you could use these secrets now to run our sample app. I propose this one. Add a file somewhere on your machine or even in the repo with this content:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export GITHUB_TOKEN=&amp;quot;$(pass GitHub/backstage-example-token)&amp;quot;
-export AUTH_GITHUB_CLIENT_ID=&amp;quot;$(pass GitHub/backstage-example-client-id)&amp;quot;
-export AUTH_GITHUB_CLIENT_SECRET=&amp;quot;$(pass GitHub/backstage-example-client-secret)&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export GITHUB_TOKEN=&quot;$(pass GitHub/backstage-example-token)&quot;
+export AUTH_GITHUB_CLIENT_ID=&quot;$(pass GitHub/backstage-example-client-id)&quot;
+export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-secret)&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In the following example I assume you created a file in the project directory with that content. Now run:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;source secrets &amp;amp;&amp;amp; yarn dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;All going well, you should have a login page:&lt;/p&gt;
@@ -870,17 +870,17 @@ export AUTH_GITHUB_CLIENT_SECRET=&amp;quot;$(pass GitHub/backstage-example-clien
 ----------------------------------------------------
 pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
       C351DB397FDFFD4499AB760435C0B93754D6ACD0
-uid           [ultimate] your-colleague &amp;lt;your-colleague@email.com&amp;gt;
+uid           [ultimate] your-colleague &amp;lt;your-colleague@email.com&gt;
 sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;They must copy the ID for the key to export it as in this example:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --export --armor C351DB397FDFFD4499AB760435C0B93754D6ACD0 &amp;gt; pass-publickey.asc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --export --armor C351DB397FDFFD4499AB760435C0B93754D6ACD0 &gt; pass-publickey.asc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now they must send the key file to you. It is reasonably safe to send a public key over email or chat but if you have a secure way to share the key, even better.&lt;/p&gt;
 &lt;p&gt;Next they can clone the store. This example clones to the default password store directory:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git clone git@github.com:you/your-pass.git ~/.password-store&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If the team member already uses pass or wants to keep the team and personal stores separate, they can use the method we looked at before:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git clone git@github.com:you/your-pass.git ~/.work-password-store
 
-alias workpass=&amp;#39;PASSWORD_STORE_DIR=~/.work-password-store pass&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+alias workpass=&apos;PASSWORD_STORE_DIR=~/.work-password-store pass&apos;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;At this point they will be able to list the secrets but not read them:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass
 Password Store
@@ -898,30 +898,30 @@ gpg --list-keys&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 ----------------------------------------------------
 pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
       AB3A5ED268BD87CD06F8F30B6881F49AF5BB8EAD
-uid           [ultimate] you &amp;lt;you@email.com&amp;gt;
+uid           [ultimate] you &amp;lt;you@email.com&gt;
 sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]
 
 pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
       C351DB397FDFFD4499AB760435C0B93754D6ACD0
-uid           [unknown] your-colleague &amp;lt;your-colleague@email.com&amp;gt;
+uid           [unknown] your-colleague &amp;lt;your-colleague@email.com&gt;
 sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You have added the key for ‘your-colleague’. We now need to trust the key. Notice that your key has &lt;code class=&quot;language-text&quot;&gt;[ultimate]&lt;/code&gt; but the new one has &lt;code class=&quot;language-text&quot;&gt;[unknown]&lt;/code&gt;. Also note the ID for the new key. That’s &lt;code class=&quot;language-text&quot;&gt;C351DB397FDFFD4499AB760435C0B93754D6ACD0&lt;/code&gt; in the example above. From now on we will refer to that key as &lt;code class=&quot;language-text&quot;&gt;$GPG_ID&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export GPG_ID=&amp;#39;C351DB397FDFFD4499AB760435C0B93754D6ACD0&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export GPG_ID=&apos;C351DB397FDFFD4499AB760435C0B93754D6ACD0&apos;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Edit the key. This will activate and interactive session with gpg.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --edit-key $GPG_ID&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Type the trust command:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg&amp;gt; trust&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg&gt; trust&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pub  rsa3072/35C0B93754D6ACD0
      created: 2020-11-02  expires: 2022-11-02  usage: SC
      trust: unknown      validity: unknown
 sub  rsa3072/84E6664F5F6A5734
      created: 2020-12-16  expires: 2022-12-16  usage: E
-[unknown] (1). your-colleague &amp;lt;your-colleague@email.com&amp;gt;
+[unknown] (1). your-colleague &amp;lt;your-colleague@email.com&gt;
 
-Please decide how far you trust this user to correctly verify other users&amp;#39; keys
+Please decide how far you trust this user to correctly verify other users&apos; keys
 (by looking at passports, checking fingerprints from different sources, etc.)
 
-  1 = I don&amp;#39;t know or won&amp;#39;t say
+  1 = I don&apos;t know or won&apos;t say
   2 = I do NOT trust
   3 = I trust marginally
   4 = I trust fully
@@ -961,20 +961,20 @@ Your decision? 5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You need to copy the key ID. This gets just the key IDs:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --list-keys --with-colons | grep fpr | cut -d: -f10&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Setup pass:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export GPG_KEY=&amp;#39;you-key-id&amp;#39;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export GPG_KEY=&apos;you-key-id&apos;
 pass init $GPG_KEY
 pass insert some-secret
 pass git init
 pass git push -u --all&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;Getting read access to an existing store&lt;/h3&gt;
 &lt;p&gt;Generate a gpg key as above.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --export --armor $GPG_KEY &amp;gt; pass-publickey.asc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --export --armor $GPG_KEY &gt; pass-publickey.asc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Send &lt;code class=&quot;language-text&quot;&gt;pass-publickey.asc&lt;/code&gt; to someone who can decrypt the store.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;On their machine:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --import pass-publickey.asc
 gpg --edit-key $GPG_ID
 
-gpg&amp;gt; trust&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+gpg&gt; trust&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Trust the key ultimately.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pass init `cat $PASSWORD_STORE_DIR/.gpg-id` $GPG_ID
 pass git push&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -989,7 +989,7 @@ pass git push&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;gpg --import ${the-key-file}
 gpg --edit-key $GPG_ID
 
-gpg&amp;gt; trust&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+gpg&gt; trust&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Tech stuff found in the second half of 2020]]></title><description><![CDATA[2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online…]]></description><link>https://ruarfff.com/tech-stuff-found-2nd-half-2020/</link><guid isPermaLink="false">https://ruarfff.com/tech-stuff-found-2nd-half-2020/</guid><pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;2020 has not been the best year ever but with more time at home and less time commuting I did find time to read and discover more online. The following is a list of the best resources I have found while trying to become a better developer in the second half of 2020.&lt;/p&gt;
 &lt;h2&gt;Contents&lt;/h2&gt;
 &lt;ul&gt;
@@ -1447,7 +1447,7 @@ in which unit tests are written after production code&lt;/p&gt;
       &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; develop
     &lt;span class=&quot;token key atrule&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;gradle&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;build&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;bootRun&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;token key atrule&quot;&gt;networks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; develop&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The version (&lt;code class=&quot;language-text&quot;&gt;3.7&amp;#39;&lt;/code&gt; in this case) is important. The capabilities from version to version of docker compose are significant. The reference manual for our version is &lt;a href=&quot;https://docs.docker.com/compose/compose-file/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The version (&lt;code class=&quot;language-text&quot;&gt;3.7&apos;&lt;/code&gt; in this case) is important. The capabilities from version to version of docker compose are significant. The reference manual for our version is &lt;a href=&quot;https://docs.docker.com/compose/compose-file/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;services&lt;/code&gt; field is a list of services we want docker compose to manage. The services are the various components we want to run together while developing. Our example here may be a bit contrived but imaging a more useful scenario where you would like to see how your app behaves connected to various services it uses in production like a database and maybe a cache, like &lt;a href=&quot;https://hub.docker.com/_/memcached&quot;&gt;memcached&lt;/a&gt;, or messaging service, like &lt;a href=&quot;https://hub.docker.com/_/rabbitmq&quot;&gt;rabbitmq&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;networks&lt;/code&gt; field is where we define the networks we want the services ot communicate over. We’re keeping it simple and just using one here but you can do more with networks if you need to.&lt;/p&gt;
 &lt;h3&gt;The database configuration&lt;/h3&gt;
@@ -1478,18 +1478,18 @@ in which unit tests are written after production code&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;networks&lt;/code&gt; we want all the services to be able to communicate on the same network. Docker allows us to define a network for our services to share. We are creating a network called ‘develop’ and this tells the postgres service to join it.&lt;/p&gt;
 &lt;h3&gt;The node application configuration&lt;/h3&gt;
 &lt;p&gt;First let’s look at the Dockerfile:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;dockerfile&quot;&gt;&lt;pre class=&quot;language-dockerfile&quot;&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; keymetrics/pm2&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;latest&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;alpine
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;dockerfile&quot;&gt;&lt;pre class=&quot;language-dockerfile&quot;&gt;&lt;code class=&quot;language-dockerfile&quot;&gt;&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;FROM&lt;/span&gt; keymetrics/pm2:latest-alpine&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;WORKDIR&lt;/span&gt; /usr/app
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;WORKDIR&lt;/span&gt; /usr/app&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; bin/ ./bin/
-&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; package.json .
-&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; yarn.lock .
-&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; ecosystem.config.js .
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; bin/ ./bin/&lt;/span&gt;
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; package.json .&lt;/span&gt;
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; yarn.lock .&lt;/span&gt;
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;COPY&lt;/span&gt; ecosystem.config.js .&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;ENV&lt;/span&gt; NPM_CONFIG_LOGLEVEL warn
-&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; yarn install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;FROM keymetrics/pm2:latest-alpine&lt;/code&gt; this is an image provided by the &lt;a href=&quot;http://pm2.keymetrics.io/&quot;&gt;pm2&lt;/a&gt; people which is handy for auto restarting our app on code changes but we have many options. We could use the &lt;a href=&quot;https://hub.docker.com/_/node/&quot;&gt;NodeJS image&lt;/a&gt; and start a little differently &lt;code class=&quot;language-text&quot;&gt;command: [&amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot;]&lt;/code&gt; for example. We could also use a custom Dockerfile for our app. If you had a python app or whatever, you could just use the appropriate image for that here instead.&lt;/p&gt;
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;ENV&lt;/span&gt; NPM_CONFIG_LOGLEVEL warn&lt;/span&gt;
+&lt;span class=&quot;token instruction&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;RUN&lt;/span&gt; yarn install&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;FROM keymetrics/pm2:latest-alpine&lt;/code&gt; this is an image provided by the &lt;a href=&quot;http://pm2.keymetrics.io/&quot;&gt;pm2&lt;/a&gt; people which is handy for auto restarting our app on code changes but we have many options. We could use the &lt;a href=&quot;https://hub.docker.com/_/node/&quot;&gt;NodeJS image&lt;/a&gt; and start a little differently &lt;code class=&quot;language-text&quot;&gt;command: [&quot;npm&quot;, &quot;start&quot;]&lt;/code&gt; for example. We could also use a custom Dockerfile for our app. If you had a python app or whatever, you could just use the appropriate image for that here instead.&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;WORKDIR /usr/app&lt;/code&gt; I am not sure is using /usr/app is a convention or just something I copied and kept using but I tend to use it as the place to put my app code in most docker containers. Any commands run after specifying that in the Dockerfile will be run in the context of that directory.&lt;/p&gt;
 &lt;p&gt;After that point, with all the &lt;code class=&quot;language-text&quot;&gt;COPY&lt;/code&gt; calls, we’re doing a few slightly odd things here and I’ll explain why. We want the application to install all it’s dependencies in the Docker container. With the way node dependencies work, it can cause problems to install on the host and not in the container.&lt;/p&gt;
 &lt;p&gt;Take an example where you are developing on Windows. If you install the dependencies on Windows first and then mount the code in a container, you will hit issues. Node will install and even compile dependencies for the OS you are on. Trying to run your Windows dependencies in Linux will cause issues.&lt;/p&gt;
@@ -1945,55 +1945,55 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Insert the following JSON, replacing my region and account ID with yours.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;{
-    &amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,
-    &amp;quot;Statement&amp;quot;: [
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
         {
-            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
-            &amp;quot;Action&amp;quot;: [
-                &amp;quot;autoscaling:ResumeProcesses&amp;quot;,
-                &amp;quot;elasticloadbalancing:RegisterTargets&amp;quot;,
-                &amp;quot;autoscaling:SuspendProcesses&amp;quot;,
-                &amp;quot;elasticloadbalancing:DeregisterTargets&amp;quot;,
-                &amp;quot;elasticbeanstalk:CreateApplicationVersion&amp;quot;,
-                &amp;quot;elasticbeanstalk:DeleteApplicationVersion&amp;quot;,
-                &amp;quot;ec2:DescribeImages&amp;quot;,
-                &amp;quot;elasticbeanstalk:DescribeEnvironments&amp;quot;,
-                &amp;quot;autoscaling:DescribeScalingActivities&amp;quot;,
-                &amp;quot;autoscaling:DescribeAutoScalingGroups&amp;quot;,
-                &amp;quot;elasticloadbalancing:DescribeTargetHealth&amp;quot;,
-                &amp;quot;elasticbeanstalk:UpdateEnvironment&amp;quot;,
-                &amp;quot;elasticloadbalancing:DescribeInstanceHealth&amp;quot;,
-                &amp;quot;ec2:DescribeKeyPairs&amp;quot;,
-                &amp;quot;elasticloadbalancing:DeregisterInstancesFromLoadBalancer&amp;quot;,
-                &amp;quot;elasticloadbalancing:RegisterInstancesWithLoadBalancer&amp;quot;
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;autoscaling:ResumeProcesses&quot;,
+                &quot;elasticloadbalancing:RegisterTargets&quot;,
+                &quot;autoscaling:SuspendProcesses&quot;,
+                &quot;elasticloadbalancing:DeregisterTargets&quot;,
+                &quot;elasticbeanstalk:CreateApplicationVersion&quot;,
+                &quot;elasticbeanstalk:DeleteApplicationVersion&quot;,
+                &quot;ec2:DescribeImages&quot;,
+                &quot;elasticbeanstalk:DescribeEnvironments&quot;,
+                &quot;autoscaling:DescribeScalingActivities&quot;,
+                &quot;autoscaling:DescribeAutoScalingGroups&quot;,
+                &quot;elasticloadbalancing:DescribeTargetHealth&quot;,
+                &quot;elasticbeanstalk:UpdateEnvironment&quot;,
+                &quot;elasticloadbalancing:DescribeInstanceHealth&quot;,
+                &quot;ec2:DescribeKeyPairs&quot;,
+                &quot;elasticloadbalancing:DeregisterInstancesFromLoadBalancer&quot;,
+                &quot;elasticloadbalancing:RegisterInstancesWithLoadBalancer&quot;
             ],
-            &amp;quot;Resource&amp;quot;: &amp;quot;*&amp;quot;
+            &quot;Resource&quot;: &quot;*&quot;
         },
         {
-            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
-            &amp;quot;Action&amp;quot;: [
-                &amp;quot;sns:ListSubscriptionsByTopic&amp;quot;,
-                &amp;quot;sns:GetTopicAttributes&amp;quot;,
-                &amp;quot;sns:CreateTopic&amp;quot;,
-                &amp;quot;cloudformation:DescribeStackResources&amp;quot;,
-                &amp;quot;s3:CreateBucket&amp;quot;,
-                &amp;quot;s3:ListBucket&amp;quot;,
-                &amp;quot;cloudformation:DescribeStackResource&amp;quot;,
-                &amp;quot;s3:GetBucketPolicy&amp;quot;,
-                &amp;quot;s3:PutObject&amp;quot;,
-                &amp;quot;s3:GetObjectAcl&amp;quot;,
-                &amp;quot;s3:GetObject&amp;quot;,
-                &amp;quot;cloudformation:GetTemplate&amp;quot;,
-                &amp;quot;cloudformation:UpdateStack&amp;quot;,
-                &amp;quot;sns:Subscribe&amp;quot;,
-                &amp;quot;s3:DeleteObject&amp;quot;,
-                &amp;quot;s3:PutObjectAcl&amp;quot;
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;sns:ListSubscriptionsByTopic&quot;,
+                &quot;sns:GetTopicAttributes&quot;,
+                &quot;sns:CreateTopic&quot;,
+                &quot;cloudformation:DescribeStackResources&quot;,
+                &quot;s3:CreateBucket&quot;,
+                &quot;s3:ListBucket&quot;,
+                &quot;cloudformation:DescribeStackResource&quot;,
+                &quot;s3:GetBucketPolicy&quot;,
+                &quot;s3:PutObject&quot;,
+                &quot;s3:GetObjectAcl&quot;,
+                &quot;s3:GetObject&quot;,
+                &quot;cloudformation:GetTemplate&quot;,
+                &quot;cloudformation:UpdateStack&quot;,
+                &quot;sns:Subscribe&quot;,
+                &quot;s3:DeleteObject&quot;,
+                &quot;s3:PutObjectAcl&quot;
             ],
-            &amp;quot;Resource&amp;quot;: [
-                &amp;quot;arn:aws:sns:eu-west-1:123456789123:*&amp;quot;,
-                &amp;quot;arn:aws:s3:::elasticbeanstalk-eu-west-1-123456789123&amp;quot;,
-                &amp;quot;arn:aws:s3:::elasticbeanstalk-eu-west-1-123456789123/*&amp;quot;,
-                &amp;quot;arn:aws:cloudformation:eu-west-1:123456789123:*&amp;quot;
+            &quot;Resource&quot;: [
+                &quot;arn:aws:sns:eu-west-1:123456789123:*&quot;,
+                &quot;arn:aws:s3:::elasticbeanstalk-eu-west-1-123456789123&quot;,
+                &quot;arn:aws:s3:::elasticbeanstalk-eu-west-1-123456789123/*&quot;,
+                &quot;arn:aws:cloudformation:eu-west-1:123456789123:*&quot;
             ]
         }
     ]
@@ -2968,9 +2968,9 @@ hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1
 &lt;p&gt;Anyway, since this is JavaScript I immediately hit a problem starting new game projects beyond a simple tutorial and this blog post is about how I got a workflow going that I like and that I wanted to share.&lt;/p&gt;
 &lt;p&gt;Besides using phaser I did not want to complicate things by adding any other frameworks and I did not want a complicated build process. I just want to make a game and keep things as simple and fun as possible. I really want to use full blown es6 with modules though and that presented a small challenge. Phaser 2 has been around for some time and was not designed to work with es6. Soon phaser 3 will come out and this post will be obsolete but until then, here’s how I got a a nice setup for phaser 2 and es6.&lt;/p&gt;
 &lt;h3&gt;How?&lt;/h3&gt;
-&lt;p&gt;The first thing I tried to do was use &lt;a href=&quot;https://babeljs.io/&quot;&gt;babel&lt;/a&gt; and &lt;a href=&quot;http://browserify.org/&quot;&gt;browserify&lt;/a&gt; on the command line. I have used npm to install phaser and I had a simple JavaScript file that has an &lt;code class=&quot;language-text&quot;&gt;import Phaser from &amp;#39;phaser&amp;#39;&lt;/code&gt; statement at the top. It didn’t start well. I was getting an error saying PIXI was not defined. After digging around the phaser source for a while I realized that the built phaser file assigned some dependencies on the global scope. I noticed that the &lt;a href=&quot;https://www.npmjs.com/package/phaser&quot;&gt;phaser node module&lt;/a&gt; had those dependencies separated into their own files too. It occurred to me that I would probably need to use webpack now.&lt;/p&gt;
+&lt;p&gt;The first thing I tried to do was use &lt;a href=&quot;https://babeljs.io/&quot;&gt;babel&lt;/a&gt; and &lt;a href=&quot;http://browserify.org/&quot;&gt;browserify&lt;/a&gt; on the command line. I have used npm to install phaser and I had a simple JavaScript file that has an &lt;code class=&quot;language-text&quot;&gt;import Phaser from &apos;phaser&apos;&lt;/code&gt; statement at the top. It didn’t start well. I was getting an error saying PIXI was not defined. After digging around the phaser source for a while I realized that the built phaser file assigned some dependencies on the global scope. I noticed that the &lt;a href=&quot;https://www.npmjs.com/package/phaser&quot;&gt;phaser node module&lt;/a&gt; had those dependencies separated into their own files too. It occurred to me that I would probably need to use webpack now.&lt;/p&gt;
 &lt;p&gt;I always end up having to use webpack these days. Even though it’s a great tool, I always try not to use it because it just seems to add a bunch of complexity. Doesn’t seem to be any good way around it here though and I think the config I use is simple enough to be OK.&lt;/p&gt;
-&lt;p&gt;I had come across the webpack &lt;a href=&quot;https://github.com/webpack/expose-loader&quot;&gt;expose-loader&lt;/a&gt; module before and it appears to solve the particular issue of using a library that relies on globals. I did pause to wonder if it was worth the effort now just so I would use &lt;code class=&quot;language-text&quot;&gt;import Phase from &amp;#39;phaser&amp;#39;&lt;/code&gt; instead of &lt;code class=&quot;language-text&quot;&gt;Phaser&lt;/code&gt; as a global and decided it was.&lt;/p&gt;
+&lt;p&gt;I had come across the webpack &lt;a href=&quot;https://github.com/webpack/expose-loader&quot;&gt;expose-loader&lt;/a&gt; module before and it appears to solve the particular issue of using a library that relies on globals. I did pause to wonder if it was worth the effort now just so I would use &lt;code class=&quot;language-text&quot;&gt;import Phase from &apos;phaser&apos;&lt;/code&gt; instead of &lt;code class=&quot;language-text&quot;&gt;Phaser&lt;/code&gt; as a global and decided it was.&lt;/p&gt;
 &lt;p&gt;The module loaders are configured like so:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; pixiiJs &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;pixi.js&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; p2Js &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;p2.js&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -2984,11 +2984,11 @@ module&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class
       &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; test&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;RegExp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p2Js&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; loader&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;expose?p2&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: /\.css$/, loader: &amp;#39;style-loader!css-loader&amp;#39; }&lt;/code&gt; Allows importing of css files in scripts at build time using &lt;a href=&quot;https://github.com/webpack/css-loader&quot;&gt;css-loader&lt;/a&gt;. Totally optional. I just like that way of getting css in to the page.&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: /\.js$/, exclude: /node_modules/, loader: &amp;quot;babel-loader&amp;quot; }&lt;/code&gt; This converts our es6 code to es5 for browser support.&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: /\.json$/, loader: &amp;#39;json&amp;#39; }&lt;/code&gt; For importing JSON files to scripts at build time.&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: new RegExp(pixiiJs), loader: &amp;#39;expose?PIXI&amp;#39; }&lt;/code&gt; This will assign PIXI to the global object when it gets imported in our es6 code. We do need to have &lt;code class=&quot;language-text&quot;&gt;import &amp;#39;pixi&amp;#39;&lt;/code&gt; in the entry point of our code. We do not need to use the global object in our code but it is there for phaser to use.&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: new RegExp(p2Js), loader: &amp;#39;expose?p2&amp;#39; }&lt;/code&gt; Same as with PIXI, we are putting this on the global object for phaser to use. We also need &lt;code class=&quot;language-text&quot;&gt;import &amp;#39;p2&amp;#39;&lt;/code&gt; in the entry point of our code.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: /\.css$/, loader: &apos;style-loader!css-loader&apos; }&lt;/code&gt; Allows importing of css files in scripts at build time using &lt;a href=&quot;https://github.com/webpack/css-loader&quot;&gt;css-loader&lt;/a&gt;. Totally optional. I just like that way of getting css in to the page.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: /\.js$/, exclude: /node_modules/, loader: &quot;babel-loader&quot; }&lt;/code&gt; This converts our es6 code to es5 for browser support.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: /\.json$/, loader: &apos;json&apos; }&lt;/code&gt; For importing JSON files to scripts at build time.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: new RegExp(pixiiJs), loader: &apos;expose?PIXI&apos; }&lt;/code&gt; This will assign PIXI to the global object when it gets imported in our es6 code. We do need to have &lt;code class=&quot;language-text&quot;&gt;import &apos;pixi&apos;&lt;/code&gt; in the entry point of our code. We do not need to use the global object in our code but it is there for phaser to use.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;{ test: new RegExp(p2Js), loader: &apos;expose?p2&apos; }&lt;/code&gt; Same as with PIXI, we are putting this on the global object for phaser to use. We also need &lt;code class=&quot;language-text&quot;&gt;import &apos;p2&apos;&lt;/code&gt; in the entry point of our code.&lt;/p&gt;
 &lt;p&gt;That was pretty much the only tricky part.&lt;/p&gt;
 &lt;p&gt;I am going to be working on a few games in parallel and will probably never finish any of them, so to help with that I created a yeoman generator that will generate a project with a webpack configuration and some sample phaser code written in es6.&lt;/p&gt;
 &lt;p&gt;If you would like to use it or just want to see what I needed to do to get it all set up run this command (assuming you have nodejs installed)&lt;/p&gt;

@@ -22,7 +22,7 @@
 <p>Why use <a href="https://www.passwordstore.org/">pass</a> and not some other tool like <a href="https://1password.com">1password</a>, <a href="https://www.dashlane.com">Dashlane</a> and others which maybe have more features and better platform support?</p>
 <p>Pass is free, open source and works on most systems that developers use. The ability to use it in your terminal and make it part of the workflow makes it a great tool for developers. If your company does pay for one of the other tools though, they might be a better choice for you. If not, <code class="language-text">pass</code> is a great option.</p>
 <h2>Secrets While Developing <a name="secrets-while-developing"></a></h2>
-<p>If you are building some software that talks to other software, there’s a good chance you are reading secrets in your code. If you are calling services with something like <a href="https://curl.se">curl</a> you likely input commands similar to <code class="language-text">curl -H &quot;Authorization: token my-super-secret-token&quot; https://some-auth-needing-service.com</code> into your terminal.</p>
+<p>If you are building some software that talks to other software, there’s a good chance you are reading secrets in your code. If you are calling services with something like <a href="https://curl.se">curl</a> you likely input commands similar to <code class="language-text">curl -H "Authorization: token my-super-secret-token" https://some-auth-needing-service.com</code> into your terminal.</p>
 <p>If you work in a team and you have some development credentials your team uses, you have probably encountered issues with sharing and keeping track of those secrets.</p>
 <p>In this post we will look at <a href="https://www.passwordstore.org/">pass</a> as an option to help with this. We will look at a potential local workflow that uses <code class="language-text">pass</code> so you don’t ever need to store secrets in plaintext locally. Then we will look at how to share these secrets with your team in a way that’s reasonable enough to maintain.</p>
 <p>The next section will show a sample app to test out the methods we will use but feel free to skip that section if you don’t need to use a sample app.</p>
@@ -45,7 +45,7 @@ cd backstage-example
 yarn
 yarn dev
 
-[1] Backend failed to start up, Error: Failed to initialize github auth provider, Missing required config value at &#39;auth.providers.github.development.clientId&#39;</code></pre></div>
+[1] Backend failed to start up, Error: Failed to initialize github auth provider, Missing required config value at 'auth.providers.github.development.clientId'</code></pre></div>
 <p>To create secrets and follow along you will need a GitHub account. Go here <a href="https://github.com/settings/applications/new">https://github.com/settings/applications/new</a></p>
 <p>Fill it in like this:</p>
 <p><span
@@ -133,14 +133,14 @@ yarn dev
 ----------------------------------------------------
 pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
       AB3A5ED268BD87CD06F8F30B6881F49AF5BB8EAD
-uid           [ultimate] you &lt;you@email.com&gt;
+uid           [ultimate] you &lt;you@email.com>
 sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]</code></pre></div>
 <p>Now copy the ID for that key. In the example above the ID is <code class="language-text">AB3A5ED268BD87CD06F8F30B6881F49AF5BB8EAD</code>. From now on we will refer to that as <code class="language-text">$GPG_KEY</code>.</p>
 <p>Now we will setup pass. Note, by default pass uses <code class="language-text">~/.password-store</code>. If you want to keep your personal password store and your team one separate, you can configure separate directories.</p>
 <p>The directory pass uses can be configured like so:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export PASSWORD_STORE_DIR=~/.work-password-store</code></pre></div>
 <p>Example of an alias to use:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">alias workpass=&#39;PASSWORD_STORE_DIR=~/.work-password-store pass&#39;</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">alias workpass='PASSWORD_STORE_DIR=~/.work-password-store pass'</code></pre></div>
 <p>If you decide to use an alias, replace <code class="language-text">pass</code> with <code class="language-text">workpass</code> (or whatever alias you setup) in all the following examples.</p>
 <p>Initialise pass:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">pass init $GPG_KEY</code></pre></div>
@@ -151,15 +151,15 @@ Enter password for GitHub/backstage-example-token:</code></pre></div>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">pass GitHub/backstage-example-token</code></pre></div>
 <p>You will be prompted for a password the first time when reading a value from pass and again after the login times out.</p>
 <p>Use the token, extracting from pass, like this:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">curl -H &quot;Authorization: token $(pass GitHub/backstage-example-token)&quot; -H &quot;Accept: application/vnd.github.v3+json&quot; https://api.github.com/user/repos</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">curl -H "Authorization: token $(pass GitHub/backstage-example-token)" -H "Accept: application/vnd.github.v3+json" https://api.github.com/user/repos</code></pre></div>
 <p>One advantage of this approach is you do not have to store the token in plaintext at any point or have it visible on your screen as you use the terminal. If you type <code class="language-text">history</code> you won’t see any record of the password.</p>
 <p>In our example application we need 2 more secrets.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">pass insert GitHub/backstage-example-client-id</code></pre></div>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">pass insert GitHub/backstage-example-client-secret</code></pre></div>
 <p>There’s a lot of ways you could use these secrets now to run our sample app. I propose this one. Add a file somewhere on your machine or even in the repo with this content:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export GITHUB_TOKEN=&quot;$(pass GitHub/backstage-example-token)&quot;
-export AUTH_GITHUB_CLIENT_ID=&quot;$(pass GitHub/backstage-example-client-id)&quot;
-export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-secret)&quot;</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export GITHUB_TOKEN="$(pass GitHub/backstage-example-token)"
+export AUTH_GITHUB_CLIENT_ID="$(pass GitHub/backstage-example-client-id)"
+export AUTH_GITHUB_CLIENT_SECRET="$(pass GitHub/backstage-example-client-secret)"</code></pre></div>
 <p>In the following example I assume you created a file in the project directory with that content. Now run:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">source secrets &amp;&amp; yarn dev</code></pre></div>
 <p>All going well, you should have a login page:</p>
@@ -321,17 +321,17 @@ export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-se
 ----------------------------------------------------
 pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
       C351DB397FDFFD4499AB760435C0B93754D6ACD0
-uid           [ultimate] your-colleague &lt;your-colleague@email.com&gt;
+uid           [ultimate] your-colleague &lt;your-colleague@email.com>
 sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]</code></pre></div>
 <p>They must copy the ID for the key to export it as in this example:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg --export --armor C351DB397FDFFD4499AB760435C0B93754D6ACD0 &gt; pass-publickey.asc</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg --export --armor C351DB397FDFFD4499AB760435C0B93754D6ACD0 > pass-publickey.asc</code></pre></div>
 <p>Now they must send the key file to you. It is reasonably safe to send a public key over email or chat but if you have a secure way to share the key, even better.</p>
 <p>Next they can clone the store. This example clones to the default password store directory:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">git clone git@github.com:you/your-pass.git ~/.password-store</code></pre></div>
 <p>If the team member already uses pass or wants to keep the team and personal stores separate, they can use the method we looked at before:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">git clone git@github.com:you/your-pass.git ~/.work-password-store
 
-alias workpass=&#39;PASSWORD_STORE_DIR=~/.work-password-store pass&#39;</code></pre></div>
+alias workpass='PASSWORD_STORE_DIR=~/.work-password-store pass'</code></pre></div>
 <p>At this point they will be able to list the secrets but not read them:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">pass
 Password Store
@@ -349,30 +349,30 @@ gpg --list-keys</code></pre></div>
 ----------------------------------------------------
 pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
       AB3A5ED268BD87CD06F8F30B6881F49AF5BB8EAD
-uid           [ultimate] you &lt;you@email.com&gt;
+uid           [ultimate] you &lt;you@email.com>
 sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]
 
 pub   rsa3072 2020-11-02 [SC] [expires: 2022-11-02]
       C351DB397FDFFD4499AB760435C0B93754D6ACD0
-uid           [unknown] your-colleague &lt;your-colleague@email.com&gt;
+uid           [unknown] your-colleague &lt;your-colleague@email.com>
 sub   rsa3072 2020-11-02 [E] [expires: 2022-11-02]</code></pre></div>
 <p>You have added the key for ‘your-colleague’. We now need to trust the key. Notice that your key has <code class="language-text">[ultimate]</code> but the new one has <code class="language-text">[unknown]</code>. Also note the ID for the new key. That’s <code class="language-text">C351DB397FDFFD4499AB760435C0B93754D6ACD0</code> in the example above. From now on we will refer to that key as <code class="language-text">$GPG_ID</code>:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export GPG_ID=&#39;C351DB397FDFFD4499AB760435C0B93754D6ACD0&#39;</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export GPG_ID='C351DB397FDFFD4499AB760435C0B93754D6ACD0'</code></pre></div>
 <p>Edit the key. This will activate and interactive session with gpg.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg --edit-key $GPG_ID</code></pre></div>
 <p>Type the trust command:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg&gt; trust</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg> trust</code></pre></div>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">pub  rsa3072/35C0B93754D6ACD0
      created: 2020-11-02  expires: 2022-11-02  usage: SC
      trust: unknown      validity: unknown
 sub  rsa3072/84E6664F5F6A5734
      created: 2020-12-16  expires: 2022-12-16  usage: E
-[unknown] (1). your-colleague &lt;your-colleague@email.com&gt;
+[unknown] (1). your-colleague &lt;your-colleague@email.com>
 
-Please decide how far you trust this user to correctly verify other users&#39; keys
+Please decide how far you trust this user to correctly verify other users' keys
 (by looking at passports, checking fingerprints from different sources, etc.)
 
-  1 = I don&#39;t know or won&#39;t say
+  1 = I don't know or won't say
   2 = I do NOT trust
   3 = I trust marginally
   4 = I trust fully
@@ -412,20 +412,20 @@ Your decision? 5</code></pre></div>
 <p>You need to copy the key ID. This gets just the key IDs:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg --list-keys --with-colons | grep fpr | cut -d: -f10</code></pre></div>
 <p>Setup pass:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export GPG_KEY=&#39;you-key-id&#39;
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">export GPG_KEY='you-key-id'
 pass init $GPG_KEY
 pass insert some-secret
 pass git init
 pass git push -u --all</code></pre></div>
 <h3>Getting read access to an existing store</h3>
 <p>Generate a gpg key as above.</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg --export --armor $GPG_KEY &gt; pass-publickey.asc</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg --export --armor $GPG_KEY > pass-publickey.asc</code></pre></div>
 <p>Send <code class="language-text">pass-publickey.asc</code> to someone who can decrypt the store.</p>
 <p><strong>On their machine:</strong></p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg --import pass-publickey.asc
 gpg --edit-key $GPG_ID
 
-gpg&gt; trust</code></pre></div>
+gpg> trust</code></pre></div>
 <p>Trust the key ultimately.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">pass init `cat $PASSWORD_STORE_DIR/.gpg-id` $GPG_ID
 pass git push</code></pre></div>
@@ -440,7 +440,7 @@ pass git push</code></pre></div>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">gpg --import ${the-key-file}
 gpg --edit-key $GPG_ID
 
-gpg&gt; trust</code></pre></div>
+gpg> trust</code></pre></div>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text"></code></pre></div></section><hr/><footer><div class="bio"><div class="bio-avatar gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px"><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQCBf/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/9oADAMBAAIQAxAAAAG+S6MuppRysEXRFP8A/8QAGRAAAwEBAQAAAAAAAAAAAAAAAQIDABEi/9oACAEBAAEFAn6B2s25mz+n0aPSlyRpMXn/AP/EABcRAQEBAQAAAAAAAAAAAAAAAAEQITH/2gAIAQMBAT8BDIcn/8QAFhEBAQEAAAAAAAAAAAAAAAAAEAEx/9oACAECAQE/AS6f/8QAHxAAAQIGAwAAAAAAAAAAAAAAAQACEBESISIxI0Fh/9oACAEBAAY/Asdlcki3yE0G3hkelUDdBx2v/8QAGhABAAIDAQAAAAAAAAAAAAAAAQARITFBgf/aAAgBAQABPyFECcr0Sos7dKSMUKo+QZTiO44vQsHJnwcM3ujNT//aAAwDAQACAAMAAAAQ8NfD/8QAFhEBAQEAAAAAAAAAAAAAAAAAAREg/9oACAEDAQE/EAacP//EABYRAQEBAAAAAAAAAAAAAAAAAAERIP/aAAgBAgEBPxBW4P/EABsQAQADAQEBAQAAAAAAAAAAAAEAESFBYYGR/9oACAEBAAE/EGCUpfYsL15S0Pa6TSWGRLDrZwkRu+q/kpCiqwYGzaIyBKUZXuSoziKJ/9k=" alt="Ruairí O&#x27;Brien" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/static/8c0daa5d2f857b531fed1e4dba23ef9c/340ed/profile-pic.jpg 1x,
 /static/8c0daa5d2f857b531fed1e4dba23ef9c/32ce1/profile-pic.jpg 1.5x,
 /static/8c0daa5d2f857b531fed1e4dba23ef9c/04d41/profile-pic.jpg 2x" /><img loading="lazy" width="50" height="50" srcset="/static/8c0daa5d2f857b531fed1e4dba23ef9c/340ed/profile-pic.jpg 1x,

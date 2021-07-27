@@ -86,7 +86,7 @@
       <span class="token punctuation">-</span> develop
     <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'gradle'</span><span class="token punctuation">,</span> <span class="token string">'build'</span><span class="token punctuation">,</span> <span class="token string">'bootRun'</span><span class="token punctuation">]</span>
 <span class="token key atrule">networks</span><span class="token punctuation">:</span> develop<span class="token punctuation">:</span></code></pre></div>
-<p>The version (<code class="language-text">3.7&#39;</code> in this case) is important. The capabilities from version to version of docker compose are significant. The reference manual for our version is <a href="https://docs.docker.com/compose/compose-file/">here</a>.</p>
+<p>The version (<code class="language-text">3.7'</code> in this case) is important. The capabilities from version to version of docker compose are significant. The reference manual for our version is <a href="https://docs.docker.com/compose/compose-file/">here</a>.</p>
 <p>The <code class="language-text">services</code> field is a list of services we want docker compose to manage. The services are the various components we want to run together while developing. Our example here may be a bit contrived but imaging a more useful scenario where you would like to see how your app behaves connected to various services it uses in production like a database and maybe a cache, like <a href="https://hub.docker.com/_/memcached">memcached</a>, or messaging service, like <a href="https://hub.docker.com/_/rabbitmq">rabbitmq</a>.</p>
 <p>The <code class="language-text">networks</code> field is where we define the networks we want the services ot communicate over. We’re keeping it simple and just using one here but you can do more with networks if you need to.</p>
 <h3>The database configuration</h3>
@@ -117,18 +117,18 @@
 <p><code class="language-text">networks</code> we want all the services to be able to communicate on the same network. Docker allows us to define a network for our services to share. We are creating a network called ‘develop’ and this tells the postgres service to join it.</p>
 <h3>The node application configuration</h3>
 <p>First let’s look at the Dockerfile:</p>
-<div class="gatsby-highlight" data-language="dockerfile"><pre class="language-dockerfile"><code class="language-dockerfile"><span class="token keyword">FROM</span> keymetrics/pm2<span class="token punctuation">:</span>latest<span class="token punctuation">-</span>alpine
+<div class="gatsby-highlight" data-language="dockerfile"><pre class="language-dockerfile"><code class="language-dockerfile"><span class="token instruction"><span class="token keyword">FROM</span> keymetrics/pm2:latest-alpine</span>
 
-<span class="token keyword">WORKDIR</span> /usr/app
+<span class="token instruction"><span class="token keyword">WORKDIR</span> /usr/app</span>
 
-<span class="token keyword">COPY</span> bin/ ./bin/
-<span class="token keyword">COPY</span> package.json .
-<span class="token keyword">COPY</span> yarn.lock .
-<span class="token keyword">COPY</span> ecosystem.config.js .
+<span class="token instruction"><span class="token keyword">COPY</span> bin/ ./bin/</span>
+<span class="token instruction"><span class="token keyword">COPY</span> package.json .</span>
+<span class="token instruction"><span class="token keyword">COPY</span> yarn.lock .</span>
+<span class="token instruction"><span class="token keyword">COPY</span> ecosystem.config.js .</span>
 
-<span class="token keyword">ENV</span> NPM_CONFIG_LOGLEVEL warn
-<span class="token keyword">RUN</span> yarn install</code></pre></div>
-<p><code class="language-text">FROM keymetrics/pm2:latest-alpine</code> this is an image provided by the <a href="http://pm2.keymetrics.io/">pm2</a> people which is handy for auto restarting our app on code changes but we have many options. We could use the <a href="https://hub.docker.com/_/node/">NodeJS image</a> and start a little differently <code class="language-text">command: [&quot;npm&quot;, &quot;start&quot;]</code> for example. We could also use a custom Dockerfile for our app. If you had a python app or whatever, you could just use the appropriate image for that here instead.</p>
+<span class="token instruction"><span class="token keyword">ENV</span> NPM_CONFIG_LOGLEVEL warn</span>
+<span class="token instruction"><span class="token keyword">RUN</span> yarn install</span></code></pre></div>
+<p><code class="language-text">FROM keymetrics/pm2:latest-alpine</code> this is an image provided by the <a href="http://pm2.keymetrics.io/">pm2</a> people which is handy for auto restarting our app on code changes but we have many options. We could use the <a href="https://hub.docker.com/_/node/">NodeJS image</a> and start a little differently <code class="language-text">command: ["npm", "start"]</code> for example. We could also use a custom Dockerfile for our app. If you had a python app or whatever, you could just use the appropriate image for that here instead.</p>
 <p><code class="language-text">WORKDIR /usr/app</code> I am not sure is using /usr/app is a convention or just something I copied and kept using but I tend to use it as the place to put my app code in most docker containers. Any commands run after specifying that in the Dockerfile will be run in the context of that directory.</p>
 <p>After that point, with all the <code class="language-text">COPY</code> calls, we’re doing a few slightly odd things here and I’ll explain why. We want the application to install all it’s dependencies in the Docker container. With the way node dependencies work, it can cause problems to install on the host and not in the container.</p>
 <p>Take an example where you are developing on Windows. If you install the dependencies on Windows first and then mount the code in a container, you will hit issues. Node will install and even compile dependencies for the OS you are on. Trying to run your Windows dependencies in Linux will cause issues.</p>

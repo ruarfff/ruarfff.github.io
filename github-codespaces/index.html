@@ -103,9 +103,9 @@
 <p>What if you want to customise the setup? That’s where devcontainer comes in. For my example repo, I wanted to use python 3.8 and I wanted pipenv to be installed. This is how I set that up.</p>
 <h2>Docker Setup</h2>
 <p>You can define the environment you want to use for development with a dockerfile. My docker file it really basic but you can do whatever you need here:</p>
-<div class="gatsby-highlight" data-language="docker"><pre class="language-docker"><code class="language-docker"><span class="token keyword">FROM</span> python<span class="token punctuation">:</span>3.8
+<div class="gatsby-highlight" data-language="docker"><pre class="language-docker"><code class="language-docker"><span class="token instruction"><span class="token keyword">FROM</span> python:3.8</span>
 
-<span class="token keyword">RUN</span>  pip install pipenv</code></pre></div>
+<span class="token instruction"><span class="token keyword">RUN</span>  pip install pipenv</span></code></pre></div>
 <p>I put this at the root of the project in a file called <code class="language-text">Dockerfile</code>.</p>
 <p>For Codespaces to use this you need one more step.</p>
 <p>Create a file: <code class="language-text">.devcontainer/devcontainer.json</code></p>
@@ -127,9 +127,9 @@
   <span class="token property">"runArgs"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"--network"</span><span class="token punctuation">,</span> <span class="token string">"host"</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>I like having the Dockerfile at the root of my project so I configured it that way but it’s also quite common to put the Dockerfile in the <code class="language-text">.devcontainers</code> directory.</p>
-<p><code class="language-text">&quot;terminal.integrated.shell.linux&quot;: null</code> just says we don’t want to use my local VSCode shell settings since your own VSCode settings get imported if you are using settings sync. You can configure this to be more specific based on what’s in your Dockerfile.</p>
-<p>I want to use <a href="https://pypi.org/project/pipenv/">pipenv</a> so having this run post creation <code class="language-text">&quot;postCreateCommand&quot;: &quot;pipenv sync --dev&quot;</code> saves one extra step.</p>
-<p><code class="language-text">&quot;runArgs&quot;: [ &quot;--network&quot;, &quot;host&quot;]</code> because I don’t want to bother messing with ports.</p>
+<p><code class="language-text">"terminal.integrated.shell.linux": null</code> just says we don’t want to use my local VSCode shell settings since your own VSCode settings get imported if you are using settings sync. You can configure this to be more specific based on what’s in your Dockerfile.</p>
+<p>I want to use <a href="https://pypi.org/project/pipenv/">pipenv</a> so having this run post creation <code class="language-text">"postCreateCommand": "pipenv sync --dev"</code> saves one extra step.</p>
+<p><code class="language-text">"runArgs": [ "--network", "host"]</code> because I don’t want to bother messing with ports.</p>
 <p>With all that setup, once you create a new Codespace, you should see it getting created like this:</p>
 <p><span
       class="gatsby-resp-image-wrapper"
