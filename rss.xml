@@ -1,4 +1,429 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 18 Aug 2022 22:27:46 GMT</lastBuildDate><item><title><![CDATA[How to only run a job on a pull request in CircleCI]]></title><description><![CDATA[I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last…]]></description><link>https://ruarfff.com/circleci-pr-only/</link><guid isPermaLink="false">https://ruarfff.com/circleci-pr-only/</guid><pubDate>Tue, 27 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last place we used GitHub actions and this was super easy.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 26 Aug 2022 23:30:53 GMT</lastBuildDate><item><title><![CDATA[Understanding python async]]></title><description><![CDATA[Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like uvloop: uvloop makes asyncio…]]></description><link>https://ruarfff.com/understanding-python-async/</link><guid isPermaLink="false">https://ruarfff.com/understanding-python-async/</guid><pubDate>Fri, 26 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like &lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;uvloop&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;uvloop makes asyncio fast. In fact, it is at least 2x faster than nodejs, gevent, as well as any other Python asynchronous framework. The performance of uvloop-based asyncio is close to that of Go programs.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Writing asynchronous code in python is also pretty easy to mess up.&lt;/p&gt;
+&lt;p&gt;This post is an attempt to understand async python a little better and make it easier to spot the common mistakes.&lt;/p&gt;
+&lt;p&gt;There’s a repo if you’d like to have the code examples: &lt;a href=&quot;https://github.com/ruarfff/understanding-python-async&quot;&gt;https://github.com/ruarfff/understanding-python-async&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this post we will look at:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;async/concurrent vs parallel&lt;/li&gt;
+&lt;li&gt;interesting things to know about async in python&lt;/li&gt;
+&lt;li&gt;async with FastAPI&lt;/li&gt;
+&lt;li&gt;what do do if something you use doesn’t support async&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Coding along&lt;/h2&gt;
+&lt;p&gt;Make sure to have python &gt;= 3.8 installed.&lt;/p&gt;
+&lt;p&gt;You should be using a unix like shell e.g. Linux, Mac, WSL.&lt;/p&gt;
+&lt;p&gt;My setup (you don’t need to use this exact version):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/pyenv/pyenv&quot;&gt;pyenv&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pyenv install 3.10.6
+
+pyenv global 3.10.6&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;git clone git@github.com:zoe/understanding-python-async.git &amp;amp;&amp;amp; cd understanding-python-async&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Setup a &lt;a href=&quot;https://docs.python.org/3/library/venv.html&quot;&gt;virtual environment&lt;/a&gt; and run all commands in this context&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;python -m venv ./.venv
+
+source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Install requirements &lt;code class=&quot;language-text&quot;&gt;pip install -r requirements.txt&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;You should also have &lt;a href=&quot;https://curl.se/&quot;&gt;curl&lt;/a&gt; installed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Async Vs Parallel&lt;/h2&gt;
+&lt;p&gt;Parallel and asynchronous are not the same thing. If you have a good mental model for async vs parallel feel free to skip this section.&lt;/p&gt;
+&lt;p&gt;When I was in college I wrote a mobile game. I had to learn about &lt;a href=&quot;https://gameprogrammingpatterns.com/game-loop.html&quot;&gt;the game loop&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Within the loop, I had code to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;process inputs&lt;/li&gt;
+&lt;li&gt;update the game state based on reactions to inputs and existing algorithms&lt;/li&gt;
+&lt;li&gt;render the game&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It was all perfectly synchronous so I couldn’t have anything take too long or the game would become unplayable. I became obsessed with improving performance but I always hit limits. I was attempting to render at 30FPS (frames per second meaning the loop must carry out all processing at least 30 times per second). Every time I coded up a new game agent or increased the number of agents on the screen, the FPS would suffer and I’d go mad trying to figure out how to optimise performance again. Then one day, I discovered the joy and pain of async programming.&lt;/p&gt;
+&lt;p&gt;Mobile games ran on a single processor but using threading, you could simulate parallelism. It was, in fact, asynchronous but you didn’t really have to think too hard about scheduling the threads. You hand that job over to the operating system. It did make things a lot more complicated and harder to understand though and that’s the major tradeoff.&lt;/p&gt;
+&lt;p&gt;This might be fairly inaccurate but I like to think of asyncio (and its Cython-based friend uvloop) as a sort of game loop. It’s not running in parallel but the loop will keep looping if you don’t block it. If you do block it, you mess the whole thing up.&lt;/p&gt;
+&lt;p&gt;Where that mental model breaks down is when we think about CPU bound VS IO-bound.&lt;/p&gt;
+&lt;p&gt;Asynchronous code makes sense when there’s a lot of waiting or the code is IO-Bound. It’s somewhat more intuitive. Like when you are coding. Consider an example flow:&lt;/p&gt;
+&lt;h4&gt;Task - get some code to production&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;you write some code&lt;/li&gt;
+&lt;li&gt;run and test the code&lt;/li&gt;
+&lt;li&gt;commit and push the code&lt;/li&gt;
+&lt;li&gt;watch the build pipeline&lt;/li&gt;
+&lt;li&gt;get distracted and start chatting on slack/teams&lt;/li&gt;
+&lt;li&gt;go for lunch&lt;/li&gt;
+&lt;li&gt;remember you had a build pipeline running&lt;/li&gt;
+&lt;li&gt;test the deployment&lt;/li&gt;
+&lt;li&gt;done&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are steps you don’t wait for e.g. watching the build pipeline. This is asynchronous and frees you up to do other things. It’s not necessarily more efficient but it’s better than sitting there waiting for the build pipeline to finish. You got other tasks done while also getting the code to production.&lt;/p&gt;
+&lt;p&gt;A build pipeline has steps that can be run in &lt;strong&gt;parallel&lt;/strong&gt; e.g. testing and linting. This can be done in parallel if we give each step all its own resources and a dedicated machine. We could do all the steps &lt;strong&gt;asynchronously&lt;/strong&gt; on one large machine but we can use many smaller, cheaper machines to do the work in parallel.&lt;/p&gt;
+&lt;p&gt;You can think of async as one resource doing many things at once and figuring out how not to wait for each thing to be finished. Parallel processing is multiple resources each working on separate tasks or parts of a task.&lt;/p&gt;
+&lt;p&gt;Throughout the rest of this post, we will be focusing on the asynchronous model. When writing python apps with a framework like FastAPI, we are generally doing IO-Bound work e.g. downstream requests, reading databases, files etc. The asynchronous model is most useful in this case.&lt;/p&gt;
+&lt;p&gt;We will focus primarily on the patterns for using &lt;a href=&quot;https://docs.python.org/3/library/asyncio-task.html&quot;&gt;coroutines&lt;/a&gt; and async/await.&lt;/p&gt;
+&lt;h2&gt;Example of async code using asyncio&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; asyncio
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; datetime
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; time
+
+&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; colorama &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; init
+&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; colorama &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Back&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Style
+
+
+&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GREEN &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Starting synchronous work.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    start_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    synchronous_work&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    synchronous_work&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    end_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; start_time
+
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GREEN
+        &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE
+        &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Ending synchronous work. Total time: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;end_time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;total_seconds&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token format-spec&quot;&gt; .2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; sec.&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;MAGENTA &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Starting awaiting async functions.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    start_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; async_work&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;LIGHTYELLOW_EX &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; async_work&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;LIGHTRED_EX &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    end_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; start_time
+
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;MAGENTA
+        &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE
+        &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Ending awaiting async functions. Total time: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;end_time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;total_seconds&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token format-spec&quot;&gt; .2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; sec.&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;LIGHTBLUE_EX &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Starting running async.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    start_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    tasks &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+        async_work&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;LIGHTYELLOW_EX &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        async_work&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;LIGHTRED_EX &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; asyncio&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gather&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;tasks&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    end_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; start_time
+
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;LIGHTBLUE_EX
+        &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE
+        &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Ending running async. Total time: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;end_time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;total_seconds&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token format-spec&quot;&gt; .2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; sec.&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Style&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;RESET_ALL&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;synchronous_work&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;CYAN &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Pretending to wait.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;async_work&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;colour&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;colour &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Pretending to wait async.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; asyncio&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; __name__ &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    init&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    asyncio&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;run&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This contrived example shows a simple case where asynchronous code got things done faster than blocking code.&lt;/p&gt;
+&lt;p&gt;Running 2 tasks that each take 2 seconds asynchronously allows them to be finished in 2 seconds.&lt;/p&gt;
+&lt;p&gt;If you await 2 async functions in sequence, it’s sort of like it was done synchronously so if you really want multiple steps to run asynchronously you can use utilities such as the &lt;code class=&quot;language-text&quot;&gt;asyncio.gather&lt;/code&gt; function in that example.&lt;/p&gt;
+&lt;h2&gt;It’s Async all the way down&lt;/h2&gt;
+&lt;p&gt;An important note that took me a few mistakes to understand, you must use async all the way down. If you block at any point within an async function, you block everything.&lt;/p&gt;
+&lt;p&gt;We will explore this more in the FastAPI section but for now, it’s important to be aware that this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;pthon&quot;&gt;&lt;pre class=&quot;language-pthon&quot;&gt;&lt;code class=&quot;language-pthon&quot;&gt;async def synchronous_work_in_async_function():
+    time.sleep(2)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Has very different effects to this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;async_work&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; asyncio&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;The GIL&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&quot;https://wiki.python.org/moin/GlobalInterpreterLock&quot;&gt;python GIL&lt;/a&gt; (global interpreter lock) can lead to some issues when writing async code. For the most part, you’ll probably never notice if you’re writing IO-bound apps but for CPU bound, it may become an issue.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The GIL prevents race conditions and ensures thread safety.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All threads in python share the same memory space. The GIL helps ensure thread safety for multiple threads interacting with the same variable.&lt;/p&gt;
+&lt;p&gt;An example of where this might be important. Python uses a ref count to determine if something should be garbage collected.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; sys
+
+
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    a_thing &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;a thing&quot;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sys&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;getrefcount&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a_thing&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    another_thing &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; a_thing
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sys&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;getrefcount&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;another_thing&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;del&lt;/span&gt; a_thing
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sys&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;getrefcount&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;another_thing&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; __name__ &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If multiple threads are updating references, you might get an accidental garbage collection or a memory leak. The lock is there to ensure this doesn’t happen and garbage collection is done safely.&lt;/p&gt;
+&lt;p&gt;The downside is this can affect performance.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In hindsight, the GIL is not ideal, since it prevents multithreaded CPython programs from taking full advantage of multiprocessor systems in certain situations.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There are ways around this. Some libraries aren’t effected by the GIL e.g. &lt;a href=&quot;https://numpy.org/&quot;&gt;Numpy.&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When writing a web app with FastAPI, using async/await and a library like &lt;a href=&quot;https://www.uvicorn.org/&quot;&gt;uvicorn&lt;/a&gt;, the GIL is less of an issue as we are primarily IO bound.&lt;/p&gt;
+&lt;h2&gt;Async FastAPI&lt;/h2&gt;
+&lt;p&gt;FastAPI is &lt;a href=&quot;https://fastapi.tiangolo.com/?h=perfor#performance&quot;&gt;quite fast&lt;/a&gt;, unless you make it not fast :)&lt;/p&gt;
+&lt;p&gt;How does that happen?&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://fastapi.tiangolo.com/async/&quot;&gt;async docs for FastAPI&lt;/a&gt; are really good. We won’t repeat much from them here but instead look at some examples.&lt;/p&gt;
+&lt;p&gt;A “hello world” FastAPI app looks like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; fastapi &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; FastAPI
+
+app &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; FastAPI&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;When we start up our FastAPI service, it will handle requests asynchronously on the eventloop. One worker should be able to handle many requests in this scenario.&lt;/p&gt;
+&lt;p&gt;Let’s see what that looks like. If you have the &lt;a href=&quot;https://github.com/zoe/understanding-python-async&quot;&gt;examples repo&lt;/a&gt; you can run ./test-endpoints.sh to see all these outputs or feel free to follow along step by step here.&lt;/p&gt;
+&lt;p&gt;Create a hello world sample like the following:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;touch src/fastapi_example.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; fastapi &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; FastAPI
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; time
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; datetime
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; asyncio
+
+&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; colorama &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; init
+&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; colorama &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Back&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; Style
+
+app &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; FastAPI&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    start_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GREEN &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Hello world started at: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;start_time&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; sec.&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can hit the same endpoint multiple times simultaneously with curl.&lt;/p&gt;
+&lt;p&gt;Create a text file like this:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;touch test_urls.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add this content:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;url = &quot;http://127.0.0.1:8000/&quot;
+url = &quot;http://127.0.0.1:8000/&quot;
+url = &quot;http://127.0.0.1:8000/&quot;
+url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Start your FastAPI app:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;uvicorn src.fastapi_example:app --reload&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In another console, run curl:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;curl --parallel --parallel-immediate --parallel-max 4 --config test_urls.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You should see output similar to the following:&lt;/p&gt;
+&lt;p&gt;That was perhaps too fast to prove anything.&lt;/p&gt;
+&lt;p&gt;Update your endpoint with &lt;code class=&quot;language-text&quot;&gt;await asyncio.sleep(4)&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    start_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GREEN &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Hello world started at: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;start_time&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; sec.&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; asyncio&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Run the test again:&lt;/p&gt;
+&lt;p&gt;Despite each call not responding for 4 seconds, they all kicked off at the same time. FastAPI is handling requests asynchronously.&lt;/p&gt;
+&lt;p&gt;Now to demonstrate where things can go wrong, let’s add another endpoint:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/slow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;slow&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    start_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GREEN &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Slow started at: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;start_time&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; sec.&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;So slow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here’s we’re using the blocking &lt;code class=&quot;language-text&quot;&gt;time.sleep&lt;/code&gt; instead of the non blocking &lt;code class=&quot;language-text&quot;&gt;asyncio.sleep&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Update the urls.txt file:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;url = &quot;http://127.0.0.1:8000/slow&quot;
+url = &quot;http://127.0.0.1:8000/slow&quot;
+url = &quot;http://127.0.0.1:8000/&quot;
+url = &quot;http://127.0.0.1:8000/&quot;
+url = &quot;http://127.0.0.1:8000/&quot;
+url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The order is important. We want the slow ones to kick off first.&lt;/p&gt;
+&lt;p&gt;Update the curl command to allow 6 concurrent requests:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;curl --parallel --parallel-immediate --parallel-max 6 --config test_urls.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Oops! We just blocked all requests from being processed.&lt;/p&gt;
+&lt;p&gt;The main takeaway from this is, you just can’t mix asynchronous and synchronous functionality in a FastAPI application this way.&lt;/p&gt;
+&lt;p&gt;Consider this next example:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/sync-slow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sync_slow&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    start_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;LIGHTRED_EX &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Sync slow started at: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;start_time&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; sec.&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;So slow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Notice, we are not specifying &lt;code class=&quot;language-text&quot;&gt;async&lt;/code&gt; on the function definition.&lt;/p&gt;
+&lt;p&gt;Update our test URLs:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;url = &quot;http://127.0.0.1:8000/sync-slow&quot;
+url = &quot;http://127.0.0.1:8000/sync-slow&quot;
+url = &quot;http://127.0.0.1:8000/&quot;
+url = &quot;http://127.0.0.1:8000/&quot;
+url = &quot;http://127.0.0.1:8000/&quot;
+url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you don’t specify your endpoint as being async i.e. as &lt;a href=&quot;https://docs.python.org/3/library/asyncio-task.html&quot;&gt;a coroutine&lt;/a&gt;, FastAPI will look after it for you instead as it will assume this route contains blocking calls whereas if you specify &lt;code class=&quot;language-text&quot;&gt;async&lt;/code&gt;, it’s up to you to make sure it really is asynchronous.&lt;/p&gt;
+&lt;p&gt;Rules of thumb:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;if all your code uses coroutines i.e. all use async/await, use async when defining your route&lt;/li&gt;
+&lt;li&gt;if any of your code is blocking e.g. using requests, some non aio ORM etc. do not use async when specifying the route&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you use &lt;a href=&quot;https://docs.python-requests.org/en/latest/&quot;&gt;requests&lt;/a&gt; or standard &lt;a href=&quot;https://www.sqlalchemy.org/&quot;&gt;SQLAlchemy&lt;/a&gt; anywhere in a route, you will block the execution.&lt;/p&gt;
+&lt;p&gt;Consider alternatives like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aiohttp.org/en/stable/&quot;&gt;https://docs.aiohttp.org/en/stable/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html&quot;&gt;https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Pubsub&lt;/h2&gt;
+&lt;p&gt;FastAPI is great at managing async within the context of the framework e.g. in a route. It cannot account for any code you write that may be running on some schedule or handling incoming events. Especially if you’re using the same event loop.&lt;/p&gt;
+&lt;p&gt;To illustrate, let’s add some pubsub:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;pip install --upgrade google-cloud-pubsub&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This example is pretty contrived and GCP specific but does demonstrate a common mistake.&lt;/p&gt;
+&lt;p&gt;If you’d like to follow along please &lt;a href=&quot;https://cloud.google.com/sdk/docs/install&quot;&gt;install the gcloud cli&lt;/a&gt; and run the following to start a pubsub emulator:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;gcloud beta emulators pubsub start --project=example-project&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;We are doing this so we can see what happens when our FastAPI application listens to messages out side of standard web requests.&lt;/p&gt;
+&lt;p&gt;Update our FastAPI app to handle messages:&lt;/p&gt;
+&lt;p&gt;Import the pubsub lib:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; google&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;cloud &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; pubsub_v1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Setup a subscription:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;create_standard_subscription&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    project_id &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;example-project&quot;&lt;/span&gt;
+    topic_id &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;testing&quot;&lt;/span&gt;
+    subscription_id &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;testing-subscription&quot;&lt;/span&gt;
+
+    publisher &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pubsub_v1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PublisherClient&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    subscriber &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pubsub_v1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;SubscriberClient&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    subscription_path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; subscriber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;subscription_path&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;project_id&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; subscription_id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    topic_path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; publisher&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;topic_path&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;project_id&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; topic_id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        subscriber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;create_subscription&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+            request&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; subscription_path&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;topic&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; topic_path&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Subscription already exists&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;message&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; pubsub_v1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;subscriber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;message&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Message&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        start_time &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;datetime&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;now&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; message&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;decode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;non-blocking&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+                Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;BLUE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Starting async message at: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;start_time&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;.&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            message&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ack&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;elif&lt;/span&gt; message&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;decode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;blocking&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+                Back&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;LIGHTMAGENTA_EX
+                &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; Fore&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;WHITE
+                &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Starting sync message at: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;start_time&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;.&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                flush&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            message&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ack&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    subscriber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;subscribe&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;subscription_path&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; callback&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;callback&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Listening for messages on &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;subscription_path&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;..\n&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;on_event&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;startup&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;startup_event&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    create_standard_subscription&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Configure a pubsub client to send messages e.g.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;touch src/pubsub_client.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;With the following content:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; google&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;cloud &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; pubsub_v1 &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; pubsub
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; itertools
+
+
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    publisher &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pubsub&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PublisherClient&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    project_id &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;example-project&quot;&lt;/span&gt;
+    topic_id &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;testing&quot;&lt;/span&gt;
+
+    publisher &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pubsub&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PublisherClient&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    topic_path &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; publisher&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;topic_path&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;project_id&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; topic_id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        topic &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; publisher&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;create_topic&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;request&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; topic_path&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string-interpolation&quot;&gt;&lt;span class=&quot;token string&quot;&gt;f&quot;Created topic: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;topic&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Topic already exists&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Run 5 non-blocking&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; _ &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; itertools&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;repeat&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        future &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; publisher&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;publish&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;topic_path&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;b&quot;non-blocking&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;future&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Run 5 blocking&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; _ &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; itertools&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;repeat&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+        future &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; publisher&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;publish&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;topic_path&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;b&quot;blocking&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;future&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; __name__ &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We are going to send some messages to our app and see how it responds in different scenarios. The client uses environment variables to connect to the emulator. You must load the environment variables like so:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$(gcloud beta emulators pubsub env-init)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So at this point you should have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a running pubsub emulator&lt;/li&gt;
+&lt;li&gt;a sample client with the emulator environment variables ready to go in the shell&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Run the client:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;❯ python src/pubsub_client.py
+Topic already exists
+Run 5 non-blocking
+183
+184
+185
+186
+187
+Run 5 blocking
+188
+189
+190
+191
+192&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see output int he app console like this:&lt;/p&gt;
+&lt;p&gt;All the messages were processed asynchronously. The pubsub is using a callback and the eventloop used by FastAPI is not effected.&lt;/p&gt;
+&lt;h2&gt;Useful links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.aiohttp.org/en/stable/&quot;&gt;https://docs.aiohttp.org/en/stable/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html&quot;&gt;https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/alex-sherman/unsync&quot;&gt;https://github.com/alex-sherman/unsync&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://asherman.io/projects/unsync.html&quot;&gt;https://asherman.io/projects/unsync.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://fastapi.tiangolo.com/async/&quot;&gt;https://fastapi.tiangolo.com/async/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/mikeckennedy/async-await-jetbrains-webcast&quot;&gt;https://github.com/mikeckennedy/async-await-jetbrains-webcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/61316540/how-to-get-python-fastapi-async-await-functionality-to-work-properly&quot;&gt;https://stackoverflow.com/questions/61316540/how-to-get-python-fastapi-async-await-functionality-to-work-properly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://asgi.readthedocs.io/en/latest/&quot;&gt;https://asgi.readthedocs.io/en/latest/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;https://uvloop.readthedocs.io/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.uvicorn.org/&quot;&gt;https://www.uvicorn.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library&quot;&gt;https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[How to only run a job on a pull request in CircleCI]]></title><description><![CDATA[I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last…]]></description><link>https://ruarfff.com/circleci-pr-only/</link><guid isPermaLink="false">https://ruarfff.com/circleci-pr-only/</guid><pubDate>Tue, 27 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last place we used GitHub actions and this was super easy.
 Now I am using &lt;a href=&quot;https://circleci.com/&quot;&gt;CircleCI&lt;/a&gt; and this wasn’t so easy.&lt;/p&gt;
 &lt;p&gt;In this post we will look at how to only run a job on a pull request in CircleCI. There is one major caveat. We also need a way to trigger the job on a pull request. We will look at how to do this with the &lt;a href=&quot;https://circleci.com/docs/api/v2/&quot;&gt;CircleCI web api&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Conditionally run a job&lt;/h2&gt;
