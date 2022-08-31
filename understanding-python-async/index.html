@@ -148,6 +148,37 @@ source .venv/bin/activate</code></pre></div>
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
     init<span class="token punctuation">(</span><span class="token punctuation">)</span>
     asyncio<span class="token punctuation">.</span>run<span class="token punctuation">(</span>main<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/461840d2b32c17eb2c4cd62bfd0a3830/58bb7/async1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.734177215189874%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACZklEQVQoz3XIbUyMAQDA8eejMU1H53XpVTmlLzYxxZqvTaZJL3rVnUjXNeqaQi9mlTV03V3XXXfPvUWxtZI4tjab2KzMVJINvY6Q2vjC7O9xDA0ffvtvfyFcu5WIczGEVUSzsWo7kdW7CKkKJaDOB3nSIpb4CywO+inwj/6HENtQx25XM3GikVibgd2ijSgxA3/3elZVBiBLXcPyrLXIsld7+XrJWJa9VOLzF2Gb3sHOtpvEuDqJdl5nh+sGkQ4LQWI1oVdq2NBRQ/i1OqLcDUS5dFIvssVxi2jxMdH2fsnAAsJ+ZRppmhySCzI5qDlEakEWaQVKDuSrSFLlkpJ5mPj8FOTGdcib1rHGtBZ/XSrBF6sJvlROyKVTCwj9Oh2vL19m3OFk0mmXOJlwOJhutdOVYEPc7MQc20RpepFE4602M0+SQ3GGEs3BvAWE7ng1DxPL6Nur5UFCCff3/NAXX0x/vY4Bl5VH5haGm9wMm1oZMroZamxl0NDOWLOVr+5aPrvO88X9g5CedY+8/JfkHh5FdfQ5StUoh469QJ1wn9OrbGj9nGhldkr8RErkdrQrbJT6tkhf5OzKRmyBZ7AEVtISWOElDFyp5U1vMxMeA9MePVO3DUzeMTLbXY/F0MvJhmdUNT6hUjfoVaYf5UTTGMXGVxw3jqPWT1Oon/pFuHBEpKW4B1NRFxZNB+aiTkyFnRgKurC29SPeHcHseYrFM4yld5QHV9v5aCln1lrFnLWSeWuF1N+EcOUIEUWfUKg/sEkzR0ThHIrv1PMoVO9Q5MywMeetZIaw3PfEpT4mbV8PyYmef/oGTw/ixDeuo8AAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Async example"
+        title="Async example"
+        src="/static/461840d2b32c17eb2c4cd62bfd0a3830/f058b/async1.png"
+        srcset="/static/461840d2b32c17eb2c4cd62bfd0a3830/c26ae/async1.png 158w,
+/static/461840d2b32c17eb2c4cd62bfd0a3830/6bdcf/async1.png 315w,
+/static/461840d2b32c17eb2c4cd62bfd0a3830/f058b/async1.png 630w,
+/static/461840d2b32c17eb2c4cd62bfd0a3830/40601/async1.png 945w,
+/static/461840d2b32c17eb2c4cd62bfd0a3830/58bb7/async1.png 985w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
 <p>This contrived example shows a simple case where asynchronous code got things done faster than blocking code.</p>
 <p>Running 2 tasks that each take 2 seconds asynchronously allows them to be finished in 2 seconds.</p>
 <p>If you await 2 async functions in sequence, it’s sort of like it was done synchronously so if you really want multiple steps to run asynchronously you can use utilities such as the <code class="language-text">asyncio.gather</code> function in that example.</p>
@@ -180,6 +211,36 @@ source .venv/bin/activate</code></pre></div>
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
     main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/48887812fc0849fb6a53ff3bdcb792fb/e9beb/gil.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 24.68354430379747%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAYUlEQVQY042PvQoAIQyDnbUFFZdDRO2k7/+AOSgc3HA/HT6aIQ2JK0fBXhu9d9Ra0VrDnBMionqMASJCCEHvHy7nrIKZlSdtDdPAlBK89/r0xtXQEuxijCajefK9gXXWFyd3THOy/BpofgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="GIL Output"
+        title="GIL Output"
+        src="/static/48887812fc0849fb6a53ff3bdcb792fb/f058b/gil.png"
+        srcset="/static/48887812fc0849fb6a53ff3bdcb792fb/c26ae/gil.png 158w,
+/static/48887812fc0849fb6a53ff3bdcb792fb/6bdcf/gil.png 315w,
+/static/48887812fc0849fb6a53ff3bdcb792fb/f058b/gil.png 630w,
+/static/48887812fc0849fb6a53ff3bdcb792fb/e9beb/gil.png 730w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
 <p>If multiple threads are updating references, you might get an accidental garbage collection or a memory leak. The lock is there to ensure this doesn’t happen and garbage collection is done safely.</p>
 <p>The downside is this can affect performance.</p>
 <blockquote>
@@ -236,6 +297,39 @@ url = "http://127.0.0.1:8000/"</code></pre></div>
 <p>In another console, run curl:</p>
 <p><code class="language-text">curl --parallel --parallel-immediate --parallel-max 4 --config test_urls.txt</code></p>
 <p>You should see output similar to the following:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{"message":"Hello World"}{"message":"Hello World"}{"message":"Hello World"}{"message":"Hello World"}{"message":"So slow"}{"message":"So slow"}</code></pre></div>
+<p>In the application logs:
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e8eb2dda5c9a4489b601ceb05264d8d8/36c33/async-normal.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 43.0379746835443%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABxklEQVQoz22S227TUBBF/QG5ICCJfc6xz8WXhg/gtX2gVICEVJqipqF17diO00JbQcVF/Pxm2+WBSDwsjXVGWtozHk/99hHVCuZLiPjWIr1zMLdhj72OkN67vpd+jRHfGUQ3Evo+hF9NMDwYYLS/iye+zyAXAUwRIVk7pOsYttRwRF8oZE0Cy96LbYakdohyCVkGmBbPMF4NMD4f7uCJhynEiQ9zRWHpejphUjnolcJencKyN99k/Vt0KaEKgekVhUsKl8MdPPlzBrUU0BVHbiyShsImgmuYsAiRbZmwovAmRbKxCEuOvFHw11OMFhQuKOrrI574wZHPOHInrA3HsrA1hfzWOYUthWsKrzshExYSYS3glxSeUnJKYV8f8cQ3Co8D6MsQSe56bK57wqVEViYwFyHmdYa4sFArAZkHmOUTjD9Rshru4EkmVGcChim6pac1f0ql+4SGCfc2/yRsuoSKVyHhF0z48T8J5S8f6lz0e0taCtsYbqMRtxSWFFJkuc/5Zwq3FFY8sZZns55gdELJBwq7+hdvxsb05QThawV7ZHr0EXf41kAeBEjexYgOKX6fwr2xEK8CBIczPD9+iicPAzLc4Q+OKhr4sTEjcwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Async example output"
+        title="Async example output"
+        src="/static/e8eb2dda5c9a4489b601ceb05264d8d8/f058b/async-normal.png"
+        srcset="/static/e8eb2dda5c9a4489b601ceb05264d8d8/c26ae/async-normal.png 158w,
+/static/e8eb2dda5c9a4489b601ceb05264d8d8/6bdcf/async-normal.png 315w,
+/static/e8eb2dda5c9a4489b601ceb05264d8d8/f058b/async-normal.png 630w,
+/static/e8eb2dda5c9a4489b601ceb05264d8d8/40601/async-normal.png 945w,
+/static/e8eb2dda5c9a4489b601ceb05264d8d8/36c33/async-normal.png 946w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
 <p>That was perhaps too fast to prove anything.</p>
 <p>Update your endpoint with <code class="language-text">await asyncio.sleep(4)</code>:</p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
@@ -248,6 +342,37 @@ url = "http://127.0.0.1:8000/"</code></pre></div>
     <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">"Hello World"</span><span class="token punctuation">}</span></code></pre></div>
 <p>Run the test again:</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/ddeb3e6e88a2fa6368dbf4878fd42f22/97bfd/async-normal-waiting.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 40.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABi0lEQVQoz2WQu47TUBRFjejiazu28St+X79iZwQSxRQ0INFT8BF8CgUZKCARxYgZgUSe/OPixqQgSrG0t86R9tn3avJrhvyeUa0L8lVMfdZilShfUq5T5Dr7p6uM/r7h2Qcb45WO+UZgvr5EG363LA4dz3c93bbixX7BXGm3lWo2MOxa+m0z6onbw0vijY+9Ebgb8wqt/plTH3Pao2qzT2gPJcU+Ru5TuqOkOmSjP9EcCm7+dAS/HOwfBu6DifNgXKA1jyXNN8n8Y0O7rFgsO+Z3Nc0nyXDyy4bFl47hc0en9jd3c4J7F+eoAneq1f4SzXprIArBdDIlnsUEfkCe5YR+iO/546zMyxEv8Jj4E8xbgfVe8e4azUotTFddc1xkJcky9fF9TylLkjRBStV0GOjnPVEaIWod4Qj0Jzr602s0MzUwVKA9tceAKIooioLZbDb6NE2p65pKVviRj0hVoCcQhsI8639oZmQibPVkazoGBEFAHMd4njcShuEYmiQJrucionNDXakQV/wFITP1ulrxh4cAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Async example with ait output"
+        title="Async example with ait output"
+        src="/static/ddeb3e6e88a2fa6368dbf4878fd42f22/f058b/async-normal-waiting.png"
+        srcset="/static/ddeb3e6e88a2fa6368dbf4878fd42f22/c26ae/async-normal-waiting.png 158w,
+/static/ddeb3e6e88a2fa6368dbf4878fd42f22/6bdcf/async-normal-waiting.png 315w,
+/static/ddeb3e6e88a2fa6368dbf4878fd42f22/f058b/async-normal-waiting.png 630w,
+/static/ddeb3e6e88a2fa6368dbf4878fd42f22/40601/async-normal-waiting.png 945w,
+/static/ddeb3e6e88a2fa6368dbf4878fd42f22/97bfd/async-normal-waiting.png 1078w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
 <p>Despite each call not responding for 4 seconds, they all kicked off at the same time. FastAPI is handling requests asynchronously.</p>
 <p>Now to demonstrate where things can go wrong, let’s add another endpoint:</p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/slow"</span><span class="token punctuation">)</span>
@@ -270,6 +395,37 @@ url = "http://127.0.0.1:8000/"</code></pre></div>
 <p>The order is important. We want the slow ones to kick off first.</p>
 <p>Update the curl command to allow 6 concurrent requests:</p>
 <p><code class="language-text">curl --parallel --parallel-immediate --parallel-max 6 --config test_urls.txt</code></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-oops.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35.44303797468354%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABaElEQVQoz3XNwU/TYBzG8V5MIH1bqt3abuvb9u0QQ8CAyCIS1DACbuACM9w4cvKgiMSNWQWEYMINMN5GNPyjX162cGIePvk9efLmeY3tjxX2DubZyV7y5ccCn/XdyV6wq/Pu99t+jk9a6+cirw7LjL53mWh6jDfzAxmHH17zZ3+Z89YSl/srXOh7ly9b/f7W706NrbNJjjoz/GpXOG3PDmS8PZuief2cd1fTbPydpaFvvTvZy+tXM6x2n7Kmrf+rsNwdp51N8S17RiebHshwvj5CVB3ybwrImkLWFaVaglctEdVTksZj5KrCqeZxNh2cEwvn+P8MOxSIBya+5RPlJYkXE+UkwYjfy0+iMVJPYT+0GHaHEEOib3gww5YWwhH4gR6MI+IkJpQlvMBDlRUqVf2uHBIkAbZrYbomwtID4j7DLtoIW5DL5SgUChSLxR7XdYki/UGsx8KQVKXIksT29fugP2ia5r3BG3Hs5QXl+FEzAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Async with bloging example output"
+        title="Async with bloging example output"
+        src="/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-oops.png"
+        srcset="/static/f2d7d2a4b192b76d713040f6ed8e133b/c26ae/sync-oops.png 158w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/6bdcf/sync-oops.png 315w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-oops.png 630w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/40601/sync-oops.png 945w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-oops.png 1217w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
 <p>Oops! We just blocked all requests from being processed.</p>
 <p>The main takeaway from this is, you just can’t mix asynchronous and synchronous functionality in a FastAPI application this way.</p>
 <p>Consider this next example:</p>

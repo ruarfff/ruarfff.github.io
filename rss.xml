@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 26 Aug 2022 23:30:53 GMT</lastBuildDate><item><title><![CDATA[Understanding python async]]></title><description><![CDATA[Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like uvloop: uvloop makes asyncio…]]></description><link>https://ruarfff.com/understanding-python-async/</link><guid isPermaLink="false">https://ruarfff.com/understanding-python-async/</guid><pubDate>Fri, 26 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like &lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;uvloop&lt;/a&gt;:&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 31 Aug 2022 16:38:27 GMT</lastBuildDate><item><title><![CDATA[Understanding python async]]></title><description><![CDATA[Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like uvloop: uvloop makes asyncio…]]></description><link>https://ruarfff.com/understanding-python-async/</link><guid isPermaLink="false">https://ruarfff.com/understanding-python-async/</guid><pubDate>Fri, 26 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like &lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;uvloop&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;uvloop makes asyncio fast. In fact, it is at least 2x faster than nodejs, gevent, as well as any other Python asynchronous framework. The performance of uvloop-based asyncio is close to that of Go programs.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -143,6 +143,37 @@ source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; __name__ &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
     init&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     asyncio&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;run&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/461840d2b32c17eb2c4cd62bfd0a3830/58bb7/async1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 48.734177215189874%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACZklEQVQoz3XIbUyMAQDA8eejMU1H53XpVTmlLzYxxZqvTaZJL3rVnUjXNeqaQi9mlTV03V3XXXfPvUWxtZI4tjab2KzMVJINvY6Q2vjC7O9xDA0ffvtvfyFcu5WIczGEVUSzsWo7kdW7CKkKJaDOB3nSIpb4CywO+inwj/6HENtQx25XM3GikVibgd2ijSgxA3/3elZVBiBLXcPyrLXIsld7+XrJWJa9VOLzF2Gb3sHOtpvEuDqJdl5nh+sGkQ4LQWI1oVdq2NBRQ/i1OqLcDUS5dFIvssVxi2jxMdH2fsnAAsJ+ZRppmhySCzI5qDlEakEWaQVKDuSrSFLlkpJ5mPj8FOTGdcib1rHGtBZ/XSrBF6sJvlROyKVTCwj9Oh2vL19m3OFk0mmXOJlwOJhutdOVYEPc7MQc20RpepFE4602M0+SQ3GGEs3BvAWE7ng1DxPL6Nur5UFCCff3/NAXX0x/vY4Bl5VH5haGm9wMm1oZMroZamxl0NDOWLOVr+5aPrvO88X9g5CedY+8/JfkHh5FdfQ5StUoh469QJ1wn9OrbGj9nGhldkr8RErkdrQrbJT6tkhf5OzKRmyBZ7AEVtISWOElDFyp5U1vMxMeA9MePVO3DUzeMTLbXY/F0MvJhmdUNT6hUjfoVaYf5UTTGMXGVxw3jqPWT1Oon/pFuHBEpKW4B1NRFxZNB+aiTkyFnRgKurC29SPeHcHseYrFM4yld5QHV9v5aCln1lrFnLWSeWuF1N+EcOUIEUWfUKg/sEkzR0ThHIrv1PMoVO9Q5MywMeetZIaw3PfEpT4mbV8PyYmef/oGTw/ixDeuo8AAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Async example&quot;
+        title=&quot;Async example&quot;
+        src=&quot;/static/461840d2b32c17eb2c4cd62bfd0a3830/f058b/async1.png&quot;
+        srcset=&quot;/static/461840d2b32c17eb2c4cd62bfd0a3830/c26ae/async1.png 158w,
+/static/461840d2b32c17eb2c4cd62bfd0a3830/6bdcf/async1.png 315w,
+/static/461840d2b32c17eb2c4cd62bfd0a3830/f058b/async1.png 630w,
+/static/461840d2b32c17eb2c4cd62bfd0a3830/40601/async1.png 945w,
+/static/461840d2b32c17eb2c4cd62bfd0a3830/58bb7/async1.png 985w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;This contrived example shows a simple case where asynchronous code got things done faster than blocking code.&lt;/p&gt;
 &lt;p&gt;Running 2 tasks that each take 2 seconds asynchronously allows them to be finished in 2 seconds.&lt;/p&gt;
 &lt;p&gt;If you await 2 async functions in sequence, it’s sort of like it was done synchronously so if you really want multiple steps to run asynchronously you can use utilities such as the &lt;code class=&quot;language-text&quot;&gt;asyncio.gather&lt;/code&gt; function in that example.&lt;/p&gt;
@@ -175,6 +206,36 @@ source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; __name__ &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
     main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/48887812fc0849fb6a53ff3bdcb792fb/e9beb/gil.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 24.68354430379747%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAYUlEQVQY042PvQoAIQyDnbUFFZdDRO2k7/+AOSgc3HA/HT6aIQ2JK0fBXhu9d9Ra0VrDnBMionqMASJCCEHvHy7nrIKZlSdtDdPAlBK89/r0xtXQEuxijCajefK9gXXWFyd3THOy/BpofgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GIL Output&quot;
+        title=&quot;GIL Output&quot;
+        src=&quot;/static/48887812fc0849fb6a53ff3bdcb792fb/f058b/gil.png&quot;
+        srcset=&quot;/static/48887812fc0849fb6a53ff3bdcb792fb/c26ae/gil.png 158w,
+/static/48887812fc0849fb6a53ff3bdcb792fb/6bdcf/gil.png 315w,
+/static/48887812fc0849fb6a53ff3bdcb792fb/f058b/gil.png 630w,
+/static/48887812fc0849fb6a53ff3bdcb792fb/e9beb/gil.png 730w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;If multiple threads are updating references, you might get an accidental garbage collection or a memory leak. The lock is there to ensure this doesn’t happen and garbage collection is done safely.&lt;/p&gt;
 &lt;p&gt;The downside is this can affect performance.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -231,6 +292,39 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In another console, run curl:&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;curl --parallel --parallel-immediate --parallel-max 4 --config test_urls.txt&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;You should see output similar to the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;{&quot;message&quot;:&quot;Hello World&quot;}{&quot;message&quot;:&quot;Hello World&quot;}{&quot;message&quot;:&quot;Hello World&quot;}{&quot;message&quot;:&quot;Hello World&quot;}{&quot;message&quot;:&quot;So slow&quot;}{&quot;message&quot;:&quot;So slow&quot;}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In the application logs:
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e8eb2dda5c9a4489b601ceb05264d8d8/36c33/async-normal.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 43.0379746835443%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABxklEQVQoz22S227TUBBF/QG5ICCJfc6xz8WXhg/gtX2gVICEVJqipqF17diO00JbQcVF/Pxm2+WBSDwsjXVGWtozHk/99hHVCuZLiPjWIr1zMLdhj72OkN67vpd+jRHfGUQ3Evo+hF9NMDwYYLS/iye+zyAXAUwRIVk7pOsYttRwRF8oZE0Cy96LbYakdohyCVkGmBbPMF4NMD4f7uCJhynEiQ9zRWHpejphUjnolcJencKyN99k/Vt0KaEKgekVhUsKl8MdPPlzBrUU0BVHbiyShsImgmuYsAiRbZmwovAmRbKxCEuOvFHw11OMFhQuKOrrI574wZHPOHInrA3HsrA1hfzWOYUthWsKrzshExYSYS3glxSeUnJKYV8f8cQ3Co8D6MsQSe56bK57wqVEViYwFyHmdYa4sFArAZkHmOUTjD9Rshru4EkmVGcChim6pac1f0ql+4SGCfc2/yRsuoSKVyHhF0z48T8J5S8f6lz0e0taCtsYbqMRtxSWFFJkuc/5Zwq3FFY8sZZns55gdELJBwq7+hdvxsb05QThawV7ZHr0EXf41kAeBEjexYgOKX6fwr2xEK8CBIczPD9+iicPAzLc4Q+OKhr4sTEjcwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Async example output&quot;
+        title=&quot;Async example output&quot;
+        src=&quot;/static/e8eb2dda5c9a4489b601ceb05264d8d8/f058b/async-normal.png&quot;
+        srcset=&quot;/static/e8eb2dda5c9a4489b601ceb05264d8d8/c26ae/async-normal.png 158w,
+/static/e8eb2dda5c9a4489b601ceb05264d8d8/6bdcf/async-normal.png 315w,
+/static/e8eb2dda5c9a4489b601ceb05264d8d8/f058b/async-normal.png 630w,
+/static/e8eb2dda5c9a4489b601ceb05264d8d8/40601/async-normal.png 945w,
+/static/e8eb2dda5c9a4489b601ceb05264d8d8/36c33/async-normal.png 946w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;That was perhaps too fast to prove anything.&lt;/p&gt;
 &lt;p&gt;Update your endpoint with &lt;code class=&quot;language-text&quot;&gt;await asyncio.sleep(4)&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
@@ -243,6 +337,37 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; asyncio&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Run the test again:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ddeb3e6e88a2fa6368dbf4878fd42f22/97bfd/async-normal-waiting.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABi0lEQVQoz2WQu47TUBRFjejiazu28St+X79iZwQSxRQ0INFT8BF8CgUZKCARxYgZgUSe/OPixqQgSrG0t86R9tn3avJrhvyeUa0L8lVMfdZilShfUq5T5Dr7p6uM/r7h2Qcb45WO+UZgvr5EG363LA4dz3c93bbixX7BXGm3lWo2MOxa+m0z6onbw0vijY+9Ebgb8wqt/plTH3Pao2qzT2gPJcU+Ru5TuqOkOmSjP9EcCm7+dAS/HOwfBu6DifNgXKA1jyXNN8n8Y0O7rFgsO+Z3Nc0nyXDyy4bFl47hc0en9jd3c4J7F+eoAneq1f4SzXprIArBdDIlnsUEfkCe5YR+iO/546zMyxEv8Jj4E8xbgfVe8e4azUotTFddc1xkJcky9fF9TylLkjRBStV0GOjnPVEaIWod4Qj0Jzr602s0MzUwVKA9tceAKIooioLZbDb6NE2p65pKVviRj0hVoCcQhsI8639oZmQibPVkazoGBEFAHMd4njcShuEYmiQJrucionNDXakQV/wFITP1ulrxh4cAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Async example with ait output&quot;
+        title=&quot;Async example with ait output&quot;
+        src=&quot;/static/ddeb3e6e88a2fa6368dbf4878fd42f22/f058b/async-normal-waiting.png&quot;
+        srcset=&quot;/static/ddeb3e6e88a2fa6368dbf4878fd42f22/c26ae/async-normal-waiting.png 158w,
+/static/ddeb3e6e88a2fa6368dbf4878fd42f22/6bdcf/async-normal-waiting.png 315w,
+/static/ddeb3e6e88a2fa6368dbf4878fd42f22/f058b/async-normal-waiting.png 630w,
+/static/ddeb3e6e88a2fa6368dbf4878fd42f22/40601/async-normal-waiting.png 945w,
+/static/ddeb3e6e88a2fa6368dbf4878fd42f22/97bfd/async-normal-waiting.png 1078w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Despite each call not responding for 4 seconds, they all kicked off at the same time. FastAPI is handling requests asynchronously.&lt;/p&gt;
 &lt;p&gt;Now to demonstrate where things can go wrong, let’s add another endpoint:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/slow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
@@ -265,6 +390,37 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The order is important. We want the slow ones to kick off first.&lt;/p&gt;
 &lt;p&gt;Update the curl command to allow 6 concurrent requests:&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;curl --parallel --parallel-immediate --parallel-max 6 --config test_urls.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-oops.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 35.44303797468354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABaElEQVQoz3XNwU/TYBzG8V5MIH1bqt3abuvb9u0QQ8CAyCIS1DACbuACM9w4cvKgiMSNWQWEYMINMN5GNPyjX162cGIePvk9efLmeY3tjxX2DubZyV7y5ccCn/XdyV6wq/Pu99t+jk9a6+cirw7LjL53mWh6jDfzAxmHH17zZ3+Z89YSl/srXOh7ly9b/f7W706NrbNJjjoz/GpXOG3PDmS8PZuief2cd1fTbPydpaFvvTvZy+tXM6x2n7Kmrf+rsNwdp51N8S17RiebHshwvj5CVB3ybwrImkLWFaVaglctEdVTksZj5KrCqeZxNh2cEwvn+P8MOxSIBya+5RPlJYkXE+UkwYjfy0+iMVJPYT+0GHaHEEOib3gww5YWwhH4gR6MI+IkJpQlvMBDlRUqVf2uHBIkAbZrYbomwtID4j7DLtoIW5DL5SgUChSLxR7XdYki/UGsx8KQVKXIksT29fugP2ia5r3BG3Hs5QXl+FEzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Async with bloging example output&quot;
+        title=&quot;Async with bloging example output&quot;
+        src=&quot;/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-oops.png&quot;
+        srcset=&quot;/static/f2d7d2a4b192b76d713040f6ed8e133b/c26ae/sync-oops.png 158w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/6bdcf/sync-oops.png 315w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-oops.png 630w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/40601/sync-oops.png 945w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-oops.png 1217w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Oops! We just blocked all requests from being processed.&lt;/p&gt;
 &lt;p&gt;The main takeaway from this is, you just can’t mix asynchronous and synchronous functionality in a FastAPI application this way.&lt;/p&gt;
 &lt;p&gt;Consider this next example:&lt;/p&gt;
@@ -1677,8 +1833,7 @@ Will try again in January.&lt;/p&gt;
 &lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Companies think, “oh, we should have hackathons!” and miss that _actually_ they should have an organization where hackathons are worth having.&lt;/p&gt;&amp;mdash; Beth (@bethcodes) &lt;a href=&quot;https://twitter.com/bethcodes/status/1320165499863396352?ref_src=twsrc%5Etfw&quot;&gt;October 25, 2020&lt;/a&gt;&lt;/blockquote&gt;
 
 &lt;p&gt;It’s always DNS:&lt;/p&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;I don&amp;#39;t know why people despise DNS so much. It&amp;#39;s one of the simplest Internet services out there. &lt;br&gt;&lt;br&gt;Everything it does comes down to two things: naming things and cache invalidation.&lt;/p&gt;&amp;mdash; Leszek Jakubowski (@Makdaam) &lt;a href=&quot;https://twitter.com/Makdaam/status/1313858239298260993?ref_src=twsrc%5Etfw&quot;&gt;October 7, 2020&lt;/a&gt;&lt;/blockquote&gt;
-
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/makdaam/status/1313858239298260993&quot;&gt;https://twitter.com/makdaam/status/1313858239298260993&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Interesting war story (a thread):&lt;/p&gt;
 &lt;blockquote class=&quot;twitter-tweet&quot; data-dnt=&quot;true&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Back story.&lt;br&gt;&lt;br&gt;Way back I worked in a PPT factory at an investment bank. Our job was to assemble “decks” for investment bankers. The operation ran 24hrs a day with dozens of “operators”.&lt;br&gt;&lt;br&gt;Young bankers would work CRAZY hours.&lt;br&gt;&lt;br&gt;Reflecting (1/n)&lt;/p&gt;&amp;mdash; John Cutler (@johncutlefish) &lt;a href=&quot;https://twitter.com/johncutlefish/status/1312536583401160704?ref_src=twsrc%5Etfw&quot;&gt;October 3, 2020&lt;/a&gt;&lt;/blockquote&gt;
 
