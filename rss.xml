@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 06 Sep 2022 22:25:19 GMT</lastBuildDate><item><title><![CDATA[Understanding python async]]></title><description><![CDATA[Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like uvloop: uvloop makes asyncio…]]></description><link>https://ruarfff.com/understanding-python-async/</link><guid isPermaLink="false">https://ruarfff.com/understanding-python-async/</guid><pubDate>Fri, 26 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like &lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;uvloop&lt;/a&gt;:&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruarfff blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 06 Sep 2022 23:14:18 GMT</lastBuildDate><item><title><![CDATA[Understanding python async with FastAPI]]></title><description><![CDATA[Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like uvloop: uvloop makes asyncio…]]></description><link>https://ruarfff.com/understanding-python-async/</link><guid isPermaLink="false">https://ruarfff.com/understanding-python-async/</guid><pubDate>Fri, 26 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like &lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;uvloop&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;uvloop makes asyncio fast. In fact, it is at least 2x faster than nodejs, gevent, as well as any other Python asynchronous framework. The performance of uvloop-based asyncio is close to that of Go programs.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -165,7 +165,7 @@ source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 48.734177215189874%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACZklEQVQoz3XIbUyMAQDA8eejMU1H53XpVTmlLzYxxZqvTaZJL3rVnUjXNeqaQi9mlTV03V3XXXfPvUWxtZI4tjab2KzMVJINvY6Q2vjC7O9xDA0ffvtvfyFcu5WIczGEVUSzsWo7kdW7CKkKJaDOB3nSIpb4CywO+inwj/6HENtQx25XM3GikVibgd2ijSgxA3/3elZVBiBLXcPyrLXIsld7+XrJWJa9VOLzF2Gb3sHOtpvEuDqJdl5nh+sGkQ4LQWI1oVdq2NBRQ/i1OqLcDUS5dFIvssVxi2jxMdH2fsnAAsJ+ZRppmhySCzI5qDlEakEWaQVKDuSrSFLlkpJ5mPj8FOTGdcib1rHGtBZ/XSrBF6sJvlROyKVTCwj9Oh2vL19m3OFk0mmXOJlwOJhutdOVYEPc7MQc20RpepFE4602M0+SQ3GGEs3BvAWE7ng1DxPL6Nur5UFCCff3/NAXX0x/vY4Bl5VH5haGm9wMm1oZMroZamxl0NDOWLOVr+5aPrvO88X9g5CedY+8/JfkHh5FdfQ5StUoh469QJ1wn9OrbGj9nGhldkr8RErkdrQrbJT6tkhf5OzKRmyBZ7AEVtISWOElDFyp5U1vMxMeA9MePVO3DUzeMTLbXY/F0MvJhmdUNT6hUjfoVaYf5UTTGMXGVxw3jqPWT1Oon/pFuHBEpKW4B1NRFxZNB+aiTkyFnRgKurC29SPeHcHseYrFM4yld5QHV9v5aCln1lrFnLWSeWuF1N+EcOUIEUWfUKg/sEkzR0ThHIrv1PMoVO9Q5MywMeetZIaw3PfEpT4mbV8PyYmef/oGTw/ixDeuo8AAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 48.734177215189874%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAACc0lEQVQoz23DbUyMAQDA8WdjQ4a6lOpaSiInuw98yIa2ZjabpmRI3fV23aWo7prukKH4kNel6667ruue5170MhsqVjbmg2q2mKmQDVFY3rLxhdnfSh9q9dt+QviOQGL2yJHvDCAyKZjo5FAid4Wi2BdD5MZwZAuX4TdvAYvnL5x2EYvn+c1Z2FZzge2eehLFOra5rGwXXShFNRG+lYRURCJLDyMwW44sJ3RywGQZ/jlL8M9ZOquw2eImoeUOW723iPe0s8V7mw3uBlaJZ4lprmLNjSpir19E6atB6TWj9FWzyd1JvPiUeKmPeOnxjMJ+rQpViYaDR7JQ6zVkFOWgKtKSdljHAW0eBzPzSSpMI9gqJ9gmJ8weRoQ5nejqSqKry1l9dWahz2zmU3MT791uRj0SI14PIx6Jj00SbSkiktKLI8HGCXUpxzOnZhVwLEuDMVOHQVVAqboAw1ShI6mYR6nldKeY6E020rP7/+6kMvoum3nsbeSJw8mgzceg/RoDdT4Gaq/Rb21luL6Rv77z/PZe5I/vf0Gd/ZBDh9+Qlz+ErvAVWt0QmiOvKU7u4VSIC1OQB5NMwhgkYgyWMC13cSzAiSlI5NyKWlxRp2mIqsAZdWay8KSpirF79Yx0WvnYVcuHLgujd61867iEs+4+5eaXnLU8o8LST0VtP+V1Q5TZhzHa33LU9o4S6yj6aYUrBRINZZ3YDO049DexG9qwlbRhKWrH2dKH+OAF9Z3PcUy894re1hZ+Ok7yzVnJuPPMrEKs9gVxhl8oir+zXj9OXMk4ionFP1DovqDIHWNd7mfW5Y6xNu8rielPyUi9Q9rerjn/A7vM37Tc3kUnAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -180,6 +180,7 @@ source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -228,7 +229,7 @@ source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 24.68354430379747%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAYUlEQVQY042PvQoAIQyDnbUFFZdDRO2k7/+AOSgc3HA/HT6aIQ2JK0fBXhu9d9Ra0VrDnBMionqMASJCCEHvHy7nrIKZlSdtDdPAlBK89/r0xtXQEuxijCajefK9gXXWFyd3THOy/BpofgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 24.68354430379747%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAY0lEQVQY05WPOwrAIBBErf2ALkkRRNa1ivc/4IRsEVJINMWDKYbHjNmPDf3sYGbknFFKgYigtaa51grnnOK9n2KISEMIQRnlVZkKU0qw1j4rRtzF1ZUmxjgt/rr8XrB660t4AXMfc60ROUStAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -242,6 +243,7 @@ source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -316,7 +318,7 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 43.0379746835443%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABxklEQVQoz22S227TUBBF/QG5ICCJfc6xz8WXhg/gtX2gVICEVJqipqF17diO00JbQcVF/Pxm2+WBSDwsjXVGWtozHk/99hHVCuZLiPjWIr1zMLdhj72OkN67vpd+jRHfGUQ3Evo+hF9NMDwYYLS/iye+zyAXAUwRIVk7pOsYttRwRF8oZE0Cy96LbYakdohyCVkGmBbPMF4NMD4f7uCJhynEiQ9zRWHpejphUjnolcJencKyN99k/Vt0KaEKgekVhUsKl8MdPPlzBrUU0BVHbiyShsImgmuYsAiRbZmwovAmRbKxCEuOvFHw11OMFhQuKOrrI574wZHPOHInrA3HsrA1hfzWOYUthWsKrzshExYSYS3glxSeUnJKYV8f8cQ3Co8D6MsQSe56bK57wqVEViYwFyHmdYa4sFArAZkHmOUTjD9Rshru4EkmVGcChim6pac1f0ql+4SGCfc2/yRsuoSKVyHhF0z48T8J5S8f6lz0e0taCtsYbqMRtxSWFFJkuc/5Zwq3FFY8sZZns55gdELJBwq7+hdvxsb05QThawV7ZHr0EXf41kAeBEjexYgOKX6fwr2xEK8CBIczPD9+iicPAzLc4Q+OKhr4sTEjcwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 43.0379746835443%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB0ElEQVQoz23Qy27TUBSFYT+AHRfaxI6Pz9XHaZgzLhKFqkgMekMNoU3txLm0QCugFMTL/yiuhBqJwac92NLaSzvI/6SoJsd8kRS3lvLWYb7Klr1RlHeu3ZXfCopbg7oR6DtJOusSvQrp7G0Ksp8J4rSPqRR+6iinBbbWuFqjL3IGc4+tFC9WA3zjUBOBqPv0qm3icUj8MdoQZD96ZCcp5krha9daB/qZQ49zdpsSe6UYLgbtQXkpyKuM3tU28SgkHkUbAvErIR9l6JmkmFv83GHnCjfX6EoyWHnsTDG8KfELi6wFepGTTnt0TkPi04i4nY+C7CFBnPcx68DG4BuLbRSuMeiJZLD02KlieL0OdKhKIJuMtO7ROQuJzyLidj4Ksu8J4qiPvpT4iWvZiW7JkWBQe8yFZNgMKCpLPs4Qkz7JpEv8KSQeRxsC8ZCQn2eYqWqfXjYFdqbbhmai2F08aThfN8xRjSCtenQ+/Keh+J0ix1n7N790lMsCt9QUK4OpJbvXJXauGX4u8SuHmuWYpSSddumchMTHEfFx+E+Q1Dv0XnaRb3LsgcG+NegDhTs0iL0+/l2B2pfsvi9xh5bsdZ90P2Hn6Dlb9yHP7iO2nvgLj1Ia855LFnIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -331,6 +333,7 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -359,7 +362,7 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 40.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABi0lEQVQoz2WQu47TUBRFjejiazu28St+X79iZwQSxRQ0INFT8BF8CgUZKCARxYgZgUSe/OPixqQgSrG0t86R9tn3avJrhvyeUa0L8lVMfdZilShfUq5T5Dr7p6uM/r7h2Qcb45WO+UZgvr5EG363LA4dz3c93bbixX7BXGm3lWo2MOxa+m0z6onbw0vijY+9Ebgb8wqt/plTH3Pao2qzT2gPJcU+Ru5TuqOkOmSjP9EcCm7+dAS/HOwfBu6DifNgXKA1jyXNN8n8Y0O7rFgsO+Z3Nc0nyXDyy4bFl47hc0en9jd3c4J7F+eoAneq1f4SzXprIArBdDIlnsUEfkCe5YR+iO/546zMyxEv8Jj4E8xbgfVe8e4azUotTFddc1xkJcky9fF9TylLkjRBStV0GOjnPVEaIWod4Qj0Jzr602s0MzUwVKA9tceAKIooioLZbDb6NE2p65pKVviRj0hVoCcQhsI8639oZmQibPVkazoGBEFAHMd4njcShuEYmiQJrucionNDXakQV/wFITP1ulrxh4cAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 40.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABk0lEQVQoz2XOvW7TUBiHcSO2+PgkzontOP48x3Yc21URSxcWuAGG3gRXAhINMAAJqEAHhnz2Hp+qpgNRhp+ed/rrtYoPGeZHSrnKyVYR5fpf81VMtdaYVYJZp+hVQvE9o/01Z/LOxXllI98I5OtT1sXPhu5Qc7lrqLcFL/Ydi21BvTVc7lra3ZxmW/V9dHV4SbTxcTcCtZFnrOqrpjxmzI8avY/75vsIc0ioj4bikGL2Sa865Fzc1wR/x7h/HNSdZHznnLDmvw3VN83ifcl8WdDd1Cw+lVQfDe3jvazovtS0n2vqm4JuuSC4VYyPDmonUftTlrwWiFwwGoyIZhGBH5ClGVN/iu/5RGGEzjU603iBx8AfIK8Ew2vB8O05S2YOUjkopTCFIU1TmqZBa02cxBhjaLuWZtEQJiGitBFjgf3Mxn5+znJygaMc3JHbD4RhSJ7nzGaz/k6ShLIsKUyBH/qIxEZMBMIRCPnU/1jDRCJcwWg46geCICCKIiaTCZ7nMZ1O+9E4jlGewg6fPrRthBBnHgARdvW03aeCbgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -374,6 +377,7 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -412,7 +416,7 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 46.202531645569614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACUElEQVQozz2P60+SYRjG3699yIyTmqGgkqKZX9paLZunEETk5eUFORegCJKcRQSLg+YhKttyax3WP9D61taf9+tRtz78dt33s2vXc1/Sr9hvPnjOyS8UaMlt2nKHptCmp0XHe8i+o86x/1S8t4We0FEOqbiqTE3eZ9hqoX/ChPJEpbJYZmd+B+lv5A9f1i7Ymy1x5npL13VypWdrR3TlY1pLB3xS33PqOuJc7fLR0+XN6gHToxOYRs30T5nxPwvRsDeo2HaRupmfJCI1Zl0qnlgaJZpGjm6hJrKEt4rY1RjBVBHviwzBzRz+eA4lkWF6ZQ7j8iP6rEOkHsf5bOvybvEQSfMtTU/Hx43MPIaGgr7mRr/n5k5rHWN7nZs5G8ZmgNsVJ3dbAcE6hpqMZt+D5kD440uMxJxYEwrjcQ9Sz48UuqYwJW2YKz7MJRVT0cvYfoiJeoiBjDDXIxhzstijgjDDRQVt3om25EJfcKHNOtBk7VdIvV830dVV9NEFzAWFkbyCOefBshvAWgsysLHMZDWEMb2KtRoWcxDTKze6bTu6ghNdeU2ECorXSD3fU2hFDd2mjeE9H0NlL0MlEdwIYjkI05d1cq8RZrDgFnsEi5iNZXFhcRVtRYRkVzBs2dGn7RgE0q3LQFFZt2HDVPVhqojKZZWxRojx1xH6t1cYb0QYzLtFcETMYfGh97ryZeCOE33GgX7bcaVS70UCg7iiz/YQS3gZS+A5YwLrSyczG26M8iwzSRmTOsd00sODpJvRwBIG/1MMsXm0RwE0p+H//AOoSl//2zFH6AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 46.202531645569614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACWUlEQVQoz0WPz09SAQDHuZabW8BDTFFQUdCpl7ZW0+YPQvAJPB4PEB7oemqKCj5+hMrTAM0fqJWbh+5d2qpT1zq29Wd9Wnjo8Nl3+x4+28f0c+0X76Mf2JvTaUhNmtIJdalJPdrkJHbKYbDGeeKy/Z8nLjiR31EJVRkbHaPf68bucRJ7HqcyXyY/m8f0R/vNp9Ad+9MlrkJn3IQuaIXOaYXPuJEuaPqOuVVuaC2dcatc8zF6Q33piPFBD85BF/YxF8kXKrWAQdn/BtNn/Qda5oDpkEJ0ZQs5u4WU3UTRdlE3iwSUFVKvi8RWc6Q2CiReFZC1HOOLMzgWntLl7WPzmcad/5qr+VNM5i86nU2Fh7lZbIaMcBBB2I/wuJHE0UjSWfDjqC/zqCzS21imt5HEdiBhPoxiPpIRNB8DqyKeNZkRLYrpwfc81rcJbGt+XJU4rpKCsxhj6DCNp5amOyfirWVwFCQ8tSyemkp/UcayJ2IphRD0EJadIOadQBtTx7cC1pqCkJ3DpccY2JNxFaIMV5fxHqToXl9gtJrGsbWEt6riraZw7kaw7gSw6iLWchhBDyMU7zF1fM1jqSewbvjpr8bpK8foK8kMGCncRypdOyLDhkqPHsF9lMFtpHGUZCz6EpZKGGF3EdtmAGHrnv/CdT/OagJnRcFZVhgy0owcZ7Bvi4wYGXr2IgwbGUYMlb5SDPO/5H/CvIiQCyJsB9vbTrZtL2J/+QR32o876WMo6cO7KjK5FsERmWJSk3DGZpjQJCa0MINJH7b4FLaVWSxnKcytDOZLFXNL5S+D8mD6OLaESQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -425,6 +429,7 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 445px) 100vw, 445px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -463,7 +468,7 @@ url = &quot;http://127.0.0.1:8000/&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 35.44303797468354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABaElEQVQoz3XNwU/TYBzG8V5MIH1bqt3abuvb9u0QQ8CAyCIS1DACbuACM9w4cvKgiMSNWQWEYMINMN5GNPyjX162cGIePvk9efLmeY3tjxX2DubZyV7y5ccCn/XdyV6wq/Pu99t+jk9a6+cirw7LjL53mWh6jDfzAxmHH17zZ3+Z89YSl/srXOh7ly9b/f7W706NrbNJjjoz/GpXOG3PDmS8PZuief2cd1fTbPydpaFvvTvZy+tXM6x2n7Kmrf+rsNwdp51N8S17RiebHshwvj5CVB3ybwrImkLWFaVaglctEdVTksZj5KrCqeZxNh2cEwvn+P8MOxSIBya+5RPlJYkXE+UkwYjfy0+iMVJPYT+0GHaHEEOib3gww5YWwhH4gR6MI+IkJpQlvMBDlRUqVf2uHBIkAbZrYbomwtID4j7DLtoIW5DL5SgUChSLxR7XdYki/UGsx8KQVKXIksT29fugP2ia5r3BG3Hs5QXl+FEzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 35.44303797468354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABZ0lEQVQoz3XMzU8TURjF4dmQQHrndnCGTqfTe+/cadAgEMpHE/CDpCHSohgQlm7duCB8hLSUQUESSdghxpVtNP6jP+OQuKEsnrznnMXrfNhrcPz5GQfZCkefXnCYrbCfLef56Ow5B9ly3rtfmrw8rzG54zO9U+LpA5zzj6v8OHnFTWeN25N1vnXW/ufbzt3+z/dem/fXM1z0FrjqNvjaXRrKaV3Xefdnkc1Bne1fS7wd1Nnoz+R5a7DA6/4sb/qzbP1usP5zim42x2k2Ty+rD+V4x48QTY+J1QjVsqi2JW4ZSs0Y3U5JNidRGxavGeDteniXguKlSzG/9zkyFoiRAqEboicUScmgA0W5GJKEhif6MTa0yHGXMX8UMSrujA3nSOUiPEFYDtFGYxJDrOK8pzWLTW2+qVqVKCkjfZeCX0C4AiHuc2RFIqQgCAKiKKJSqeR830drjTGGarVKalNUrJChRJQffvgXlIjlD8HcPfYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -478,14 +483,19 @@ url = &quot;http://127.0.0.1:8000/&quot;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;If you don’t specify your endpoint as being async i.e. as &lt;a href=&quot;https://docs.python.org/3/library/asyncio-task.html&quot;&gt;a coroutine&lt;/a&gt;, FastAPI will look after it for you instead as it will assume this route contains blocking calls whereas if you specify &lt;code class=&quot;language-text&quot;&gt;async&lt;/code&gt;, it’s up to you to make sure it really is asynchronous.&lt;/p&gt;
 &lt;p&gt;Rules of thumb:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;if all your code uses coroutines i.e. all use async/await, use async when defining your route&lt;/li&gt;
-&lt;li&gt;if any of your code is blocking e.g. using requests, some non aio ORM etc. do not use async when specifying the route&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;if all your code uses coroutines i.e. all use async/await, use async when defining your route&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;if any of your code is blocking e.g. using requests, some non aio ORM etc. do not use async when specifying the route&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;If you use &lt;a href=&quot;https://docs.python-requests.org/en/latest/&quot;&gt;requests&lt;/a&gt; or standard &lt;a href=&quot;https://www.sqlalchemy.org/&quot;&gt;SQLAlchemy&lt;/a&gt; anywhere in a route, you will block the execution.&lt;/p&gt;
 &lt;p&gt;Consider alternatives like:&lt;/p&gt;
@@ -583,7 +593,8 @@ url = &quot;http://127.0.0.1:8000/&quot;
 
 
 &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; __name__ &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
-    main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We are going to send some messages to our app and see how it responds in different scenarios.&lt;/p&gt;
 &lt;p&gt;Start the app:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;make up&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -604,7 +615,8 @@ Run 5 blocking
 7
 8
 9
-10&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+10
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You should see output int he app console like this:
 &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -619,7 +631,7 @@ Run 5 blocking
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 26.58227848101266%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABV0lEQVQY01WNXS9CcRzHz2twoStPd96BrRErY+aCC2wuC6PVqQ3FpBt6QDJjXoHN0yw0tTFDqI6jU6dixbULXsXHv3Pn4rPP9//9bv+f1LN0hWU5Sa/AvHhBt+8S88IFnY5Duvy3DMWr9IU1+qNFBjZKWEIawzEda6SILaIxEKsyFM7S0dpCm6kJqX/vk8H9L8EnfTs1rLt1LPEa7YEy5jWdyW2dkWiJsU2d8S2d4VBRdGVGRTciPp2IVURWMdnmaO61I4VXVcJBlahgPaASCb4RWlFZmC9w4FW4cT+T8uRJyVnSnhxpWSHhfCTpeuHarZB0ZjiUcyz56/h9NSTN8YBmv6fh8vQz+lTG8Lf8Tt2pojjuKc1kUaceKYitMquQt99RmH4y8qvYdbH/emv8eD6Qjlx5jlw5gxNx8Vi8j4XPPRpnsvq/F5y6Xw2fuBQjN/aGE96SwR9EBw/wCJdYFAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 26.58227848101266%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABZElEQVQY0z3JT0sicQDG8XkNe6jLRnXrJcQWKrUZsR08RNCxUSmZGYV2s7bw0upYWbG40Bso7A8RlZsQhZsb40y/dZyxWtR7h3oV33AOHR4+D88j+ZaL+L8X8S8X+fTtjOHkueeAvM/g0jUT248EMjafs3XG1h18aZsvWy4jep1R3SaYe2QiY9Df85He7g9IwXyb8V9txvNtAjtNRn628G036VttMLTmMpNzCekOUxsu05suk+k6M1sNQlmHkF5nOvdAKCvoHp2nKyAj6SlBJiXIpgQ/VgV66h/pFcHXhRq7CZMr9Y7LuMmlZlCKVylpFqexWy4Ug9+qxUWswp5WZSnZIrnYRLLlP9izZTo2Ine44Yrns/ZEKyaw5DJO1ECEb6mFKzzMWVRnb6hF/nr9Xi7jRg1eE01e4v+RCppJQalSUEwOVYsDxeRAtTiJ2xxrwvved8XkSL33PFQsr3f+jqcJx8sbY5cQCVphsi8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -633,6 +645,7 @@ Run 5 blocking
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -643,17 +656,39 @@ Run 5 blocking
 &lt;p&gt;It is advisable to keep it simple. Let fastapi deal with the complexity of asyncio and use a background thread for pubsub.&lt;/p&gt;
 &lt;h2&gt;Useful links&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://docs.aiohttp.org/en/stable/&quot;&gt;https://docs.aiohttp.org/en/stable/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html&quot;&gt;https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/alex-sherman/unsync&quot;&gt;https://github.com/alex-sherman/unsync&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://asherman.io/projects/unsync.html&quot;&gt;https://asherman.io/projects/unsync.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://fastapi.tiangolo.com/async/&quot;&gt;https://fastapi.tiangolo.com/async/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/mikeckennedy/async-await-jetbrains-webcast&quot;&gt;https://github.com/mikeckennedy/async-await-jetbrains-webcast&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/61316540/how-to-get-python-fastapi-async-await-functionality-to-work-properly&quot;&gt;https://stackoverflow.com/questions/61316540/how-to-get-python-fastapi-async-await-functionality-to-work-properly&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://asgi.readthedocs.io/en/latest/&quot;&gt;https://asgi.readthedocs.io/en/latest/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;https://uvloop.readthedocs.io/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.uvicorn.org/&quot;&gt;https://www.uvicorn.org/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library&quot;&gt;https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.aiohttp.org/en/stable/&quot;&gt;https://docs.aiohttp.org/en/stable/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html&quot;&gt;https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/alex-sherman/unsync&quot;&gt;https://github.com/alex-sherman/unsync&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://asherman.io/projects/unsync.html&quot;&gt;https://asherman.io/projects/unsync.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://fastapi.tiangolo.com/async/&quot;&gt;https://fastapi.tiangolo.com/async/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/mikeckennedy/async-await-jetbrains-webcast&quot;&gt;https://github.com/mikeckennedy/async-await-jetbrains-webcast&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/61316540/how-to-get-python-fastapi-async-await-functionality-to-work-properly&quot;&gt;https://stackoverflow.com/questions/61316540/how-to-get-python-fastapi-async-await-functionality-to-work-properly&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://asgi.readthedocs.io/en/latest/&quot;&gt;https://asgi.readthedocs.io/en/latest/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;https://uvloop.readthedocs.io/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.uvicorn.org/&quot;&gt;https://www.uvicorn.org/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library&quot;&gt;https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[How to only run a job on a pull request in CircleCI]]></title><description><![CDATA[I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last…]]></description><link>https://ruarfff.com/circleci-pr-only/</link><guid isPermaLink="false">https://ruarfff.com/circleci-pr-only/</guid><pubDate>Tue, 27 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last place we used GitHub actions and this was super easy.
 Now I am using &lt;a href=&quot;https://circleci.com/&quot;&gt;CircleCI&lt;/a&gt; and this wasn’t so easy.&lt;/p&gt;
@@ -730,11 +765,11 @@ It’s a little bit weird but it works.&lt;/p&gt;
 &lt;span class=&quot;token assign-left variable&quot;&gt;PROJECT&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;your-project-here
 &lt;span class=&quot;token assign-left variable&quot;&gt;CIRCLE_BRANCH&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;a-derived-branch
 
-&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -X POST &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    -H &lt;span class=&quot;token string&quot;&gt;&quot;Circle-Token: &lt;span class=&quot;token variable&quot;&gt;${CIRCLE_TOKEN}&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    -H &lt;span class=&quot;token string&quot;&gt;&apos;Content-Type: application/json&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    -H &lt;span class=&quot;token string&quot;&gt;&apos;Accept: application/json&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
-    -d &lt;span class=&quot;token string&quot;&gt;&quot;{&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;branch&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;:&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;${CIRCLE_BRANCH}&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;}&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-X&lt;/span&gt; POST &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;token parameter variable&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Circle-Token: &lt;span class=&quot;token variable&quot;&gt;${CIRCLE_TOKEN}&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;token parameter variable&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Content-Type: application/json&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;token parameter variable&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Accept: application/json&apos;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;{&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;branch&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;:&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;${CIRCLE_BRANCH}&lt;/span&gt;&lt;span class=&quot;token entity&quot; title=&quot;\&amp;quot;&quot;&gt;\&quot;&lt;/span&gt;}&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
     https://circleci.com/api/v2/project/&lt;span class=&quot;token variable&quot;&gt;${SCM}&lt;/span&gt;/&lt;span class=&quot;token variable&quot;&gt;${ORG}&lt;/span&gt;/&lt;span class=&quot;token variable&quot;&gt;${PROJECT}&lt;/span&gt;/pipeline&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Hopefully it’s clear what values you need to change there. How you will run this bit depends on what tools you have available to you. I was using GitHub and even though we use CircleCI, there are enough free &lt;a href=&quot;https://github.com/features/actions&quot;&gt;GitHub Action&lt;/a&gt; minutes for me to setup an action like this:&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.github/workflows/pr.yml&lt;/code&gt;&lt;/p&gt;
@@ -801,7 +836,7 @@ It’s a little bit weird but it works.&lt;/p&gt;
 
 &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; slack-sentiment
 
-pipenv &lt;span class=&quot;token function&quot;&gt;sync&lt;/span&gt; --dev
+pipenv &lt;span class=&quot;token function&quot;&gt;sync&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--dev&lt;/span&gt;
 
 pipenv run notebook&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The example is mostly run in a &lt;a href=&quot;https://jupyter.org&quot;&gt;jupyter notebook&lt;/a&gt;. Of course feel free to use your own setup instead and copy code from here as needed. If you don’t want to use &lt;code class=&quot;language-text&quot;&gt;pipenv&lt;/code&gt; you can also install all the dependencies listed in the Pipfile using pip directly.&lt;/p&gt;
@@ -948,7 +983,7 @@ plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span cl
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 69.62025316455697%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAACLUlEQVQoz22Tz2sTQRTHh0b04FXwoPUHmqZNYkARwYMH/wI9SwUjqHhJaLGb2TSbjfFgeylUFFKkB8GimFSTgLSk/gKliIo92AZ7CLb5QaQSbTXZZHdn5pnZTciP9rGws/v4zPf73rxB0BmsudAI1dQaMNL4zRhsC8QzrJHRKX9/zv2+HvtqnVycmRDg4UWSmoA/eZ6mZAfYDAOEsberPULc4n2Ghl8+EAfBv18fOQh3z8D3N4YD2gHXVVVVrdbU+se996vIE7XgxB5/AonzEckNoWN6+CQEjoM8APlvXTwihKxns4VcdmWtsE9KIl+ix5+04DjC85GAG+SjuuyEsAvwIZgeNGDWYZsYju+/SyNvdJfnEboxZRFmEZ6bClxpwLKDK4ccUEy3ixuwsdm1J4toaNYiJpAvvhs/R3ghErjahO1w+wT4eiG90N65Fux+/IHD3PMLhFPnxMmN4GmQ+5nsYEE7M+GVFOuGDdvjc0vIG+Otwq8u+Me2gi6Q++pWy2L/D4+1JNi47cJyt21qKC+vF/eOxBB+fXNUZEEblQcoL9XOn7CL4cMwfennxq9MJpPN5jRNa52zyQ9FP97yuiFsJSEnMUvl1bpAsrFRK6x9URn829qsVBRKaQs2Z6xS08ozw7rQy8QjIFlB6uMn7DtAgk59KbHDkLSmmrG6vkJo6VNyM3K5fOesEjqljJ9XngpqPm02mTWjG26/ABqltb+laqmoV8u0uff2i/EfZHqTptSp0HEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 69.62025316455697%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAACK0lEQVQoz22Tz2sTQRTHh0b04FXwoPUHmqZNYkARwYMH/wI9SwUjqHhJaLGb3TTJrvFgeylUFFKkB8GimFSTgLSk/gKliIo92AZ7CLb5QaQSbTW/dnfmPZndhPxoHwMzzOPz3ve9eUOw06B50CjT1DoCbVwD4DYj3AMNj874/jn3+3rsq3VycWZCwIcXaWoC/+S5m9EdYNMMEMfervYIcYv3GRl++UAaRP9+feQg3j2D398YClgHDACqqtbqKiLee79KPFGLmNjjTxBpPhJ0o3JMD5/EwHGUBzD/rYsnlNL1bLaQy66sFfYFk8SX6PEnLWKciPORgBvlo7rsxLALxUM4PWjA0CGbGorvv0sTb3SX5xG5MWURZok4NxW40oBlB8+sOLCYbk9uwEawa08WydCsRUoQX3y3+JyIC5HA1SZsx9sn0NeL6YX2zrVg9+MPHOaaXxAxdU6a3AidRrkfZAeE7GDCKynohg3Z43NLxBvjrRJfXfCPbYVcKPeh4ihL/T881pJg47ILy92ymZF5eb24dyRGxNc3RyUI2Zg8wHipdr7CLhAP4/Slnxu/MplMNpvTNK31ziY/FP14y+vGsJUqTmqWyqt1YdAGo1Zc+6IC/tvarFSqjLEWbM5Ypa6VZ4Z1oRekIxi0YrCPv7DvAA059aXEDkPSmmoABlClrPQpuRm5XL5ztqqcqo6frz4V1HzabDI0rRtu/wAaY/W/pVqpqNfKrBl7+8f4D2R6k6ankoBLAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -961,6 +996,7 @@ plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span cl
         sizes=&quot;(max-width: 333px) 100vw, 333px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -986,7 +1022,7 @@ plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span cl
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 60.12658227848101%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABJ0lEQVQoz5WRi26DMAxF+/+fOE1oKqVNSEIeJg/evYGug2qdtCtjIcixr53TsizDMDDGjHPGOmfxvJVd/8YYl1WnFR5rzm6Nk86nkBXfyHu/5T08gGWadBv6LkHdG4FERvUdPI6cM2lJkO9S/AMGdoCnaVJKYWYfwkW3/b/gcRyFEJzzGELZkCbwKcRcI5c5CtNu+cc2eHTu8umuqI3zcRqGvu+fDdN3vHZ+LAydYwQB84Uw0rWasNiEAoihfwQ2gnyA53lGZ3zK3eA5JWY9t/6q6dLkEM4rCojakPWYb2cbghnc/jY8bk2KWgkhlUSqhSjKW1Gxz/L68VWer3k7B3gTYCICb6y9rcI71nM5nz25lpzRjTUaTn+BXySlqqoKdznN8xPY6w5JMbRoId8V7wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 60.12658227848101%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABMElEQVQoz5WS627DIAxG+/6POE3d1DQNl5AAjo2BkEykXddU66QdWf4Dh88gDuu65pyFENZ767x3zr/GbashhHXjsMmzkqIbvPHIVAkvQMRr/5FTzlJ0YoRxohSZmeMLQggpJSJ6SJ5nJWXvQANFDn/IRHTtN7mUYowRQiDReYD0L3meZ621lDIQNQOMMCVmCvWMesweRGTm/djba8e6Ox6V9RhKzimleyB/V01+vnPONTmEnBISfWjb+2kEpHCbP6dbRQ45xZ28LIsQgohqGjMxC4fS4WWE81BLezRABkhZcBh28rquMUbvvdZaKSU6YZQyWvemNqX1semOrXhvLm+fzamTu09yR2sNAFJK61y3IaVExPPphAATeDsOztplWX6Rn+h707ZtKaUsy1145AtYgbR27oDefgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -999,6 +1035,7 @@ plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span cl
         sizes=&quot;(max-width: 472px) 100vw, 472px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1053,7 +1090,7 @@ plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span cl
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 72.15189873417721%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAABg0lEQVQoz4WS63KCMBCFff9HK4jwR8dROq0iN4FAyIUQwB4IWm213RmWhOXby0kWl8tFKVWWZZARyjhnL41fg5RSeIALPCCLPC+YPBCORO0L67rOLJqmeYDzohi6NqU8KVmv20Y9Ma21WUgpv+G6rvM8Rz6h1D4tayGVan6bqTn+JsQMY1NMhnyXXmcVD0k96PE/+S+cJGmSJIQQE0ZJFE8qBrJrpyb/gI3UqHwLc9lEhCFFUFAmZHvln8B4sDIzmzAGRk0hm6LmflpllENCNR2DnGZ5gEe17+DbtBAXK7SQUVYx0ekxRzt+vFMbpw8YZN/38DiS2Wvdd10lmhNhIeFByQ9FndWCijsYOp/P5ziO4SFeFEXw2IZhGJxOaZzkCEDW9ByE0ebjuHn/xCUb4WEYDO+6rm3bjuOs12vLsjzP2+122+3WXi7fLNv1vJXjuKsVXu/+Hn3NlWG4emi+qip4JEJNzGxCvu+jC2zNlUZT0M6EZviHmXaQ63A8Zln2NAr7AuDHILyx5rVLAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 72.15189873417721%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAABmklEQVQoz4WSW3ObMBSE8/9/WkwwvDjjsenFxiAhBEJInKMLKOWSxG2ddh8YDatPe7SjpxCCMUYIkdetVFqrL6XfTSmlUiqE8BRCEEI0nLcKLq0yxtgv5L1fF4iotf6EedNM3lKpqVCjs4jmbznn1gUAfCb3fd80DSIOxmSV6Acw+EBr5rxtGDYYEZtFABC8Z1IVbT/N4Qj/hQmhhJC2bVfbIJ6ooEIBorfLkP+ArbVzYcvYWxmAZavOlcgb2Q9g3/kHcAhBKcU5/7CNmTMHQN7rrOpqqUe3zGAtLHf5DZ7bvoM/buuMQcBzJWqpOjV4N59h5593bWutOefW2nEcrbXOue3r3Oh9N+CtVUWrc6EvTV8rkMMdDACMMUIIY4xSWpYlpXOLRVHkt1tFKGeMVZRWLC/K1x/X128/+17O8DRNK58kSRRFcRwfDofdbpem6el0Oh6P0cvL8y5K0nQfx8l+n+7j79nZObclhxC891rrruu0HgCgKApEXK0sywghiLg+aUqpMWa1NvgPreN0XXe5Xuu6fuj+gt8A3RYgvb1sUhcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1066,6 +1103,7 @@ plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span cl
         sizes=&quot;(max-width: 419px) 100vw, 419px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1190,7 +1228,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 41.77215189873418%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABKklEQVQY012RWW6EMAxAOUA1IZuzJxCGBCaz//SnUu9/q5rSVppKFopiP/vFdDEVGyuEokKROlChmDQCLJeGCb0ffr+OUHmgkvSSvImeyA6wiEPPJGWA1doNYAIHK7XnYCjXVGi87xmA9tolYxMMUX3MrITuwIAwhLdAPo3Fx8m4hNN25ifF1bxca3vkucVlzZ8PvUzdX3qvGKelnm4+Hrm06GlD1lsjJ5Uv621pj+G4Dnkd06p1eoF7rlBbKIcu37YGTKQC5bdF5HKu7V5P95hryBVTrzADF3PKBbtgIB/HWdmIvRAeS5tx+OUZx2p8xqW8whTQczyuPVMYuC0XJxQmdIOX8/N8f6/tOdXLMDdl0//JUjn8K/v7EUbz/YwiAvz2Cq4Jtt7u1RfV7C9h29KlDQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 41.77215189873418%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABMElEQVQY012Q227DMAiG+wBTbWMb8CF24jR20nTr4WY3k/b+bzVl2SZ1EkII+OCHQ8rVp4Zdpa5a7pQhsM6g19aB4T349UEoe1RWSCtejBT2gNaBRglWAYJhDj26TqO3HDU6pVkZBsMSEDlyyM5n7BN9TFC7wxFQAMpvU4B5qDGNLmSDfmd+Spqm+a2t9zKtaV7K553n8fBX3juGcW7na0wnbb3B4LvC26BgKdblOq/3/rT0ZRnywpyfYKmJQ28oCMBvtQ5dUsYpvT2i1Etbb+18S6V1paFLzzBgSCWXKjVJTcpwGibySQCCdUNdp+U6vz7S0FwsluMzrNB3ZTgtEkgCKc0hjZaiUBs8Xx6X23tbH2N77aeVfP6/2VLQ1u33K70p32OpyWDcrtAsgOSWpy/V7C9hzGyiXAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1204,6 +1242,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1221,7 +1260,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 67.08860759493672%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0klEQVQoz42S227TQBCGfVdE7fhsr49rrx0fsePYiROSJm1QKCDgEbjhutxwj3h1/mRLWiSQkD6tZmf3n5ndGWGimLJqKpoFYEiyLk40UdZgA1FS4VFw56UuXanilaK8MBTVEifqtaQKXPaIajp+nJWzop67AXNDVs8Wad5YlJIvLXvYFN/25GunEDsvWhw9iVXdxmq7tGyGZr4Koixkebfc5NXcSRLvYVn8OLY/3zvfR8UhIZ3GaSlA8xvCsrod1kneOgHzowy4QeLRFIF8kroWc20GAzl8msZJKVxeq+h2lFZ1N6bFzKNTLr5A04oTJoWsWa4fU5YLhh1wdMvDa7vFth93/WrXjVvY8/GmH29gBHEesgLRATIRjzpeBLHP0Qyn7de3x4/bu3e7Nx8Obz9tbu/B4f7z6/1xWO2LZoAyyRuIoXT86FnZmo3YlBWnOun0/GHFBZa9ghL5AcqGEu14/mZCk7JsFqh53B6WmzskOStL+LmMB5L/2mfix+gtfiuIM4A/h4cDG34AA5nKupsN66dWneZJ1jBe19Ijp1Gb6BwMomoQzXTkc5kBTdK8+nPC/gFuo6owztAe2wmxdWkVZv1/ifn8aQbh62lrBhqJfgFe2luvQJ7h3AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 67.08860759493672%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB70lEQVQoz42SXW/TMBSGezfE2vojdWwnduw4bpykS5N+LN2adR+oFBDwE7jhelzwAxB/HXUe2xBCQnp0pHOk9+gcve8AIAIQgTiEOASIjEAwHOMhwH4+HKERCCAk4HUwOkHDEwhfTSAKh2N0OkIDL3sEES7SvGyK2SKSJkrMrFlbV4dKsS+Nud8W367Z1xZS6or5rFk/i1FAIQ5ppMp6VS82UueJce1576oFy7L4/rz4sZ//fM+/d5CzRE1TWw5QQH/DTD6bry4yN+fSCJ0LnUcyi5WVOhcsi0ITUSOYhTgUyqZZOXj6FgZU22rWdrZoYjX14ieUrTxJVgAURiJVxg0mVHqCMM7Lpl33y2633Ozarm/X/aK7WnZX7bqXqUtMoW2lbQUQYbHisR5MqPDgCZ8vL272H/vbd7s3H+7eftreHLY3h7vD58vdfrW5LuqVtlXmaoAIjzUX+sXZmCamSEwhdO7P9q3H5GfaVjJ1MnUAh1zoSJqXPzOVlWW9Xm52XX93vr3NXP2gLFVWeplfdPT/b5+ZSLk0sbJCT4WeMmFonHoe5tNYWS4NQKQ8a9vV5bNVx30AD8f4dPTIMWrjwDOGBE0YJhw8nClVZl31Z8L+AUAkZCJJc2Uc5QlEJFJVki//S+zzhyfM12NLBKbqF0s+W5jHslo9AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1234,6 +1273,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
         sizes=&quot;(max-width: 536px) 100vw, 536px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1251,7 +1291,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 46.202531645569614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABDklEQVQoz42R2W7DIBBF/R/xFrYZg4EYYlrbsRNZVTepD/3/n+m0afrSJZXOA2h07nBFZn3wXRDQOOf6FH3oTOuZamqu/oAJlKAzpf20nOLNDOis7yVaoTSXmsnmCgIzDmY4zN1+VMaAjTWDilE2bsV1SG7TePBxANStDdpG3e6Y0v+SBZhpOfbDshWNUEZiK+DdrDn8yFmrzzItSbcJjQ9pikQ/uK43PlIKjb9XpWUElaWgjEmdhglMNy7rev+UxgXbHQVT8/KD6kL5RS0LBblUmUL6rFRxPK4Pzy+vp7tHF+mqior/Ssk3CDlARi/UNuS13E9znGbwHTe2lFiQz1UuIRfweb5QMLlpGhq9AS7PVHoBo2YGAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 46.202531645569614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABEElEQVQoz43Py26DMBCFYd4jXIzHnhlsjAMObsGBRFHVm9RF3/9lqjZNN72k0rc4m39xMucH3w+Kmq7rxhj80NvWS2wE4B+kYk0mQ+PTegw3C3Hn/KjZKTSgjdTNFYozIDvtl343o7XkgpBUSRTAtbouA2rjvPdhIjatG4wLpt1KNP+KFdm0HsZprVWj0GpuFb2XAuhH50ycY4km3ka2fogpxBTGqetH64Pmtlb8/aoiq8gCWQGUSW3ilMj283o63T/FeeV2KxRXEssP1UX5RegCKdeYITs/xAr4cHp4fnk93j12IVaARQW/KmHDlBNl1gfjhlzoXVpCWsj3YF2puQAsAHNNuaLPfVFIvWmaXNMbLs9Uegu4R2MAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1265,6 +1305,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1313,7 +1354,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 47.46835443037975%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABCUlEQVQoz5VRXW+CMBTt4xzbQEoLbSmUAYJBItGN4BzGxb3s//+hHUSNS7bEJSc39+vce3pLWBBGSe5x5bh8Sv1/gTBfBSqGZ0/ZBRj0G055lwlYbCUeyDIG35fRYEUEB0mPS8g5WnkKfUW5BI0ycf/grF46EkbpfLFaNK9FtdQm0ybXcYYpAgiNUGawoQEZHOwcdU0sp3vridTPs7JOZ1VkcihBxxXkj5APGcYVXorNbbclcVqs2+1y3SXZnAcahbPmQTa6z/4ofiiN5G7Tk6yoNv2hbloZJo82vT7bX8B1J5b9vvsgeVnvP7/KqqHHG94C1wvuLHu3PxBfaNwJSm7/Z5CfHC9Ji28G3DQPXIV3FQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 47.46835443037975%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABEUlEQVQoz5WR3WrCQBCF97Ia22x2d/Z/s5smMUoMirYSayMWe9P3f6GSRouFFip8HObMMHCYQSBtmpWMG0x4QsVNIBBGGp9QESfwDSb8N859AgoTDtIiJozUXhovdNqrSoVOmTCMa8YH1WcrDOUaE05BjSd4/dQim+bzxXqxeq7qpQuFC6XzhTReGa9sUCb0agPjmoIioIZcowi3Lx3S7nE6a/JpnYYSpKWgrtA/LO87wA0IM57gbbtHPq822/1y02bFnEsHwlwy97Ep6Es9hO9Hw3K761BR1bvu1Ky22mb3Mb0+218kVIyi+PXwhspZc3z/mNUr+nXD/0CYvIviw/GEhHIuFCBu+DNh8gGzLK8+AQbcNA+tMNVpAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1327,6 +1368,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1363,7 +1405,7 @@ model&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;classify&lt;s
 &lt;p&gt;This is a useful example as we can configure it to use GitHub auth to allow users to login and interact with GitHub. The actual sample app for this is here:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/ruarfff/backstage-example&quot;&gt;https://github.com/ruarfff/backstage-example&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;By default this example app is expecting 3 environment variables to exist.&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;GITHUB_TOKEN&lt;/code&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;GITHUB_TOKEN &lt;/code&gt;
 &lt;code class=&quot;language-text&quot;&gt;AUTH_GITHUB_CLIENT_ID&lt;/code&gt;
 &lt;code class=&quot;language-text&quot;&gt;AUTH_GITHUB_CLIENT_SECRET&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;They are referenced in the application configuration here:&lt;/p&gt;
@@ -1392,7 +1434,7 @@ yarn dev
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 68.35443037974683%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAABVklEQVQoz42STW6DMBCFcwHAYI9tjDEG82MMIcmiUrtrpd6lUhe9/7ITp6s2aSI9Izzyx3vjYUcKjuJlXVZWlDVKKhNfjFQNZeXlwFXtcGU5WDfN66lpx24M47xNYZvXo18OQpkMz1FxE04Jq23vw8ENAaBMCE2yAotJRtMcsrvOsrKD39t+7oagdFvEtFhH/cP/wOiMaVvngSuQGnUr6lXnZgqHblwq4y4YuqXR9r5zZTrrfNNO2DZ+CEWhJDk84EyYcZvfPw/rU9NvuCOsIUyTAh6KzdWo21XbBVQPpRPai6onBXsI1sbhbbs4ZJw2CM2lzlm8s/wOzHA8fjki75fTeWbYvwttv0DZpAhTWTB5HUYxUam6lZWR2nBlcOxMOaZGwPzKylj5y+8I5WnC5Pscvt7C56v7eKGjY3KIDQOJ/8lFN50JF5mUmTw/c4oVyKn4pb/wN+lSTOcNSqoAAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 68.35443037974683%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAABZUlEQVQoz42S247bIBCG8wKxh8Pg4WCDjbExTpzNxUrt5Up9l0q96PtfVuv0qps0kX6hEeLTN8AcgCvgSulW29DottEtmW4vOjKeS307cDcH4KpmGOK8nK6+n4apTGWby2U5XfP61piu5gpE8xCuQLZhzOUSU0HURxDHmlcgj7WoGNZPzdr6lM9hXIZUjOs56tt+zfA//F+4DeO0bH2cURkkh+QetXoHJuvnchmm1XbxhtVcVbv2udl2Q4g5DHNMhawn6wVqYPiCGWQ7bPn8La3vftxAdiA9SAccX2pbmcn1JxdWNCPq2Ljc2BG4fAl2PqZ8jlOZls33EzZOkWNyfzP2BJbG9Xl9S/mc1+vnn8XsY+nHFclXTIEgLuk+DAwlWesH3QbqgjId2V6aKE1Cl5UJZDptw1f+AEJVR6l/LOX3R/n1EX9+FylKSvuFEfY5ueWBmStQTU1U0+fKhAKOTDT/5Cv8B/nNTPZz+jjUAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1406,6 +1448,7 @@ yarn dev
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1429,7 +1472,7 @@ yarn dev
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 60.75949367088608%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABaUlEQVQoz31S2U7DMBDsDzSHj/i+Nk4ctwVKJV74/w9j3SKggCqNVz52dsZr74gITCUbwMWFctWPrBu+MZBppOJf4NGOcBFSZlztO4JbAUqEcouQt0nafU+vhWg30n7kX2hkqVypL9bPbDKoPC91rU+5HBeM9RzzycHmoLpUbSzGg3EJk6UOjTwJY33zrFyik57Ls42bh4ONldtNOERtsIWriAkowCZNmGpkNPDjhiKtr1AuNh6pSB0xA7UNzPVEdQP5bRsHcm4NwAjLYS5PykSpozSR60hkohKYhJGbgfBr/id2PxdYxcMJb8GFwVbhxISsXJZ2psKPTD8io/MA23Y8u5DRmHEQYcUSzdfI72XuyZiB7+FjPj5fXGxk7GqAFYEd6h+Tb5jXw1JOQjmsZfxsQ0YXQvv+z4f5TcatlDfIVWqPS2mCtlGZoCz2L+DzPCIjDqfz5e0dxdGnT0vKtf22uVVs+vfmPwBy0EUpVyHNuwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 60.75949367088608%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABcklEQVQoz32SaW7bMBBGfYFI3NfhNqJE0ZYT10D/9P4HK5gEbZwWBh4IEOCb+YaYE9NJ2AIJQ165tDMVE/kLYYpy/V8IUycmdSpVSPsyMcp1wpaxfZxYd2XgZebvhfhE+UzlH4ZsbGj9DeIilOfSLmvf+rW2y9qvtd9yPQLuAXsoHXLzEX0oEBfj0pCV9hBHZhsKV25pr5D3iGfIXcKuw65DH0CTNnPluLRCOSbskGcqv0yoy/YD2x3yhesyMU84DESYmZ0I+x6bMEXY5wdQrnE9L+1qfTYuG5+ly8wUblAYpNITJt/ff3L6eiFMRzwgotReGYCIPlUbqoGF60iFeyZPRCTc98stpDpT6QNm3CDiyEXlY5tHmXI9ER5zvbzeQx4yxCXhlnATys3P5Q+W7by2Q9tAufZxgVRDqtrF+Z+F+S5TrkvdsXbjImHK+OQgW58sZOMSE/aZTJg6H7f7z19rO2YqY1lL7WPbllFx9H8M/xty0EUpWAsuaQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1443,6 +1486,7 @@ yarn dev
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1507,7 +1551,7 @@ export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-se
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 41.77215189873418%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkUlEQVQY09WLzQ6CMBCE+9ae9AEUhRiNJ7xhigi1RF4M2l1M+uO2xotBPTv5sjubnWEbUaayymS1bS+7W5M0fFHkxOx4WNanfXfN2jqV57UoE8HJPP1K8HmRM29twAScMcE7T9wRnSMXRds6T6d9EV9Maf3GoBVNjTjQBOhh7BVMxJRi+FljBKImA9/KP/Wn5QfVl7vYUvRilgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 41.77215189873418%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAlElEQVQY09WLyw6CMBBF+9eu5AMUhRiNq7rD8BBqifwYzLSY0BlTujOoa09OJjeZe8VeFYmuUl0d2tvx0cRNHmUyyuTqct7U11N3T9s60eVOFbHKE12GvFX5OpOCnfNOXpomn4mZ+GktEXGAmB0xkb/B+SUA8c0BARDR2gERjenN2INZqAEI+5lx1swsFr6Nf/Kn4xfVl7vYaWTiLQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1521,6 +1565,7 @@ export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-se
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1537,7 +1582,7 @@ export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-se
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 174.0506329113924%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAjCAIAAAAblL1PAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEf0lEQVRIx5VVW28bRRT2j+CdFySQqPJQEnJr2pRKVQlFLQgJ8YCAIgoFIRClEjwVERSiAgWlDVUdI5w4ikMSciFRKKUXNepDEsdOnEsTJ41vu469F19317uzM7vLWS9x7MQW4ujzeG7fzPnOzJm1vf3Vl8Ourovub9qHnDfHf7dPjXaPDnX2/XJ10PVdf29nr1npcDquDvbbp8bsk6OO6QnnrUnX7WnH1Ljtwhef37/x/ZX+Doe7b/i3ocHBQeevvV1d1+w37d3dP3ddu27v6YGyp8cBQ+6BAZfLNTDgBnP2uWxPtjafOH7y7JnX2tpOnzrV1tLS+nx9Y0Njc0NDU21dQ31DM9SbW441NR2BSmPjkWcP1dTW1R9+ru5wXb2tb2oim0xFKSpm2g5Nm39Q0jTNskyS56FOUXTBYtYoNKEMhsI2nuMNw9B13SgxqxmlYnMer1HFNE2zcRxn1fQSgx5BEMf+mL57f2Z2fgGahJDyCbqqYhvPV9gZDGO89mjDs7AYjlBVJhAbw7IVx6xOrVL/HpmizIVhEjheCkxMKbACTCLlQ9ZOJjmZTJqSNE2SFUlGFkQZ6QZh0/nNSJZoWEGqmN8dykML/0u2AlZKFiRF18noPbrm9btPv3rnvXZvVlSAYvHLyEwiUUqGGTAY58WWczPvdqx82x+qfXPGMRYEZTlJOUBmmHKyggkORDLPvPL3TyPUvRXh6PmHl2+s/DcZBgCm24b2Uaf/iRf+rHnjwVNn7qwFc6A8J8rWhApkUVZkhAGKShiOi8aY6wOrl36YvfVgNZGIA1MlOsKwB0Kows4olclxyTTLp5bX1peWV4PBrWAwMO+Zn3k4G6FiCZaPxZmsICGVlJOJJikoSu8EtrbXA1tb2yGoL/iWPd4l39KKb2n50cYm1D3exWQ6q2LNuoJlmotuQ5lXVFhibsEHvlg9UJa7XUaGY1SL9wQAfAtWnIrYDVgJWczL6ayQyYlQgjCrAlEACJK8d/kORhuuK4jxLvqX/KsLi/7A4+CifxViNufxzc57w1E6j7AA21Y+50LAqqUQ5ALkiQVQoaADZFjRTKICVExUjE3Aj2CTbkCEATpSD5DBbdAG4d0ORUIRCjRbGZKXlURSWg/ntmPCZjS3EcnRrAihKiNDlgIhGIo8DoLAnWKE8jLKCArNSHE+v8ObZTIrq2oVty0jukbMV8T8Qf7vqjGhqBU0E1lRDbh2FgoCNQzP3F7TAla1/WSwAEe9PHHxxbFPXhr/tK2Ad/76+tzt9rOTl6ATmqcnPmsd+aDbNwIe6IXnaY+8zkZOjHx4dOh86/D7xwoAMuDk6MfQCc3jIxfq3G/96HHvJ8MNQ0gFJzWka8goQFdkLMsYQ49q9ZgqMNLgIPcfFciGJYxCWIqPbwF7is04aEQrvp67R2XSIF9C4QjHwfeJDoVDcSZJsygclxMpFONQlFGyIi5OLkkMc1e4fSSdyUiSJAhCJpsRpXxOwumcKkjwBuGMAG8wsXwsI+vVvwzVDHazRaPRVCrF/E9jWRY+cv8AGbpIiO0MnOsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 174.0506329113924%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAjCAIAAAAblL1PAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEpElEQVRIx5WV+29TZRjH+0f4uz+ZkGj4YVDXUcaGJLDNEfGSGBJvgwgqJhjdFuYPMsacl6BZtoG6YVCGW2WTiyQY0GGYmjC6rd0Fxii9n/Vyetqenut7Pa85PevahjbGp98073nf5/Oe53n6Pm9t9qMHn+86UtP+lr39cHN3597ej1t6ju053tF0orOpu2PP8fam7s7dn7Q3n+hs7e1q7e16+Yvjr3396Rv9n+0/ddJ25FjHrW9OfXmh7+z4+YmfL7pcrnPnfhwYGBz+bvj06TMDg0PDIyMDg0MjI2ddLtfY2Njo6OjY2Pj4+PgP50dtTzY6d+3cve+FV1paWpuaWurrG5+trXPUOR2ObVvtjlqH01HndNY3bNu23VHnrKvb/vQzm7faa2u22Gvstbafrl9TRJFb4+KmJWKxeDxmjmKxuCAI2Ww2P163gk8sHk+EIhGbIAiMMcMwWIlZj5Ho2ox7jlUxSqktJaSskVFijDFZVi7/en3qz2mLJ4SUOxgI4cpvZoxhjO/df+Ce9YQjXBUHYuN5vuKaNUkrzRfhKGduTA2D0jJhQimljBnYHJWv5nc04XQ6Y6ZEqaoDVYeWFB0ajPBZzRfJUYoBRIpWWNIARHgdtnIuhWUVGAa5dIvb/OrUppf+ONQ7L6lAA9Diy+BkMlkKKxoEEMUFpf7A9MG+pb4LwS2vT39/JcAYlVTwGJwvWAkMMMGrYXHTi7/3T0anluT6t/8+8e3yf8OKZsoMm9Ejny888dxvm/fffmrf1EpQIhRLim45FGG+ACs60CE2hUgyleJi/NDYcsdXd27+dS+RjEuKjogBMVV1CGGFnGFGlFLpLC9kFu+teBeXAwFfILB61313+p874ehaghe4WCInqxCRcphQFcAIF1v1+VdWfT5/MMLFZucX3XPeee/SvHfp/oOH7jmve86TzkoIWzC2JZPFnK2wASI6xBpAPn9wZtYjZERrBiBSHnYZDFUdbZwTVYcaQJasOuVrqZcUrARWND2bk0VJyebknKxag4woZXOyrOrFw1d+SNYbI53NzXkWvIvLsx7v6qOAZ2HZu7g8456fcc+FIpwGsawBpSJsFaxaC1HD7BNLGkAAPgZrAJo9nhfCBGFsCmFCsIkzyvKCqBQu9HNGlHz+oD8YDoajOVm1OkTTQSKtrYQk/5r8MCKthCSOVzAuhyk1crIaCIYfBUIRLrZRIQ1AUQZcUo0LWkwwv9M5HaEqYReStHreMlrIxhRAFXImOkCMsHXlE6SYGaj4aAkjCiAqC5sxtpqK7r36UfOVoy1XPrDUdqPnwM2T+651NF82J1uvftg4+c4Zzy/MMD9l8Aof3jX53o6JQ40ThxvyarvR03ajZ/el93dcPNQwcXjn5Lv28Tf7Z11FeKMlIcQGZhQaFDFT0AAAAx3jjRlkZkEgLTRGoasMwyCEEPO6NHctVM4qUvFHpgbFlBRvTwvO37IMQhgMhVMpgeO4YCgYT6Y5HobieiID11IwkgQ5BW84lzSG+VaKCcmKoqqosiyLOVFRNUnFWQnJGpYULMoYQGLFWAYb1f8Zqhmh1BaNRjOZTPJ/Gs/zgiD8C2oTPR9c4+CWAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1550,6 +1595,7 @@ export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-se
         sizes=&quot;(max-width: 463px) 100vw, 463px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1566,7 +1612,7 @@ export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-se
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 55.69620253164557%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAACW0lEQVQoz02Q2U8TURTG51nUNx8awZcWok2JSyoYVGSr0CJKiG0TaYxijBSjAaaltbTDIgVDYtE/xvhijApqQaQsTVtJYLrTVugMNjD7XM+AJJ788uW7Z+75Tu5gFTptlaHB/PqlLeDvDvjvTo/aZvzm6TGzYibbx18YRhxdr4i20aFzTx+U95grHlnLeyyn7neWWY2Y6mzlmca6O4Hx7jeTlpmJzmkCgtqnho1+jyUwAXqDGDRNeup9A6cfW4/daz9u6zhpu13WfeuErQNTqVTapuumKa9pzN064jSOuWFVw3B/sw9v8g62+PBm3+BV1zM93luD22udfTUO+2X8Sb3nedcUgWm1WoIgEEL5/JYgcALP8tw+QjKoKHKyLHLcvsAxYCSRF3gGIekAGcAuXbxAECM5Gi2Et8KbVCxOR0jqV2I3sklFSToWB1OMkMX15J/1VCmW2IVPik+C7mK1+vNOl6f/7VpT/1zr0OJNx3ybc8GABw2OYAs+36KY+WZ8oa73g/7hu2v2j40DwVr71yt9ClhVpcbpHArFcu+/RD79IIOrGeD7aubbSlph+UBXMrM/E58XybmlBHRml/6BqdVql8tVyGfDq6GtTFISWJFnQJEsHj4MSQL8AYQEhEQkC0jiFT0A0+l0Xq83m82GQsuJRJIk4xsbm7lcvkhR6XQmmUwxLAsZkiwrSbIs/QdWXV0NwzRNR6OxVCpdKpUoiioWYZYqFArQFwTYqRTLsqIooqOSJAnTaDRutxu6sBwGOI5jGAYifm9vUzQNl/ij2tnZ2dvbg6zDI1z7C/u1ywFjUK9QAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 55.69620253164557%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAACa0lEQVQoz02Q3U/TYBSHe+2YGgFDDMRELki84MKoEAQ2vmUIxCBo+IgxmbJhMBtdGYOuCyLIDUT/GG808UbUbVGBMcdYwj5KV7ZB9nY2bG3f9n1NR0z85cnJk3NxkvMjauvqGkz32siZ9lcvTA5bm2Pa7LSbHDaz094ya220TjRaJ25NTzVaxxuejtZPjdRPjdQ+GbrysPfCAzNRW3/jekfL8Mby+Lu1sc2V4XVmdGNlYG2pf3VxbPNN/6rHxMxZVhfbvc5rzx8bxgeMk4MXJwfLMkRUX7p8s7Pd8tZrWXb3+SjL64VeH2VecnZ7yU56roshu7xk68LsHdLW5LI3Uy+bXDN3SZtpyfFo3UdUVlYyDIMxzmaPVVWGiqTIRYyRIhc1VUZIleWiqpQQUjVVgUoJY60MwhgRNTU1DOPLCDgYPv4dB9GkEEmAg1QhEgf7CSGaLETi+UgCxNg/sSMxmiocpAq6s4UYWyCuVldT7kXH+71Ox1bf/I9eV+A+Fewh/T0ufzcZ6NYl0EUGW2yfbj/70Gr/3OH0N9m/Ns/oEBUVFRQ1H4plPm5FvvxMBMN8MMwHwnxgj/OHOH8oHdjT+bbDbv1Kft9hdd/lziEMBoPb7c5l+XBo+zjNalBSlZIGJYzU88ewBjFSMIIYq/rUyl5GL4ymaZ7nt3d2Uyk2kUgeHsYzmWweAI5Ls+xRSZIQxhpC+iWEtP8gqqqqaJoWBGF/P8pxnCiKAIB8Pg8AyOVygiBACHE5kiSpqor/RdM0wmg0ejweCGE6nQYAyLIsSZIoiicnJwAAjLFSjizLp6enZ2dnEMLzTbFY/Aub/8SLjJOGggAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1580,6 +1626,7 @@ export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-se
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -1609,7 +1656,7 @@ export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-se
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 36.708860759493675%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA40lEQVQY02WQa26EMAyEuUB3gSROHMd5QKGLWvX+x+uEtvzYlT4cJ9ZoPAzOi3GMSiEZy+QjrhTUUvSc+zurCwn9ONMTw2Q8jtmy6EKcZ19YKpS30d4nd/Gq7GJ8mFkv6+OztA+pR3s/UllDzMCfYBF4PPEnHidniEkyNvScfleFf4ili1mR6NUW+uG6SF7q+ijLjgrl293cJou0nGqQErUhF2uLWvECg3/nnjlAsx3f6/4FtO42qCGJec1tT3XTuqFBRZ/KxqlhOlw7IBgcfI9aZsf4hcCSwNz5k6CdszcuYvoD7zknukrE52MAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 36.708860759493675%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA7ElEQVQY02WPW27DMAwEfYE21osPUZQoq3YdNOj9j1cobfORAPNBEhjsckkoIXFCASohMmAOiYE0Qkau886aqCDX1cMTiwu4evCRRTfg6rGxWIT8vsaLSw9ezSmvHi4uRZRxfrX+KXbtH9fSBuVKueIdIHUBn/iTV5cCMEgFVuTyW5XFKLcpswKV11gXcHksUjcbZ9sOGyeLvV3Cu4uJChcjaVm76MbasxoXSyj/yfNnsnHu1+9x3MZxUzsiaQDJddR+FNvV9toPtb3YXtrOpQeQ5dEBSElmT8rNJ/ZxEkESlYR3SCf3OaTsI/8A7zknumyKiQUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -1623,6 +1670,7 @@ export AUTH_GITHUB_CLIENT_SECRET=&quot;$(pass GitHub/backstage-example-client-se
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2387,7 +2435,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 63.92405063291139%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAABoUlEQVQoz4WSy07CQBSG+zQIFQqFgvFdXPsQunDjSuOCPTGaaAh1Bc/gknANAd0Y3GAUSttpZ9pOC/5luCxM45fpSS/nP+c/M5Xy+bymaSc7KpUKYrlc1pLB11KppCiKlMsprVZrPB53Op3ejtFo9J7AZDKZTqeQoKuUzWYHg8F6vWaM+b7vui51aRiG6wSiKELs9/txZ1xoBdlisVgul7ZNTNdfWM6SUNcP9yuKVgLOOcTdblfYzqEMxIZhWKZpE+fHJD+GNTdtxwscFrgeR/SDALKAB57vHTpnMhlhW/hBbfj3YhBZPAWljFEHuA4m8ik7iDHzcDjEM2zPZjM4R5plWbiBHVTE/HxDFEbEo5/W90Esy7LojFS0QySEQG/bNt0AIxvDfBVGBiW97w8k97a2d+K9baGBYchETNxt2MYJ748KBH/Yvt9EyiiS2+12LC4UCmJmUTIJj6/mhH9ZwfnD29n9tNZ8PdUKkqqq1Wq12Wzquv6STEPXn+uNp3rj8rZ2cfd4dX1TKqoS/lLsWSqVOvqPdDpeqiIXFTmXPYbwF/ckPm2IMn4MAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 63.92405063291139%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAABuUlEQVQoz4XQy47TMBQG4D5NmZo0l0nS8jCseYwRGzZICHUPGoTEpWHV9hVYVumkadTCBmVVUCd4kvjuOEZpZlokFPHp6Cws/fY57lmW5Xne+MFoNBqPx77ve91833dd1zTN3nBoLhaL7XYbhuHNgyRJvnfY7XZpms7nc8uyeoZhbDYbrTWllHOOMSaYVFWlOyiltNZRFDUvm6YZRRHnPMsyCGFRlHeYZzmCJcG8OpVSdUtKqbVerVbt2MP1ei2EgBDmeV6U6HBXHn7nt7BEVJSEN50Kxrk4YoydXx4MBnEcn+ap65pSyhqUMdpsQQilBCGEMCKYcELP4dPOWZbt93sIIUIoz3MIIeeiVqqqKimlrKpaqZKTNP91DgMA2jA/EkKUZYkQKoqCHFFKpZRCyrpSGSmiww+t9c392ADE8ebvsdsMxphS2vbO3zYMIwxDrTUh5LgqE/+4P+eccYYJ0Vovl8smbNt2kiSnK7swWd8i+TMXz959e3qdvpl9feLZPcdxJpPJbDYLguBLt2kQfPw8/fBpevXq7dXr989fvLx07J7rugCAfr//6H8uLppyTHBpgqHx2HXdPy5jPpLHt9y6AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2401,6 +2449,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2418,7 +2467,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 37.9746835443038%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAnklEQVQY05WQyQ7DMAhE/f9fmkixSbyAF3A6bVSpPfodOKAZZoSjmCky126mrbVt20IIYwxVtR+mWauVmXvvmCnloeZC7iGPpjeAiIhKKfOD/THf91Sxr7UKM/TuSpKlI+UxIBO3UUFE0g8xlVSkfYFmztuh8x4y13av4+jK+0HneaUY0WrN7P1BwYsweq4nE3mP9+Lbtmx+3vPMVf8LLYTXVSMu9kQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 37.9746835443038%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAo0lEQVQY05XQ2w6DIAyAYd7/MRenY9JWBamUQxdnlmzZFd9Fr/iTFjNNk7UW8AQAwzCM44iI9Gee5/MlgHPuNj7vD2cwCIaciqpqrZWIYoztrf5ouZxaa8dxcIyqahbPgaXUegU5ZxFJKTGz/7L53e+cPkSkNTW4RYshHkn7GVqDdbQsq9+2UkpfDOAIgTkys2rri5EIEEXOs7vXvr7nmrWzfwED4NRrzA3JagAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2434,6 +2483,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2452,7 +2502,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 63.92405063291139%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAABqElEQVQoz41Ry07CUBTst6AQXtEqJIjSFI0mfoXfwcKlLvgAd8QV0CISjK5cmFBZsnDvglUflEfoEygF6lAogRCIsziZ3nPnzJxbIhwOZzKZSqVSKBQYhil6KJVKL1vAIW7mcrlkMkmSJHF4cJDP51VV5XlelmVBEERRRMXJcDgcbMI0Tdu2m80mTdNzsc/nwzDHcUaj0WQyGXuYzWbOFqbTKWqr1Uqn03Ox3+9nWRZT4dZut9GAMzwxCOPGa4CnNZ5gpChJS3EgEMAymNfr9TRNQ1oQwzB0XQfXXOBzQfqGZY4dXhApiopGo3MxYsOn0+koitLtdmHr7MAqdiqVmouDwSBiG4bJ84IkSXg29DCi4wKLoOIhQZAIdWPnUCgEsa6pWFV2sSCoLQ+iC5dIlmVJq50hZtiS3FPQgwka626IsAjivqUktvvqwAZZihG7/FpZ7bMf3s5r4mq1iiO82R6ZYuI/Td9/uvdvQrn+e3tzdXRMEpFIJJvNNhoNjuPqu/H5Vatx39nnj7vH8sNT8ZKmSPKEiMVip/9A3L11cRa/phLniTg4hH+H/0Eag6cdfAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 63.92405063291139%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAABzUlEQVQoz43RTY/SQBgHcD6LLNAKwdKSrDE0oJHEGwer4bSfZI96kLtHjxhrtcF48mCyuEcOe/fAqfPSaZvtlL7SgTEtlrjRVX+HmSeT/DPPM1Prdrvj8Xg6nT4rPa9omvb0TzRNm0wmvV5PkqTayUl9Pp9TSi3Lsm0bAAAhBABQSpMkiW+KoijP8/V6PRwOi3C9fsc0Tc55mqaMsW1lv9/z3xwOMcaj0agINxoNXdfjOAYAEEIwxhDCJEkYY2mabn+R53m2ZXvOIUI/w61WyzAMzrnneUEQUEo9zwvDcLPZUEqDUhiG5b65DrNoyy0AVVXtdDq1ZrNpmiZjzHEc3/dd102ShN/i2PZgMCjCgiDouh6GkWUBhJBlWRhj13Wdkm3bh5UQ4nkeIeTGzKIo6rq+CSiE0C4dCgghrsBSUSCUZRk6znxXFN/p723Pxxg7joMQIoQcb3Nd99BI+ZYIkmsa5xhXYVEQPnwsvmq32/F/qWauwoIgLBYLzjlj7C8xP8qz7e7TlXu+AMbl9yfjR917Uq3dbs9ms9VqtVwuL2/35evFxfLbqzefz14aL16/fThUJalXUxRF/g99RVZkeXC//1g9fXDal2VZUZQf6gYw4M77cvgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2466,6 +2516,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2484,7 +2535,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 73.41772151898735%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsTAAALEwEAmpwYAAABTklEQVQoz42SaXaDMAyEc/979Q7t77QJiw2WV2Eb0wEnzdI2yYfxAx6yRiPt3t4/mLlt28PhcDwese/3eyFkYPYroeLPTNO0nNl9CplSHIah3+i6rmmbflDOc7gCYQ6Xd8xXwbhLKdZabQwR8cQ5zzHN2EuZK8s/7MqGMWYcR6UUTlm18kUpvsQYa47KTWaQ4qrcOY9TYMHyGpvspYQUTDDKKmWUdjpMwU/4YpUhLLKaLA00GnY8T3OZL8G5zDZZYpJWdqoXBhpGaccvavDakxBaCCNb1SuvTLK55BvZAD2oRcKziDK2dacTGrHu3T4Zk9LPPydvytOay5JzhqVrL3EH5Ly0p/zi3u218pScc3BbSEmkUQXmoTbpUeZreCOfeTAhfwRDNpGCAoyn5/i8z7UwKEQerXXTNBhyKQfS5qVghKHaOpOYUjykk/OP+AYyjm6anuu/cgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 73.41772151898735%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsTAAALEwEAmpwYAAABUUlEQVQoz5WSS3IbMQxEff975Q6prJMqSTP84kMSIMGUhpZlK2XLeQus0AU0Gi8/fv6S1mKM4YZzngjNrPc+xnirCzObN15+705VvPfbjfP5vPlEXMs7mJmImKm1dhfPOc0METNASqm22vsQHb0Ps7GYn/AqBoQQQowREZm51DXsCiKKyGpbfBDPOVWumxMxANRa5/c4Jk8rWqBAwBghZsqlFW4FCkZIEVLCnDD55KFSHW3YuIu7DVRKNe3oLnHbwXsKDsOffLrEbUv7nvc9u3O8RI6g2K1/WHvO2VpbJmuroiIq2vVhT5tm0x4PxodbEX3reb2NPfVss/cuIkeSTEVE7/HYPzxe++pclYgAYHcu5dxaq7WtkL6a/J56sD5xHI/5H2JmTjESZuLCVZ7nvIyJyBgj53w6nbZtc86nDN8Sj9EBcimFmEMIpRRVffphfwGal2/WTgSmBgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2499,6 +2550,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2516,7 +2568,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 29.746835443037973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA7ElEQVQY05WQzUrDUBCFr9rEdqG+XX2gBAL2EqQRTLUt4gsEN27c1UUKgg9hRLDUhbdJ7s/MzXWSLNSN4OFjOJs5wxmmAUoFojaVxlLqqqpqKZXSWoMyVhqLtmkaR1hrEYEGAOzK0hhgzjnssM417i9RBi10xlEMGfby+nZ3/zCZpslsOVve9lzOb5J03jNNry+uFmfnSf70vBGwFQrQ9lnscbU6HY8P9vdOjo8Ofa/D972BN/hmNBwyxqIoop3PXY2IbRO6XBRFlmVhGHLOJ614C/+lOI6DIMjztZD2/UNQ574ic/8RUtsfj/kCzesaqbzwhwgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 29.746835443037973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA7ElEQVQY05WQzUrDUBBGr9qkdaG+XH2iZJP2EqQRTLWW4gPYrlz0CSKIW8WN1SR3ptcgNIJK789IEkG7ETycxWy+GeZjKLLFU3p3//Cc5XkusjQVIgcAAQCAAhARl4hLACllURQvNYtUPGbIiEjXGiJLf2GtXa9VPZDRmoiq8Oxq3h/E0XA8HF80nowmUTxqHMRnx6fnvaMoubmVpSrKT6VNs6sKH3a7O9tbB/t7bdepdV2n5bR+3O10GGNBEBDR6u1da22t/b58OZ36vs8571fwSr5BGIae5yXJdflh5GuplGpeZPQftCXzq5gvtN0XbYCWuzQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2532,6 +2584,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2550,7 +2603,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 51.89873417721519%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABGklEQVQoz9XNXUvCUBzH8b2Uootoc9I852zryHbONlQWQjcGQZcGzZyudqYhdNkrGGldhnvQoOsie3PtgVKDXkDw4cf/5sufC9/c8N3NtzD98Garm8fP3Gx1XfAm931v6A69ntPrOr2L0qXT5YZzeYOS7eA3ZHVqUNVgHQviPn+ww/O7hT1ulBqlIKUZFhN/TlhMWURYRP2IBgmxzzWZtrF9gptt3DhWDVMlRMGIY4leysrbpcWeTXdKr0KS6YfEfaCDJ711hhGxFbMhU0smBsJHqI6BLG3HCyu3tEapOV5a44U5eWndvdrNUyhJEkQiAMI3HoDKOvYTLRcXfo5YY6nW6NQOqwJEVQA3iev4L8FCL+JK/hlu+afxFyfA22Au4gxDAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 51.89873417721519%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABG0lEQVQoz9XN30rCUADH8T1K0UW0qajnnG0dmee4scFC6MIg6NagqXOrbRpCl71AE/VW5v4YdJ1kLxdnq8ygBwg+F7+bLz9uurHDjR2+fpq9ufPt3eKdmW9vc+7kceA6tuP2rF7X6l0XbqwuN4xEZ0dyInH4G1I7dSgrsIGF8jF/csDzh7kjbpS2CkFKg5T6MfEi4sfUXzHeigYJMa8UkbaxeY6NNtbP5JYqEyJhxPlJsxCk9H6teUvVntH+E+mHzGBKh4umcYkRMSVVF6kmEoqwjBqnQKztx5nGrLVRqo7X2jhTJ8/Gw4upX4BatQZRGQDhCw9AaRd7icLEue8RK36q6J16tSJAVAHwp/Iu/kuQNfO4xJ7hnn8afwAMY9tKpZZOlwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2566,6 +2619,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2586,7 +2640,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 48.10126582278481%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA+0lEQVQoz2WSWZKDMAxEff+rUtQAXuSFZR5u4iSV/rIt9SKB22L+88mn4qNt6xpCMLOUkpVmueXa9heOFyybD5EXF1Kmrx0X7d57mE3YLx734/oFtFYrBxfDWkrhlFIEZwfXWkqMAR+9oIZ0rXW80OXW9SHDnOcZVckTYZomCMMNdZi66uC835hQZYTvvPuOLOdsxgqQPs9DoooAU1dHc4950Y157aCccyYIzsoFZ1kWbFR9nD83oVE01b2V1jS/crKkciMr2hfZOqRKjS5s8b8lYLZGLim+Yw8yuqQaK6EJE9rGwmr/PCPjF/n5QrXqf5B25zxWmkUzq/oPYZ1MoXknm/wAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 48.10126582278481%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABEElEQVQoz22QyW7DMAxE/f+/WLSHHhrEm2Rr5Sa2FhsFRToHQRuHjzPd7svb+8ftPu+729Z133fn3LV675x33h9d/qHjOLZ9//xabrObYoaCzE1TgRBCKZWZiYhESZSbvqp/QFWdYjwAQFVTV+tSVQBIMYqI3RDReZ6IOG5a0+k4nsXbtjGz2ZdSlmUOIYxuKSURsaNtphDOnLM9I+LF270RsZQSYwSA1oSZB4KIWI+JiDumImJKCbtEpNa6rlsIwbiIyHufc7bX384jhsckzTpbbDa/cRIiXKpG8ae4dJlraw3gCr/WelmIEFFKyRyf2KMYAHLOIxIiAqgiPAJDxPH5H2ybnJnN2+BtyNfjT/E3ejJJ97pRiXgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2602,6 +2656,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2619,7 +2674,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 53.79746835443038%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA3UlEQVQoz5VSW3LEIAzj/pfrFXqABMgmxjxsqGKmO+m2zbT6YAxjWbISR8cjlzLGIKJ1XUMIZDg+Ma/MXC9QVVBcIhI5K/Qty+K9jxETgvdh9SHEbTeklEopOed5ishJjjFSIlR4Qv1ssvFd+7iBgyBaUZVSt22DQ9DAb62pASK9/zzDPStw5pKcT4htdQ93vWTEwrnV+pvUHRkLQxmn/kH2lQznYMIznOt/bTOnfT/OwGqdOQGY0i+YKc6v8KqMvwPeTZtbE2SOx/YNw0L5QrbBYlJ6kxlXfXt/NOkfl6yIEkkxicEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 53.79746835443038%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA1klEQVQoz42SC27EIAxEc/+79Q49QBacxAzGfFwRqmizTbr7hBAghhnZTOtCATAzhOCcW9e1nagH5/NmZhNCKKWYGTPP8+ycIyLvvXP+4bynZdsBkFISkTEPyUREAcHMRISIjkuqWmur3eCWiZlFxMxS0mVZgKCqKaWc80hbShkhL8THSlV5J0qn1mrvmJ43sSNZ853Vf2IAzAzgE9tXsaoCEJEo8on5OTawbVsvmOqo02j0Rd/blXMIDPDuHfOOquY/2Pgkz+Lfh1ttfdzGjlq/vtdc2g8aiokViiWhgAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2635,6 +2690,7 @@ Region: &lt;code class=&quot;language-text&quot;&gt;eu-west-1&lt;/code&gt;&lt;/p
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2675,7 +2731,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABj0lEQVQoz22RS3KbQBiEuf8pfIVU9j5AKptsXLGkRIoVmBcwb2ZgHrghTixV3AULGL6//26asGutdYrLpy/Xh8cfn7+2jJLL5cIYSynle+HN8lcNSO99rRUHp/P12/PL05lRLggho5TzvWKMWqtxxIlUSjW4nXPrupZSKGl/nn89fT8cDkdKKOfwZvxGlNLT6XTddTweG2stNvkDex/M0LL2/EIGKqTSxjtr7tV1nRACfptzz4hzHnAFjRGeW0mYKUxFrmczbXPfVavRuhcCgfHU7BkkYuMglTU5rgdCVWJyIuMk3ZzLrTK+hzPCo6ZGaY1usAPG5rpmx/TQtXLpRt8N0+9+4zfHXaCVlCgC8OaMwKgRVW+FA/bCSspN5ioIHbF8XMotrLWG8xznDQ5hstYgwxvsuBk6olI3eDoGmHMd55Q/dn7vAoF22I4d04nKicrQmyjdov1S/sFKco7M80ew32A4oy3ATIUw57vMSuGH/+dcC9peXG8ko3AeJ5BEBhsSCn+7ckbBXPQhRuzyChyGrfK7tv0aAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABjklEQVQoz3WRSY4TQRBFfWnuwY47cAXEIdi0wDZYdLtyLGdEZuU8onJZTVmCp9g+/fgRh5RySmn07mL++IV8+Pzr09erkvx6neZ5rrX2Z8aOQwjBOdd7r7WeL2/ffry+XDgTklKqANIzMUatUSkFAIh4QETr3BijtUbp9PPy++X78Xg8McqE4JxzsYMxdj6f3+6cTqfDsiyllE12Lph54tPlld6YBNTG2cU8QwiRUlpr1+SZ0y25t9bGaI4vQJlpDKLQSfuyLzn60FpLKXPOa+d7B3DOjd5LG8UKrSjDwsFT5ZVNpbYdVWsUUoYYe+9rZ0IIIo7Rax/Vcn0jE2SiPLn56+zBpjEep26tAQDnPMa4JpdSUkrbS1bZiQWYMFVgkDpyjDG3vaw1SilTTNur/GJMzvkhW2EUpViocgwCBS90TKW+y7hP/nuL1ra1F0WYLgw8hTCbiDZrl9u7jCCE+I/sxKLIPdkzCBxDSHW/NiL+S+6ttJGtNMDXZOU5BgphCeu9H1MrohZyDjG23v8Ayiat0ZsfRaUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2689,6 +2745,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2706,7 +2763,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 48.734177215189874%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxElEQVQoz52O227EMAhE/f+f2aTpPjTxBQO+gUs22rZvrTI+HsEgZDsmJiQiNhU7XMxLqXav9sytpLMirqXJ1OmhiUxXCCgnhJhTML+gbCTzM4fwmgaAZA9JLypNR3OUN4S14jvDYlRcLy95+cHaV8LwZk64Df5w4XjE48Fxkw4qpAOf0BP81X6HVCuC/Yuz2/f98AvEdeCn9KgKfzIEak99sDuOnShB8qPglDZn/yeqw8UY5y2pqgsh3F/23t9fRkS9qy/SjEj9M7lNZAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 48.734177215189874%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAyElEQVQoz52LyW7DMAxE9f8f1p/orUpSH2JtXCRbJFXIWdBbCw8eBjND0CFSzoWIRXUi01VNH/VY9LXL3McY4+Mz8tZdY2AsBBlLIsgPGDNTYZwZIb2uCaAQV+3NdDfZHcONwG90rXCpMzy94Rvf6DJB39BX+Gromb6lLi6FJYel5pt2MGUTOuAD+lXfI28bARau6Nb1HoIv6Sp0157N4E9EYe+lS3UhrMwFSpRGQ/cx+j8xE5dzHqdkZi6ldP45xnj+mYjsrH4AxepJZv/RJo4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2721,6 +2778,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2793,7 +2851,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAABfElEQVQoz4VS21KDMBDl/z/JT/DVUaf2SgEtoQQScr+AJ9RiRx17ZkmWnU3O7slmSqm+74dhYIyFEKZ7iGNaHzf04anJxhnxivEekDFNY8NMRXUGwq7rQC6l/EHy/y1IyJxzOEYpRf1mhp6B+HLF7+IRQ/1ZaiNGa63WirZt11HW94wlw3UIKiVj/FuLdNh7H4JXxnNphLJSO6EtHERg0njjovXjrTk/hjglwdAwymbCMMY5dB8ENrDeFrnYRW3hbG9ctmRIE7QL2gbwwOAom35BjnXhNB5dTsXQvwv+1TNeGFIJIQeBRQkp+YBdK23gW+di4kSpyeKiNr7LnHDOoRbEtrPm7gJroX7btudzA4NDafIJqXHqu2xCyHa3q2vspCFNURy3201VFnVdl1es1+vVagWnKApoky0viVtfXl/3hzw/HPJjucmr57f9/ljRKzBLp9OpqlIEyZiFW8Fc2bCWCTytNqbt+Adpz7RHEkTBc2LFOKFBNAWNQPkJmWjv1Qq9ibcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAABhklEQVQoz4VS227bMAz1/3/S/mDPQ1ekSZqL7S6RrbtEUtcUilsv2Ib1gBIgQSLPOWQHAEopa63WOud8+wqltv37Tnz7MXX1jvKJ+hVKrbdbZZpGgZ0xRkqplAKAP4r8J8XyoIsxeu+FEABAd+AdMcY1xd/ka238uyajlBACAgjOpRRaad1W44IIAL6Uf3vRPqeUck5AyXhyEDxGh8FBAGqXnhLFElJ9jJhqLrdmmNZaSqk9aWOtddY5Yy0gPpJcY3HbxaAodusLTxljxpApFooFQ4bQjkAJQ15rUmoieqvenPnQnFNCIuu8dc55cN4b6zwgIDnnQ4iltbPmeywN/dC8zIkxWkpBhIvnMYYYYzMSkfN5nqZ5mjifBefzNDHGPMBv2oyx/evr9coYYxNjfX/e73fjMFyv1+ET2+12s9kMw9D3vbW2WzvJOf/5/Hw4nk7H4+k87E7j08vhcH4TD7hcLuM4CiE454j4aFgcJsO1QwAk4tL8YnwWChHX+QUArTURLXP2Dq4a7+kpriw6AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2807,6 +2865,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2826,7 +2885,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 72.15189873417721%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAABUklEQVQoz5VSu1LDMBD0r9PxIRQUdDR0fAGhZdKE2AqO46cSSdbbrGTivAZCds43knx7ur1TwjlnjEsphz/hvId/nhWfG4adMcZam4AL/o4xIcRwDUxaY/249t4nRVHkeb5araqqCll2yMPwYbGNoFyz3viISDkgmbJqrUUvuNR0J7asl9op449NKGedn+JPyJDNhfiq+SJv04IyGcjyyLiy52TnHKTDD7ElUGRcMH9NfyBvyhKyy4iOdjpAaSWVlGhhfwxscajQM/ejWSmESXhKadu2jAv4pmm6rpvIckRYqH6v/FwzfmJ8hJCMkDRNq7pmse0AegmEa/Yv4oQ8AvqXy+UiIsuy9Xrdo1ilptqHwf9KxlFV1Rj4odooKlYdzhDgRnMX5JuQjL25vD++p1NFznNpX2bk7vHt/un94XUe5hyG/A+M6cpOfGT1nDSk3H4DnkEvvnz4wawAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 72.15189873417721%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAABXElEQVQoz5WRy3LbMAxF9eld9UOy6KLbznTZH0gm6042iS05dvUwKYsAAZIAO6IcxW0yeZzBgq8LXIAVee8cEFF+E1HNOf+4/bNpXc4SY0wpVd4jAEzOIWJ+D0cpiS5rVa2MMfv9frfb9X0/Z5km59zk3GmaToURgvNRC0XyTLVmDSGgR6AwTnhynoJw1MtAlvhU9lx53TAzID4OcL+323Z0NIvpIoAl/ScWkVRQFVVNmoPkKFn1nf7PPbdt23V913V2tIFDYA5MRISI/hJET4ScYpJzzyEEImLmcRyNMQ7QGHM8Hq21q5gW5gX7J/P/9DzfEsWUmqapm2a73fbDME++gB4RcSnzysAWUkqbh819oa7rw+Hg0RPz6v31aa9HfT8AwLPbUq249uRJy2DnkBfiT1EBgLX2I0+TqKP086b+8u366/fbq1931WxD5CPi5edbC7/r4a45Nt3pLyKrL/g+mbI5AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2840,6 +2899,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2861,7 +2921,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 41.77215189873418%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAuUlEQVQY042QOxLCMAxEfXK4BNeAG3AE0lFlmEnBkDi25I9sk5hgUKgh5BXqdvatBKAxxt5d52STnLLWKqUQsZTy+ofQWgMihQCAMUaO9X0PADnnxyLTNIlAXsu2b69a3ozB8IGI3CJK62EYhLLx3KhTLau6a+WsjQB8eUxKieWfP5ibq4Z2x+v2UG/2F0WZl6wYO8N5kWIgi95AIstVcR1sPo6j4IX8MN6Axsa4Nuy954+KstLym/Yban7L8bj3D44AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 41.77215189873418%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAu0lEQVQY053PS1LDMBAEUF09XIJjhBNwA9ixCkVlQXBkaT7yRMIe/cCLLBNcvH1XdxsRIeLvcA72mIJjZuccIrbW+l+MiACgyAUQY4xENI4jAKhqvquUYnLO3g7j8OntFxFersJdzvt5nk0p5e3oXg729XAe7DobAZiZiFJKrbV6w9pcan18Pj3s33dPH15y733D2VWt1aiqME7kk3BKKW4TQliWZf0MiM57JI5xa3iaJlU1tdb+L7+zfwBy3Mze70F/vAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2875,6 +2935,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2892,7 +2953,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 105.0632911392405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAACXBIWXMAAAsTAAALEwEAmpwYAAABJ0lEQVQ4y+2Uy26DMBBF/f8f00X/o1I3WZACSiHUBkxt/MAQXr02JVLbTapKXeUI4fF47ni4C4gxmjLGyhIva+00TRcwevb1M5jn5RsEAs55E5BSaqCUalttsGqN3hq7Frn5h5rgqtDbtx+GwfVg8E+Ih0AfQCX00w5iYozxI1e8qEXZSMplozrVT8qNrZuk2gbYBvITMMqyPMvzHLN4cVVVlNI0TaMoOp1eq7JMkgRxdIyKQBy/xHF8PheUviGNTZZlXtxfRmV7TCjEO87QBVmzg2lhCpKws65rawwCRincwReQcV76YGTXWSEEbHPOXb1Z1xWOoFR5NJzB6NiiBkdk/comuBGy/oG7+C7+L/FyA1vh9Yfyi5uhlXY4FObxmT88VYfCfgDkpdBxRD8/bQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 105.0632911392405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAACXBIWXMAAAsTAAALEwEAmpwYAAABHElEQVQ4y+2UzU4DIRRGff+HceF7mLjQBZY2ddoR5pfLBQZm4E4NtCZ1V92Z9IQAC07ul2/Bw7rSOI5KgVJjjPH0Gx6IqO/7oQAAJoOI2th8GGuNMVprRCSi9SdZXpZlmcs2zz7M4bzyPcyFUEgpEVH6hoiy3Egp277uVDOA6PWAE4aEPmqfAHMOc8mTE0ghqqo6HA6ImOW2bYUQu92OMbbffzRNs91uGWPsndUFzjec8+OxFuKTMbbhvKqqi4xT8CEoNYoCIlprXSGE4JwTQjSy6brOOSelFEICAFHKso+5immacuPj4EO47ibGCJALM8bEuKDWAOB9uLR9+it3+S7/C3m9gfNDuv5Jbpyzridw82ttn176x+f2rXZfuPrRe/WWilkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2906,6 +2967,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2925,7 +2987,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 51.26582278481012%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABIElEQVQoz5WR23KDIBCGef8nbKIx8QCCwAjCAiqZdDWxk/am7c83sAdYhoVU1QVVlmVRFF3bKinlMPyGFFz0fU/sZEMMDrwH74KHCP5JOIwIsBHgZWxgFk8RHUaWZB8li4NdHdzDDzySvVt3MrgVfAbcGe+JjNG4u+eGn2l562smaSc6OnxBe92rSYlR4LxhpTTKJBtzIiZaLG+CVZOWmHNaOSV30MbIGIxf4XXzDrrT4lKeCTaIUda2LaVUKfX4jwg2raqqj9OprmvOuRiG6/V6LnCcsaLYxMWh4RDujDESa63WijH2DIUY8a+wUNM0dX1r2wZLoN1Rqi0sy/xUSinnTAAAl+UIp13zPL+535x3EbxwHEd8rf6zsE2XqsKDnzn7Mlc4ATQHAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 51.26582278481012%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABGklEQVQoz5XQ227DIAyAYd7/BddDki4BYohNmgOGHIg2NVWnrrvY9uu7wJZ8gzgej3meZ1l2Pp+VlISITfMbtMYCgKihDjGM7D3zGDxH9j9wDA985wOHGAQ6rCeEiHVs+nXkLbzwG/vkx3WXeFzZJ+7XMW6TADTD5k1nTjp7h7JGrazSzRcNDmgge7U00E2P1FM39THtx5z4GjoaCAdyvnWjo9390cXer/xiWMYpzcJaW+taSqm1JqKP/yTAQFEUh7dDWZbGGGvt5VKc9qSU1lrzyD4FALcPc3sAgIjGmBgjIlZVJWVVVaVSUiklZaW0dgMvy3xvmqaUkgCAlNLyWE978zw/jd+G50RRFG3bIiIRub+F2OR53jTNJ0f8MYfwBwe+AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2939,6 +3001,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2957,7 +3020,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 56.32911392405063%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABAUlEQVQoz21S207DMAzt/38LH8DLBK9M4hnxSpeuTBWQLTfHsbNkadKOzjqqfDuyT9xumn4OYjiI8asXYhjH75MYjr0YHHiPoQA8Nn+NLmTDyIQYEnKAgYiZY0OydViQerqc53g2PgWxmvOm+al8+u2Zl2rLJ3IEpOf9p1R2zhK/f7x6hBIap3dvT40MEOSfLZO6knXOtnJyAHwLkxBrYT25CuFuyW4W2+x5r7mRedNXjIiMMUppa/Oq/197nuyniKqRqbIR/UUZedZKKcxG9+QsS8PxhYOrc+NlfpEYiLUFKaXW+nbFLZk5hOVQtxtGfqD50dqrvyBy1d/80pA+W81X9vSHV6u5+HUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 56.32911392405063%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA/ElEQVQoz3VSy07DMBDM/38LH8AFwZVKnBFXUqehVEASv707ixynVmjCaA87a8++7OZy+Tqq7qj691apru8/zqo7tarzIcZExUJM1V9bQxlJwIkopZkkYgYg1URkTYsxo8lxyGgjyq0ZPtrqAzh/t+vTGm9EJCS+P7yNxi1RxsvrU6JQqPXm4fmuakOg4ccxZ96UlMH7mhtAjKlSZvYu7FfeRv/D7cxVjM29WtZaq7VxLrd6u+2lcvwUmoowa67qGOOk7TAarXXK4L9iESETTo9YNgSBTL5sRIhhXBiGwRgzv+JWDBAxVj0zBDsz77W9+gWC6/yLXzA725l/ARfSh2iihWkkAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -2973,6 +3036,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -2990,7 +3054,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 38.60759493670886%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAs0lEQVQY042RzQ6CMBCE+/7P4kUvvooxMZpoCL8CXaDt/hRXwKNA8h3aZKczszVpludlFZCQOEzgPnTSJGlWVu/ljqSwyB50zqiybuykZOfRT2qWuAFHnTOthdlWZdD1etglFlEXUzftUhhpfkhiVDZjo8bOi/JXWKB1wZEP1DstIWuQOrNxU0tmqR1citu1uNcWLAwev1v4C4knMXPgyOMDnofX6ZicAQfhce2f1LnvEOADnTXTLTYYzkEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 38.60759493670886%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAuklEQVQY042QS27DMAxEdf+zdNNsepWiQJAAKdJP3MiybIvkDOUg1raIAzxw98jhhNin2CdRqFHB+3yCWTAJwvnru/u7Gmh3E2qg+zOAHrruGvthNVnEZLXpdQNWA0MacjsrZnmcDNw2VxQMsU9qaJnbIq/Va92MbfTw89uptYc9p6IFopiKGv0RcDWGsn5Jeiz5/bL/uBzikIc8y+PC4QIPLfDC5ZhPL5+71/PbaLNzaUX8D92m0cZ8A48v0yVh663xAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3006,6 +3070,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3026,7 +3091,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 31.0126582278481%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA+0lEQVQY02N4/eH927fv374DkR8+fPzw8dPnz1++fPkKRF+/fvsCRGA2GgKq+fTpC8P3v79//Pz969efH79+//nz9z/R4O+/fwxnjp84c+w4EJ0GkkA2EJ06fe78RSC6duPWlWs3z5y7cPb8RTR05uz5S1euMkgp60iq6EgBkaqulLI2mKEjpaQhraxl5xZg7uAhIa8mraSJjGSUtUSkle1dvRnkNA0UdY1ltY1ktIxk1A1kVPVllLVlFNSlFdTFZFWACKgZDUkqqAtKyNs4ezJ09/T39fR3dfd3dPV1AsluENnZPaGje0Jbdz8QtXaho7buCY1tPdPnLAAAwsvWwuplSU4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 31.0126582278481%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAABA0lEQVQY02N4/eH927fv374DoQ8fPn74+Onz5y9fvnz98uXr16/fvnz9BmGjoc+fv3z69IXh+9/fP37+/vXrz49fv//8+fufaPD333+GE0eOnDgMRSePHAWh4ydOnTl36sy5y1dvXLx87eTpsxAuMjpx6sz5i5cZpJR1JFV0pFR0pFR1pZS1wQwdKSUNaWUtO7cAcwcPCXk1aSVNZCSjrCUirWzv6sMgp2mgqGssq20ko2Uko24go6ovo6wto6AuraAuJqsiJqsiIa+GhiQV1AUl5G2dPRm6e/r7evq7uvs7uvo6u/s7ukFkZ/eEju4Jbd39bd39rV3oqK17QmNbz4y5CwErHdYQkyU4QwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3042,6 +3107,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3065,7 +3131,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 28.48101265822785%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAj0lEQVQY06WP2w4CIQxE+f8/FYlyW2gLFEcwxn3bxBNIJtNOKaZUbkOJm4i0L723rjhDdZ5BWykl+EBEBndboCOzkfYZ1ccYpzz6w5tIxAZFWClla+/gsXgu7A3YEGNawEFo6xgjMxtmQfggyVWOI3vvUcPaqgrhnNsb4Y2cMxyIvoAwtVb9+Zgu5jXM/IMXbn1fyM6psn8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 28.48101265822785%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAnUlEQVQY06XPzQ4DIQgEYN//Tdf91dEVEaRZTZueeul3gkxIGIebMwkK55RyvomoVqqVqSmxNlF7672bmQ4xRiJyRGRmPIhIm7gxj0FUtdsXIgqPWGt1MwPg/bqu677vx3Gcg1+WxfsQI4bzPEMIAOLwHFdmM8uFU+Gc03VdAESk9w5g27b5kaqmlACoqgyq6kops8yn2Pf6m7M/vAAN6F+Ey37MqAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3081,6 +3147,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3091,7 +3158,8 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Good terms for these concepts that I came across in &lt;a href=&quot;https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0&quot;&gt;a post by Dan Abramov&lt;/a&gt; are Presentation and Container components. Presentation components being the simple components that take state as inputs and present it. Container components being the components that manage interaction with the likes of Redux and provide inputs to presentational components.&lt;/p&gt;
 &lt;p&gt;I recently started working on a reasonably large angular project. I struggled with finding good examples and developing a good idea of where things should go to keep the code base clean.&lt;/p&gt;
 &lt;p&gt;One thing that caught me out a lot was how coupled the component code was to Redux, or at least &lt;a href=&quot;https://github.com/angular-redux/store&quot;&gt;ng2-redux&lt;/a&gt;. This code base is making heavy use of the &lt;a href=&quot;https://github.com/angular-redux/store/blob/master/articles/select-pattern.md&quot;&gt;select pattern&lt;/a&gt; A typical component in the code base might look something like this, taking a really simple and made-up user list as an example.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;@&lt;span class=&quot;token function&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+@&lt;span class=&quot;token function&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token literal-property property&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;app-users&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;token literal-property property&quot;&gt;templateUrl&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./users.component.html&apos;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
@@ -3107,7 +3175,8 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;userManagementActions&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;fetchUsers&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And a simple template for that.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;ul&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
   &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;li&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;*ngFor&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;let user of (users$ | async)&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;{{ user.name }}&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;li&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
@@ -3279,7 +3348,9 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can also just use the cloud console in the GCP UI but I will use &lt;code class=&quot;language-text&quot;&gt;gcloud&lt;/code&gt; in the examples here.&lt;/p&gt;
 &lt;h3&gt;Install kubectl&lt;/h3&gt;
 &lt;p&gt;Assumes you have followed the instructions above and installed &lt;code class=&quot;language-text&quot;&gt;gcloud&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt; gcloud components &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; kubectl&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+ gcloud components &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; kubectl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;Google Cloud Platform&lt;/h3&gt;
 &lt;p&gt;You can just skip forward and setup minikube if you prefer but I recommend using this to have something a little more ‘real’.&lt;/p&gt;
 &lt;p&gt;First you need a google account. Not much point me explaining how to do that I guess.&lt;/p&gt;
@@ -3297,7 +3368,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 40.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABB0lEQVQoz52Qy0rDQBiF87iiiBsrQnFRX0GIqyJV0AcQVxaq7UoRte0rBJpIJ8pMM5lLmuNcHI0YFzrwcQ7/HA7/TNTpZ9g/SdEx7A0y7PYX2DlOsB0n2DhKsBkvsBWn6A5SHJxm6J3n6F385NDQPSOILu8oru4ZbmcMwweCmynFaLZyDJ8Yrh894znDZG5ztJWxYfRMERVcghUSWFs4AKNQ/yaSUsIihEEqlEbbkEqbnP71PvBZ2EQp5Qje6nJJwHkJe+q6dgTfzH4rVC3lIfj2SkApdV4I8fEqr1rrr8KwTRs+5L9iMs3xQhh4sTIz7UqUmVv9Y6HXLBfgpd1YoKoqVxK0mX0HSiNYQAlmCAsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 40.50632911392405%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDUlEQVQoz52QwUrDQBCG87YioiBSBPVQX0GwgqCWHuoTiAcLrfGmojV9hUAS6UbZbdOd3ZhfZuNi1XjQhY9/YIaPmQ02jzNsn6ZonaVodTNsnSTYOIqx3omxchBj9TDBWifBbjfFXi9Duy/Q7uc/2D/PsdMTCC7vJC5uFa4jhcG9wOhJYhjNHINHhauHmnCicDPhOdlIGEkMxxKBIYKaE/DGFAAIgPk3gdYEIgKnJoOFpkbIWBDZX/uegGXfMcY4fM05nQoUxQL8qqpy+Hp59ovQNMiJavnri4CU0tVa64+r6rTWfgr9Nk34If6KcJzjWSgU8xmMsU7CPc4/CzmzXKNY8MYaZVk6ic/lk98BEI5YKnAUMNUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3313,6 +3384,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3331,7 +3403,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 63.92405063291139%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABl0lEQVQ4y6WSsW7TUBSG/UrQEYkFUShiBAZUVAYGBhY6VUiIAgugQgfEAH0MmHgEJCQQAgWaOE2da8fpjRP7xthJbH+c2AWkKgkFjvTpv74+v/Xfc22dvac5tdHl/H3NygPNsjyfuas5t6m5+LBX6uk7B5y43eXk+myW1n3p1Vx+EmBd3Trg0qMuN55rbr3sce2pz9q2z6ro9e1qfeVxh5VNjwtzcVl75nHzRQdLeT3cjsZxp/ToRwnhcCyMGBhBNIrHDL8vJopHpcdq2g3sRp2m8O1rjWwy5n/KOrpRFAVZlpPnOdkxKXuzCstx2ti2jWoroshUTYcv81+G4jfFbIpDrN2mz/uPu3z4VOdzrUWt3qbR8gnjgmECRgjjXOaTyTwFcwTZ64tOsqI6chr3GWhFx3NpK4/9fYe9vRZKuYIqNQgCdD8lHUkKZiedpis/+PZdwM5rl5YbEZsBxhhGaUqSJKRTZD2Ri5rICH6a5lV55FdvumzsKL40Q3zPIQzNH03zmHnLxzEtSmpVjfyVaeF/+C8pFtUPM4LGeJhnLGYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 63.92405063291139%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABnUlEQVQ4y6WST2vUQBiH85W0R8GL+KfSo3oQSz148ODFnoogrfaiYttD8aD9GHryIwiCIspqd7PdZifZbGezSSYxyWaSR5KUCmV3rfoOD+8w8/5efi8zxuV1yYW1IdeeSBafSq6sSy49llzdkCxtjup88dER5x4OOb86nYVVl6VNyc0XHsbtl0fceDbk3q7kwesRy1suKzsud7Zc7u40+1vPByxuOFyfic3KtsP9VwMM4YywBxLLrhgxDhOCaEIQZfgqw48ywnhC9HM+YZzVGqNrdjA7bbqdNj++t9D5hP8J4/RBWZZoXVAUBfqM1LW6wbCsPqZpIvqCMFRN0fFlcSIof1NOpzzG2O+6fPy8z6cvbb62erTafTo9lyAuiRJQCQRxQRBp/Ap1ikgzVppcl83IaTzGl4KBY9MXDoeHFgcHPYSwEULU2fM85DglzUqqNc1p5a5u+P6Dx95bm54dEisfpRRZmpIkCWlFmpLnE3JdnIhmRT3ym3dD1vYE37oBrmMRBOqPollMfeWziOY5NZpC/ko09x/+i4t5DX8BM4LGeBo1OgQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3346,6 +3418,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3364,7 +3437,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 61.39240506329114%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABpElEQVQoz5WRy27TQBSG54W47NiwYwFigUC8AhtAKlGhCCSQChIgxLqVEC0LhHgYxLJRDU3ckMaxx4mdixPbY3v8MW4aKUAC7ZE+/XM5c+afOeLShs+V5z0uP/G5+brPrTd9rr+cce1Fn9tvA268Cri62edCTXJuTXL+wUznzOcXax5i7b3k6acB6zsBzz6HbH4Z8GjX5/FHycMdycauNHPJ+gfJvW2Pu1urub/tItAZrtNmEEh6sosvXao1KA36zAiV5Vjff+A4XWzbptG0UaoqaLZNzXIBfQpEWWr+jNKc1lqfifJERZ5l7NUtDho2zeZPoklMlpcGvYJyJUVRIhKlsRod9vYPsQ7a1C2bVluSmlcnCuKKFKZpeYJmkmiiuPiNam00LYzDvCAMfKTrmH90Oeq4tI+cY+0YnK6H6/XMnkcQDpFBSmUiL2auKl1EpJnm237A17pPOIyYTCLG4xFRNGY8mmkcT0mThEwpUlUcN2hViG6Qceddi9qWg3UY0rIbpmDE/6Jq3DJEYXrtDxS9oTKW9T+TF5nn/eVw2c3LxqeNX8zAei1zTzwLAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 61.39240506329114%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABl0lEQVQoz5XSwWsTQRTH8fmHRG9evHlQPIjov+DFCrXUVhQUqmBFPLcgNh5E/F/Ea6qr6W5DmsnubHaTNJtudicz85VNrVZNavzBhzc83uHBG3FxPebyk5hLD2NubCbcfJFw7dmxq08Tbr1Muf485cpGwvl7inPL811YiRDLrxWP3vVZ3Ul5/L7Hxoc+a7WYB28V93cU6zXFWk2x+kaxtB1xZ2u+u9shAqsJZYt+quiqDrEKqXrgAPvfRFlqvK/fkLJDEAT4fkDVq2IduFPsAoRzlj/jnMNai7N2WhdxMiu01tR3PRoNH99vko1y9MSewc1ljEOMS4u316b+ZR+v0WLXC2i2FIWGcQl5pYCjwv1gGY0tWW5+U/UOjwxiMjH00hgVSqQMOWiHtA7ktLbbIbITEUZdpIxIewNUWlAtMTHHW1X1NFGUhk+fUz7WY/qDjNEoYzg8JMt+1TzPKYoxWpdU89WB5kXIRHP7VZOVLYm336MZ7DEcZpwdNz3cLMJYR3egSQYaY+zPK//LydxfG876MrPei+Y7sQZ6JzeSYfEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3378,6 +3451,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3396,7 +3470,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 51.26582278481012%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABm0lEQVQoz1VSi27UMBDM//8AAgFCgNo/gFIhDv6kd71H3t7YSRznccOOW59gpZXX49nZsZPsyy+LrzuH+z8OrN99N/jww+DttxrvH1rc/TaagvvXZH23U2wnyhN8fBR8+tnhzaPB54cTstHP6PsR27oC1w394DGHSWsPQDEsmgHYFFtHxUPE122AW1v0S4su1JAgsN4hK6sGx1MOIw6tWLTGoCgrEB9UfLuqXJgVF4h0mLS+EpsX5EUZudb1OmCDcyqY5znqusYy06lD0zQoyzKm916br1jVfVqXZbnVPLedvfGsVcFpmsBkkGytjZOGYcCmU2cdRJyRBBnsEZHIG8cxcqPDBDAIsqbjvu//c/ZvpkG8Dd0lXhSkAF0lIgk84Mom4iGE6IQ4XbGHZ8Qoyn16guiwNW1soiD31tnbVdftRZBC6a0YrI1+wKqqYg+57MlY+NEjBUWTo/S2DAqloS+AvqOfML4+WfpY2dPhCcfzCefLGSddD8dn7A/7mJfigrqpY0on8SasjRj9rUrsnw+xNy9y5GWBoq7wF40k+5SwvlE+AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 51.26582278481012%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABoElEQVQoz1WRDW7UMBCFc/8LIBBFCND2BtBWiC0nobvdsInzY6+dPydxPjRuvSojjTJ+fvPmeZJ9/WX5tnfc/nZI/eGH5uZe8/57zce7lt2jZvdouH1NqXd7zW5vuLk3fHowfP554d2D5stdTjaMM103ENYVtkDXj8x+gm0EVmABPIQJ1gE2H/El9Li1pVtaLr7GeIMdHZmqGk75GW0crbG0WlMqheAiHjbwfqbVBmMsk5/ZBJsXilJRqgrretYQcM6RFUVBXdcsszh1NE2DEkGlGMeRbdtY1/X6XZblWsu9vdgrz1pHNk0TkhJCttbGSX3fE0JgnueISyRBCekxxkTeMAyRGx0mQEJAqcVx13X/OXubaZC8RtwlXhQUAXGViEKQC/lKk+De++hEcHElPQkTUTmnFUSHrW4jQQTlbJ29PnUNL4IilHYlIbXWmqqqoqBwpSeTQi5TiGiannYrIUJp6AsA0zgxvK4s/azsz+GJU34iP+fkec7x+cjT8cDheOBcnKmbOqa+aBrdxLo1mrJSHJ6PnP7mFGVBoUrKWvEPg4v7gVJjagoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3412,6 +3486,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3429,7 +3504,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 51.26582278481012%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABX0lEQVQoz51SXUvDMBTt//8xDhw4fRFEmKBT8WEobHPK2rV063eTNEnbY25cZlF80AuHm/txbs5t451OdxhPY0xuU1zclxhdxziflTiZ1hjdVLh8qgdgA9SYzGqc3dWGV2P8KHD1EMGLdhXCuERacDSNBCtiQDMAHf5jXpqVSNISjEtwoZDlBcqKQSqFtustpNTQbYfO3EG+qoUBQ5rm1nPeGL6AEA08bYjKQlrPGDPET3V931vPOalvbOxyFBdFgbZtj73E86SUcKCBVHAxkYjgchQTXB+Z1tooE8c+Tx0UuoHuNkcYnof2W+7HwOG6dCZI1RklrVUzBCmjOqkmbwe6Ndwq+/0eWZZbwtfA1tQ01PF7K1vngpuf1FoxSZJY732XnaUZojD683Mp8tysZZ7Ncr0CYfG6xPptjcVqgfnL3OSWCMLAwg/9A4IDfARRgM3Wx3rzDn8bGM4zVob/AQcFAyqi7+x0AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 51.26582278481012%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABYklEQVQoz52Sb2vUQBCH8/2/jBYUrb5QxNJCPZXCYeHuTEuTXoh3+XfZ3Wx2k0dm27Sh4ot24OG3M7s7+5uQ6OjkD29Oc96fF3xYNLz+mnO8aHh12nJ0duDTheLzhQo6R2rHi5Z331o+fm95+9Pw5UdGlO9btnlDUWu6zqLqHJwCBl4SUdUo9kWD0hZtLGVV0xwUtnf4YQxY63B+YBgIemgNh1ZRFFVQrTuUNhjTEfV9zx02qFKKYbhzN45jUK3FfRfyqSZ5Xdd47x/OCpG1lglpKMUpl0tyYapJLkznJJxzGGMezkVTo0nnrz1dz+N/tX8azseVtWD7Aed8cDNHnMm+uBYNDacxplF2ux1lWYYLjw09fe94/N592NfG4LwPZnb7fdDoqe2yKMmy7Nm/S11VMEK0jjcIq99r4quY1WbF8nLJOl6TbtNAsk3uSe9JSLOUm9uE+Oaa5DZlefmLzXXMX6pzA2HyUXgjAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3445,6 +3520,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3462,7 +3538,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 67.72151898734178%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB0klEQVQ4y52T6W7bMBCE9f4v1V8FAgRoUbRJHKeJ4kOSJeugLt7UdMlIcQInddEFBgQI8eNoZxklSYKmqZHnOcrjEWVZYhxHSCnBOYdUElVV40j7Wms452Ct/VRRmmVgjOFIsCxNsdvtAsgf9lBjTLgsjmMY2vM1TdOnijQ5EIKj7zpIWidn6aAioIJSIgCXsm4KDv+mKCsaFGWL522GLK/RDgrdrLaX0MYiLTWeUommtzjV9KGiq5XA9VriaqVxu9X4GfNZAj8eR3SjAesU8oqHC4RU4ILca0uXuTNFVdOTQ4Z4kyI9lOhH9apukHTQoW4lsoKhqAakOUNyaMAGg447utC+U6Soh1IKSnaA4CP1TIfm+9X30Sc39AysLkN4lyryaQZR8/2qlJrlU1YhpDgdsN7TJBQZhccovJEM9JSqO0s9OgFetECXsQEc7h7uEH/5isOhwvdfz7hZ73FzvweX5hz46vCN3gKtN9F9g3m8xv444XajsC0Meg4YewIt4AvAlx5Oc3/yRuN+K7DaCDzs6AW1pxldoJcdEhD+Y+pX0Rj8TiTWBNvmCgnNZ954t/ZfHc7AuTzQu3tKVYBI5TAK/7an/wFO4em1o/1wXJZf/gOa2D8GHfzOswAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 67.72151898734178%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAAByklEQVQ4y52T2W7bMBBF9f8/1acCAQK0KNpsThMlXiTLlixZC8khKZ5CjB2nyFZ0gAM9SDy8miGT1WrFbrejKAq22y1lWaKUwhiD1hojhqqq4jtrLeM44r1/lyTPc5qmiQvyLGexWKKUjosnqXMubpamKc5apgohvEtiZUqi6No9RitC8DgrWCuI6Cg8lh9DTPgRSb6pKco9D/OcvNix7yXS9kLTGazzZKXlPjPUnedU4U2Ss2vN+cxwdm25nAs/U3VA8+NuoB0cTSsUlYobaC0oLYj1WDe+Iqnqjk3ZkD5m5OuSbpBn2t4gdmS3N+Sbhm3VkxUNq3VN0ztaNdIO/i8SEYMxGjX0aDXExkecjX2cJtd3Nc2ujMP7rJJpmhHn4lNEDkxTFsLoSbOe2bJhu8np2gajB4ahI4Tx1dSTk+CJo/R4bGDk6vaK9MtX1uuK778euJgtubhZoox7LXxO+IKXQj+FaL/h7s5ZbgOXj8J84+gUOH8SHcWfCJ96GA79KWrLzVxz/ai5XRiq/emMHqWfJ/R++hrCyKZ2/F4ZZgvDvBBWpaWop7T+XxMehIeahFO6+0yixMjIoKe7Hf5HGOLV2w/+zeNy/OU/mtk/BX4Zs48AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3477,6 +3553,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3494,7 +3571,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 37.34177215189873%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABYElEQVQoz22RXWsUMRSG5/9f+g/0QmmR+lG9WalalNUKFb0QXLXu0na7dD6bzXcm2cfMjAWFBp6ckJz35D1J8ehNxf7bioP3HQdzyd5xx8PXFfdnJQ9e1Tz7qHiS9w9PJC8+/c/TDzn/nRx1j3Pe3lxRXNdbrq5v6IQhxp7oJcEKiAZ2lmmkzO4O0j9nUyzqTjEgdUAZT1231E2L0gbnA9Z5vPdjNMbhUz/Kp4l8lhcpEUPC+kQRvMM5Sx8CIbNeX7FcLjk/v0BKhcmFdUYpRUiBZiGQC8nSC+6tvuCiZ7bp+SXTeEER/hYaXAxRa43OYqVtdjS5G3EuNxXZXmjspaMNmsPVN4Q3zBs4U9MzFLeC26JlWbK+XNO2bXYoEWKbEXQ3IudETr9+5uj4iG2W75cdepeYvXzO77Ofdzu0ZmpxcGrMFAeU0oQ+sdlsWOUn0TFxUpXY/JHfFz+ommYs+Ae/zhDaSJ/gWwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 37.34177215189873%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABYUlEQVQoz22PXU8UMRiF5/9f+he4MUsMqOAFGgxGWT6i0QsTNgq7AYYNs/NBt287bafdx8zMknhBk6enaXNOz5u9/rxi92TF3reGvVPN5EtDf7fzsWDnU8n7c2F/qjm80BxeysiF8OFSeHum2f2q2Z8Kb86EyVTIHss1D4+KRlli7IheE1oF0cKmZVwJ2LxA+u9t1KxshB5tAmI9ZVlTVjViLM4HWufx3g9qrcOnbrCPG3i/gZSIIdH6RBa8w7mWLgRCCOR5znw+5/b2Dq0FayzGWESELgWqmULPNDf+iVeLn7joOXro+KvT8EEWtkF9i157sxFBTIttx3YDzpOIrO8M7b2jDoaDxW+Ut5xWcC3bkZ8Nz6FFUZDf59R1jdYapdYopWieFCFEvv/6wfHJMWtgUjSYTeLo4B03139ebmjtOKIxZns2AyKG0CWWyyWL+QKJifNVQRs7rq5mrKpqCPwHI6YRCQJLTjkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3510,6 +3587,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
@@ -3527,7 +3605,7 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 42.405063291139236%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABg0lEQVQoz21RS0oDQRScg3kBbyAudeXCoGgMiMEZh5nu+fdnfohgsvECcasuvEIIWScBXSXZRjRldyfBD2ko6vGoru5Xz3JJBtuN0HYo2jbFlU3g+gmCWMILMpCQgcYCNPoLssb/viUFA2cZpOCoyhx1VaBao67KrajKAqXSakiZI89XrGElSYooipAkCRjjiOPY1JrDMEQQhGsOjC5NU3AhUBWlQcZ/zJiqLX1RiwkhRtzv9zEYDDAcDjEejzGZTAxrjEYjvL2/47HXw02k7qjpavXbVOSIlFlZFLC0med5cF3X/Go2m2E6nWI+n2OxWGDbeX16xl67iR37FIKlOKESu5cCXI8spTQZCDVGXddYLpdbTT5V++NrVT+/vCD0fYQqApFL8LxAwFZZWjofPa6vBJRSdDoddLtdw5v69u4e990HtW2Ok4s27tTDzZhhnwQo6wqtVgsHhwcrQ53b70Vo880DG/Z9qvLN4NjXaDSOITmHnTAcEQ+5ytBxHJydN43hN4dCyQFlx34rAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 42.405063291139236%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABiUlEQVQoz22RS24TQRCGfTAuwAmQ2AErFmAh4kRCSTSW8fS8p1/zsCLFkwUniFiSLLiCJXtvL5KN7a1B+IumJyZCpKVPf1Wr9FdXdW8caryvMefDgDMv4NQTjPyUMDH4YY6IFEGiCWLd6YFYI+Kn+EDPGo2SOUYrqtJSVwXVI3VVPktVFpSldRhjsbbTlp5UijiOSdMUKRVJkri41SiKCMPoUUNXl2UZSmuqonTk6slMqtZQSlcshHDFs9mM+XzOYrFguVyyWq3+0uZ3d/d8v75mGIcInVOXBZm2RMpSFgW9PM8Zj8eMRiP3qs1mw3q9ZrvdstvteO78/HHDq7MBL7xPaJnRF4aXXzSqHdkY43agtWYymbDf7/8zaG9+7+HXny6/ub0l8n23Am0NyhaEsvNxI7fj+r5PEARMp1OapnG08VXTMLm45PLqGyKS9AenXNQ1R0nOaxFS1hUnx8e8efe2M1Tq349ozQ8NDur7AVmW43nnfOx/wCiFl0reizG2LBgOh3w+GjjDBwNayUTlEy4pAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
@@ -3543,71 +3621,107 @@ RDS_DB_NAME&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;You will be offered a free trial but you still have to enter a credit card to get it. You don’t really need the free trial for what we will be doing either but no harm setting it up.&lt;/p&gt;
 &lt;h4&gt;Create a cluster in GCP&lt;/h4&gt;
 &lt;p&gt;If you haven’t authorized gcloud already, do so now like so:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud auth login&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+gcloud auth login
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;That should open a browser window where you can login to your google account.&lt;/p&gt;
 &lt;p&gt;Now configure the project you created (PROJECT_ID should be replaced with the ID of your project):&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; project PROJECT_ID&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+gcloud config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; project PROJECT_ID
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Configure your desired zone like this:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; compute/zone europe-west1-d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+gcloud config &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; compute/zone europe-west1-d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can list the available zones with this command:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud compute zones list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+gcloud compute zones list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Verify the configuration like this:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud config list core/project
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+gcloud config list core/project
 &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;core&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 project &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; kubernetes-practice-ruairi
 
-Your active configuration is: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;default&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Your active configuration is: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;default&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now create a cluster.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud container clusters create my-cool-cluster&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+gcloud container clusters create my-cool-cluster
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;(probably pick a better cluster name)&lt;/p&gt;
 &lt;p&gt;Verify it’s there.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gcloud container clusters list&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+gcloud container clusters list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You should see something like this.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;NAME             ZONE           MASTER_VERSION  MASTER_IP       MACHINE_TYPE   NODE_VERSION  NUM_NODES  STATUS
-my-cool-cluster  europe-west1-d &lt;span class=&quot;token number&quot;&gt;1.6&lt;/span&gt;.4           &lt;span class=&quot;token number&quot;&gt;130.211&lt;/span&gt;.181.72  n1-standard-1  &lt;span class=&quot;token number&quot;&gt;1.6&lt;/span&gt;.4         &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;          RUNNING&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+NAME             ZONE           MASTER_VERSION  MASTER_IP       MACHINE_TYPE   NODE_VERSION  NUM_NODES  STATUS
+my-cool-cluster  europe-west1-d &lt;span class=&quot;token number&quot;&gt;1.6&lt;/span&gt;.4           &lt;span class=&quot;token number&quot;&gt;130.211&lt;/span&gt;.181.72  n1-standard-1  &lt;span class=&quot;token number&quot;&gt;1.6&lt;/span&gt;.4         &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;          RUNNING
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;minikube&lt;/h3&gt;
 &lt;p&gt;Minikube basically lets you run kubernetes locally. Follow the instructions here to get it setup:
 &lt;a href=&quot;https://github.com/kubernetes/minikube&quot;&gt;https://github.com/kubernetes/minikube&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;With minkube creating a clust is a little easier:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;minikube start&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+minikube start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You also have the added advantage of not needing to setup a GCP account and all that but it’s only useful for developing stuff locally of course.&lt;/p&gt;
 &lt;p&gt;To make sure kubectl is pointing at minikube try this:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl cluster-info
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl cluster-info
 Kubernetes master is running at https://192.168.99.100:8443
 KubeDNS is running at https://192.168.99.100:8443/api/v1/proxy/namespaces/kube-system/services/kube-dns
-kubernetes-dashboard is running at https://192.168.99.100:8443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+kubernetes-dashboard is running at https://192.168.99.100:8443/api/v1/proxy/namespaces/kube-system/services/kubernetes-dashboard
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;Switching contexts in kubectl&lt;/h3&gt;
 &lt;p&gt;If you end up using both GCP and mimikube, it’s useful to easily switch contexts in kubectl&lt;/p&gt;
 &lt;p&gt;These commands help:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl config get-contexts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl config use-context &lt;span class=&quot;token variable&quot;&gt;${context_name}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl config get-contexts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl config use-context &lt;span class=&quot;token variable&quot;&gt;${context_name}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can also set the context in each call:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;some options here&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; --context&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;minikube&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;some options here&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--context&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;minikube
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;Deploy something&lt;/h3&gt;
 &lt;p&gt;For this we can create a simple hello world application and put it in a container. Here’s one I made earlier: &lt;a href=&quot;https://hub.docker.com/r/ruairitobrien/hello-kubernetes-world/&quot;&gt;https://hub.docker.com/r/ruairitobrien/hello-kubernetes-world/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Note, these instructions should work the same whether you are using GCP or minikube.&lt;/p&gt;
 &lt;p&gt;Code for that app is here but nothing interesting there really &lt;a href=&quot;https://github.com/ruarfff/hello-kubernetes-world&quot;&gt;https://github.com/ruarfff/hello-kubernetes-world&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl run hello-kubernetes --image ruairitobrien/hello-kubernetes-world:latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl run hello-kubernetes &lt;span class=&quot;token parameter variable&quot;&gt;--image&lt;/span&gt; ruairitobrien/hello-kubernetes-world:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You should usually specify a version number so you have a history of deployed versions that you can switch to if needed but ‘:latest’ will do for this tutorial.&lt;/p&gt;
 &lt;p&gt;You should see&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;deployment &lt;span class=&quot;token string&quot;&gt;&quot;hello-kubernetes&quot;&lt;/span&gt; created&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+deployment &lt;span class=&quot;token string&quot;&gt;&quot;hello-kubernetes&quot;&lt;/span&gt; created
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Verify it worked&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl get deployments
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+$ kubectl get deployments
 NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;            &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;           1m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;            &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;           1m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can also check the pod that was created:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ kubectl get pods
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+$ kubectl get pods
 NAME                                READY     STATUS    RESTARTS   AGE
-hello-kubernetes-3390701390-jds31   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          1m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+hello-kubernetes-3390701390-jds31   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          1m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Pods are an important part of kubernetes but rather than me going on about them it’s best to read up here: &lt;a href=&quot;https://kubernetes.io/docs/concepts/workloads/pods/pod/&quot;&gt;https://kubernetes.io/docs/concepts/workloads/pods/pod/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;It’s also useful to check out the describe functions. Most things have them.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl describe deployment &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;deploymentName&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl describe deployment &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;deploymentName&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# Example&lt;/span&gt;
 kubectl describe deployment hello-kubernetes
@@ -3615,23 +3729,30 @@ kubectl describe deployment hello-kubernetes
 kubectl describe pods &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;podName&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# Example&lt;/span&gt;
-kubectl describe pods hello-kubernetes-3390701390-jds31&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+kubectl describe pods hello-kubernetes-3390701390-jds31
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;You have a deployment&lt;/h3&gt;
 &lt;p&gt;Now that you have a deployment, what are you going to do with it?&lt;/p&gt;
-&lt;p&gt;I am just going to show a few simple things here to give you an idea of what’s available. Most of this and much more can be found &lt;a href=&quot;in%20these%20docs&quot;&gt;https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I am just going to show a few simple things here to give you an idea of what’s available. Most of this and much more can be found [&lt;a href=&quot;https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/%5D(in&quot;&gt;https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/](in&lt;/a&gt; these docs).&lt;/p&gt;
 &lt;p&gt;You will probably want to look at logs a bit. You can look at the logs for a pod with this.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl logs &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;podName&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl logs &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;podName&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# Example&lt;/span&gt;
-kubectl logs hello-kubernetes-3390701390-jds31&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+kubectl logs hello-kubernetes-3390701390-jds31
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This will give you the logs for this instance of that pod. You can go more in detail, for example in the case where you have a pod with multiple containers. More on that &lt;a href=&quot;https://kubernetes.io/docs/user-guide/kubectl/v1.6/#logs&quot;&gt;in the kubernetes docs&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Now let the world see your amazing app!&lt;/p&gt;
 &lt;p&gt;First, run get services.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get services
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl get services
 NAME         CLUSTER-IP    EXTERNAL-IP   PORT&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;S&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;   AGE
-kubernetes   &lt;span class=&quot;token number&quot;&gt;10.55&lt;/span&gt;.240.1   &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;none&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;443&lt;/span&gt;/TCP   1h&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+kubernetes   &lt;span class=&quot;token number&quot;&gt;10.55&lt;/span&gt;.240.1   &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;none&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;443&lt;/span&gt;/TCP   1h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can see there is no external IP and no mention of the pod we created.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl expose deployment hello-kubernetes --type LoadBalancer --port &lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt; --target-port&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl expose deployment hello-kubernetes &lt;span class=&quot;token parameter variable&quot;&gt;--type&lt;/span&gt; LoadBalancer &lt;span class=&quot;token parameter variable&quot;&gt;--port&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt; --target-port&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Here we are using the load balancer option.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;LoadBalancer - Creates an external load balancer in the current cloud (if supported) and assigns a fixed, external IP to the Service. Superset of NodePort.&lt;/p&gt;
@@ -3644,9 +3765,12 @@ kubernetes   &lt;span class=&quot;token number&quot;&gt;10.55&lt;/span&gt;.240.1
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--port&lt;/code&gt; is the port we are exposing our service on.&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--target-port&lt;/code&gt; is the port our application in the Docker image happens to be exposed on.&lt;/p&gt;
 &lt;p&gt;Wait a minute or so for things to work out and then run this.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl describe svc hello-kubernetes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl describe svc hello-kubernetes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You should see something like this.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Name:			hello-kubernetes
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+Name:			hello-kubernetes
 Namespace:		default
 Labels:			&lt;span class=&quot;token assign-left variable&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;hello-kubernetes
 Annotations:		&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;none&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
@@ -3657,21 +3781,27 @@ LoadBalancer Ingress:	&lt;span class=&quot;token number&quot;&gt;104.154&lt;/spa
 Port:			&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;unset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;	&lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;/TCP
 NodePort:		&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;unset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;	&lt;span class=&quot;token number&quot;&gt;31390&lt;/span&gt;/TCP
 Endpoints:		&lt;span class=&quot;token number&quot;&gt;10.52&lt;/span&gt;.0.5:8000
-Session Affinity:	None&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Session Affinity:	None
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The ‘Endpoints’ value is the internal ip and port of your application running in the cluster.&lt;/p&gt;
 &lt;p&gt;This value: LoadBalancer Ingress: 104.154.182.255 is what we can use to talk to our application externally. Stick the ip address that you see there in your browser and you should see ‘hello kubernetes world’ or whatever you have your application sending back if you wrote your own there.&lt;/p&gt;
 &lt;h3&gt;Autoscaling&lt;/h3&gt;
 &lt;p&gt;This for me was the first really cool thing I came across when playing around with kubernetes. Now our application is deployed, we can attach an autoscaler to it. Here is a command we can use to do that.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl autoscale deployment hello-kubernetes --cpu-percent&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; --min&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; --max&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl autoscale deployment hello-kubernetes --cpu-percent&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--min&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--max&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now we have attached an autoscaler.&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--cpu-percent&lt;/code&gt; will try to average the utilization across all the pods to the percent we set i.e. will scale up until it hits the max amount of pods if cpu utilization goes above 10% on average across all existing pods. We set 1% for demonstration purposes so we have a chance of forcing the cluster to scale up when hitting it from our machine.&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--min&lt;/code&gt; is the minimum amount of pods we want in the cluster.&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--max&lt;/code&gt; is the maximum amount of pods we will allow the autoscaler to provision for us.&lt;/p&gt;
 &lt;p&gt;The autoscaler will scale up when cpu is above 10% on average. It will also scale down to the minimum when cpu utilisation is below average.&lt;/p&gt;
 &lt;p&gt;Try running this.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl describe svc hello-kubernetes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl describe svc hello-kubernetes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You should see something like this.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Name:			hello-kubernetes
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+Name:			hello-kubernetes
 Namespace:		default
 Labels:			&lt;span class=&quot;token assign-left variable&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;hello-kubernetes
 Annotations:		&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;none&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
@@ -3682,37 +3812,51 @@ LoadBalancer Ingress:	&lt;span class=&quot;token number&quot;&gt;104.198&lt;/spa
 Port:			&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;unset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;	&lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;/TCP
 NodePort:		&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;unset&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;	&lt;span class=&quot;token number&quot;&gt;32063&lt;/span&gt;/TCP
 Endpoints:		&lt;span class=&quot;token number&quot;&gt;10.52&lt;/span&gt;.0.5:8000,10.52.2.6:8000,10.52.2.7:8000,10.52.2.8:8000
-Session Affinity:	None&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Session Affinity:	None
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Notice we now have 4 endpoints. You could see this with &lt;code class=&quot;language-text&quot;&gt;kubectl get pods&lt;/code&gt; too. The autoscaler has already scaled up to meet the minimum requirements we set.&lt;/p&gt;
 &lt;p&gt;To see the state of the autoscaler run this.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get hpa&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl get hpa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You should see something like this.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;NAME               REFERENCE                     TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
-hello-kubernetes   Deployment/hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;% / &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;%   &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;          1m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+NAME               REFERENCE                     TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+hello-kubernetes   Deployment/hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;% / &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;%   &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;          1m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And just to confirm the number of pods is 4.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get pods
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl get pods
 NAME                                READY     STATUS    RESTARTS   AGE
 hello-kubernetes-3390701390-jds31   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          3m
 hello-kubernetes-3390701390-q1v74   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          3m
 hello-kubernetes-3390701390-txg9z   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          3m
-hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          47m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          47m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now the fun part. Let’s see autoscaling in action!&lt;/p&gt;
 &lt;p&gt;You probably have a better way of doing this (please comment with a suggestion) but what I did here was just run this.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -XGET &lt;span class=&quot;token variable&quot;&gt;${IP}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+&lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-XGET&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;${IP}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;
 
 &lt;span class=&quot;token comment&quot;&gt;# So for my cluster in the above examples that was&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -XGET &lt;span class=&quot;token number&quot;&gt;104.198&lt;/span&gt;.145.117 &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-XGET&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;104.198&lt;/span&gt;.145.117 &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Or something a little safer perhaps.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token for-or-select variable&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; -XGET &lt;span class=&quot;token variable&quot;&gt;${IP}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token for-or-select variable&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-XGET&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;${IP}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If you go down the safe route with a limited loop, the timing where you check the following things is important.&lt;/p&gt;
 &lt;p&gt;After a while you should start to see autoscaling kicking in:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get hpa
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl get hpa
 NAME               REFERENCE                     TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
-hello-kubernetes   Deployment/hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;% / &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;%   &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;          4m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+hello-kubernetes   Deployment/hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;% / &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;%   &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;          4m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can see the ‘TARGETS’ ratio (that’s the CPU utilisation) is grown above that which we specified. In my example it’s 3% but the autoscaler wants it to be below 1% on average so it should start scaling up to bring that back in balance.&lt;/p&gt;
 &lt;p&gt;Check the new pods getting created.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get pods
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl get pods
 NAME                                READY     STATUS    RESTARTS   AGE
 hello-kubernetes-3390701390-1ght4   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          39s
 hello-kubernetes-3390701390-2gp0c   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          39s
@@ -3721,14 +3865,18 @@ hello-kubernetes-3390701390-jds31   &lt;span class=&quot;token number&quot;&gt;1
 hello-kubernetes-3390701390-q1v74   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          4m
 hello-kubernetes-3390701390-t6s63   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          39s
 hello-kubernetes-3390701390-txg9z   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          4m
-hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          48m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          48m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Don’t forget to while loop! Unless you used the for loop of course.&lt;/p&gt;
 &lt;p&gt;After a minute or 2 check again.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get hpa
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl get hpa
 NAME               REFERENCE                     TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
-hello-kubernetes   Deployment/hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;% / &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;%   &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;          8m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+hello-kubernetes   Deployment/hello-kubernetes   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;% / &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;%   &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;         &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;        &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;          8m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;See the pods are terminating.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kubectl get pods
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;
+kubectl get pods
 NAME                                READY     STATUS        RESTARTS   AGE
 hello-kubernetes-3390701390-1ght4   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Terminating   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          5m
 hello-kubernetes-3390701390-2gp0c   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Terminating   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          5m
@@ -3737,7 +3885,8 @@ hello-kubernetes-3390701390-jds31   &lt;span class=&quot;token number&quot;&gt;1
 hello-kubernetes-3390701390-q1v74   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running       &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          9m
 hello-kubernetes-3390701390-t6s63   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Terminating   &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          5m
 hello-kubernetes-3390701390-txg9z   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running       &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          9m
-hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running       &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          53m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+hello-kubernetes-3390701390-w6kjg   &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;/1       Running       &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;          53m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;They may already be gone depending how long you waited to check.&lt;/p&gt;
 &lt;p&gt;Maybe I am too easily impressed but I just think that is cool! Anyway, that was a brief run through of some of the basic Kubernetes features and barely scratches the surface of what is there.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Start Game Coding in ES6]]></title><description><![CDATA[TL;DR If you want to try my solution to developing with phaser 2 and es6, try this yeoman generator. What? A while back I discovered a HTML…]]></description><link>https://ruarfff.com/firing-phasers/</link><guid isPermaLink="false">https://ruarfff.com/firing-phasers/</guid><pubDate>Thu, 10 Nov 2016 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; If you want to try my solution to developing with &lt;a href=&quot;http://phaser.io/&quot;&gt;phaser 2&lt;/a&gt; and es6, try &lt;a href=&quot;https://www.npmjs.com/package/generator-fire-phaser&quot;&gt;this yeoman generator&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;What?&lt;/h3&gt;
@@ -3882,10 +4031,11 @@ singleton&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sayHowMan
 &lt;p&gt;I got in to making games and ended up using the singleton pattern a lot. I did most of my Java programming on Android in college so using things that cost a little less memory became important.&lt;/p&gt;
 &lt;p&gt;There is a lot of stuff on the internet about the singleton pattern written by people way more knowledgeable than me so I wont go in to it here.&lt;/p&gt;
 &lt;p&gt;I will go in to how I implement a singleton in Java in my day to day work. I did a bit of research and came up with a template I was happy with. Here I am just providing this template that you can copy and past or make a file template with, depending on your choice of IDE.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MySingleton&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MySingleton&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
 
     &lt;span class=&quot;token comment&quot;&gt;// This is just something I find useful for logging&lt;/span&gt;
-    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; TAG &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MySingleton&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getSimpleName&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;TAG&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MySingleton&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getSimpleName&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
     &lt;span class=&quot;token comment&quot;&gt;// This is private so unscrupulous people can&apos;t go newing it&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MySingleton&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -3899,7 +4049,7 @@ singleton&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sayHowMan
 
     &lt;span class=&quot;token annotation punctuation&quot;&gt;@Override&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;clone&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;CloneNotSupportedException&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;token keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;CloneNotSupportedException&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;TAG&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot; is a singleton! It can&apos;t be cloned.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;CloneNotSupportedException&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;TAG&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot; is a singleton! It can&apos;t be cloned.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
     &lt;span class=&quot;token comment&quot;&gt;/**
@@ -3909,4 +4059,5 @@ singleton&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sayHowMan
     &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MySingleton_Holder&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MySingleton&lt;/span&gt; instance &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MySingleton&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item></channel></rss>
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item></channel></rss>
