@@ -18,9 +18,17 @@
 <li>what do do if something you use doesn’t support async</li>
 </ul>
 <h2>Coding along</h2>
-<p>Make sure to have python >= 3.8 installed.</p>
+<p>Grab the sample code:</p>
+<ul>
+<li><code class="language-text">git clone git@github.com:ruarfff/understanding-python-async.git &amp;&amp; cd understanding-python-async</code></li>
+<li>You should also have <a href="https://curl.se/">curl</a> installed</li>
+</ul>
+<p>You can use docker (recommended) or setup your own python environment.</p>
+<h3>With docker</h3>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">make build</code></pre></div>
+<h3>Without docker</h3>
+<p>If you’re not using docker, make sure to have python >= 3.8 installed.</p>
 <p>You should be using a unix like shell e.g. Linux, Mac, WSL.</p>
-<p>My setup (you don’t need to use this exact version):</p>
 <ul>
 <li><a href="https://github.com/pyenv/pyenv">pyenv</a></li>
 </ul>
@@ -28,7 +36,6 @@
 
 pyenv global 3.10.6</code></pre></div>
 <ul>
-<li><code class="language-text">git clone git@github.com:zoe/understanding-python-async.git &amp;&amp; cd understanding-python-async</code></li>
 <li>Setup a <a href="https://docs.python.org/3/library/venv.html">virtual environment</a> and run all commands in this context</li>
 </ul>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">python -m venv ./.venv
@@ -36,8 +43,8 @@ pyenv global 3.10.6</code></pre></div>
 source .venv/bin/activate</code></pre></div>
 <ul>
 <li>Install requirements <code class="language-text">pip install -r requirements.txt</code></li>
-<li>You should also have <a href="https://curl.se/">curl</a> installed</li>
 </ul>
+<p>In the examples below, runt he python scripts directly instead of using <code class="language-text">make</code>.</p>
 <h2>Async Vs Parallel</h2>
 <p>Parallel and asynchronous are not the same thing. If you have a good mental model for async vs parallel feel free to skip this section.</p>
 <p>When I was in college I wrote a mobile game. I had to learn about <a href="https://gameprogrammingpatterns.com/game-loop.html">the game loop</a>.</p>
@@ -148,6 +155,8 @@ source .venv/bin/activate</code></pre></div>
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
     init<span class="token punctuation">(</span><span class="token punctuation">)</span>
     asyncio<span class="token punctuation">.</span>run<span class="token punctuation">(</span>main<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+<p>Run it:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">make async-example</code></pre></div>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
@@ -183,7 +192,7 @@ source .venv/bin/activate</code></pre></div>
 <p>Running 2 tasks that each take 2 seconds asynchronously allows them to be finished in 2 seconds.</p>
 <p>If you await 2 async functions in sequence, it’s sort of like it was done synchronously so if you really want multiple steps to run asynchronously you can use utilities such as the <code class="language-text">asyncio.gather</code> function in that example.</p>
 <h2>It’s Async all the way down</h2>
-<p>An important note that took me a few mistakes to understand, you must use async all the way down. If you block at any point within an async function, you block everything.</p>
+<p>You must use async all the way down. If you block at any point within an async function, you block everything.</p>
 <p>We will explore this more in the FastAPI section but for now, it’s important to be aware that this:</p>
 <div class="gatsby-highlight" data-language="pthon"><pre class="language-pthon"><code class="language-pthon">async def synchronous_work_in_async_function():
     time.sleep(2)</code></pre></div>
@@ -294,8 +303,8 @@ url = "http://127.0.0.1:8000/"
 url = "http://127.0.0.1:8000/"</code></pre></div>
 <p>Start your FastAPI app:</p>
 <p><code class="language-text">uvicorn src.fastapi_example:app --reload</code></p>
-<p>In another console, run curl:</p>
-<p><code class="language-text">curl --parallel --parallel-immediate --parallel-max 4 --config test_urls.txt</code></p>
+<p>In another console, run the test script:</p>
+<p><code class="language-text">./test-endpoints.sh</code></p>
 <p>You should see output similar to the following:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">{"message":"Hello World"}{"message":"Hello World"}{"message":"Hello World"}{"message":"Hello World"}{"message":"So slow"}{"message":"So slow"}</code></pre></div>
 <p>In the application logs:
@@ -385,7 +394,7 @@ url = "http://127.0.0.1:8000/"</code></pre></div>
     time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">"So slow"</span><span class="token punctuation">}</span></code></pre></div>
 <p>Here’s we’re using the blocking <code class="language-text">time.sleep</code> instead of the non blocking <code class="language-text">asyncio.sleep</code>.</p>
-<p>Update the urls.txt file:</p>
+<p>Use the <code class="language-text">curl_configs/test_urls_slow.txt</code> file:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">url = "http://127.0.0.1:8000/slow"
 url = "http://127.0.0.1:8000/slow"
 url = "http://127.0.0.1:8000/"
@@ -394,33 +403,31 @@ url = "http://127.0.0.1:8000/"
 url = "http://127.0.0.1:8000/"</code></pre></div>
 <p>The order is important. We want the slow ones to kick off first.</p>
 <p>Update the curl command to allow 6 concurrent requests:</p>
-<p><code class="language-text">curl --parallel --parallel-immediate --parallel-max 6 --config test_urls.txt</code></p>
+<p><code class="language-text">curl --parallel --parallel-immediate --parallel-max 6 --config curl_configs/test_urls_slow.txt</code></p>
 <p><span
       class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 445px; "
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-oops.png"
+    href="/static/b0ae9fdeabfe7c074d4568048609b8f9/e66bf/slow.png"
     style="display: block"
     target="_blank"
     rel="noopener"
   >
     <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 35.44303797468354%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABaElEQVQoz3XNwU/TYBzG8V5MIH1bqt3abuvb9u0QQ8CAyCIS1DACbuACM9w4cvKgiMSNWQWEYMINMN5GNPyjX162cGIePvk9efLmeY3tjxX2DubZyV7y5ccCn/XdyV6wq/Pu99t+jk9a6+cirw7LjL53mWh6jDfzAxmHH17zZ3+Z89YSl/srXOh7ly9b/f7W706NrbNJjjoz/GpXOG3PDmS8PZuief2cd1fTbPydpaFvvTvZy+tXM6x2n7Kmrf+rsNwdp51N8S17RiebHshwvj5CVB3ybwrImkLWFaVaglctEdVTksZj5KrCqeZxNh2cEwvn+P8MOxSIBya+5RPlJYkXE+UkwYjfy0+iMVJPYT+0GHaHEEOib3gww5YWwhH4gR6MI+IkJpQlvMBDlRUqVf2uHBIkAbZrYbomwtID4j7DLtoIW5DL5SgUChSLxR7XdYki/UGsx8KQVKXIksT29fugP2ia5r3BG3Hs5QXl+FEzAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+    style="padding-bottom: 46.202531645569614%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACUElEQVQozz2P60+SYRjG3699yIyTmqGgkqKZX9paLZunEETk5eUFORegCJKcRQSLg+YhKttyax3WP9D61taf9+tRtz78dt33s2vXc1/Sr9hvPnjOyS8UaMlt2nKHptCmp0XHe8i+o86x/1S8t4We0FEOqbiqTE3eZ9hqoX/ChPJEpbJYZmd+B+lv5A9f1i7Ymy1x5npL13VypWdrR3TlY1pLB3xS33PqOuJc7fLR0+XN6gHToxOYRs30T5nxPwvRsDeo2HaRupmfJCI1Zl0qnlgaJZpGjm6hJrKEt4rY1RjBVBHviwzBzRz+eA4lkWF6ZQ7j8iP6rEOkHsf5bOvybvEQSfMtTU/Hx43MPIaGgr7mRr/n5k5rHWN7nZs5G8ZmgNsVJ3dbAcE6hpqMZt+D5kD440uMxJxYEwrjcQ9Sz48UuqYwJW2YKz7MJRVT0cvYfoiJeoiBjDDXIxhzstijgjDDRQVt3om25EJfcKHNOtBk7VdIvV830dVV9NEFzAWFkbyCOefBshvAWgsysLHMZDWEMb2KtRoWcxDTKze6bTu6ghNdeU2ECorXSD3fU2hFDd2mjeE9H0NlL0MlEdwIYjkI05d1cq8RZrDgFnsEi5iNZXFhcRVtRYRkVzBs2dGn7RgE0q3LQFFZt2HDVPVhqojKZZWxRojx1xH6t1cYb0QYzLtFcETMYfGh97ryZeCOE33GgX7bcaVS70UCg7iiz/YQS3gZS+A5YwLrSyczG26M8iwzSRmTOsd00sODpJvRwBIG/1MMsXm0RwE0p+H//AOoSl//2zFH6AAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="Async with bloging example output"
-        title="Async with bloging example output"
-        src="/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-oops.png"
-        srcset="/static/f2d7d2a4b192b76d713040f6ed8e133b/c26ae/sync-oops.png 158w,
-/static/f2d7d2a4b192b76d713040f6ed8e133b/6bdcf/sync-oops.png 315w,
-/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-oops.png 630w,
-/static/f2d7d2a4b192b76d713040f6ed8e133b/40601/sync-oops.png 945w,
-/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-oops.png 1217w"
-        sizes="(max-width: 630px) 100vw, 630px"
+        alt="Async with blocking example output"
+        title="Async with blocking example output"
+        src="/static/b0ae9fdeabfe7c074d4568048609b8f9/e66bf/slow.png"
+        srcset="/static/b0ae9fdeabfe7c074d4568048609b8f9/c26ae/slow.png 158w,
+/static/b0ae9fdeabfe7c074d4568048609b8f9/6bdcf/slow.png 315w,
+/static/b0ae9fdeabfe7c074d4568048609b8f9/e66bf/slow.png 445w"
+        sizes="(max-width: 445px) 100vw, 445px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
       />
@@ -439,13 +446,46 @@ url = "http://127.0.0.1:8000/"</code></pre></div>
     time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">"So slow"</span><span class="token punctuation">}</span></code></pre></div>
 <p>Notice, we are not specifying <code class="language-text">async</code> on the function definition.</p>
-<p>Update our test URLs:</p>
+<p>Use the <code class="language-text">curl_configs/test_urls_sync_slow.txt</code> file:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">url = "http://127.0.0.1:8000/sync-slow"
 url = "http://127.0.0.1:8000/sync-slow"
 url = "http://127.0.0.1:8000/"
 url = "http://127.0.0.1:8000/"
 url = "http://127.0.0.1:8000/"
-url = "http://127.0.0.1:8000/"</code></pre></div>
+url = "http://127.0.0.1:8000/"
+
+`curl --parallel --parallel-immediate --parallel-max 6 --config curl_configs/test_urls_sync_slow.txt`</code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-slow.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35.44303797468354%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABaElEQVQoz3XNwU/TYBzG8V5MIH1bqt3abuvb9u0QQ8CAyCIS1DACbuACM9w4cvKgiMSNWQWEYMINMN5GNPyjX162cGIePvk9efLmeY3tjxX2DubZyV7y5ccCn/XdyV6wq/Pu99t+jk9a6+cirw7LjL53mWh6jDfzAxmHH17zZ3+Z89YSl/srXOh7ly9b/f7W706NrbNJjjoz/GpXOG3PDmS8PZuief2cd1fTbPydpaFvvTvZy+tXM6x2n7Kmrf+rsNwdp51N8S17RiebHshwvj5CVB3ybwrImkLWFaVaglctEdVTksZj5KrCqeZxNh2cEwvn+P8MOxSIBya+5RPlJYkXE+UkwYjfy0+iMVJPYT+0GHaHEEOib3gww5YWwhH4gR6MI+IkJpQlvMBDlRUqVf2uHBIkAbZrYbomwtID4j7DLtoIW5DL5SgUChSLxR7XdYki/UGsx8KQVKXIksT29fugP2ia5r3BG3Hs5QXl+FEzAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Async with example output"
+        title="Async with example output"
+        src="/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-slow.png"
+        srcset="/static/f2d7d2a4b192b76d713040f6ed8e133b/c26ae/sync-slow.png 158w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/6bdcf/sync-slow.png 315w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-slow.png 630w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/40601/sync-slow.png 945w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-slow.png 1217w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
 <p>If you don’t specify your endpoint as being async i.e. as <a href="https://docs.python.org/3/library/asyncio-task.html">a coroutine</a>, FastAPI will look after it for you instead as it will assume this route contains blocking calls whereas if you specify <code class="language-text">async</code>, it’s up to you to make sure it really is asynchronous.</p>
 <p>Rules of thumb:</p>
 <ul>
@@ -463,8 +503,10 @@ url = "http://127.0.0.1:8000/"</code></pre></div>
 <p>To illustrate, let’s add some pubsub:</p>
 <p><code class="language-text">pip install --upgrade google-cloud-pubsub</code></p>
 <p>This example is pretty contrived and GCP specific but does demonstrate a common mistake.</p>
-<p>If you’d like to follow along please <a href="https://cloud.google.com/sdk/docs/install">install the gcloud cli</a> and run the following to start a pubsub emulator:</p>
+<p>If you don’t want to use docker and would like to follow along please <a href="https://cloud.google.com/sdk/docs/install">install the gcloud cli</a> and run the following to start a pubsub emulator:</p>
 <p><code class="language-text">gcloud beta emulators pubsub start --project=example-project</code></p>
+<p><code class="language-text">$(gcloud beta emulators pubsub env-init)</code></p>
+<p>If you are using docker compose, the emulator is already setup for you in the sample code.</p>
 <p>We are doing this so we can see what happens when our FastAPI application listens to messages out side of standard web requests.</p>
 <p>Update our FastAPI app to handle messages:</p>
 <p>Import the pubsub lib:</p>
@@ -547,30 +589,63 @@ url = "http://127.0.0.1:8000/"</code></pre></div>
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
     main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
-<p>We are going to send some messages to our app and see how it responds in different scenarios. The client uses environment variables to connect to the emulator. You must load the environment variables like so:</p>
-<p><code class="language-text">$(gcloud beta emulators pubsub env-init)</code></p>
-<p>So at this point you should have:</p>
-<ul>
-<li>a running pubsub emulator</li>
-<li>a sample client with the emulator environment variables ready to go in the shell</li>
-</ul>
-<p>Run the client:</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">❯ python src/pubsub_client.py
-Topic already exists
+<p>We are going to send some messages to our app and see how it responds in different scenarios.</p>
+<p>Start the app:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">make up</code></pre></div>
+<p>Run the client in another session:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">make pubsub</code></pre></div>
+<p>Or if you are not using docker:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">python src/pubsub_client.py</code></pre></div>
+<p>You should see something like:</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Created topic: projects/example-project/topics/testing
 Run 5 non-blocking
-183
-184
-185
-186
-187
+1
+2
+3
+4
+5
 Run 5 blocking
-188
-189
-190
-191
-192</code></pre></div>
-<p>You should see output int he app console like this:</p>
+6
+7
+8
+9
+10</code></pre></div>
+<p>You should see output int he app console like this:
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/68cb8fa86fe907b091567e2360763122/01dae/pubsub_output.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 26.58227848101266%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABV0lEQVQY01WNXS9CcRzHz2twoStPd96BrRErY+aCC2wuC6PVqQ3FpBt6QDJjXoHN0yw0tTFDqI6jU6dixbULXsXHv3Pn4rPP9//9bv+f1LN0hWU5Sa/AvHhBt+8S88IFnY5Duvy3DMWr9IU1+qNFBjZKWEIawzEda6SILaIxEKsyFM7S0dpCm6kJqX/vk8H9L8EnfTs1rLt1LPEa7YEy5jWdyW2dkWiJsU2d8S2d4VBRdGVGRTciPp2IVURWMdnmaO61I4VXVcJBlahgPaASCb4RWlFZmC9w4FW4cT+T8uRJyVnSnhxpWSHhfCTpeuHarZB0ZjiUcyz56/h9NSTN8YBmv6fh8vQz+lTG8Lf8Tt2pojjuKc1kUaceKYitMquQt99RmH4y8qvYdbH/emv8eD6Qjlx5jlw5gxNx8Vi8j4XPPRpnsvq/F5y6Xw2fuBQjN/aGE96SwR9EBw/wCJdYFAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Pubsub output"
+        title="Pubsub output"
+        src="/static/68cb8fa86fe907b091567e2360763122/f058b/pubsub_output.png"
+        srcset="/static/68cb8fa86fe907b091567e2360763122/c26ae/pubsub_output.png 158w,
+/static/68cb8fa86fe907b091567e2360763122/6bdcf/pubsub_output.png 315w,
+/static/68cb8fa86fe907b091567e2360763122/f058b/pubsub_output.png 630w,
+/static/68cb8fa86fe907b091567e2360763122/01dae/pubsub_output.png 721w"
+        sizes="(max-width: 630px) 100vw, 630px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
 <p>All the messages were processed asynchronously. The pubsub is using a callback and the eventloop used by FastAPI is not effected.</p>
+<h3>Where async + pubsub can go wrong</h3>
+<p>You may be tempted to use something like <a href="https://pypi.org/project/gcloud-aio-pubsub/">gcloud-aio-pubsub</a> with your fastapi app. You can use something like <a href="https://pypi.org/project/nest-asyncio/">nest-asyncio</a> to hook into the fastapi eventloop. This will allow you to use the same eventloop for your pubsub client and let you use standard async await with event handling.</p>
+<p>You should avoid this however. It is very easy to add a blocking call into an event handler. This will block the event loop and prevent any other events and web requests from being processed thus holding up your whole application.</p>
+<p>It is advisable to keep it simple. Let fastapi deal with the complexity of asyncio and use a background thread for pubsub.</p>
 <h2>Useful links</h2>
 <ul>
 <li><a href="https://docs.aiohttp.org/en/stable/">https://docs.aiohttp.org/en/stable/</a></li>
@@ -584,7 +659,8 @@ Run 5 blocking
 <li><a href="https://uvloop.readthedocs.io/">https://uvloop.readthedocs.io/</a></li>
 <li><a href="https://www.uvicorn.org/">https://www.uvicorn.org/</a></li>
 <li><a href="https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library">https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library</a></li>
-</ul></section><hr/><footer><div class="bio"><div class="bio-avatar gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px"><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQCBf/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/9oADAMBAAIQAxAAAAG+S6MuppRysEXRFP8A/8QAGRAAAwEBAQAAAAAAAAAAAAAAAQIDABEi/9oACAEBAAEFAn6B2s25mz+n0aPSlyRpMXn/AP/EABcRAQEBAQAAAAAAAAAAAAAAAAEQITH/2gAIAQMBAT8BDIcn/8QAFhEBAQEAAAAAAAAAAAAAAAAAEAEx/9oACAECAQE/AS6f/8QAHxAAAQIGAwAAAAAAAAAAAAAAAQACEBESISIxI0Fh/9oACAEBAAY/Asdlcki3yE0G3hkelUDdBx2v/8QAGhABAAIDAQAAAAAAAAAAAAAAAQARITFBgf/aAAgBAQABPyFECcr0Sos7dKSMUKo+QZTiO44vQsHJnwcM3ujNT//aAAwDAQACAAMAAAAQ8NfD/8QAFhEBAQEAAAAAAAAAAAAAAAAAAREg/9oACAEDAQE/EAacP//EABYRAQEBAAAAAAAAAAAAAAAAAAERIP/aAAgBAgEBPxBW4P/EABsQAQADAQEBAQAAAAAAAAAAAAEAESFBYYGR/9oACAEBAAE/EGCUpfYsL15S0Pa6TSWGRLDrZwkRu+q/kpCiqwYGzaIyBKUZXuSoziKJ/9k=" alt="Ruairí O&#x27;Brien" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/static/8c0daa5d2f857b531fed1e4dba23ef9c/340ed/profile-pic.jpg 1x,
+</ul>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text"></code></pre></div></section><hr/><footer><div class="bio"><div class="bio-avatar gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px"><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQCBf/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/9oADAMBAAIQAxAAAAG+S6MuppRysEXRFP8A/8QAGRAAAwEBAQAAAAAAAAAAAAAAAQIDABEi/9oACAEBAAEFAn6B2s25mz+n0aPSlyRpMXn/AP/EABcRAQEBAQAAAAAAAAAAAAAAAAEQITH/2gAIAQMBAT8BDIcn/8QAFhEBAQEAAAAAAAAAAAAAAAAAEAEx/9oACAECAQE/AS6f/8QAHxAAAQIGAwAAAAAAAAAAAAAAAQACEBESISIxI0Fh/9oACAEBAAY/Asdlcki3yE0G3hkelUDdBx2v/8QAGhABAAIDAQAAAAAAAAAAAAAAAQARITFBgf/aAAgBAQABPyFECcr0Sos7dKSMUKo+QZTiO44vQsHJnwcM3ujNT//aAAwDAQACAAMAAAAQ8NfD/8QAFhEBAQEAAAAAAAAAAAAAAAAAAREg/9oACAEDAQE/EAacP//EABYRAQEBAAAAAAAAAAAAAAAAAAERIP/aAAgBAgEBPxBW4P/EABsQAQADAQEBAQAAAAAAAAAAAAEAESFBYYGR/9oACAEBAAE/EGCUpfYsL15S0Pa6TSWGRLDrZwkRu+q/kpCiqwYGzaIyBKUZXuSoziKJ/9k=" alt="Ruairí O&#x27;Brien" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/static/8c0daa5d2f857b531fed1e4dba23ef9c/340ed/profile-pic.jpg 1x,
 /static/8c0daa5d2f857b531fed1e4dba23ef9c/32ce1/profile-pic.jpg 1.5x,
 /static/8c0daa5d2f857b531fed1e4dba23ef9c/04d41/profile-pic.jpg 2x" /><img loading="lazy" width="50" height="50" srcset="/static/8c0daa5d2f857b531fed1e4dba23ef9c/340ed/profile-pic.jpg 1x,
 /static/8c0daa5d2f857b531fed1e4dba23ef9c/32ce1/profile-pic.jpg 1.5x,

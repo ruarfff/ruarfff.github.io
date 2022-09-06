@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 31 Aug 2022 16:38:27 GMT</lastBuildDate><item><title><![CDATA[Understanding python async]]></title><description><![CDATA[Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like uvloop: uvloop makes asyncio…]]></description><link>https://ruarfff.com/understanding-python-async/</link><guid isPermaLink="false">https://ruarfff.com/understanding-python-async/</guid><pubDate>Fri, 26 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like &lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;uvloop&lt;/a&gt;:&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ruairí's Blog]]></title><description><![CDATA[A blog.]]></description><link>https://ruarfff.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 06 Sep 2022 22:25:19 GMT</lastBuildDate><item><title><![CDATA[Understanding python async]]></title><description><![CDATA[Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like uvloop: uvloop makes asyncio…]]></description><link>https://ruarfff.com/understanding-python-async/</link><guid isPermaLink="false">https://ruarfff.com/understanding-python-async/</guid><pubDate>Fri, 26 Aug 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Writing asynchronous code in python is quite powerful and can perform pretty well if you use something like &lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;uvloop&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;uvloop makes asyncio fast. In fact, it is at least 2x faster than nodejs, gevent, as well as any other Python asynchronous framework. The performance of uvloop-based asyncio is close to that of Go programs.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -13,9 +13,17 @@
 &lt;li&gt;what do do if something you use doesn’t support async&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Coding along&lt;/h2&gt;
-&lt;p&gt;Make sure to have python &gt;= 3.8 installed.&lt;/p&gt;
+&lt;p&gt;Grab the sample code:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;git clone git@github.com:ruarfff/understanding-python-async.git &amp;amp;&amp;amp; cd understanding-python-async&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;You should also have &lt;a href=&quot;https://curl.se/&quot;&gt;curl&lt;/a&gt; installed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can use docker (recommended) or setup your own python environment.&lt;/p&gt;
+&lt;h3&gt;With docker&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;make build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Without docker&lt;/h3&gt;
+&lt;p&gt;If you’re not using docker, make sure to have python &gt;= 3.8 installed.&lt;/p&gt;
 &lt;p&gt;You should be using a unix like shell e.g. Linux, Mac, WSL.&lt;/p&gt;
-&lt;p&gt;My setup (you don’t need to use this exact version):&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/pyenv/pyenv&quot;&gt;pyenv&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -23,7 +31,6 @@
 
 pyenv global 3.10.6&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;git clone git@github.com:zoe/understanding-python-async.git &amp;amp;&amp;amp; cd understanding-python-async&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Setup a &lt;a href=&quot;https://docs.python.org/3/library/venv.html&quot;&gt;virtual environment&lt;/a&gt; and run all commands in this context&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;python -m venv ./.venv
@@ -31,8 +38,8 @@ pyenv global 3.10.6&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Install requirements &lt;code class=&quot;language-text&quot;&gt;pip install -r requirements.txt&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;You should also have &lt;a href=&quot;https://curl.se/&quot;&gt;curl&lt;/a&gt; installed&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;In the examples below, runt he python scripts directly instead of using &lt;code class=&quot;language-text&quot;&gt;make&lt;/code&gt;.&lt;/p&gt;
 &lt;h2&gt;Async Vs Parallel&lt;/h2&gt;
 &lt;p&gt;Parallel and asynchronous are not the same thing. If you have a good mental model for async vs parallel feel free to skip this section.&lt;/p&gt;
 &lt;p&gt;When I was in college I wrote a mobile game. I had to learn about &lt;a href=&quot;https://gameprogrammingpatterns.com/game-loop.html&quot;&gt;the game loop&lt;/a&gt;.&lt;/p&gt;
@@ -143,6 +150,8 @@ source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; __name__ &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
     init&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     asyncio&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;run&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Run it:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;make async-example&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
@@ -178,7 +187,7 @@ source .venv/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Running 2 tasks that each take 2 seconds asynchronously allows them to be finished in 2 seconds.&lt;/p&gt;
 &lt;p&gt;If you await 2 async functions in sequence, it’s sort of like it was done synchronously so if you really want multiple steps to run asynchronously you can use utilities such as the &lt;code class=&quot;language-text&quot;&gt;asyncio.gather&lt;/code&gt; function in that example.&lt;/p&gt;
 &lt;h2&gt;It’s Async all the way down&lt;/h2&gt;
-&lt;p&gt;An important note that took me a few mistakes to understand, you must use async all the way down. If you block at any point within an async function, you block everything.&lt;/p&gt;
+&lt;p&gt;You must use async all the way down. If you block at any point within an async function, you block everything.&lt;/p&gt;
 &lt;p&gt;We will explore this more in the FastAPI section but for now, it’s important to be aware that this:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;pthon&quot;&gt;&lt;pre class=&quot;language-pthon&quot;&gt;&lt;code class=&quot;language-pthon&quot;&gt;async def synchronous_work_in_async_function():
     time.sleep(2)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -289,8 +298,8 @@ url = &quot;http://127.0.0.1:8000/&quot;
 url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Start your FastAPI app:&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;uvicorn src.fastapi_example:app --reload&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;In another console, run curl:&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;curl --parallel --parallel-immediate --parallel-max 4 --config test_urls.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In another console, run the test script:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;./test-endpoints.sh&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;You should see output similar to the following:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;{&quot;message&quot;:&quot;Hello World&quot;}{&quot;message&quot;:&quot;Hello World&quot;}{&quot;message&quot;:&quot;Hello World&quot;}{&quot;message&quot;:&quot;Hello World&quot;}{&quot;message&quot;:&quot;So slow&quot;}{&quot;message&quot;:&quot;So slow&quot;}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In the application logs:
@@ -380,7 +389,7 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;So slow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Here’s we’re using the blocking &lt;code class=&quot;language-text&quot;&gt;time.sleep&lt;/code&gt; instead of the non blocking &lt;code class=&quot;language-text&quot;&gt;asyncio.sleep&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Update the urls.txt file:&lt;/p&gt;
+&lt;p&gt;Use the &lt;code class=&quot;language-text&quot;&gt;curl_configs/test_urls_slow.txt&lt;/code&gt; file:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;url = &quot;http://127.0.0.1:8000/slow&quot;
 url = &quot;http://127.0.0.1:8000/slow&quot;
 url = &quot;http://127.0.0.1:8000/&quot;
@@ -389,33 +398,31 @@ url = &quot;http://127.0.0.1:8000/&quot;
 url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The order is important. We want the slow ones to kick off first.&lt;/p&gt;
 &lt;p&gt;Update the curl command to allow 6 concurrent requests:&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;curl --parallel --parallel-immediate --parallel-max 6 --config test_urls.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;curl --parallel --parallel-immediate --parallel-max 6 --config curl_configs/test_urls_slow.txt&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 445px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-oops.png&quot;
+    href=&quot;/static/b0ae9fdeabfe7c074d4568048609b8f9/e66bf/slow.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 35.44303797468354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABaElEQVQoz3XNwU/TYBzG8V5MIH1bqt3abuvb9u0QQ8CAyCIS1DACbuACM9w4cvKgiMSNWQWEYMINMN5GNPyjX162cGIePvk9efLmeY3tjxX2DubZyV7y5ccCn/XdyV6wq/Pu99t+jk9a6+cirw7LjL53mWh6jDfzAxmHH17zZ3+Z89YSl/srXOh7ly9b/f7W706NrbNJjjoz/GpXOG3PDmS8PZuief2cd1fTbPydpaFvvTvZy+tXM6x2n7Kmrf+rsNwdp51N8S17RiebHshwvj5CVB3ybwrImkLWFaVaglctEdVTksZj5KrCqeZxNh2cEwvn+P8MOxSIBya+5RPlJYkXE+UkwYjfy0+iMVJPYT+0GHaHEEOib3gww5YWwhH4gR6MI+IkJpQlvMBDlRUqVf2uHBIkAbZrYbomwtID4j7DLtoIW5DL5SgUChSLxR7XdYki/UGsx8KQVKXIksT29fugP2ia5r3BG3Hs5QXl+FEzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 46.202531645569614%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACUElEQVQozz2P60+SYRjG3699yIyTmqGgkqKZX9paLZunEETk5eUFORegCJKcRQSLg+YhKttyax3WP9D61taf9+tRtz78dt33s2vXc1/Sr9hvPnjOyS8UaMlt2nKHptCmp0XHe8i+o86x/1S8t4We0FEOqbiqTE3eZ9hqoX/ChPJEpbJYZmd+B+lv5A9f1i7Ymy1x5npL13VypWdrR3TlY1pLB3xS33PqOuJc7fLR0+XN6gHToxOYRs30T5nxPwvRsDeo2HaRupmfJCI1Zl0qnlgaJZpGjm6hJrKEt4rY1RjBVBHviwzBzRz+eA4lkWF6ZQ7j8iP6rEOkHsf5bOvybvEQSfMtTU/Hx43MPIaGgr7mRr/n5k5rHWN7nZs5G8ZmgNsVJ3dbAcE6hpqMZt+D5kD440uMxJxYEwrjcQ9Sz48UuqYwJW2YKz7MJRVT0cvYfoiJeoiBjDDXIxhzstijgjDDRQVt3om25EJfcKHNOtBk7VdIvV830dVV9NEFzAWFkbyCOefBshvAWgsysLHMZDWEMb2KtRoWcxDTKze6bTu6ghNdeU2ECorXSD3fU2hFDd2mjeE9H0NlL0MlEdwIYjkI05d1cq8RZrDgFnsEi5iNZXFhcRVtRYRkVzBs2dGn7RgE0q3LQFFZt2HDVPVhqojKZZWxRojx1xH6t1cYb0QYzLtFcETMYfGh97ryZeCOE33GgX7bcaVS70UCg7iiz/YQS3gZS+A5YwLrSyczG26M8iwzSRmTOsd00sODpJvRwBIG/1MMsXm0RwE0p+H//AOoSl//2zFH6AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Async with bloging example output&quot;
-        title=&quot;Async with bloging example output&quot;
-        src=&quot;/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-oops.png&quot;
-        srcset=&quot;/static/f2d7d2a4b192b76d713040f6ed8e133b/c26ae/sync-oops.png 158w,
-/static/f2d7d2a4b192b76d713040f6ed8e133b/6bdcf/sync-oops.png 315w,
-/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-oops.png 630w,
-/static/f2d7d2a4b192b76d713040f6ed8e133b/40601/sync-oops.png 945w,
-/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-oops.png 1217w&quot;
-        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        alt=&quot;Async with blocking example output&quot;
+        title=&quot;Async with blocking example output&quot;
+        src=&quot;/static/b0ae9fdeabfe7c074d4568048609b8f9/e66bf/slow.png&quot;
+        srcset=&quot;/static/b0ae9fdeabfe7c074d4568048609b8f9/c26ae/slow.png 158w,
+/static/b0ae9fdeabfe7c074d4568048609b8f9/6bdcf/slow.png 315w,
+/static/b0ae9fdeabfe7c074d4568048609b8f9/e66bf/slow.png 445w&quot;
+        sizes=&quot;(max-width: 445px) 100vw, 445px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
@@ -434,13 +441,46 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;So slow&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Notice, we are not specifying &lt;code class=&quot;language-text&quot;&gt;async&lt;/code&gt; on the function definition.&lt;/p&gt;
-&lt;p&gt;Update our test URLs:&lt;/p&gt;
+&lt;p&gt;Use the &lt;code class=&quot;language-text&quot;&gt;curl_configs/test_urls_sync_slow.txt&lt;/code&gt; file:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;url = &quot;http://127.0.0.1:8000/sync-slow&quot;
 url = &quot;http://127.0.0.1:8000/sync-slow&quot;
 url = &quot;http://127.0.0.1:8000/&quot;
 url = &quot;http://127.0.0.1:8000/&quot;
 url = &quot;http://127.0.0.1:8000/&quot;
-url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+url = &quot;http://127.0.0.1:8000/&quot;
+
+`curl --parallel --parallel-immediate --parallel-max 6 --config curl_configs/test_urls_sync_slow.txt`&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-slow.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 35.44303797468354%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABaElEQVQoz3XNwU/TYBzG8V5MIH1bqt3abuvb9u0QQ8CAyCIS1DACbuACM9w4cvKgiMSNWQWEYMINMN5GNPyjX162cGIePvk9efLmeY3tjxX2DubZyV7y5ccCn/XdyV6wq/Pu99t+jk9a6+cirw7LjL53mWh6jDfzAxmHH17zZ3+Z89YSl/srXOh7ly9b/f7W706NrbNJjjoz/GpXOG3PDmS8PZuief2cd1fTbPydpaFvvTvZy+tXM6x2n7Kmrf+rsNwdp51N8S17RiebHshwvj5CVB3ybwrImkLWFaVaglctEdVTksZj5KrCqeZxNh2cEwvn+P8MOxSIBya+5RPlJYkXE+UkwYjfy0+iMVJPYT+0GHaHEEOib3gww5YWwhH4gR6MI+IkJpQlvMBDlRUqVf2uHBIkAbZrYbomwtID4j7DLtoIW5DL5SgUChSLxR7XdYki/UGsx8KQVKXIksT29fugP2ia5r3BG3Hs5QXl+FEzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Async with example output&quot;
+        title=&quot;Async with example output&quot;
+        src=&quot;/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-slow.png&quot;
+        srcset=&quot;/static/f2d7d2a4b192b76d713040f6ed8e133b/c26ae/sync-slow.png 158w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/6bdcf/sync-slow.png 315w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/f058b/sync-slow.png 630w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/40601/sync-slow.png 945w,
+/static/f2d7d2a4b192b76d713040f6ed8e133b/60b8f/sync-slow.png 1217w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;If you don’t specify your endpoint as being async i.e. as &lt;a href=&quot;https://docs.python.org/3/library/asyncio-task.html&quot;&gt;a coroutine&lt;/a&gt;, FastAPI will look after it for you instead as it will assume this route contains blocking calls whereas if you specify &lt;code class=&quot;language-text&quot;&gt;async&lt;/code&gt;, it’s up to you to make sure it really is asynchronous.&lt;/p&gt;
 &lt;p&gt;Rules of thumb:&lt;/p&gt;
 &lt;ul&gt;
@@ -458,8 +498,10 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To illustrate, let’s add some pubsub:&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;pip install --upgrade google-cloud-pubsub&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;This example is pretty contrived and GCP specific but does demonstrate a common mistake.&lt;/p&gt;
-&lt;p&gt;If you’d like to follow along please &lt;a href=&quot;https://cloud.google.com/sdk/docs/install&quot;&gt;install the gcloud cli&lt;/a&gt; and run the following to start a pubsub emulator:&lt;/p&gt;
+&lt;p&gt;If you don’t want to use docker and would like to follow along please &lt;a href=&quot;https://cloud.google.com/sdk/docs/install&quot;&gt;install the gcloud cli&lt;/a&gt; and run the following to start a pubsub emulator:&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;gcloud beta emulators pubsub start --project=example-project&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$(gcloud beta emulators pubsub env-init)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If you are using docker compose, the emulator is already setup for you in the sample code.&lt;/p&gt;
 &lt;p&gt;We are doing this so we can see what happens when our FastAPI application listens to messages out side of standard web requests.&lt;/p&gt;
 &lt;p&gt;Update our FastAPI app to handle messages:&lt;/p&gt;
 &lt;p&gt;Import the pubsub lib:&lt;/p&gt;
@@ -542,30 +584,63 @@ url = &quot;http://127.0.0.1:8000/&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; __name__ &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
     main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We are going to send some messages to our app and see how it responds in different scenarios. The client uses environment variables to connect to the emulator. You must load the environment variables like so:&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$(gcloud beta emulators pubsub env-init)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;So at this point you should have:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;a running pubsub emulator&lt;/li&gt;
-&lt;li&gt;a sample client with the emulator environment variables ready to go in the shell&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Run the client:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;❯ python src/pubsub_client.py
-Topic already exists
+&lt;p&gt;We are going to send some messages to our app and see how it responds in different scenarios.&lt;/p&gt;
+&lt;p&gt;Start the app:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;make up&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Run the client in another session:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;make pubsub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Or if you are not using docker:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;python src/pubsub_client.py&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see something like:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Created topic: projects/example-project/topics/testing
 Run 5 non-blocking
-183
-184
-185
-186
-187
+1
+2
+3
+4
+5
 Run 5 blocking
-188
-189
-190
-191
-192&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;You should see output int he app console like this:&lt;/p&gt;
+6
+7
+8
+9
+10&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see output int he app console like this:
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/68cb8fa86fe907b091567e2360763122/01dae/pubsub_output.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 26.58227848101266%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABV0lEQVQY01WNXS9CcRzHz2twoStPd96BrRErY+aCC2wuC6PVqQ3FpBt6QDJjXoHN0yw0tTFDqI6jU6dixbULXsXHv3Pn4rPP9//9bv+f1LN0hWU5Sa/AvHhBt+8S88IFnY5Duvy3DMWr9IU1+qNFBjZKWEIawzEda6SILaIxEKsyFM7S0dpCm6kJqX/vk8H9L8EnfTs1rLt1LPEa7YEy5jWdyW2dkWiJsU2d8S2d4VBRdGVGRTciPp2IVURWMdnmaO61I4VXVcJBlahgPaASCb4RWlFZmC9w4FW4cT+T8uRJyVnSnhxpWSHhfCTpeuHarZB0ZjiUcyz56/h9NSTN8YBmv6fh8vQz+lTG8Lf8Tt2pojjuKc1kUaceKYitMquQt99RmH4y8qvYdbH/emv8eD6Qjlx5jlw5gxNx8Vi8j4XPPRpnsvq/F5y6Xw2fuBQjN/aGE96SwR9EBw/wCJdYFAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Pubsub output&quot;
+        title=&quot;Pubsub output&quot;
+        src=&quot;/static/68cb8fa86fe907b091567e2360763122/f058b/pubsub_output.png&quot;
+        srcset=&quot;/static/68cb8fa86fe907b091567e2360763122/c26ae/pubsub_output.png 158w,
+/static/68cb8fa86fe907b091567e2360763122/6bdcf/pubsub_output.png 315w,
+/static/68cb8fa86fe907b091567e2360763122/f058b/pubsub_output.png 630w,
+/static/68cb8fa86fe907b091567e2360763122/01dae/pubsub_output.png 721w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;All the messages were processed asynchronously. The pubsub is using a callback and the eventloop used by FastAPI is not effected.&lt;/p&gt;
+&lt;h3&gt;Where async + pubsub can go wrong&lt;/h3&gt;
+&lt;p&gt;You may be tempted to use something like &lt;a href=&quot;https://pypi.org/project/gcloud-aio-pubsub/&quot;&gt;gcloud-aio-pubsub&lt;/a&gt; with your fastapi app. You can use something like &lt;a href=&quot;https://pypi.org/project/nest-asyncio/&quot;&gt;nest-asyncio&lt;/a&gt; to hook into the fastapi eventloop. This will allow you to use the same eventloop for your pubsub client and let you use standard async await with event handling.&lt;/p&gt;
+&lt;p&gt;You should avoid this however. It is very easy to add a blocking call into an event handler. This will block the event loop and prevent any other events and web requests from being processed thus holding up your whole application.&lt;/p&gt;
+&lt;p&gt;It is advisable to keep it simple. Let fastapi deal with the complexity of asyncio and use a background thread for pubsub.&lt;/p&gt;
 &lt;h2&gt;Useful links&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://docs.aiohttp.org/en/stable/&quot;&gt;https://docs.aiohttp.org/en/stable/&lt;/a&gt;&lt;/li&gt;
@@ -579,7 +654,8 @@ Run 5 blocking
 &lt;li&gt;&lt;a href=&quot;https://uvloop.readthedocs.io/&quot;&gt;https://uvloop.readthedocs.io/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.uvicorn.org/&quot;&gt;https://www.uvicorn.org/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library&quot;&gt;https://stackoverflow.com/questions/41063331/how-to-use-asyncio-with-existing-blocking-library&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[How to only run a job on a pull request in CircleCI]]></title><description><![CDATA[I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last…]]></description><link>https://ruarfff.com/circleci-pr-only/</link><guid isPermaLink="false">https://ruarfff.com/circleci-pr-only/</guid><pubDate>Tue, 27 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last place we used GitHub actions and this was super easy.
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[How to only run a job on a pull request in CircleCI]]></title><description><![CDATA[I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last…]]></description><link>https://ruarfff.com/circleci-pr-only/</link><guid isPermaLink="false">https://ruarfff.com/circleci-pr-only/</guid><pubDate>Tue, 27 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I wanted a thing to only happen when a pull request is opened. I also wanted to do some cleanup when the pull request is closed. In my last place we used GitHub actions and this was super easy.
 Now I am using &lt;a href=&quot;https://circleci.com/&quot;&gt;CircleCI&lt;/a&gt; and this wasn’t so easy.&lt;/p&gt;
 &lt;p&gt;In this post we will look at how to only run a job on a pull request in CircleCI. There is one major caveat. We also need a way to trigger the job on a pull request. We will look at how to do this with the &lt;a href=&quot;https://circleci.com/docs/api/v2/&quot;&gt;CircleCI web api&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Conditionally run a job&lt;/h2&gt;
